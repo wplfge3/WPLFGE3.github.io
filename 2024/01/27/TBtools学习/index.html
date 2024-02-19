@@ -420,7 +420,7 @@ TBtools学会对分析很重要，">
 <p>TBtools学会对分析很重要，所以专门来学习一下,并尝试用shinyapp代码实现相同的功能。</p>
 <img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/Sequence%20Toolkits.png" class="" title="TBtools的第一部分内容">
 
-<h2 id="1，Fasta-Extract-Recommended"><a href="#1，Fasta-Extract-Recommended" class="headerlink" title="1，Fasta Extract (Recommended)"></a>1，Fasta Extract (Recommended)</h2><p><a target="_blank" rel="noopener" href="https://www.yuque.com/cjchen/hirv8i/ra35nv">官方教程</a></p>
+<h2 id="1，Fasta-Extract-Recommended-，知道ID和fa文件，提取出fa"><a href="#1，Fasta-Extract-Recommended-，知道ID和fa文件，提取出fa" class="headerlink" title="1，Fasta Extract (Recommended)，知道ID和fa文件，提取出fa"></a>1，Fasta Extract (Recommended)，知道ID和fa文件，提取出fa</h2><p><a target="_blank" rel="noopener" href="https://www.yuque.com/cjchen/hirv8i/ra35nv">官方教程</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.yuque.com/cjchen/hirv8i/ra35nv">https://www.yuque.com/cjchen/hirv8i/ra35nv</a></p>
 <img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/Fasta%20Extract(Recommend)%E4%BD%8D%E7%BD%AE.png" class="" title="TFasta Extract(Recommend)位置">
 
@@ -447,14 +447,14 @@ TBtools学会对分析很重要，">
 <img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/%E9%80%89%E9%A1%B9.png" class="" title="选项">
 
 
-<h2 id="2，Fasta-Extract-or-Filter-Quick"><a href="#2，Fasta-Extract-or-Filter-Quick" class="headerlink" title="2，Fasta Extract or Filter (Quick)"></a>2，Fasta Extract or Filter (Quick)</h2><p>适合最多或极少</p>
+<h2 id="2，Fasta-Extract-or-Filter-Quick-，知道ID和fa，获得fa"><a href="#2，Fasta-Extract-or-Filter-Quick-，知道ID和fa，获得fa" class="headerlink" title="2，Fasta Extract or Filter (Quick)，知道ID和fa，获得fa"></a>2，Fasta Extract or Filter (Quick)，知道ID和fa，获得fa</h2><p>适合最多或极少</p>
 <p>主要优势<br>相较于其他 Fasta 序列操作功能，这一功能的主要特点即，Quick。主要原因有二：</p>
 <ol>
 <li>通过IO优化，加速文件读取</li>
 <li>无需建立索引<br>适用场景<br>这一功能最适用的场景为 序列完整纪录 的 提取 或 过滤。<br>如果要问如何选择Fasta Extract (Recommended)与Fasta Extract or Filter (Quick)两个功能，可以看以下例子：若A基因组有两万个基因，想提取其中一万个基因，推荐使用Fasta Extract or Filter (Quick)，若提取少量基因推荐用Fasta Extract (Recommended)，若提取极少量基因推荐使用Fasta Extract or Filter (Quick）</li>
 </ol>
 <h2 id="Fasta-Extract-Basic"><a href="#Fasta-Extract-Basic" class="headerlink" title="Fasta Extract (Basic)"></a>Fasta Extract (Basic)</h2><p>陈老师的情怀，用上面的提取就行</p>
-<h2 id="Fasta-Stat-序列信息"><a href="#Fasta-Stat-序列信息" class="headerlink" title="Fasta Stat 序列信息"></a>Fasta Stat 序列信息</h2><p><a target="_blank" rel="noopener" href="https://www.yuque.com/cjchen/hirv8i/gm4yda">https://www.yuque.com/cjchen/hirv8i/gm4yda</a></p>
+<h2 id="Fasta-Stat-序列信息，获得fa文件的信息"><a href="#Fasta-Stat-序列信息，获得fa文件的信息" class="headerlink" title="Fasta Stat 序列信息，获得fa文件的信息"></a>Fasta Stat 序列信息，获得fa文件的信息</h2><p><a target="_blank" rel="noopener" href="https://www.yuque.com/cjchen/hirv8i/gm4yda">https://www.yuque.com/cjchen/hirv8i/gm4yda</a></p>
 <p>适用场景<br>很多时候，我们拿到一个 Fasta 序列文件，可能希望知道：</p>
 <ol>
 <li>有多少个序列？</li>
@@ -475,7 +475,7 @@ TBtools学会对分析很重要，">
 <li>Keep Only Sequence Length: 若勾选，3. 中输出文件仅会包含序列ID及其长度（注意，这一功能主要是方便快速获取每条序列长度）</li>
 <li>点击 Start 即可运行</li>
 </ol>
-<h2 id="Sequence-Manipulate-Rev-amp-Comp"><a href="#Sequence-Manipulate-Rev-amp-Comp" class="headerlink" title="Sequence Manipulate (Rev&amp;Comp)"></a>Sequence Manipulate (Rev&amp;Comp)</h2><p>序列互补等 我也生成过</p>
+<h2 id="Sequence-Manipulate-Rev-amp-Comp-，获得序列反向，互补，大小"><a href="#Sequence-Manipulate-Rev-amp-Comp-，获得序列反向，互补，大小" class="headerlink" title="Sequence Manipulate (Rev&amp;Comp) ，获得序列反向，互补，大小"></a>Sequence Manipulate (Rev&amp;Comp) ，获得序列反向，互补，大小</h2><p>序列互补等 我也生成过</p>
 <p>在日常分析过程中，我们常常需要进行序列操作，如序列反向，互补，大小写等。此功能为满足这些需求开发</p>
 <p>确实，设计引物的时候</p>
 <img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/%E5%BA%8F%E5%88%97%E8%BD%AC%E5%8F%98.png" class="" title="序列转变">
@@ -489,7 +489,7 @@ TBtools学会对分析很重要，">
 <li>Refresh：点击即可更新输出（一般用不上，当然如果你重新输入序列后，由于输出文本框中仍是上次序列处理后的输出结果，此时可直接点击Refresh）</li>
 </ol>
 <p>感觉少了序列转换成蛋白质之类的，但是涌MERGE就行。</p>
-<h2 id="Fasta-ID-Simplify"><a href="#Fasta-ID-Simplify" class="headerlink" title="Fasta ID Simplify"></a>Fasta ID Simplify</h2><p>有时候，一些 Fasta 序列 ID 较为复杂，如“&gt;Unigene1 MYB Protein”，或从 NCBI，Uniprot，Swissprot 等公共数据库下载序列时，往往会遇到复杂 ID。这一功能主要用于简化 Fasta 序列 ID，例如：<br>“&gt;Unigene1 MYB Protein”简化为“&gt;Unigene1”。这功能也能专门针对一些数据库下载的特殊的 ID 格式。</p>
+<h2 id="Fasta-ID-Simplify，fa文件id简化"><a href="#Fasta-ID-Simplify，fa文件id简化" class="headerlink" title="Fasta ID Simplify，fa文件id简化"></a>Fasta ID Simplify，fa文件id简化</h2><p>有时候，一些 Fasta 序列 ID 较为复杂，如“&gt;Unigene1 MYB Protein”，或从 NCBI，Uniprot，Swissprot 等公共数据库下载序列时，往往会遇到复杂 ID。这一功能主要用于简化 Fasta 序列 ID，例如：<br>“&gt;Unigene1 MYB Protein”简化为“&gt;Unigene1”。这功能也能专门针对一些数据库下载的特殊的 ID 格式。</p>
 <img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/%E7%AE%80%E5%8C%96ID.png" class="" title="简化ID">
 
 <p>使用详细解释（注意，该功能是批量的）：</p>
@@ -501,7 +501,7 @@ TBtools学会对分析很重要，">
 <p>从给定匹配模式处开始清理 ID，</p>
 <p>如“&gt;Unigene_1.version3.3 confident”，使用模式“.version”即可将清理为“&gt;Unigene_1”；如“&gt;Unigene1.transcript_01.version3.3 confident”，使用模式“3.3”即可将清理为“&gt;Unigene1.transcript_01.version”<br>4. Remove .version：用于简单快速去除版本号等信息，如“&gt;ABC183710.1”和“&gt;CABT19912.3”，会直接去除“.1”和“.3”<br>5. 点击“Simplify My Sequence’s ID…”</p>
 <p>这个应该也能写个shinyapp</p>
-<h2 id="Fasta-ID-Rename"><a href="#Fasta-ID-Rename" class="headerlink" title="Fasta ID Rename"></a>Fasta ID Rename</h2><img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/%E5%BA%8F%E5%88%97%E9%87%8D%E5%91%BD%E5%90%8D.png" class="" title="序列重命名">
+<h2 id="Fasta-ID-Rename，fa文件重命名"><a href="#Fasta-ID-Rename，fa文件重命名" class="headerlink" title="Fasta ID Rename，fa文件重命名"></a>Fasta ID Rename，fa文件重命名</h2><img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/%E5%BA%8F%E5%88%97%E9%87%8D%E5%91%BD%E5%90%8D.png" class="" title="序列重命名">
 
 
 <p>参数详解如下：</p>
@@ -512,13 +512,13 @@ TBtools学会对分析很重要，">
 <li>点击Start即可运行</li>
 </ol>
 <p>确实挺不错的</p>
-<h2 id="Fasta-ID-Prefix"><a href="#Fasta-ID-Prefix" class="headerlink" title="Fasta ID Prefix"></a>Fasta ID Prefix</h2><p>适用背景<br>在一些生信数据分析中，需要解决不同Fasta序列ID冲突的问题。如香蕉基因组序列染色体ID为“Chr1”“Chr2”…,而菠萝基因组序列染色体ID也为“Chr1”“Chr2”…。当我们在进行分析时，会存在一些软件无法正确处理的情况。最好的解决方法，就是对ID进行一定的调整，比如加前缀。</p>
+<h2 id="Fasta-ID-Prefix，给fa文件id增加前缀，方便统一"><a href="#Fasta-ID-Prefix，给fa文件id增加前缀，方便统一" class="headerlink" title="Fasta ID Prefix，给fa文件id增加前缀，方便统一"></a>Fasta ID Prefix，给fa文件id增加前缀，方便统一</h2><p>适用背景<br>在一些生信数据分析中，需要解决不同Fasta序列ID冲突的问题。如香蕉基因组序列染色体ID为“Chr1”“Chr2”…,而菠萝基因组序列染色体ID也为“Chr1”“Chr2”…。当我们在进行分析时，会存在一些软件无法正确处理的情况。最好的解决方法，就是对ID进行一定的调整，比如加前缀。</p>
 <img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/%E6%B7%BB%E5%8A%A0%E5%89%8D%E7%BC%80.png" class="" title="添加前缀">
 
 
 
 
-<h2 id="Fasta-to-Table-Convert"><a href="#Fasta-to-Table-Convert" class="headerlink" title="Fasta to Table Convert"></a>Fasta to Table Convert</h2><p>Fasta 格式将 ID 和序列放置在不同行，在一些数据分析时，此功能可以将Fasta格式转换成 ID 和序列在同一行的表格模式，也可以将文件从 表格模式 转换成 Fasta 格式。</p>
+<h2 id="Fasta-to-Table-Convert，fa格式不在同一格子，互换"><a href="#Fasta-to-Table-Convert，fa格式不在同一格子，互换" class="headerlink" title="Fasta to Table Convert，fa格式不在同一格子，互换"></a>Fasta to Table Convert，fa格式不在同一格子，互换</h2><p>Fasta 格式将 ID 和序列放置在不同行，在一些数据分析时，此功能可以将Fasta格式转换成 ID 和序列在同一行的表格模式，也可以将文件从 表格模式 转换成 Fasta 格式。</p>
 <img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2.png" class="" title="格式转换">
 
 <img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A22.png" class="" title="格式转换2">
@@ -526,7 +526,7 @@ TBtools学会对分析很重要，">
 
 
 
-<h2 id="Merge-and-Split"><a href="#Merge-and-Split" class="headerlink" title="Merge and Split"></a>Merge and Split</h2><p>适用场景<br>在序列操作过程中，可能需要进行Fasta序列文件合并或者分割。大体场景可见：</p>
+<h2 id="Merge-and-Split，对fa文件合并，或者分割"><a href="#Merge-and-Split，对fa文件合并，或者分割" class="headerlink" title="Merge and Split，对fa文件合并，或者分割"></a>Merge and Split，对fa文件合并，或者分割</h2><p>适用场景<br>在序列操作过程中，可能需要进行Fasta序列文件合并或者分割。大体场景可见：</p>
 <ol>
 <li>多个 Fasta 序列文件合并，如Sanger测序得到的系列 .seq 文件</li>
 <li>对含有多个序列的 Fasta 文件进行分割，如 10000 个序列，按照文件大小/序列数目/最终文件个数进行序列均分</li>
@@ -549,7 +549,7 @@ TBtools学会对分析很重要，">
 </ol>
 <p>多序列文件分割<br>4. 设置输入的待分割的序列文件<br>5. 设置输出文件路径（注意是前缀路径，因为绝大多数情况下不止一个输出文件）<br>6. 设置分割单位数，结合 7. 考量<br>7. 设置分割单位，可选项为：</p>
 <p>● Record Per File：即指定分割后每个文件的序列个数<br>● Number of File：即指定分割出来的结果文件数<br>● Size[KB] Per File：即指定分割出来的结果文件大小<br>8. 点击Start</p>
-<h2 id="Fasta-Get-Representative"><a href="#Fasta-Get-Representative" class="headerlink" title="Fasta Get Representative"></a>Fasta Get Representative</h2><p>适用场景<br>基于输入的 Fasta 序列文件 ID，提取代表性序列集合。即在一个有多条序列的Fasta文件中提取出最长的代表性序列，用于下游分析。<br>这个功能目前只建议在无法获得物种的 GFF3、GTF 文件和基因组序列信息的情况下使用。</p>
+<h2 id="Fasta-Get-Representative，多条序列的Fasta文件中提取出最长的代表性序列"><a href="#Fasta-Get-Representative，多条序列的Fasta文件中提取出最长的代表性序列" class="headerlink" title="Fasta Get Representative，多条序列的Fasta文件中提取出最长的代表性序列"></a>Fasta Get Representative，多条序列的Fasta文件中提取出最长的代表性序列</h2><p>适用场景<br>基于输入的 Fasta 序列文件 ID，提取代表性序列集合。即在一个有多条序列的Fasta文件中提取出最长的代表性序列，用于下游分析。<br>这个功能目前只建议在无法获得物种的 GFF3、GTF 文件和基因组序列信息的情况下使用。</p>
 <img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/%E5%BA%8F%E5%88%97%E5%BE%97%E5%88%B0%E6%9C%80%E9%95%BF.png" class="" title="归组">
 
 
@@ -559,7 +559,7 @@ TBtools学会对分析很重要，">
 
 
 
-<h2 id="Sequence-Pattern-Locate"><a href="#Sequence-Pattern-Locate" class="headerlink" title="Sequence Pattern Locate"></a>Sequence Pattern Locate</h2><p>挖掘简单重复序列的，暂时用不到吧</p>
+<h2 id="Sequence-Pattern-Locate，掘简单重复序列"><a href="#Sequence-Pattern-Locate，掘简单重复序列" class="headerlink" title="Sequence Pattern Locate，掘简单重复序列"></a>Sequence Pattern Locate，掘简单重复序列</h2><p>挖掘简单重复序列的</p>
 <p><a target="_blank" rel="noopener" href="https://www.yuque.com/cjchen/hirv8i/zrdn6m">https://www.yuque.com/cjchen/hirv8i/zrdn6m</a></p>
 <img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/%E7%AE%80%E5%8D%95%E9%87%8D%E5%A4%8D%E5%BA%8F%E5%88%97.png" class="" title="简单重复序列">
 
@@ -570,7 +570,7 @@ TBtools学会对分析很重要，">
 <p>预测开放阅读框：</p>
 <p>linux有个ORFfinder也能找到</p>
 <p>ATCG  对应的就是四个碱基，ATCG<br>[ATCG]  对应的是一个碱基，A或T或C或G<br>[^AT]  对应的是一个碱基，但不会是A或T（将其排除）<br>（AT）  对应的是两个碱基，把AT定位为一个单元<br>（AT）{6}  对应的是2x6，共12个碱基，也就是AT重复6次，ATATATATATAT<br>（AT）{，6}   对应的是（AT）重复不多于6次，如AT,ATAT,ATATAT,ATATATAT,ATATATATAT,ATATATATATAT<br>（AT）{6，}   对应的是（AT）重复不低于6次，如ATATATATATAT,ATATATATATATAT, ATATATATATATATAT等</p>
-<h2 id="SSR-miner"><a href="#SSR-miner" class="headerlink" title="SSR miner"></a>SSR miner</h2><p>基于输入的 Fasta 序列文件，快速挖掘并鉴定可用的 SSR 位点。</p>
+<h2 id="SSR-miner，快速挖掘并鉴定可用的-SSR-位点"><a href="#SSR-miner，快速挖掘并鉴定可用的-SSR-位点" class="headerlink" title="SSR miner，快速挖掘并鉴定可用的 SSR 位点"></a>SSR miner，快速挖掘并鉴定可用的 SSR 位点</h2><p>基于输入的 Fasta 序列文件，快速挖掘并鉴定可用的 SSR 位点。</p>
 <img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/SSR.png" class="" title="SSR">
 
 
@@ -578,7 +578,7 @@ TBtools学会对分析很重要，">
 <img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/%E5%8F%82%E6%95%B03.png" class="" title="参数">
 
 
-<h2 id="Fasta-Window-Stat"><a href="#Fasta-Window-Stat" class="headerlink" title="Fasta Window Stat"></a>Fasta Window Stat</h2><p>适用场景<br>对 Fasta 序列进行滑窗统计，比如对基因组序列滑窗统计 GC偏斜，GC含量分布，N含量等，看看基因组序列中未知碱基的分布（一般用 N 指代），以此来判断基因组不同区域的组装质量（是否有 Gap 等）。</p>
+<h2 id="Fasta-Window-Stat，对-fa序列进行滑窗统计，比如对基因组序列滑窗统计-GC偏斜，GC含量分布，N含量等"><a href="#Fasta-Window-Stat，对-fa序列进行滑窗统计，比如对基因组序列滑窗统计-GC偏斜，GC含量分布，N含量等" class="headerlink" title="Fasta Window Stat，对 fa序列进行滑窗统计，比如对基因组序列滑窗统计 GC偏斜，GC含量分布，N含量等"></a>Fasta Window Stat，对 fa序列进行滑窗统计，比如对基因组序列滑窗统计 GC偏斜，GC含量分布，N含量等</h2><p>适用场景<br>对 Fasta 序列进行滑窗统计，比如对基因组序列滑窗统计 GC偏斜，GC含量分布，N含量等，看看基因组序列中未知碱基的分布（一般用 N 指代），以此来判断基因组不同区域的组装质量（是否有 Gap 等）。</p>
 
 
 <img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/STATE2.png" class="" title="输出">
@@ -590,7 +590,88 @@ TBtools学会对分析很重要，">
 
 
 
-<h1 id="NCBI-Sequen"><a href="#NCBI-Sequen" class="headerlink" title="NCBI Sequen"></a>NCBI Sequen</h1>
+<h1 id="NCBI-Sequence-fetch"><a href="#NCBI-Sequence-fetch" class="headerlink" title="NCBI Sequence fetch"></a>NCBI Sequence fetch</h1><h2 id="GenBank-to-Fasta-GenBank格式转换成fa格式"><a href="#GenBank-to-Fasta-GenBank格式转换成fa格式" class="headerlink" title="GenBank to Fasta,GenBank格式转换成fa格式"></a>GenBank to Fasta,GenBank格式转换成fa格式</h2><p>从NCBI 下载序列时，可以保存为 GenBank 格式，从而保留尽可能多的序列信息。而有时候我们需要的是Fasta格式的序列，使用这一功能可以将GenBank格式的序列转化为Fasta格式。</p>
+<img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/genebank.png" class="" title="genebank格式">
+
+<img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/%E5%BE%97%E5%88%B0%E7%9A%84fa%E6%96%87%E4%BB%B6.png" class="" title="得到的fa文件">
+
+<img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/%E5%8F%82%E6%95%B0genebank.png" class="" title="参数详解">
+
+
+
+<h2 id="NCBI-Sequence-Download-Basic-，知道NCBI的Accession-ID或者GI号，下载序列"><a href="#NCBI-Sequence-Download-Basic-，知道NCBI的Accession-ID或者GI号，下载序列" class="headerlink" title="NCBI Sequence Download (Basic)，知道NCBI的Accession ID或者GI号，下载序列"></a>NCBI Sequence Download (Basic)，知道NCBI的Accession ID或者GI号，下载序列</h2><p>适用场景<br>下载NCBI序列。但这一功能不建议一次下载超过100个序列，如有该需求，可以使用Bulk NCBI Sequence Download (Advanced)功能。</p>
+<img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/NCBIGI%E5%8F%B7.png" class="" title="NCBI的Accession ID或者GI号">
+
+<img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/%E6%93%8D%E4%BD%9C.png" class="" title="操作">
+
+
+<img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/%E5%BE%97%E5%88%B0%E7%9A%84fa%E6%A0%BC%E5%BC%8F2.png" class="" title="得到的fa格式">
+
+
+
+<h2 id="Bulk-NCBI-Sequence-Download-Advanced-，批量下载NCBI序列"><a href="#Bulk-NCBI-Sequence-Download-Advanced-，批量下载NCBI序列" class="headerlink" title="Bulk NCBI Sequence Download (Advanced)，批量下载NCBI序列"></a>Bulk NCBI Sequence Download (Advanced)，批量下载NCBI序列</h2><img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/%E6%89%B9%E9%87%8F%E4%B8%8B%E8%BD%BDfa.png" class="" title="参数详情">
+
+
+
+
+
+<h1 id="ORF-Predict"><a href="#ORF-Predict" class="headerlink" title="ORF Predict"></a>ORF Predict</h1><p>ord </p>
+<h2 id="Complete-Partial-ORF-Predict-Single-Mode-，从一段转录本（mRNA）序列上预测六个读码框的可能完整-CDS"><a href="#Complete-Partial-ORF-Predict-Single-Mode-，从一段转录本（mRNA）序列上预测六个读码框的可能完整-CDS" class="headerlink" title="Complete/Partial ORF Predict (Single Mode)，从一段转录本（mRNA）序列上预测六个读码框的可能完整 CDS"></a>Complete/Partial ORF Predict (Single Mode)，从一段转录本（mRNA）序列上预测六个读码框的可能完整 CDS</h2><p><a target="_blank" rel="noopener" href="https://www.yuque.com/cjchen/hirv8i/cktn7p">https://www.yuque.com/cjchen/hirv8i/cktn7p</a></p>
+
+
+
+
+
+
+
+
+
+<p>可以从弹出的窗口中看到：</p>
+<ol>
+<li>按照 6 个读码框翻译的所有可能 ORF</li>
+<li>点击灰色部分，即可查看该 ORF 信息（CDS 和 蛋白序列）</li>
+<li>详细的ORF信息<br>● 预测的 ORF 信息（起始坐标，终止坐标，框架信息，长度等）<br>● &gt;nt：CDS 序列<br>● &gt;aa：氨基酸序列</li>
+</ol>
+<p>支持不完整 ORF<br>版本更新后，支持非完整 ORF，比如缺少翻译起始密码子或者缺少终止密码子，更或者两者都缺少。当然，同时是支持非经典起始或终止密码子。<br>仍然是同样的数据，不同的参数</p>
+
+
+
+
+
+
+
+<ol>
+<li>输入文本框</li>
+<li>其他参数<br>● startCodon：若不勾选，则预测出来的ORF结果不包括起始密码子<br>● stopCodon：若不勾选，则预测出来的ORF结果不包括终止密码子<br>● Min Pep Len：最小氨基酸序列长度</li>
+<li>点击Get ORF</li>
+</ol>
+<h2 id="Complete-ORF-Prediction-Batch-批量从一段转录本（mRNA）序列上预测六个读码框的可能完整-CDS"><a href="#Complete-ORF-Prediction-Batch-批量从一段转录本（mRNA）序列上预测六个读码框的可能完整-CDS" class="headerlink" title="Complete ORF Prediction (Batch),批量从一段转录本（mRNA）序列上预测六个读码框的可能完整 CDS"></a>Complete ORF Prediction (Batch),批量从一段转录本（mRNA）序列上预测六个读码框的可能完整 CDS</h2><p><a target="_blank" rel="noopener" href="https://www.yuque.com/cjchen/hirv8i/gc37kd">https://www.yuque.com/cjchen/hirv8i/gc37kd</a></p>
+<p>Single 模式的 ORF 预测功能仅支持一条序列的预测，而有时候我们需要对一个序列基因进行批量预测，如5w个基因的转录本信息。此时可使用Complete ORF Prediction (Batch)这一功能</p>
+<h2 id="Batch-Translate-CDS-to-Protein，这一功能的作用是，按照标准密码子表，批量转换-CDS-为-蛋白序列"><a href="#Batch-Translate-CDS-to-Protein，这一功能的作用是，按照标准密码子表，批量转换-CDS-为-蛋白序列" class="headerlink" title="Batch Translate CDS to Protein，这一功能的作用是，按照标准密码子表，批量转换 CDS 为 蛋白序列"></a>Batch Translate CDS to Protein，这一功能的作用是，按照标准密码子表，批量转换 CDS 为 蛋白序列</h2><p><a target="_blank" rel="noopener" href="https://www.yuque.com/cjchen/hirv8i/hdr91x">https://www.yuque.com/cjchen/hirv8i/hdr91x</a><br>这一功能的作用是，按照标准密码子表，批量转换 CDS 为 蛋白序列</p>
+<h2 id="Six-Frame-Translate，存在一些情况，我们希望对输入序列，进行六框翻译。"><a href="#Six-Frame-Translate，存在一些情况，我们希望对输入序列，进行六框翻译。" class="headerlink" title="Six Frame Translate，存在一些情况，我们希望对输入序列，进行六框翻译。"></a>Six Frame Translate，存在一些情况，我们希望对输入序列，进行六框翻译。</h2><p><a target="_blank" rel="noopener" href="https://www.yuque.com/cjchen/hirv8i/ecsea1zqebf69vns">https://www.yuque.com/cjchen/hirv8i/ecsea1zqebf69vns</a></p>
+<h2 id="Primer-Check-Simple-e-PCR-，检查设计的引物是否真能在fa上"><a href="#Primer-Check-Simple-e-PCR-，检查设计的引物是否真能在fa上" class="headerlink" title="Primer Check (Simple e-PCR)，检查设计的引物是否真能在fa上"></a>Primer Check (Simple e-PCR)，检查设计的引物是否真能在fa上</h2><p><a target="_blank" rel="noopener" href="https://chat.openai.com/g/g-l38NcMokB-mia-ai-your-voice-ai-companion/c/dc9aeb77-04ad-4c71-b023-2587ea7e82b6">https://chat.openai.com/g/g-l38NcMokB-mia-ai-your-voice-ai-companion/c/dc9aeb77-04ad-4c71-b023-2587ea7e82b6</a><br>适用场景<br>当前，几乎任何一个物种都可以简单获得转录本序列集合，于是我们在设计 q-PCR 荧光定量引物后，完全可以比对到这一序列库，查看是否会产生非特异性扩增，可用于简单的PCR引物特异性检测。<br>ps：本功能是早期开发TBtools时写的，用的是最简单的字符串搜索和编辑距离计算方法，有运行速度慢且未考虑热力学结果，仅仅基于字符串匹配与否等缺点<br>建议使用改进后的“Prime Check”插件</p>
+<p>操作流程<br>引物设计：根据目标基因序列设计一对引物。<br>序列获取：收集目标物种的全部转录本序列，这些序列可以从公共数据库如NCBI、Ensembl等获取。<br>比对分析：使用Simple e-PCR或类似的生物信息学工具，将设计的引物与转录本序列库进行比对分析。<br>结果分析：<br>特异性匹配：理想情况下，引物仅与目标序列产生特异性匹配，不与其他非目标序列匹配，这意味着引物设计是成功的。<br>非特异性匹配：如果引物还与其他非目标序列产生匹配，这可能导致非特异性扩增，此时需要重新设计引物。<br>结果应用<br>优化引物设计：基于比对结果，重新设计引物，避免潜在的非特异性扩增。<br>提高实验准确性：确保q-PCR实验的准确性和可靠性，通过特异性的引物扩增来获得准确的定量结果。</p>
+<h1 id="GXF-Sequence-Extract，输入fa-gff-得到fa文件"><a href="#GXF-Sequence-Extract，输入fa-gff-得到fa文件" class="headerlink" title="GXF Sequence Extract，输入fa,gff,得到fa文件"></a>GXF Sequence Extract，输入fa,gff,得到fa文件</h1><p><a target="_blank" rel="noopener" href="https://www.yuque.com/cjchen/hirv8i/olq9pq">https://www.yuque.com/cjchen/hirv8i/olq9pq</a><br>适用场景<br>目前，不少人物种的基因组已经被测定，常常我们可以直接获得物种的基因组序列以及基因结构注释信息。基于这两个文件，我们完全可以提取：<br>● 转录本序列<br>● CDS序列<br>● 启动子序列<br>● …</p>
+<img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/gxf%20extr.png" class="" width="">
+
+
+<img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/%E5%AE%9E%E9%99%85%E6%93%8D%E4%BD%9C3.png" class="" width="">
+
+<img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/gxf%20sequence.png" class="" width="">
+
+
+<img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/gxf%20sequence1.png" class="" width="">
+
+
+<h2 id="GXF-Gene-Position-amp-Info-Extract，中提取每个基因的具体信息，如位置，注释等"><a href="#GXF-Gene-Position-amp-Info-Extract，中提取每个基因的具体信息，如位置，注释等" class="headerlink" title="GXF Gene Position &amp; Info Extract，中提取每个基因的具体信息，如位置，注释等"></a>GXF Gene Position &amp; Info Extract，中提取每个基因的具体信息，如位置，注释等</h2><p><a target="_blank" rel="noopener" href="https://www.yuque.com/cjchen/hirv8i/gbsdn6">https://www.yuque.com/cjchen/hirv8i/gbsdn6</a></p>
+<p>物种基因结构注释信息文件，GFF3/GTF记录了全面的物种功能元件信息。有些时候，我们希望从中提取每个基因的具体信息，如位置，注释等。<br>这一功能可以帮助我们快速获取这些信息</p>
+<img src="/2024/01/27/TBtools%E5%AD%A6%E4%B9%A0/gtf%20gene.png" class="" width="">
+
+
+
+<h2 id="GXF-Re-build-from-Sequence，直接基于转录本序列或CDS和基因组序列文件，直接重构-GFF3-文件。"><a href="#GXF-Re-build-from-Sequence，直接基于转录本序列或CDS和基因组序列文件，直接重构-GFF3-文件。" class="headerlink" title="GXF Re-build from Sequence，直接基于转录本序列或CDS和基因组序列文件，直接重构 GFF3 文件。"></a>GXF Re-build from Sequence，直接基于转录本序列或CDS和基因组序列文件，直接重构 GFF3 文件。</h2><p> <a target="_blank" rel="noopener" href="https://www.yuque.com/cjchen/hirv8i/ota5q6">https://www.yuque.com/cjchen/hirv8i/ota5q6</a></p>
+<p> 适用场景<br>尽管很多物种都公开了物种基因结构注释信息，但仍然存在不少有问题的基因结构注释，更或者有一些基因结构没注释出来，需要补充。那么简单的办法，即直接基于转录本序列或CDS和基因组序列文件，直接重构 GFF3 文件。</p>
+
                 
             </div>
             <hr/>
