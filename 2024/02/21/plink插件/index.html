@@ -477,64 +477,7 @@
 <li>根据你的具体需求，PLINK提供了大量的选项和参数进行调整。它的官方文档非常详细，包含了各个命令和参数的使用说明，建议在进行具体分析前仔细阅读相关部分。</li>
 </ul>
 <p>PLINK的强大之处在于其广泛的功能和灵活的命令行界面，通过组合不同的命令和选项，你可以执行几乎所有类型的遗传数据分析。</p>
-<h2 id="用法2"><a href="#用法2" class="headerlink" title="用法2"></a>用法2</h2><h3 id="示例1：数据格式转换"><a href="#示例1：数据格式转换" class="headerlink" title="示例1：数据格式转换"></a>示例1：数据格式转换</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plink --file my_dataset --make-bed --out my_dataset_binary</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-<ul>
-<li><code>--file my_dataset</code>: 指定输入文件的基本名（不包括扩展名）。这里假设存在<code>my_dataset.ped</code>和<code>my_dataset.map</code>文件，它们包含了样本的基因型和位点信息。</li>
-<li><code>--make-bed</code>: 命令PLINK将数据转换为二进制格式，生成<code>.bed</code>（二进制基因型信息）、<code>.bim</code>（位点信息）和<code>.fam</code>（样本家系信息）文件。</li>
-<li><code>--out my_dataset_binary</code>: 指定输出文件的基本名。在这个例子中，输出文件将被命名为<code>my_dataset_binary.bed</code>、<code>my_dataset_binary.bim</code>和<code>my_dataset_binary.fam</code>。</li>
-</ul>
-<h3 id="示例2：基础统计分析"><a href="#示例2：基础统计分析" class="headerlink" title="示例2：基础统计分析"></a>示例2：基础统计分析</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plink --bfile my_dataset_binary --freq --out my_dataset_allele_freq</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>--bfile my_dataset_binary</code>: 指定以二进制格式读取的基因型数据文件基本名。</li>
-<li><code>--freq</code>: 命令PLINK计算每个位点的等位基因频率。</li>
-<li><code>--out my_dataset_allele_freq</code>: 输出文件的基本名，用于存储等位基因频率的结果。</li>
-</ul>
-<h3 id="示例3：进行关联分析"><a href="#示例3：进行关联分析" class="headerlink" title="示例3：进行关联分析"></a>示例3：进行关联分析</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plink --bfile my_dataset_binary --logistic --covar my_covariates.txt --out my_dataset_assoc_logistic</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>--logistic</code>: 执行逻辑回归分析，适用于二分类表型（如疾病有无）。</li>
-<li><code>--covar my_covariates.txt</code>: 指定协变量文件，该文件包含了可能影响表型的其他变量（如年龄、性别）。</li>
-<li><code>--out my_dataset_assoc_logistic</code>: 输出文件的基本名，用于存储逻辑回归分析的结果。</li>
-</ul>
-<h3 id="示例4：质量控制"><a href="#示例4：质量控制" class="headerlink" title="示例4：质量控制"></a>示例4：质量控制</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plink --bfile my_dataset_binary --geno 0.05 --mind 0.05 --make-bed --out my_dataset_qc</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>--geno 0.05</code>: 移除在超过5%的样本中缺失的位点。</li>
-<li><code>--mind 0.05</code>: 移除缺失率超过5%的样本。</li>
-<li><code>--make-bed</code>: 在质量控制后，重新生成二进制格式的数据文件。</li>
-<li><code>--out my_dataset_qc</code>: 指定输出的基本名，这里是经过质量控制处理后的数据集。</li>
-</ul>
-<h3 id="示例5：主成分分析（PCA）"><a href="#示例5：主成分分析（PCA）" class="headerlink" title="示例5：主成分分析（PCA）"></a>示例5：主成分分析（PCA）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plink --bfile my_dataset_binary --pca --out my_dataset_pca</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>--pca</code>: 执行主成分分析，这是一种用于探索数据群体结构的统计方法，可以帮助识别和校正样本群体间的差异。</li>
-<li><code>--out my_dataset_pca</code>: 输出文件的基本名，用于存储PCA分析的结果。</li>
-</ul>
-<h3 id="示例6：合并数据集"><a href="#示例6：合并数据集" class="headerlink" title="示例6：合并数据集"></a>示例6：合并数据集</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plink --bfile dataset1 --bmerge dataset2.bed dataset2.bim dataset2.fam --make-bed --out merged_dataset</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>--bfile dataset1</code>: 指定第一个数据集的基本名。</li>
-<li><code>--bmerge dataset2.bed dataset2.bim dataset2.fam</code>: 指定要合并的第二个数据集的文件名。</li>
-<li><code>--make-bed</code>: 确保合并后的数据集以二进制格式保存。</li>
-<li><code>--out merged_dataset</code>: 指定合并后数据集的输出基本名。</li>
-</ul>
-<h3 id="示例7：使用线性回归分析连续表型"><a href="#示例7：使用线性回归分析连续表型" class="headerlink" title="示例7：使用线性回归分析连续表型"></a>示例7：使用线性回归分析连续表型</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plink --bfile my_dataset_binary --linear --pheno my_phenotypes.txt --out my_dataset_assoc_linear</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>--linear</code>: 执行线性回归分析，适用于连续表型（如血压）。</li>
-<li>`–pheno my_ph</li>
-<li>-linear: 执行线性回归分析，适用于连续表型（如血压）。</li>
-<li>-pheno my_phenotypes.txt: 指定包含表型值的文件。</li>
-<li>-out my_dataset_assoc_linear: 输出文件的基本名，用于存储线性回归分析的结果。</li>
-</ul>
-<h3 id="2，用plink代码在采样取得的vcf-转换成map-ped。命名为BB-map-BB-ped"><a href="#2，用plink代码在采样取得的vcf-转换成map-ped。命名为BB-map-BB-ped" class="headerlink" title="2，用plink代码在采样取得的vcf,转换成map,ped。命名为BB.map,BB.ped"></a>2，用plink代码在采样取得的vcf,转换成map,ped。命名为BB.map,BB.ped</h3><p> plink –vcf BB.vcf –recode –out BB -chr-set 39</p>
+<h2 id="用法2"><a href="#用法2" class="headerlink" title="用法2"></a>用法2</h2><h1 id=""><a href="#" class="headerlink" title=""></a></h1><h3 id="2，用plink代码在采样取得的vcf-转换成map-ped。命名为BB-map-BB-ped"><a href="#2，用plink代码在采样取得的vcf-转换成map-ped。命名为BB-map-BB-ped" class="headerlink" title="2，用plink代码在采样取得的vcf,转换成map,ped。命名为BB.map,BB.ped"></a>2，用plink代码在采样取得的vcf,转换成map,ped。命名为BB.map,BB.ped</h3><p> plink –vcf BB.vcf –recode –out BB -chr-set 39</p>
 <h3 id="用plink代码在34号染色体，1339431-1343416位置进行筛选"><a href="#用plink代码在34号染色体，1339431-1343416位置进行筛选" class="headerlink" title="用plink代码在34号染色体，1339431-1343416位置进行筛选"></a>用plink代码在34号染色体，1339431-1343416位置进行筛选</h3><p>plink –file BB –chr 34 –from-bp 1339431 –to-bp 1343416 –make-bed –out output_BB –chr-set 39</p>
 <h3 id="再用plink把得到的bim-fam-bed转换成ped和map格式"><a href="#再用plink把得到的bim-fam-bed转换成ped和map格式" class="headerlink" title="再用plink把得到的bim,fam,bed转换成ped和map格式"></a>再用plink把得到的bim,fam,bed转换成ped和map格式</h3><p>plink –bfile output_BB –recode –out new_choice_BB –chr-set 39</p>
 <h3 id="我尝试再试一下3，表型关联分析："><a href="#我尝试再试一下3，表型关联分析：" class="headerlink" title="我尝试再试一下3，表型关联分析："></a>我尝试再试一下3，表型关联分析：</h3><p>plink –bfile output_BB –pheno phenotypes.txt –allow-no-sex –logistic –adjust –output_choice_ logistic_results –chr-set 39</p>
@@ -857,18 +800,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/02/21/plink%E6%8F%92%E4%BB%B6/">
+                <a href="/2024/02/26/%E8%87%AA%E5%8A%A8%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="plink插件">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="自动发送邮件">
                         
-                        <span class="card-title">plink插件</span>
+                        <span class="card-title">自动发送邮件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -878,9 +820,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-21
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-02-26
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -889,7 +831,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
