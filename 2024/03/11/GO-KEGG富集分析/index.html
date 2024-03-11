@@ -1,0 +1,1240 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="GO-KEGG富集分析, HL&#39;s blog">
+    <meta name="description" content="
+
+
+
+你上传的图片似乎是两个不同来源的基因富集分析结果的截图，一个来自服务器，另一个使用R语言生成的。这些分析有助于识别与一组基因显著相关的生物学过程、细胞组分和分子功能。
+通过比较这两组结果，我可以观察到以下区别：
+
+基因本体术语：虽然">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>GO-KEGG富集分析 | HL&#39;s blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">HL&#39;s blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">HL&#39;s blog</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">GO-KEGG富集分析</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2024-03-11
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <img src="/2024/03/11/GO-KEGG%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/%E6%9C%8D%E5%8A%A1%E5%99%A8.png" class="" title="服务器">
+
+<img src="/2024/03/11/GO-KEGG%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/R%E8%AF%AD%E8%A8%80.png" class="" title="R语言">
+
+<p>你上传的图片似乎是两个不同来源的基因富集分析结果的截图，一个来自服务器，另一个使用R语言生成的。这些分析有助于识别与一组基因显著相关的生物学过程、细胞组分和分子功能。</p>
+<p>通过比较这两组结果，我可以观察到以下区别：</p>
+<ol>
+<li><p><strong>基因本体术语</strong>：虽然在识别的生物学过程中有一些重叠（例如，细胞周期过程和染色体分离），但在列出的具体基因本体（GO）术语上可能有差异。服务器基础的分析列出了更详细的GO术语。</p>
+</li>
+<li><p><strong>统计值</strong>：</p>
+<ul>
+<li><strong>数量和百分比</strong>：服务器基础的分析提供了与每个术语相关的基因数量以及这个数量占分析总基因数的百分比。</li>
+<li><strong>P值和调整后的P值</strong>：两种分析都提供了p值和调整后的p值，但调整方法可能有所不同，这可能会影响术语的显著性水平。服务器分析使用了Bonferroni和Benjamini方法，而R分析报告了p.adjust和qvalue，这可能对应不同的统计校正方法。</li>
+<li><strong>富集</strong>：服务器基础的分析包括倍数富集，这有助于了解与特定GO术语相关的基因出现的频率比随机预期的频率高多少。</li>
+</ul>
+</li>
+<li><p><strong>数据呈现</strong>：</p>
+<ul>
+<li>服务器分析包含了“倍数富集”、“Bonferroni”、“Benjamini”和“FDR”列，这些是不同的统计量度，用来考虑多重比较的影响。</li>
+<li>R分析似乎侧重于“p.adjust”和“qvalue”列来调整多重比较的p值。</li>
+</ul>
+</li>
+<li><p><strong>基因列表</strong>：</p>
+<ul>
+<li>两种分析的每个术语的基因列表可能有差异。这可能是由于不同的基因集数据库、不同版本的基因本体或不同的纳入阈值所致。</li>
+<li>服务器分析包括了一个“列表总数”列，而R分析中这个列不明显。</li>
+</ul>
+</li>
+<li><p><strong>背景集</strong>：</p>
+<ul>
+<li>R分析提供了一个“BgRatio”，这可能代表在参考集中与每个术语相关的基因的背景比率，这对于理解富集的背景很重要。</li>
+</ul>
+</li>
+<li><p><strong>格式</strong>：</p>
+<ul>
+<li>服务器分析用颜色编码进行了标记，以便更容易解释最显著的结果。</li>
+<li>R分析呈现了更标准的表格格式，没有颜色编码。</li>
+</ul>
+</li>
+</ol>
+<p>总之，虽然两种分析基于同一组基因，但它们可能使用不同版本的GO数据库、不同的统计测试或显著性阈值，这可能导致GO术语及其相关统计数据有轻微的差异。</p>
+<h3 id="R能用哪两种方法吗"><a href="#R能用哪两种方法吗" class="headerlink" title="R能用哪两种方法吗?"></a>R能用哪两种方法吗?</h3><p>是的，R可以使用Bonferroni和Benjamini-Hochberg方法来调整多重比较的p值。这些方法是校正假阳性发现率的常见手段，它们在许多R统计和生物信息学包中都有实现。例如，在R中使用<code>p.adjust</code>函数就可以应用这些方法：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用Bonferroni方法</span></span><br><span class="line">p.adjust<span class="punctuation">(</span>p.values<span class="punctuation">,</span> method <span class="operator">=</span> <span class="string">&quot;bonferroni&quot;</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用Benjamini-Hochberg方法</span></span><br><span class="line">p.adjust<span class="punctuation">(</span>p.values<span class="punctuation">,</span> method <span class="operator">=</span> <span class="string">&quot;BH&quot;</span><span class="punctuation">)</span> <span class="comment"># 或者 method = &quot;fdr&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>其中<code>p.values</code>代表你的原始p值向量。<code>method</code>参数指定了要使用的调整方法。Bonferroni方法非常保守，适用于控制家族错误率（Family-wise Error Rate, FWER），而Benjamini-Hochberg方法则控制假发现率（False Discovery Rate, FDR），通常被认为更加强大。在基因富集分析等领域，Benjamini-Hochberg方法更为常用，因为它在降低假阳性的同时保留了更多的真阳性发现。</p>
+<p>服务器的Category    Term    Count    %    PValue    Genes    List Total    Pop Hits    Pop Total    Fold Enrichment    Bonferroni    Benjamini    FDR<br>R语言的ONTOLOGY    ID    Description    GeneRatio    BgRatio    pvalue    p.adjust    qvalue    geneID    Count</p>
+<p>服务器和R语言提供的富集分析结果的列标题具有一些相似性，但也有差异。以下是每个标题所代表的含义：</p>
+<p>服务器的结果列:</p>
+<ul>
+<li><strong>Category</strong>: 这可能是指GO的分类，如生物学过程（BP）、细胞组成（CC）或分子功能（MF）。</li>
+<li><strong>Term</strong>: GO术语或KEGG路径的描述。</li>
+<li><strong>Count</strong>: 在该术语下发现的基因数量。</li>
+<li><strong>%</strong>: 基因数量占分析中总基因数的百分比。</li>
+<li><strong>PValue</strong>: 术语富集的原始p值。</li>
+<li><strong>Genes</strong>: 与该术语相关联的基因列表。</li>
+<li><strong>List Total</strong>: 分析中的基因总数。</li>
+<li><strong>Pop Hits</strong>: 在参考基因集中与该术语相关的基因数量。</li>
+<li><strong>Pop Total</strong>: 参考基因集的总基因数量。</li>
+<li><strong>Fold Enrichment</strong>: 富集倍数，指的是观察到的与期望的比例。</li>
+<li><strong>Bonferroni</strong>: 使用Bonferroni方法校正后的p值。</li>
+<li><strong>Benjamini</strong>: 使用Benjamini-Hochberg方法校正后的p值。</li>
+<li><strong>FDR</strong>: 假发现率，是经过校正的p值，用于控制类型I错误。</li>
+</ul>
+<p>R语言的结果列:</p>
+<ul>
+<li><strong>ONTOLOGY</strong>: 同上，指GO的分类，BP、CC或MF。</li>
+<li><strong>ID</strong>: GO术语或KEGG路径的ID。</li>
+<li><strong>Description</strong>: 术语或路径的描述。</li>
+<li><strong>GeneRatio</strong>: 在该术语下发现的基因数量与分析基因总数的比例。</li>
+<li><strong>BgRatio</strong>: 背景比率，可能是指该术语在背景基因集中的基因数量比例。</li>
+<li><strong>pvalue</strong>: 术语富集的原始p值。</li>
+<li><strong>p.adjust</strong>: 调整后的p值，可能默认是使用了某种校正方法，如Benjamini-Hochberg方法。</li>
+<li><strong>qvalue</strong>: 类似于FDR的一个校正后的p值，它提供了发现被错误地声明为显著的比例的估计。</li>
+<li><strong>geneID</strong>: 与该术语相关的基因ID列表。</li>
+<li><strong>Count</strong>: 同上，基因的数量。</li>
+</ul>
+<p>虽然两者提供的信息类似，但具体的表格格式和某些统计数据的计算可能有所不同。这可能是因为不同的软件和包在处理富集分析时采用了不同的方法和默认设置。在实际应用中，研究者应根据实验设计和研究目标选择合适的方法和参数。</p>
+<h2 id="R语言代码"><a href="#R语言代码" class="headerlink" title="R语言代码"></a>R语言代码</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br><span class="line">553</span><br><span class="line">554</span><br><span class="line">555</span><br><span class="line">556</span><br><span class="line">557</span><br><span class="line">558</span><br><span class="line">559</span><br><span class="line">560</span><br><span class="line">561</span><br><span class="line">562</span><br><span class="line">563</span><br><span class="line">564</span><br><span class="line">565</span><br><span class="line">566</span><br><span class="line">567</span><br><span class="line">568</span><br><span class="line">569</span><br><span class="line">570</span><br><span class="line">571</span><br><span class="line">572</span><br><span class="line">573</span><br><span class="line">574</span><br><span class="line">575</span><br><span class="line">576</span><br><span class="line">577</span><br><span class="line">578</span><br><span class="line">579</span><br><span class="line">580</span><br><span class="line">581</span><br><span class="line">582</span><br><span class="line">583</span><br><span class="line">584</span><br><span class="line">585</span><br><span class="line">586</span><br><span class="line">587</span><br><span class="line">588</span><br><span class="line">589</span><br><span class="line">590</span><br><span class="line">591</span><br><span class="line">592</span><br><span class="line">593</span><br><span class="line">594</span><br><span class="line">595</span><br><span class="line">596</span><br><span class="line">597</span><br><span class="line">598</span><br><span class="line">599</span><br><span class="line">600</span><br><span class="line">601</span><br><span class="line">602</span><br><span class="line">603</span><br><span class="line">604</span><br><span class="line">605</span><br><span class="line">606</span><br><span class="line">607</span><br><span class="line">608</span><br><span class="line">609</span><br><span class="line">610</span><br><span class="line">611</span><br><span class="line">612</span><br><span class="line">613</span><br><span class="line">614</span><br><span class="line">615</span><br><span class="line">616</span><br><span class="line">617</span><br><span class="line">618</span><br><span class="line">619</span><br><span class="line">620</span><br><span class="line">621</span><br><span class="line">622</span><br><span class="line">623</span><br><span class="line">624</span><br><span class="line">625</span><br><span class="line">626</span><br><span class="line">627</span><br><span class="line">628</span><br><span class="line">629</span><br><span class="line">630</span><br><span class="line">631</span><br><span class="line">632</span><br><span class="line">633</span><br><span class="line">634</span><br><span class="line">635</span><br><span class="line">636</span><br><span class="line">637</span><br><span class="line">638</span><br><span class="line">639</span><br><span class="line">640</span><br><span class="line">641</span><br><span class="line">642</span><br><span class="line">643</span><br><span class="line">644</span><br><span class="line">645</span><br><span class="line">646</span><br><span class="line">647</span><br><span class="line">648</span><br><span class="line">649</span><br><span class="line">650</span><br><span class="line">651</span><br><span class="line">652</span><br><span class="line">653</span><br><span class="line">654</span><br><span class="line">655</span><br><span class="line">656</span><br><span class="line">657</span><br><span class="line">658</span><br><span class="line">659</span><br><span class="line">660</span><br><span class="line">661</span><br><span class="line">662</span><br><span class="line">663</span><br><span class="line">664</span><br><span class="line">665</span><br><span class="line">666</span><br><span class="line">667</span><br><span class="line">668</span><br><span class="line">669</span><br><span class="line">670</span><br><span class="line">671</span><br><span class="line">672</span><br><span class="line">673</span><br><span class="line">674</span><br><span class="line">675</span><br><span class="line">676</span><br><span class="line">677</span><br><span class="line">678</span><br><span class="line">679</span><br><span class="line">680</span><br><span class="line">681</span><br><span class="line">682</span><br><span class="line">683</span><br><span class="line">684</span><br><span class="line">685</span><br><span class="line">686</span><br><span class="line">687</span><br><span class="line">688</span><br><span class="line">689</span><br><span class="line">690</span><br><span class="line">691</span><br><span class="line">692</span><br><span class="line">693</span><br><span class="line">694</span><br><span class="line">695</span><br><span class="line">696</span><br><span class="line">697</span><br><span class="line">698</span><br><span class="line">699</span><br><span class="line">700</span><br><span class="line">701</span><br><span class="line">702</span><br><span class="line">703</span><br><span class="line">704</span><br><span class="line">705</span><br><span class="line">706</span><br><span class="line">707</span><br><span class="line">708</span><br><span class="line">709</span><br><span class="line">710</span><br><span class="line">711</span><br><span class="line">712</span><br><span class="line">713</span><br><span class="line">714</span><br><span class="line">715</span><br><span class="line">716</span><br><span class="line">717</span><br><span class="line">718</span><br><span class="line">719</span><br><span class="line">720</span><br><span class="line">721</span><br><span class="line">722</span><br><span class="line">723</span><br><span class="line">724</span><br><span class="line">725</span><br><span class="line">726</span><br><span class="line">727</span><br><span class="line">728</span><br><span class="line">729</span><br><span class="line">730</span><br><span class="line">731</span><br><span class="line">732</span><br><span class="line">733</span><br><span class="line">734</span><br><span class="line">735</span><br><span class="line">736</span><br><span class="line">737</span><br><span class="line">738</span><br><span class="line">739</span><br><span class="line">740</span><br><span class="line">741</span><br><span class="line">742</span><br><span class="line">743</span><br><span class="line">744</span><br><span class="line">745</span><br><span class="line">746</span><br><span class="line">747</span><br><span class="line">748</span><br><span class="line">749</span><br><span class="line">750</span><br><span class="line">751</span><br><span class="line">752</span><br><span class="line">753</span><br><span class="line">754</span><br><span class="line">755</span><br><span class="line">756</span><br><span class="line">757</span><br><span class="line">758</span><br><span class="line">759</span><br><span class="line">760</span><br><span class="line">761</span><br><span class="line">762</span><br><span class="line">763</span><br><span class="line">764</span><br><span class="line">765</span><br><span class="line">766</span><br><span class="line">767</span><br><span class="line">768</span><br><span class="line">769</span><br><span class="line">770</span><br><span class="line">771</span><br><span class="line">772</span><br><span class="line">773</span><br><span class="line">774</span><br><span class="line">775</span><br><span class="line">776</span><br><span class="line">777</span><br><span class="line">778</span><br><span class="line">779</span><br><span class="line">780</span><br><span class="line">781</span><br><span class="line">782</span><br><span class="line">783</span><br><span class="line">784</span><br><span class="line">785</span><br><span class="line">786</span><br><span class="line">787</span><br><span class="line">788</span><br><span class="line">789</span><br><span class="line">790</span><br><span class="line">791</span><br><span class="line">792</span><br><span class="line">793</span><br><span class="line">794</span><br><span class="line">795</span><br><span class="line">796</span><br><span class="line">797</span><br><span class="line">798</span><br><span class="line">799</span><br><span class="line">800</span><br><span class="line">801</span><br><span class="line">802</span><br><span class="line">803</span><br><span class="line">804</span><br><span class="line">805</span><br><span class="line">806</span><br><span class="line">807</span><br><span class="line">808</span><br><span class="line">809</span><br><span class="line">810</span><br><span class="line">811</span><br><span class="line">812</span><br><span class="line">813</span><br><span class="line">814</span><br><span class="line">815</span><br><span class="line">816</span><br><span class="line">817</span><br><span class="line">818</span><br><span class="line">819</span><br><span class="line">820</span><br><span class="line">821</span><br><span class="line">822</span><br><span class="line">823</span><br><span class="line">824</span><br><span class="line">825</span><br><span class="line">826</span><br><span class="line">827</span><br><span class="line">828</span><br><span class="line">829</span><br><span class="line">830</span><br><span class="line">831</span><br><span class="line">832</span><br><span class="line">833</span><br><span class="line">834</span><br><span class="line">835</span><br><span class="line">836</span><br><span class="line">837</span><br><span class="line">838</span><br><span class="line">839</span><br><span class="line">840</span><br><span class="line">841</span><br><span class="line">842</span><br><span class="line">843</span><br><span class="line">844</span><br><span class="line">845</span><br><span class="line">846</span><br><span class="line">847</span><br><span class="line">848</span><br><span class="line">849</span><br><span class="line">850</span><br><span class="line">851</span><br><span class="line">852</span><br><span class="line">853</span><br><span class="line">854</span><br><span class="line">855</span><br><span class="line">856</span><br><span class="line">857</span><br><span class="line">858</span><br><span class="line">859</span><br><span class="line">860</span><br><span class="line">861</span><br><span class="line">862</span><br><span class="line">863</span><br><span class="line">864</span><br><span class="line">865</span><br><span class="line">866</span><br><span class="line">867</span><br><span class="line">868</span><br><span class="line">869</span><br><span class="line">870</span><br><span class="line">871</span><br><span class="line">872</span><br><span class="line">873</span><br><span class="line">874</span><br><span class="line">875</span><br><span class="line">876</span><br><span class="line">877</span><br><span class="line">878</span><br><span class="line">879</span><br><span class="line">880</span><br><span class="line">881</span><br><span class="line">882</span><br><span class="line">883</span><br><span class="line">884</span><br><span class="line">885</span><br><span class="line">886</span><br><span class="line">887</span><br><span class="line">888</span><br><span class="line">889</span><br><span class="line">890</span><br><span class="line">891</span><br><span class="line">892</span><br><span class="line">893</span><br><span class="line">894</span><br><span class="line">895</span><br><span class="line">896</span><br><span class="line">897</span><br><span class="line">898</span><br><span class="line">899</span><br><span class="line">900</span><br><span class="line">901</span><br><span class="line">902</span><br><span class="line">903</span><br><span class="line">904</span><br><span class="line">905</span><br><span class="line">906</span><br><span class="line">907</span><br><span class="line">908</span><br><span class="line">909</span><br><span class="line">910</span><br><span class="line">911</span><br><span class="line">912</span><br><span class="line">913</span><br><span class="line">914</span><br><span class="line">915</span><br><span class="line">916</span><br><span class="line">917</span><br><span class="line">918</span><br><span class="line">919</span><br><span class="line">920</span><br><span class="line">921</span><br><span class="line">922</span><br><span class="line">923</span><br><span class="line">924</span><br><span class="line">925</span><br><span class="line">926</span><br><span class="line">927</span><br><span class="line">928</span><br><span class="line">929</span><br><span class="line">930</span><br><span class="line">931</span><br><span class="line">932</span><br><span class="line">933</span><br><span class="line">934</span><br><span class="line">935</span><br><span class="line">936</span><br><span class="line">937</span><br><span class="line">938</span><br><span class="line">939</span><br><span class="line">940</span><br><span class="line">941</span><br><span class="line">942</span><br><span class="line">943</span><br><span class="line">944</span><br><span class="line">945</span><br><span class="line">946</span><br><span class="line">947</span><br><span class="line">948</span><br><span class="line">949</span><br><span class="line">950</span><br><span class="line">951</span><br><span class="line">952</span><br><span class="line">953</span><br><span class="line">954</span><br><span class="line">955</span><br><span class="line">956</span><br><span class="line">957</span><br><span class="line">958</span><br><span class="line">959</span><br><span class="line">960</span><br><span class="line">961</span><br><span class="line">962</span><br><span class="line">963</span><br><span class="line">964</span><br><span class="line">965</span><br><span class="line">966</span><br><span class="line">967</span><br><span class="line">968</span><br><span class="line">969</span><br><span class="line">970</span><br><span class="line">971</span><br><span class="line">972</span><br><span class="line">973</span><br><span class="line">974</span><br><span class="line">975</span><br><span class="line">976</span><br><span class="line">977</span><br><span class="line">978</span><br><span class="line">979</span><br><span class="line">980</span><br><span class="line">981</span><br><span class="line">982</span><br><span class="line">983</span><br><span class="line">984</span><br><span class="line">985</span><br><span class="line">986</span><br><span class="line">987</span><br><span class="line">988</span><br><span class="line">989</span><br><span class="line">990</span><br><span class="line">991</span><br><span class="line">992</span><br><span class="line">993</span><br><span class="line">994</span><br><span class="line">995</span><br><span class="line">996</span><br></pre></td><td class="code"><pre><span class="line">options(<span class="string">&quot;repos&quot;</span> = c(CRAN=<span class="string">&quot;https://mirrors.tuna.tsinghua.edu.cn/CRAN/&quot;</span>))</span><br><span class="line"><span class="keyword">if</span> (!requireNamespace(<span class="string">&quot;BiocManager&quot;</span>, quietly = TRUE))</span><br><span class="line">    install.packages(<span class="string">&quot;BiocManager&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!require(<span class="string">&#x27;org.Rn.eg.db&#x27;</span>)) BiocManager::install(<span class="string">&#x27;org.Rn.eg.db&#x27;</span>, update = FALSE);</span><br><span class="line"><span class="keyword">if</span> (!require(<span class="string">&#x27;org.Dm.eg.db&#x27;</span>)) BiocManager::install(<span class="string">&#x27;org.Dm.eg.db&#x27;</span>, update = FALSE);</span><br><span class="line"><span class="keyword">if</span> (!require(<span class="string">&#x27;org.At.tair.db&#x27;</span>)) BiocManager::install(<span class="string">&#x27;org.At.tair.db&#x27;</span>, update = FALSE);</span><br><span class="line"><span class="keyword">if</span> (!require(<span class="string">&#x27;org.Dr.eg.db&#x27;</span>)) BiocManager::install(<span class="string">&#x27;org.Dr.eg.db&#x27;</span>, update = FALSE);</span><br><span class="line"><span class="keyword">if</span> (!require(<span class="string">&#x27;org.Sc.sgd.db&#x27;</span>)) BiocManager::install(<span class="string">&#x27;org.Sc.sgd.db&#x27;</span>, update = FALSE);</span><br><span class="line"><span class="keyword">if</span> (!require(<span class="string">&#x27;org.Ce.eg.db&#x27;</span>)) BiocManager::install(<span class="string">&#x27;org.Ce.eg.db&#x27;</span>, update = FALSE);</span><br><span class="line"><span class="keyword">if</span> (!require(<span class="string">&#x27;org.Bt.eg.db&#x27;</span>)) BiocManager::install(<span class="string">&#x27;org.Bt.eg.db&#x27;</span>, update = FALSE);</span><br><span class="line"><span class="keyword">if</span> (!require(<span class="string">&#x27;org.Gg.eg.db&#x27;</span>)) BiocManager::install(<span class="string">&#x27;org.Gg.eg.db&#x27;</span>, update = FALSE);</span><br><span class="line"><span class="keyword">if</span> (!require(<span class="string">&#x27;org.Ss.eg.db&#x27;</span>)) BiocManager::install(<span class="string">&#x27;org.Ss.eg.db&#x27;</span>, update = FALSE);</span><br><span class="line"><span class="keyword">if</span> (!require(<span class="string">&#x27;org.Mmu.eg.db&#x27;</span>)) BiocManager::install(<span class="string">&#x27;org.Mmu.eg.db&#x27;</span>, update = FALSE);</span><br><span class="line"><span class="keyword">if</span> (!require(<span class="string">&#x27;org.Cf.eg.db&#x27;</span>)) BiocManager::install(<span class="string">&#x27;org.Cf.eg.db&#x27;</span>, update = FALSE);</span><br><span class="line"><span class="keyword">if</span> (!require(<span class="string">&#x27;org.EcK12.eg.db&#x27;</span>)) BiocManager::install(<span class="string">&#x27;org.EcK12.eg.db&#x27;</span>, update = FALSE);</span><br><span class="line"><span class="keyword">if</span> (!require(<span class="string">&#x27;org.Xl.eg.db&#x27;</span>)) BiocManager::install(<span class="string">&#x27;org.Xl.eg.db&#x27;</span>, update = FALSE);</span><br><span class="line"><span class="keyword">if</span> (!require(<span class="string">&#x27;org.Pt.eg.db&#x27;</span>)) BiocManager::install(<span class="string">&#x27;org.Pt.eg.db&#x27;</span>, update = FALSE);</span><br><span class="line"><span class="keyword">if</span> (!require(<span class="string">&#x27;org.Ag.eg.db&#x27;</span>)) BiocManager::install(<span class="string">&#x27;org.Ag.eg.db&#x27;</span>, update = FALSE);</span><br><span class="line"><span class="keyword">if</span> (!require(<span class="string">&#x27;org.EcSakai.eg.db&#x27;</span>)) BiocManager::install(<span class="string">&#x27;org.EcSakai.eg.db&#x27;</span>, update = FALSE);</span><br><span class="line"><span class="keyword">if</span> (!require(<span class="string">&#x27;org.Mxanthus.db&#x27;</span>)) BiocManager::install(<span class="string">&#x27;org.Mxanthus.db&#x27;</span>, update = FALSE);</span><br><span class="line"><span class="keyword">if</span> (!require(<span class="string">&#x27;AnnotationDbi&#x27;</span>)) BiocManager::install(<span class="string">&#x27;AnnotationDbi&#x27;</span>, update = FALSE);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!require(<span class="string">&#x27;org.Hs.eg.db&#x27;</span>)) BiocManager::install(<span class="string">&#x27;org.Hs.eg.db&#x27;</span>, update = FALSE);</span><br><span class="line"><span class="keyword">if</span> (!require(<span class="string">&#x27;openxlsx&#x27;</span>)) install.packages(<span class="string">&#x27;openxlsx&#x27;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#install.packages(&quot;shiny&quot;)</span></span><br><span class="line"><span class="comment">#install.packages(&quot;openxlsx&quot;)</span></span><br><span class="line"><span class="comment">#install.packages(&quot;ggplot2&quot;)</span></span><br><span class="line"><span class="comment">#install.packages(&quot;stringr&quot;)</span></span><br><span class="line"><span class="comment">#install.packages(&quot;enrichplot&quot;)</span></span><br><span class="line"><span class="comment">#install.packages(&quot;clusterProfiler&quot;)</span></span><br><span class="line"><span class="comment">#BiocManager::install(&quot;topGO&quot;)</span></span><br><span class="line"><span class="comment">#install.packages(&quot;circlize&quot;)</span></span><br><span class="line"><span class="comment">#install.packages(&quot;ComplexHeatmap&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#BiocManager::install(&quot;enrichplot&quot;)</span></span><br><span class="line"><span class="comment">#BiocManager::install(&quot;clusterProfiler&quot;)</span></span><br><span class="line"><span class="comment">#BiocManager::install(&quot;circlize&quot;)</span></span><br><span class="line"><span class="comment">#BiocManager::install(&quot;ComplexHeatmap&quot;)</span></span><br><span class="line"></span><br><span class="line">suppressMessages(library(shiny))</span><br><span class="line">suppressMessages(library(openxlsx))</span><br><span class="line">suppressMessages(library(ggplot2))</span><br><span class="line">suppressMessages(library(stringr))</span><br><span class="line">suppressMessages(library(enrichplot))</span><br><span class="line">suppressMessages(library(clusterProfiler))</span><br><span class="line">suppressMessages(library(topGO))</span><br><span class="line">suppressMessages(library(circlize))</span><br><span class="line">suppressMessages(library(ComplexHeatmap))</span><br><span class="line">suppressMessages(library(dplyr))</span><br><span class="line">suppressMessages(library(ComplexHeatmap))</span><br><span class="line">suppressMessages(library(ComplexHeatmap))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">suppressMessages(library(org.Rn.eg.db))</span><br><span class="line">suppressMessages(library(org.Dm.eg.db))</span><br><span class="line">suppressMessages(library(org.At.tair.db))</span><br><span class="line">suppressMessages(library(org.Dr.eg.db))</span><br><span class="line">suppressMessages(library(org.Sc.sgd.db))</span><br><span class="line">suppressMessages(library(org.Ce.eg.db))</span><br><span class="line">suppressMessages(library(org.Bt.eg.db))</span><br><span class="line">suppressMessages(library(org.Gg.eg.db))</span><br><span class="line">suppressMessages(library(org.Ss.eg.db))</span><br><span class="line">suppressMessages(library(org.Mmu.eg.db))</span><br><span class="line">suppressMessages(library(org.Cf.eg.db))</span><br><span class="line">suppressMessages(library(org.EcK12.eg.db))</span><br><span class="line">suppressMessages(library(org.Xl.eg.db))</span><br><span class="line">suppressMessages(library(org.Pt.eg.db))</span><br><span class="line">suppressMessages(library(org.Ag.eg.db))</span><br><span class="line">suppressMessages(library(org.EcSakai.eg.db))</span><br><span class="line">suppressMessages(library(org.Mxanthus.db))</span><br><span class="line"></span><br><span class="line"><span class="comment">#if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE))</span></span><br><span class="line"><span class="comment">#install.packages(&quot;BiocManager&quot;)</span></span><br><span class="line"><span class="comment">#BiocManager::install(c(&quot;org.At.tair.db&quot;, &quot;org.Hs.eg.db&quot;, &quot;org.Mm.eg.db&quot;, &quot;org.Rn.eg.db&quot;, &quot;org.Dm.eg.db&quot;,</span></span><br><span class="line"><span class="comment"># &quot;org.Dr.eg.db&quot;, &quot;org.Sc.sgd.db&quot;, &quot;org.Ce.eg.db&quot;, &quot;org.Bt.eg.db&quot;, &quot;org.Gg.eg.db&quot;,</span></span><br><span class="line"><span class="comment"># &quot;org.Ss.eg.db&quot;, &quot;org.Mmu.eg.db&quot;, &quot;org.Cf.eg.db&quot;, &quot;org.EcK12.eg.db&quot;, &quot;org.Xl.eg.db&quot;,</span></span><br><span class="line"><span class="comment"># &quot;org.Pt.eg.db&quot;, &quot;org.Ag.eg.db&quot;, &quot;org.EcSakai.eg.db&quot;, &quot;org.Mxanthus.db&quot;))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用 switch 结构将 input$go_species 转换成数据库包名</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE))</span></span><br><span class="line"><span class="comment">#install.packages(&quot;BiocManager&quot;)</span></span><br><span class="line"><span class="comment">#BiocManager::install(c(&quot;org.At.tair.db&quot;))</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">library(shiny)</span><br><span class="line">library(openxlsx)</span><br><span class="line">library(ggplot2)</span><br><span class="line">library(stringr)</span><br><span class="line"><span class="comment">#library(enrichplot)</span></span><br><span class="line">library(clusterProfiler)</span><br><span class="line">library(topGO)</span><br><span class="line">library(circlize)</span><br><span class="line">library(ComplexHeatmap)</span><br><span class="line">library(org.Gg.eg.db)</span><br><span class="line">library(org.Hs.eg.db)</span><br><span class="line">library(dplyr)</span><br><span class="line">library(<span class="string">&quot;AnnotationDbi&quot;</span>)</span><br><span class="line">library(org.Hs.eg.db)</span><br><span class="line"><span class="comment">#install.packages(&quot;ggridges&quot;)</span></span><br><span class="line">library(<span class="string">&quot;ggridges&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ui &lt;- fluidPage(</span><br><span class="line">    titlePanel(<span class="string">&quot;Based on R code, GO and KEGG GSEA enrichment analysis.&quot;</span>),</span><br><span class="line">    sidebarLayout(</span><br><span class="line">        sidebarPanel(</span><br><span class="line">            <span class="comment">#fileInput(&quot;file&quot;, &quot;上传差异表达数据&quot;, accept = c(&#x27;.xlsx&#x27;,&#x27;.csv&#x27;,&#x27;.txt&#x27;)),</span></span><br><span class="line">            fileInput(<span class="string">&quot;file&quot;</span>, <span class="string">&quot;Upload species gene symbols for annotation.(xlsx,csv,txt)&quot;</span>, accept = c(<span class="string">&#x27;.xlsx&#x27;</span>,<span class="string">&#x27;.csv&#x27;</span>,<span class="string">&#x27;.txt&#x27;</span>)),</span><br><span class="line">            <span class="comment">#selectInput(&quot;go_species&quot;, &quot;选择物种GO(Gg:鸡.HS:人.Ss:猪):&quot;, choices = c(&#x27;Gg&#x27;,&#x27;Hs&#x27;,&#x27;Ss&#x27;)),</span></span><br><span class="line">            selectInput(<span class="string">&quot;go_species&quot;</span>, <span class="string">&quot;Choose a species-GO(Gg:chicken.HS:people.Ss:pig.et al):&quot;</span>, choices = c(<span class="string">&#x27;Gg&#x27;</span>,<span class="string">&#x27;Hs&#x27;</span>,<span class="string">&#x27;Ss&#x27;</span>,<span class="string">&#x27;Mm&#x27;</span>,<span class="string">&#x27;Rn&#x27;</span>,<span class="string">&#x27;Dm&#x27;</span>,<span class="string">&#x27;Dr&#x27;</span>,<span class="string">&#x27;Ce&#x27;</span>,<span class="string">&#x27;Bt&#x27;</span>,<span class="string">&#x27;Mmu&#x27;</span>,<span class="string">&#x27;Cf&#x27;</span>,<span class="string">&#x27;EcK12&#x27;</span>,<span class="string">&#x27;Xl&#x27;</span>,<span class="string">&#x27;Pt&#x27;</span>,<span class="string">&#x27;Ag&#x27;</span>,<span class="string">&#x27;EcSakai&#x27;</span>,<span class="string">&#x27;At.tair&#x27;</span>,<span class="string">&#x27;Mxanthus&#x27;</span>)),</span><br><span class="line">            actionButton(<span class="string">&quot;goToBioconductor&quot;</span>, <span class="string">&quot;GO species abbreviation index table&quot;</span>),</span><br><span class="line">            downloadButton(<span class="string">&quot;download_GoTable&quot;</span>, <span class="string">&quot;Download GO result table.&quot;</span>),</span><br><span class="line">            sliderInput(<span class="string">&quot;go_pvalueCutoff&quot;</span>, <span class="string">&quot;GO pvalueCutoff&quot;</span>, min = 0, max = 1, value = 0.05, step = 0.01),</span><br><span class="line">            sliderInput(<span class="string">&quot;go_qvalueCutoff&quot;</span>, <span class="string">&quot;GO qvalueCutoff&quot;</span>, min = 0, max = 1, value = 0.05, step = 0.01),</span><br><span class="line">            <span class="comment">#actionButton(&quot;go&quot;, &quot;Automated analysis&quot;),</span></span><br><span class="line">            </span><br><span class="line">            <span class="comment">#</span></span><br><span class="line">            sliderInput(<span class="string">&quot;plotHeight1&quot;</span>, label = <span class="string">&quot;GO chart height:&quot;</span>, min = 200, max = 1200, value = 500),</span><br><span class="line">            sliderInput(<span class="string">&quot;plotWidth1&quot;</span>, label = <span class="string">&quot;GO chart width:&quot;</span>, min = 200, max = 1200, value = 600),</span><br><span class="line">            </span><br><span class="line">            sliderInput(<span class="string">&quot;font1&quot;</span> , label = <span class="string">&quot;GO font size:&quot;</span>, min = 0, max = 40, value = 10),</span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            <span class="comment">#</span></span><br><span class="line">            <span class="comment">#kegg</span></span><br><span class="line">            selectInput(<span class="string">&quot;kegg_species&quot;</span>, <span class="string">&quot;Choose a species-KEGG(gga:chicken.hsa:people.ssc:pig,et al):&quot;</span>, choices = c(<span class="string">&#x27;gga&#x27;</span>,<span class="string">&#x27;hsa&#x27;</span>,<span class="string">&#x27;ssc&#x27;</span>,<span class="string">&#x27;mmu&#x27;</span>,<span class="string">&#x27;rno&#x27;</span>,<span class="string">&#x27;dme&#x27;</span>,<span class="string">&#x27;ath&#x27;</span>,<span class="string">&#x27;dre&#x27;</span>,<span class="string">&#x27;sce&#x27;</span>,<span class="string">&#x27;cel&#x27;</span>,<span class="string">&#x27;bta&#x27;</span>,<span class="string">&#x27;cfa&#x27;</span>,<span class="string">&#x27;eco&#x27;</span>,<span class="string">&#x27;xla&#x27;</span>,<span class="string">&#x27;ptr&#x27;</span>,<span class="string">&#x27;aga&#x27;</span>,<span class="string">&#x27;ecs&#x27;</span>,<span class="string">&#x27;mxn&#x27;</span>)),</span><br><span class="line">            actionButton(<span class="string">&quot;goToKEGG&quot;</span>, <span class="string">&quot;KEGG species abbreviation index table&quot;</span>),</span><br><span class="line">            </span><br><span class="line">            downloadButton(<span class="string">&quot;download_KEGGTable&quot;</span>, <span class="string">&quot;Download KEGG result table.&quot;</span>),</span><br><span class="line">            sliderInput(<span class="string">&quot;kegg_pvalueCutoff&quot;</span>, <span class="string">&quot;KEGG pvalueCutoff&quot;</span>, min = 0, max = 1, value = 0.05, step = 0.01),</span><br><span class="line">            sliderInput(<span class="string">&quot;kegg_qvalueCutoff&quot;</span>, <span class="string">&quot;KEGG qvalueCutoff&quot;</span>, min = 0, max = 1, value = 0.05, step = 0.01),</span><br><span class="line">            </span><br><span class="line">            sliderInput(<span class="string">&quot;plotHeight2&quot;</span>, label = <span class="string">&quot;KEGG chart height:&quot;</span>, min = 200, max = 1200, value = 500),</span><br><span class="line">            sliderInput(<span class="string">&quot;plotWidth2&quot;</span>, label = <span class="string">&quot;KEGG chart width:&quot;</span>, min = 200, max = 1200, value = 600),</span><br><span class="line">            </span><br><span class="line">            sliderInput(<span class="string">&quot;font2&quot;</span> , label = <span class="string">&quot;KEGG font size:&quot;</span>, min = 0, max = 40, value = 15),</span><br><span class="line">            </span><br><span class="line">            actionButton(<span class="string">&quot;bilibili&quot;</span>, <span class="string">&quot;Click to view the demonstration video of this plugin&quot;</span>),</span><br><span class="line">            <span class="comment">#</span></span><br><span class="line">            <span class="comment">#GSEA</span></span><br><span class="line">            <span class="comment">#sliderInput(&quot;GSEA_pvalueCutoff&quot;, &quot;GSEA pvalueCutoff&quot;, min = 0, max = 1, value = 0.05, step = 0.01),</span></span><br><span class="line">            <span class="comment">#</span></span><br><span class="line">            </span><br><span class="line">            </span><br><span class="line">            <span class="comment">#downloadButton(&quot;download_GseaTable&quot;, &quot;Download gsea result table.&quot;)</span></span><br><span class="line">        ),</span><br><span class="line">        mainPanel(</span><br><span class="line">            tabsetPanel(</span><br><span class="line">                tabPanel(<span class="string">&quot;GO enrichment analysis&quot;</span>, </span><br><span class="line">                         plotOutput(<span class="string">&quot;GO_barplot&quot;</span>),</span><br><span class="line">                         plotOutput(<span class="string">&quot;GO_barplot_beauty&quot;</span>),</span><br><span class="line">                         plotOutput(<span class="string">&quot;GO_dotplot&quot;</span>),</span><br><span class="line">                         plotOutput(<span class="string">&quot;GO_cnetplot&quot;</span>),</span><br><span class="line">                         plotOutput(<span class="string">&quot;GO_heatplot&quot;</span>),</span><br><span class="line">                         plotOutput(<span class="string">&quot;GO_emapplot&quot;</span>)</span><br><span class="line">                         </span><br><span class="line">                ),</span><br><span class="line">                </span><br><span class="line">                <span class="comment">#</span></span><br><span class="line">                tabPanel(<span class="string">&quot;KEGG enrichment analysis&quot;</span>,</span><br><span class="line">                         plotOutput(<span class="string">&quot;KEGG_barplot&quot;</span>),</span><br><span class="line">                         plotOutput(<span class="string">&quot;KEGG_dotplot&quot;</span>),</span><br><span class="line">                         plotOutput(<span class="string">&quot;KEGG_cnetplot&quot;</span>),</span><br><span class="line">                         plotOutput(<span class="string">&quot;KEGG_plot&quot;</span>)),</span><br><span class="line">                <span class="comment">#</span></span><br><span class="line">                tabPanel(<span class="string">&quot;GSEA enrichment analysis&quot;</span>,</span><br><span class="line">                         fluidRow(</span><br><span class="line">                             <span class="comment">#column(6, fileInput(&quot;gsea_file&quot;, label = h4(&quot;上传差异表达文件&quot;), </span></span><br><span class="line">                             <span class="comment">#accept = &quot;.txt&quot;)),</span></span><br><span class="line">                             column(6, actionButton(<span class="string">&quot;gsea_button&quot;</span>, label = <span class="string">&quot;开始GSEA分析&quot;</span>, </span><br><span class="line">                                                    class = <span class="string">&quot;btn-primary&quot;</span>)),</span><br><span class="line">                             <span class="comment">#加的</span></span><br><span class="line">                             sliderInput(<span class="string">&quot;GSEA_pvalueCutoff&quot;</span>, <span class="string">&quot;GSEA pvalueCutoff&quot;</span>, min = 0, max = 1, value = 0.05, step = 0.01),</span><br><span class="line">                             sliderInput(<span class="string">&quot;plotHeight3&quot;</span>, label = <span class="string">&quot;GSEA chart height:&quot;</span>, min = 200, max = 1200, value = 500),</span><br><span class="line">                             sliderInput(<span class="string">&quot;plotWidth3&quot;</span>, label = <span class="string">&quot;GSEA chart width:&quot;</span>, min = 200, max = 1200, value = 600),</span><br><span class="line">                             </span><br><span class="line">                             </span><br><span class="line">                             sliderInput(<span class="string">&quot;font3&quot;</span> , label = <span class="string">&quot;GSEA font size:&quot;</span>, min = 0, max = 40, value = 15),</span><br><span class="line">                             downloadButton(<span class="string">&quot;download_GseaTable&quot;</span>, <span class="string">&quot;Download gsea result table.&quot;</span>),</span><br><span class="line">                             </span><br><span class="line">                             <span class="comment">#               </span></span><br><span class="line">                         ),</span><br><span class="line">                         </span><br><span class="line">                         </span><br><span class="line">                         </span><br><span class="line">                         tabPanel(</span><br><span class="line">                             <span class="comment">#column(12, plotOutput(&quot;dot_plot_gsea&quot;, height = &quot;400px&quot;)),</span></span><br><span class="line">                             column(12, plotOutput(<span class="string">&quot;dot_plot_gsea&quot;</span>, height = <span class="string">&quot;400px&quot;</span>)),</span><br><span class="line">                             column(12, plotOutput(<span class="string">&quot;ridge_plot_gsea&quot;</span>, height = <span class="string">&quot;400px&quot;</span>)),</span><br><span class="line">                             column(12, plotOutput(<span class="string">&quot;gsea_plot&quot;</span>, height = <span class="string">&quot;400px&quot;</span>)),</span><br><span class="line">                             column(12, plotOutput(<span class="string">&quot;gsea_plot1&quot;</span>, height = <span class="string">&quot;400px&quot;</span>)),</span><br><span class="line">                             column(12, plotOutput(<span class="string">&quot;dot_plot_gsea1&quot;</span>, height = <span class="string">&quot;400px&quot;</span>)),</span><br><span class="line">                             </span><br><span class="line">                         )</span><br><span class="line">                         </span><br><span class="line">                         </span><br><span class="line">                )</span><br><span class="line">            )</span><br><span class="line">        )</span><br><span class="line">    )</span><br><span class="line">)</span><br><span class="line">server &lt;- <span class="keyword">function</span>(input, output) &#123;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># GSEA analysis</span></span><br><span class="line">    geneList_gsea &lt;- reactive(&#123;</span><br><span class="line">        <span class="keyword">if</span> (!is.null(data())) &#123;</span><br><span class="line">            gene &lt;- data()<span class="variable">$SYMBOL</span></span><br><span class="line">            gene &lt;- bitr(gene, fromType = <span class="string">&quot;SYMBOL&quot;</span>, toType = <span class="string">&quot;ENTREZID&quot;</span>, OrgDb = paste0(<span class="string">&#x27;org.&#x27;</span>, str_extract(input<span class="variable">$go_species</span>, <span class="string">&#x27;\\w+&#x27;</span>), <span class="string">&#x27;.eg.db&#x27;</span>), drop = TRUE)</span><br><span class="line">            gene &lt;- dplyr::distinct(gene, SYMBOL, .keep_all = TRUE)</span><br><span class="line">            data_all &lt;- data() %&gt;% inner_join(gene, by = <span class="string">&quot;SYMBOL&quot;</span>)</span><br><span class="line">            data_all_sort &lt;- data_all %&gt;% arrange(desc(logFC))</span><br><span class="line">            geneList &lt;- data_all_sort<span class="variable">$logFC</span></span><br><span class="line">            names(geneList) &lt;- data_all_sort<span class="variable">$ENTREZID</span></span><br><span class="line">            geneList</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    gsea_analysis &lt;- <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        observeEvent(input<span class="variable">$gsea_button</span>, &#123;</span><br><span class="line">            <span class="keyword">if</span> (!is.null(geneList_gsea())) &#123;</span><br><span class="line">                <span class="comment">#gsea &lt;- gseKEGG(geneList_gsea(), organism = &quot;hsa&quot;, pvalueCutoff = 1)</span></span><br><span class="line">                gsea &lt;- gseKEGG(geneList_gsea(), organism = input<span class="variable">$kegg_species</span>, pvalueCutoff = input<span class="variable">$GSEA_pvalueCutoff</span>)</span><br><span class="line">                </span><br><span class="line">                gsea &lt;- setReadable(gsea, OrgDb = paste0(<span class="string">&#x27;org.&#x27;</span>, str_extract(input<span class="variable">$go_species</span>, <span class="string">&#x27;\\w+&#x27;</span>), <span class="string">&#x27;.eg.db&#x27;</span>), keyType = <span class="string">&quot;ENTREZID&quot;</span>)</span><br><span class="line">                output<span class="variable">$dot_plot_gsea</span> &lt;- renderPlot(&#123;</span><br><span class="line">                    dotplot(gsea)</span><br><span class="line">                &#125;,width = reactive(input<span class="variable">$plotWidth3</span>), height = reactive(input<span class="variable">$plotHeight3</span>))</span><br><span class="line">                <span class="comment">#output$ridge_plot_gsea &lt;- renderPlot(&#123;</span></span><br><span class="line">                <span class="comment"># ridgeplot(gsea,label_format = 100)</span></span><br><span class="line">                <span class="comment">#&#125;)</span></span><br><span class="line">                output<span class="variable">$gsea_plot1</span> &lt;- renderPlot(&#123;</span><br><span class="line">                    gseaplot2(gsea, 1, pvalue_table = TRUE)</span><br><span class="line">                &#125;,width = reactive(input<span class="variable">$plotWidth3</span>), height = reactive(input<span class="variable">$plotHeight3</span>))</span><br><span class="line">                </span><br><span class="line">                </span><br><span class="line">                output<span class="variable">$ridge_plot_gsea</span> &lt;- renderPlot(&#123;</span><br><span class="line">                    <span class="keyword">if</span> (!is.null(gsea)) &#123;</span><br><span class="line">                        ridgeplot(gsea, label_format = 100) + </span><br><span class="line">                            theme(</span><br><span class="line">                                text = element_text(size = input<span class="variable">$font1</span>, family = <span class="string">&quot;Arial&quot;</span>, face = <span class="string">&quot;bold&quot;</span>),</span><br><span class="line">                                axis.text.y = element_text(size = input<span class="variable">$font3</span> - 2),</span><br><span class="line">                                axis.title = element_text(size = input<span class="variable">$font3</span> + 2),</span><br><span class="line">                                legend.text = element_text(size = input<span class="variable">$font3</span>)</span><br><span class="line">                            )</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,width = reactive(input<span class="variable">$plotWidth3</span>), height = reactive(input<span class="variable">$plotHeight3</span>))</span><br><span class="line">                </span><br><span class="line">                <span class="comment">#else &#123;</span></span><br><span class="line">                <span class="comment"># plot(NULL, xlim = c(1, 10), ylim = c(1, 10), type=&quot;n&quot;, xlab=&quot;&quot;, ylab=&quot;&quot;)</span></span><br><span class="line">                <span class="comment">#&#125;</span></span><br><span class="line">                <span class="comment">#&#125;)</span></span><br><span class="line">                </span><br><span class="line">                <span class="comment">#output$gsea_plot &lt;- renderPlot(&#123;</span></span><br><span class="line">                <span class="comment">#if (!is.null(gsea)) &#123;</span></span><br><span class="line">                <span class="comment">#gseaplot(gsea) %+% </span></span><br><span class="line">                <span class="comment">#ggtitle(&quot;Gene set enrichment analysis plot&quot;) +</span></span><br><span class="line">                <span class="comment">#theme(</span></span><br><span class="line">                <span class="comment">#  text = element_text(size = input$font1, family = &quot;Arial&quot;, face = &quot;bold&quot;),</span></span><br><span class="line">                <span class="comment"># axis.text.x = element_text(size = input$font3 - 2),</span></span><br><span class="line">                <span class="comment"># axis.text.y = element_text(size = input$font3 - 2),</span></span><br><span class="line">                <span class="comment">#axis.title = element_text(size = input$font3 + 2),</span></span><br><span class="line">                <span class="comment">#legend.text = element_text(size = input$font3)</span></span><br><span class="line">                <span class="comment"># )</span></span><br><span class="line">                <span class="comment">#&#125;</span></span><br><span class="line">                <span class="comment">#&#125;,width = reactive(input$plotWidth3), height = reactive(input$plotHeight3))</span></span><br><span class="line">                </span><br><span class="line">                </span><br><span class="line">                </span><br><span class="line">                </span><br><span class="line">                </span><br><span class="line">                <span class="comment">#else &#123;</span></span><br><span class="line">                <span class="comment">#  plot(NULL, xlim = c(1, 10), ylim = c(1, 10), type=&quot;n&quot;, xlab=&quot;&quot;, ylab=&quot;&quot;)</span></span><br><span class="line">                <span class="comment">#&#125;</span></span><br><span class="line">                <span class="comment">#&#125;)</span></span><br><span class="line">                </span><br><span class="line">                </span><br><span class="line">                </span><br><span class="line">                </span><br><span class="line">                </span><br><span class="line">                </span><br><span class="line">                </span><br><span class="line">                <span class="comment">#</span></span><br><span class="line">                <span class="comment">#output$dot_plot_gsea1 &lt;- renderPlot(&#123;</span></span><br><span class="line">                <span class="comment">#dotplot(gsea)</span></span><br><span class="line">                <span class="comment">#&#125;)</span></span><br><span class="line">                </span><br><span class="line">                output<span class="variable">$dot_plot_gsea1</span> &lt;- renderPlot(&#123;</span><br><span class="line">                    <span class="keyword">if</span> (!is.null(gsea)) &#123;</span><br><span class="line">                        dotplot(gsea, label_format = 100) + </span><br><span class="line">                            theme(</span><br><span class="line">                                text = element_text(size = input<span class="variable">$font3</span>, family = <span class="string">&quot;Arial&quot;</span>, face = <span class="string">&quot;bold&quot;</span>),</span><br><span class="line">                                axis.text.y = element_text(size = input<span class="variable">$font3</span> - 2),</span><br><span class="line">                                axis.title = element_text(size = input<span class="variable">$font3</span> + 2),</span><br><span class="line">                                legend.text = element_text(size = input<span class="variable">$font3</span>)</span><br><span class="line">                            )</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;,width = reactive(input<span class="variable">$plotWidth3</span>), height = reactive(input<span class="variable">$plotHeight3</span>))</span><br><span class="line">                </span><br><span class="line">                </span><br><span class="line">                <span class="comment"># else &#123;</span></span><br><span class="line">                <span class="comment"># plot(NULL, xlim = c(1, 10), ylim = c(1, 10), type=&quot;n&quot;, xlab=&quot;&quot;, ylab=&quot;&quot;)</span></span><br><span class="line">                <span class="comment">#&#125;</span></span><br><span class="line">                <span class="comment">#&#125;)</span></span><br><span class="line">                </span><br><span class="line">                </span><br><span class="line">                <span class="comment">#</span></span><br><span class="line">                </span><br><span class="line">                download_GseaTable()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    gsea_analysis()</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    gsea_result &lt;- reactive(&#123;</span><br><span class="line">        <span class="keyword">if</span> (!is.null(geneList_gsea())) &#123;</span><br><span class="line">            <span class="comment">#gse &lt;- gseKEGG(geneList_gsea(), organism = &quot;hsa&quot;, pvalueCutoff = 1)</span></span><br><span class="line">            gse &lt;- gseKEGG(geneList_gsea(), organism = input<span class="variable">$kegg_species</span>, pvalueCutoff = 1)</span><br><span class="line">            gse &lt;- setReadable(gse, OrgDb = paste0(<span class="string">&#x27;org.&#x27;</span>, str_extract(input<span class="variable">$go_species</span>, <span class="string">&#x27;\\w+&#x27;</span>), <span class="string">&#x27;.eg.db&#x27;</span>), keyType = <span class="string">&quot;ENTREZID&quot;</span>)</span><br><span class="line">            gse</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">#kegg</span></span><br><span class="line">    KEGG_result &lt;- reactive(&#123;</span><br><span class="line">        <span class="keyword">if</span> (is.null(gene())) &#123;</span><br><span class="line">            <span class="built_in">return</span>(NULL)</span><br><span class="line">        &#125;</span><br><span class="line">        enrichKEGG(gene()<span class="variable">$ENTREZID</span>,</span><br><span class="line">                   organism = input<span class="variable">$kegg_species</span>,</span><br><span class="line">                   pvalueCutoff = input<span class="variable">$kegg_pvalueCutoff</span>,</span><br><span class="line">                   qvalueCutoff = input<span class="variable">$kegg_qvalueCutoff</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    output<span class="variable">$download_KEGGTable</span> &lt;- downloadHandler(</span><br><span class="line">        filename = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">            <span class="built_in">paste</span>(<span class="string">&quot;KEGG_result_&quot;</span>, input<span class="variable">$kegg_species</span>, <span class="string">&quot;.xlsx&quot;</span>, sep = <span class="string">&quot;&quot;</span>)</span><br><span class="line">        &#125;,</span><br><span class="line">        content = <span class="keyword">function</span>(file) &#123;</span><br><span class="line">            write.xlsx(KEGG_result(), file, sheetName = <span class="string">&quot;KEGG_result&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    )</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    output<span class="variable">$KEGG_barplot</span> &lt;- renderPlot(&#123;</span><br><span class="line">        <span class="keyword">if</span> (!is.null(KEGG_result())) &#123;</span><br><span class="line">            barplot(KEGG_result(), showCategory = 40, title = <span class="string">&#x27;KEGG Pathway&#x27;</span>) + </span><br><span class="line">                ggtitle(<span class="string">&quot;KEGG enrichment analysis bar chart&quot;</span>) +</span><br><span class="line">                theme(</span><br><span class="line">                    text = element_text(size = input<span class="variable">$font2</span>, family = <span class="string">&quot;Arial&quot;</span>, face = <span class="string">&quot;bold&quot;</span>),</span><br><span class="line">                    axis.text.y = element_text(size = input<span class="variable">$font2</span> - 2),</span><br><span class="line">                    axis.title = element_text(size = input<span class="variable">$font2</span> + 2),</span><br><span class="line">                    legend.text = element_text(size = input<span class="variable">$font2</span>)</span><br><span class="line">                )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,  width = reactive(input<span class="variable">$plotWidth2</span>), height = reactive(input<span class="variable">$plotHeight2</span>))</span><br><span class="line">    </span><br><span class="line">    output<span class="variable">$KEGG_dotplot</span> &lt;- renderPlot(&#123;</span><br><span class="line">        <span class="keyword">if</span> (!is.null(KEGG_result())) &#123;</span><br><span class="line">            dotplot(KEGG_result()) + </span><br><span class="line">                ggtitle(<span class="string">&quot;KEGG enrichment analysis dot plot&quot;</span>) +</span><br><span class="line">                theme(</span><br><span class="line">                    text = element_text(size = input<span class="variable">$font2</span>, family = <span class="string">&quot;Arial&quot;</span>, face = <span class="string">&quot;bold&quot;</span>),</span><br><span class="line">                    axis.text.y = element_text(size = input<span class="variable">$font2</span> - 2),</span><br><span class="line">                    axis.title = element_text(size = input<span class="variable">$font2</span> + 2),</span><br><span class="line">                    legend.text = element_text(size = input<span class="variable">$font2</span>)</span><br><span class="line">                )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,  width = reactive(input<span class="variable">$plotWidth2</span>), height = reactive(input<span class="variable">$plotHeight2</span>))</span><br><span class="line">    </span><br><span class="line">    output<span class="variable">$KEGG_cnetplot</span> &lt;- renderPlot(&#123;</span><br><span class="line">        <span class="keyword">if</span> (!is.null(KEGG_result())) &#123;</span><br><span class="line">            enrichplot::cnetplot(KEGG_result(), circular=FALSE, colorEdge = TRUE)+ </span><br><span class="line">                ggtitle(<span class="string">&quot;KEGG enrichment analysis Cnetplot</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;</span>) +</span><br><span class="line">                theme(</span><br><span class="line">                    text = element_text(size = input<span class="variable">$font2</span>, family = <span class="string">&quot;Arial&quot;</span>, face = <span class="string">&quot;bold&quot;</span>),</span><br><span class="line">                    axis.text = element_text(size = input<span class="variable">$font2</span> - 2),</span><br><span class="line">                    axis.title = element_text(size = input<span class="variable">$font2</span> + 2),</span><br><span class="line">                    legend.text = element_text(size = input<span class="variable">$font2</span>)</span><br><span class="line">                )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,  width = reactive(input<span class="variable">$plotWidth2</span>), height = reactive(input<span class="variable">$plotHeight2</span>))</span><br><span class="line">    </span><br><span class="line">    output<span class="variable">$KEGG_plot</span> &lt;- renderPlot(&#123;</span><br><span class="line">        <span class="keyword">if</span> (!is.null(KEGG_result())) &#123;</span><br><span class="line">            enrichplot::heatplot(KEGG_result(), showCategory = 20)+ </span><br><span class="line">                ggtitle(<span class="string">&quot;KEGG enrichment analysis heatmap&quot;</span>) +</span><br><span class="line">                theme(</span><br><span class="line">                    text = element_text(size = input<span class="variable">$font2</span>, family = <span class="string">&quot;Arial&quot;</span>, face = <span class="string">&quot;bold&quot;</span>),</span><br><span class="line">                    axis.text = element_text(size = input<span class="variable">$font2</span> - 2),</span><br><span class="line">                    axis.title = element_text(size = input<span class="variable">$font2</span> + 2),</span><br><span class="line">                    legend.text = element_text(size = input<span class="variable">$font2</span>)</span><br><span class="line">                )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, width = reactive(input<span class="variable">$plotWidth2</span>), height = reactive(input<span class="variable">$plotHeight2</span>))</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># GO analysis</span></span><br><span class="line">    <span class="comment">#gene &lt;- reactive(&#123;</span></span><br><span class="line">    <span class="comment">#if (is.null(data())) &#123;</span></span><br><span class="line">    <span class="comment"># return(NULL)</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line">    <span class="comment">#bitr(data()$SYMBOL, fromType = &#x27;SYMBOL&#x27;, toType = &#x27;ENTREZID&#x27;, </span></span><br><span class="line">    <span class="comment"># OrgDb = paste0(&#x27;org.&#x27;, str_extract(input$go_species, &#x27;\\w+&#x27;), &#x27;.eg.db&#x27;))</span></span><br><span class="line">    <span class="comment">#&#125;)</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#GO_result &lt;- reactive(&#123;</span></span><br><span class="line">    <span class="comment">#if (is.null(gene())) &#123;</span></span><br><span class="line">    <span class="comment"># return(NULL)</span></span><br><span class="line">    <span class="comment"># &#125;</span></span><br><span class="line">    <span class="comment">#enrichGO(gene()$ENTREZID,</span></span><br><span class="line">    <span class="comment">#  OrgDb = paste0(&#x27;org.&#x27;, str_extract(input$go_species, &#x27;\\w+&#x27;), &#x27;.eg.db&#x27;),</span></span><br><span class="line">    <span class="comment">#keyType = &quot;ENTREZID&quot;,</span></span><br><span class="line">    <span class="comment"># ont = &quot;ALL&quot;,</span></span><br><span class="line">    <span class="comment"># pvalueCutoff = input$go_pvalueCutoff,</span></span><br><span class="line">    <span class="comment"># qvalueCutoff = input$go_qvalueCutoff,</span></span><br><span class="line">    <span class="comment">#readable = T)</span></span><br><span class="line">    <span class="comment">#&#125;)</span></span><br><span class="line">    </span><br><span class="line">    gene &lt;- reactive(&#123;</span><br><span class="line">        <span class="keyword">if</span> (is.null(data())) &#123;</span><br><span class="line">            <span class="built_in">return</span>(NULL)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(input<span class="variable">$go_species</span> == <span class="string">&quot;At.tair&quot;</span> ) &#123;</span><br><span class="line">            </span><br><span class="line">            bitr(data()<span class="variable">$SYMBOL</span>, fromType = <span class="string">&#x27;SYMBOL&#x27;</span>, toType = <span class="string">&#x27;ENTREZID&#x27;</span>, </span><br><span class="line">                 OrgDb = org.At.tair.db,</span><br><span class="line">            )</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (input<span class="variable">$go_species</span> == <span class="string">&quot;Mxanthus&quot;</span>) &#123;</span><br><span class="line">            bitr(data()<span class="variable">$SYMBOL</span>, fromType = <span class="string">&#x27;SYMBOL&#x27;</span>, toType = <span class="string">&#x27;ENTREZID&#x27;</span>, </span><br><span class="line">                 OrgDb = org.Mxanthus.db,</span><br><span class="line">            )</span><br><span class="line">            </span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            bitr(data()<span class="variable">$SYMBOL</span>, fromType = <span class="string">&#x27;SYMBOL&#x27;</span>, toType = <span class="string">&#x27;ENTREZID&#x27;</span>, </span><br><span class="line">                 OrgDb = paste0(<span class="string">&#x27;org.&#x27;</span>, str_extract(input<span class="variable">$go_species</span>, <span class="string">&#x27;\\w+&#x27;</span>), <span class="string">&#x27;.eg.db&#x27;</span>))</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    GO_result &lt;- reactive(&#123;</span><br><span class="line">        <span class="keyword">if</span> (is.null(gene())) &#123;</span><br><span class="line">            <span class="built_in">return</span>(NULL)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(input<span class="variable">$go_species</span> == <span class="string">&quot;At.tair&quot;</span>) &#123;</span><br><span class="line">            enrichGO(gene()<span class="variable">$ENTREZID</span>,</span><br><span class="line">                     OrgDb = org.At.tair.db,</span><br><span class="line">                     keyType = <span class="string">&quot;ENTREZID&quot;</span>,</span><br><span class="line">                     ont = <span class="string">&quot;ALL&quot;</span>,</span><br><span class="line">                     pvalueCutoff = input<span class="variable">$go_pvalueCutoff</span>,</span><br><span class="line">                     qvalueCutoff = input<span class="variable">$go_qvalueCutoff</span>,</span><br><span class="line">                     readable = T)</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(input<span class="variable">$go_species</span> == <span class="string">&quot;Mxanthus&quot;</span>) &#123;</span><br><span class="line">            enrichGO(gene()<span class="variable">$ENTREZID</span>,</span><br><span class="line">                     OrgDb = org.Mxanthus.db,</span><br><span class="line">                     keyType = <span class="string">&quot;ENTREZID&quot;</span>,</span><br><span class="line">                     ont = <span class="string">&quot;ALL&quot;</span>,</span><br><span class="line">                     pvalueCutoff = input<span class="variable">$go_pvalueCutoff</span>,</span><br><span class="line">                     qvalueCutoff = input<span class="variable">$go_qvalueCutoff</span>,</span><br><span class="line">                     readable = T)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            enrichGO(gene()<span class="variable">$ENTREZID</span>,</span><br><span class="line">                     OrgDb = paste0(<span class="string">&#x27;org.&#x27;</span>, str_extract(input<span class="variable">$go_species</span>, <span class="string">&#x27;\\w+&#x27;</span>), <span class="string">&#x27;.eg.db&#x27;</span>),</span><br><span class="line">                     keyType = <span class="string">&quot;ENTREZID&quot;</span>,</span><br><span class="line">                     ont = <span class="string">&quot;ALL&quot;</span>,</span><br><span class="line">                     pvalueCutoff = input<span class="variable">$go_pvalueCutoff</span>,</span><br><span class="line">                     qvalueCutoff = input<span class="variable">$go_qvalueCutoff</span>,</span><br><span class="line">                     readable = T)</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="comment">#enrichGO(gene()$ENTREZID,</span></span><br><span class="line">        <span class="comment">#OrgDb = paste0(&#x27;org.&#x27;, str_extract(input$go_species, &#x27;\\w+&#x27;), &#x27;.eg.db&#x27;),</span></span><br><span class="line">        <span class="comment"># keyType = &quot;ENTREZID&quot;,</span></span><br><span class="line">        <span class="comment"># ont = &quot;ALL&quot;,</span></span><br><span class="line">        <span class="comment">#pvalueCutoff = input$go_pvalueCutoff,</span></span><br><span class="line">        <span class="comment">#qvalueCutoff = input$go_qvalueCutoff,</span></span><br><span class="line">        <span class="comment"># readable = T)</span></span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">#output$GO_barplot &lt;- renderPlot(&#123;</span></span><br><span class="line">    <span class="comment">#if (!is.null(GO_result())) &#123;</span></span><br><span class="line">    <span class="comment">#barplot(GO_result(), split=&quot;ONTOLOGY&quot;) + facet_grid(ONTOLOGY~., scale = &quot;free&quot;) + </span></span><br><span class="line">    <span class="comment"># ggtitle(&quot;GO富集分析柱状图&quot;)</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line">    <span class="comment">#&#125;)</span></span><br><span class="line">    </span><br><span class="line">    output<span class="variable">$GO_barplot</span> &lt;- renderPlot(&#123;</span><br><span class="line">        <span class="keyword">if</span> (!is.null(GO_result())) &#123;</span><br><span class="line">            barplot(GO_result(), <span class="built_in">split</span>=<span class="string">&quot;ONTOLOGY&quot;</span>) + facet_grid(ONTOLOGY~., scale = <span class="string">&quot;free&quot;</span>) + </span><br><span class="line">                ggtitle(<span class="string">&quot;GO enrichment analysis bar chart&quot;</span>) +</span><br><span class="line">                <span class="comment">#theme(text = element_text(size = input$font1 , family = &quot;Arial&quot;, face = &quot;bold&quot;))</span></span><br><span class="line">                theme(</span><br><span class="line">                    text = element_text(size = input<span class="variable">$font1</span>, family = <span class="string">&quot;Arial&quot;</span>, face = <span class="string">&quot;bold&quot;</span>),</span><br><span class="line">                    axis.text.y = element_text(size = input<span class="variable">$font1</span> - 2),</span><br><span class="line">                    axis.title = element_text(size = input<span class="variable">$font2</span> + 2),</span><br><span class="line">                    legend.text = element_text(size = input<span class="variable">$font2</span>)</span><br><span class="line">                )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,  width = reactive(input<span class="variable">$plotWidth1</span>), height = reactive(input<span class="variable">$plotHeight1</span>))</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    output<span class="variable">$GO_barplot_beauty</span> &lt;- renderPlot(&#123;</span><br><span class="line">        <span class="keyword">if</span> (!is.null(GO_result())) &#123;</span><br><span class="line">            GO_result_df &lt;- as.data.frame(GO_result())</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 提取前10个显著条目并添加必要的标识符和属性</span></span><br><span class="line">            BP_top10 &lt;- GO_result_df %&gt;%</span><br><span class="line">                filter(ONTOLOGY == <span class="string">&quot;BP&quot;</span>) %&gt;%</span><br><span class="line">                arrange(p.adjust) %&gt;%</span><br><span class="line">                <span class="built_in">head</span>(10)</span><br><span class="line">            CC_top10 &lt;- GO_result_df %&gt;%</span><br><span class="line">                filter(ONTOLOGY == <span class="string">&quot;CC&quot;</span>) %&gt;%</span><br><span class="line">                arrange(p.adjust) %&gt;%</span><br><span class="line">                <span class="built_in">head</span>(10)</span><br><span class="line">            MF_top10 &lt;- GO_result_df %&gt;%</span><br><span class="line">                filter(ONTOLOGY == <span class="string">&quot;MF&quot;</span>) %&gt;%</span><br><span class="line">                arrange(p.adjust) %&gt;%</span><br><span class="line">                <span class="built_in">head</span>(10)</span><br><span class="line">            merge_data &lt;- rbind(BP_top10, CC_top10, MF_top10)</span><br><span class="line">            merge_data<span class="variable">$ONTOLOGY</span> &lt;- <span class="built_in">factor</span>(merge_data<span class="variable">$ONTOLOGY</span>, levels = c(<span class="string">&quot;MF&quot;</span>, <span class="string">&quot;CC&quot;</span>, <span class="string">&quot;BP&quot;</span>))</span><br><span class="line">            merge_data<span class="variable">$logPvalue</span> &lt;- (-log10(merge_data<span class="variable">$p</span>.adjust))</span><br><span class="line">            </span><br><span class="line">            ggplot(merge_data, aes(x = Description, y = logPvalue, fill = ONTOLOGY)) +</span><br><span class="line">                geom_bar(<span class="built_in">stat</span> = <span class="string">&quot;identity&quot;</span>, width = 0.8, color = <span class="string">&quot;black&quot;</span>) +</span><br><span class="line">                scale_x_discrete(limits = unique(merge_data<span class="variable">$Description</span>[order(merge_data<span class="variable">$ONTOLOGY</span>)])) +</span><br><span class="line">                coord_flip() +</span><br><span class="line">                scale_y_continuous(<span class="built_in">expand</span> = c(0, 0), limits = c(0, max(merge_data<span class="variable">$logPvalue</span>) + 1)) +</span><br><span class="line">                theme(panel.background = element_rect(fill = <span class="string">&quot;white&quot;</span>),</span><br><span class="line">                      axis.text = element_text(size = input<span class="variable">$font1</span> + 2, family = <span class="string">&quot;Arial&quot;</span>),</span><br><span class="line">                      axis.title = element_text(size = input<span class="variable">$font1</span> + 4, family = <span class="string">&quot;Arial&quot;</span>, colour = <span class="string">&quot;black&quot;</span>),</span><br><span class="line">                      legend.text = element_text(size = input<span class="variable">$font1</span> + 2, family = <span class="string">&quot;Arial&quot;</span>),</span><br><span class="line">                      legend.title = element_text(size = input<span class="variable">$font1</span> + 4, family = <span class="string">&quot;Arial&quot;</span>),</span><br><span class="line">                      legend.position = <span class="string">&quot;top&quot;</span>) +</span><br><span class="line">                labs(x = <span class="string">&quot;GO term&quot;</span>, y = <span class="string">&quot;-log10 P-value&quot;</span>) +</span><br><span class="line">                scale_fill_manual(values = c(<span class="string">&quot;#1F77B4&quot;</span>, <span class="string">&quot;#FF7F0E&quot;</span>, <span class="string">&quot;#2CA02C&quot;</span>), name = <span class="string">&quot;ONTOLOGY&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, width = reactive(input<span class="variable">$plotWidth1</span>), height = reactive(input<span class="variable">$plotHeight1</span>))</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    output<span class="variable">$GO_dotplot</span> &lt;- renderPlot(&#123;</span><br><span class="line">        <span class="keyword">if</span> (!is.null(GO_result())) &#123;</span><br><span class="line">            dotplot(GO_result(), <span class="built_in">split</span>=<span class="string">&quot;ONTOLOGY&quot;</span>) + facet_grid(ONTOLOGY~., scale = <span class="string">&quot;free&quot;</span>) + </span><br><span class="line">                ggtitle(<span class="string">&quot;GO enrichment analysis dot plot&quot;</span>) +</span><br><span class="line">                theme(</span><br><span class="line">                    text = element_text(size = input<span class="variable">$font1</span>, family = <span class="string">&quot;Arial&quot;</span>, face = <span class="string">&quot;bold&quot;</span>),</span><br><span class="line">                    axis.text.y = element_text(size = input<span class="variable">$font1</span> - 2),</span><br><span class="line">                    axis.title = element_text(size = input<span class="variable">$font1</span> + 2),</span><br><span class="line">                    legend.text = element_text(size = input<span class="variable">$font1</span>)</span><br><span class="line">                ) </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,  width = reactive(input<span class="variable">$plotWidth1</span>), height = reactive(input<span class="variable">$plotHeight1</span>))</span><br><span class="line">    </span><br><span class="line">    output<span class="variable">$GO_cnetplot</span> &lt;- renderPlot(&#123;</span><br><span class="line">        <span class="keyword">if</span> (!is.null(GO_result())) &#123;</span><br><span class="line">            enrichplot::cnetplot(GO_result(), circular=FALSE, colorEdge = TRUE) + </span><br><span class="line">                ggtitle(<span class="string">&quot;Gene-pathway association network diagram&quot;</span>) +</span><br><span class="line">                theme(</span><br><span class="line">                    text = element_text(size = input<span class="variable">$font1</span>, family = <span class="string">&quot;Arial&quot;</span>, face = <span class="string">&quot;bold&quot;</span>),</span><br><span class="line">                    axis.text = element_text(size = input<span class="variable">$font1</span> - 2),</span><br><span class="line">                    axis.title =  element_text(size = input<span class="variable">$font1</span> + 2),</span><br><span class="line">                    legend.text = element_text(size = input<span class="variable">$font1</span>)</span><br><span class="line">                )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,  width = reactive(input<span class="variable">$plotWidth1</span>), height = reactive(input<span class="variable">$plotHeight1</span>))</span><br><span class="line">    </span><br><span class="line">    output<span class="variable">$GO_heatplot</span> &lt;- renderPlot(&#123;</span><br><span class="line">        <span class="keyword">if</span> (!is.null(GO_result())) &#123;</span><br><span class="line">            enrichplot::heatplot(GO_result(), showCategory = 50) + </span><br><span class="line">                ggtitle(<span class="string">&quot;Gene-pathway association heatmap&quot;</span>) +</span><br><span class="line">                theme(</span><br><span class="line">                    text = element_text(size = input<span class="variable">$font1</span>, family = <span class="string">&quot;Arial&quot;</span>, face = <span class="string">&quot;bold&quot;</span>),</span><br><span class="line">                    axis.text = element_text(size = input<span class="variable">$font1</span> - 2),</span><br><span class="line">                    axis.title = element_text(size = input<span class="variable">$font1</span> + 2),</span><br><span class="line">                    legend.text = element_text(size = input<span class="variable">$font1</span>)</span><br><span class="line">                )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,  width = reactive(input<span class="variable">$plotWidth1</span>), height = reactive(input<span class="variable">$plotHeight1</span>))</span><br><span class="line">    </span><br><span class="line">    output<span class="variable">$GO_emapplot</span> &lt;- renderPlot(&#123;</span><br><span class="line">        <span class="keyword">if</span> (!is.null(GO_result())) &#123;</span><br><span class="line">            GO2 &lt;- pairwise_termsim(GO_result())</span><br><span class="line">            enrichplot::emapplot(GO2, showCategory = 50, color = <span class="string">&quot;p.adjust&quot;</span>, layout = <span class="string">&quot;kk&quot;</span>) + </span><br><span class="line">                ggtitle(<span class="string">&quot;GO enrichment analysis emapplot&quot;</span>) +</span><br><span class="line">                theme(</span><br><span class="line">                    text = element_text(size = input<span class="variable">$font1</span>, family = <span class="string">&quot;Arial&quot;</span>, face = <span class="string">&quot;bold&quot;</span>),</span><br><span class="line">                    axis.text = element_text(size = input<span class="variable">$font1</span> - 2),</span><br><span class="line">                    axis.title = element_text(size = input<span class="variable">$font1</span> + 2),</span><br><span class="line">                    legend.text = element_text(size = input<span class="variable">$font1</span>)</span><br><span class="line">                )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,  width = reactive(input<span class="variable">$plotWidth1</span> + 700), height = reactive(input<span class="variable">$plotHeight1</span> + 600))</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">#download_GO_table &lt;- function() &#123;</span></span><br><span class="line">    <span class="comment">#output$download_GoTable &lt;- downloadHandler(</span></span><br><span class="line">    <span class="comment">#filename = function() &#123;</span></span><br><span class="line">    <span class="comment">#paste(&quot;GO_result_&quot;, input$go_species, &quot;.xlsx&quot;, sep = &quot;&quot;)</span></span><br><span class="line">    <span class="comment">#&#125;,</span></span><br><span class="line">    <span class="comment">#content = function(file) &#123;</span></span><br><span class="line">    <span class="comment">#write.xlsx(GO_result(), file, sheetName = &quot;GO_result&quot;)</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line">    <span class="comment">#)</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line">    <span class="comment">#</span></span><br><span class="line">    output<span class="variable">$download_GoTable</span> &lt;- downloadHandler(</span><br><span class="line">        filename = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">            <span class="built_in">paste</span>(<span class="string">&quot;GO_result_&quot;</span>, input<span class="variable">$go_species</span>, <span class="string">&quot;.xlsx&quot;</span>, sep = <span class="string">&quot;&quot;</span>)</span><br><span class="line">        &#125;,</span><br><span class="line">        content = <span class="keyword">function</span>(file) &#123;</span><br><span class="line">            write.xlsx(GO_result(), file, sheetName = <span class="string">&quot;GO_result&quot;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    )</span><br><span class="line">    <span class="comment"># </span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    go_analysis &lt;- <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        observeEvent(input<span class="variable">$go</span>, &#123;</span><br><span class="line">            <span class="keyword">if</span> (!is.null(GO_result())) &#123;</span><br><span class="line">                download_GO_table()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    go_analysis()</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># read data</span></span><br><span class="line">    data &lt;- reactive(&#123;</span><br><span class="line">        <span class="keyword">if</span> (is.null(input<span class="variable">$file</span>)) &#123;</span><br><span class="line">            <span class="built_in">return</span>(NULL)</span><br><span class="line">        &#125;</span><br><span class="line">        file_type &lt;- tools::file_ext(input$file<span class="variable">$datapath</span>)</span><br><span class="line">        <span class="keyword">if</span> (file_type == <span class="string">&quot;xlsx&quot;</span>) &#123;</span><br><span class="line">            info &lt;- openxlsx::read.xlsx(input$file<span class="variable">$datapath</span>,rowNames = F,colNames = T)</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (file_type == <span class="string">&quot;csv&quot;</span>) &#123;</span><br><span class="line">            info &lt;- read.csv(input$file<span class="variable">$datapath</span>, header = T, row.names = NULL)</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (file_type == <span class="string">&quot;txt&quot;</span>) &#123;</span><br><span class="line">            info &lt;- read.table(input$file<span class="variable">$datapath</span>, header = T, row.names = NULL)</span><br><span class="line">        &#125;</span><br><span class="line">        names(info) &lt;- c(<span class="string">&#x27;SYMBOL&#x27;</span>, <span class="string">&#x27;logFC&#x27;</span>, <span class="string">&#x27;pvalue&#x27;</span>, <span class="string">&#x27;padj&#x27;</span>)[1:ncol(info)]</span><br><span class="line">        info</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Download GSEA result table</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Download GSEA result table</span></span><br><span class="line">    download_GseaTable &lt;- <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">        output<span class="variable">$download_GseaTable</span> &lt;- downloadHandler(</span><br><span class="line">            filename = <span class="function"><span class="title">function</span></span>() &#123;</span><br><span class="line">                <span class="built_in">paste</span>(<span class="string">&quot;GSEA_result_&quot;</span>, input<span class="variable">$go_species</span>, <span class="string">&quot;.xlsx&quot;</span>, sep = <span class="string">&quot;&quot;</span>)</span><br><span class="line">            &#125;,</span><br><span class="line">            content = <span class="keyword">function</span>(file) &#123;</span><br><span class="line">                write.xlsx(gsea_result(), file, sheetName = <span class="string">&quot;GSEA_result&quot;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#output$gsea_plot &lt;- renderPlot(&#123;</span></span><br><span class="line">    <span class="comment">#if (!is.null(gsea_result())) &#123;</span></span><br><span class="line">    <span class="comment">#gseaplot2(gsea_result(), 1, pvalue_table = TRUE)</span></span><br><span class="line">    <span class="comment">#&#125;</span></span><br><span class="line">    <span class="comment">#&#125;,  width = reactive(input$plotWidth3), height = reactive(input$plotHeight3))</span></span><br><span class="line">    </span><br><span class="line">    observe(&#123;</span><br><span class="line">        <span class="keyword">if</span> (is.null(GO_result()) || is.null(KEGG_result())) &#123;</span><br><span class="line">            showModal(</span><br><span class="line">                modalDialog(</span><br><span class="line">                    title = <span class="string">&quot;Notice!&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;1,Please set the corresponding species before entering the file!</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">           2,The default pvalueCutoff and qvalueCutoff are 0.05. If an error occurs, please increase them appropriately to ensure visualization of the analysis results&quot;</span>,</span><br><span class="line">                    easyClose = TRUE,</span><br><span class="line">                    footer = NULL</span><br><span class="line">                )</span><br><span class="line">            )</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    observeEvent(input<span class="variable">$goToBioconductor</span>, &#123;</span><br><span class="line">        browseURL(<span class="string">&quot;http://bioconductor.org/packages/release/BiocViews.html#___OrgDb&quot;</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    observeEvent(input<span class="variable">$goToKEGG</span>, &#123;</span><br><span class="line">        browseURL(<span class="string">&quot;http://www.genome.jp/kegg/catalog/org_list.html&quot;</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    observeEvent(input<span class="variable">$bilibili</span>, &#123;</span><br><span class="line">        browseURL(<span class="string">&quot;https://www.bilibili.com/video/BV1Xk4y1p78B/?vd_source=c50dbc766a1b1e8259ff0a8e3c23dd52&quot;</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">shinyApp(ui = ui, server = server)</span><br><span class="line">```</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## 原始</span></span><br><span class="line">~~~ bash</span><br><span class="line">library(openxlsx)<span class="comment">#读取.xlsx文件</span></span><br><span class="line">library(ggplot2)<span class="comment">#柱状图和点状图</span></span><br><span class="line">library(stringr)<span class="comment">#基因ID转换</span></span><br><span class="line">library(enrichplot)<span class="comment">#GO,KEGG,GSEA</span></span><br><span class="line">library(clusterProfiler)<span class="comment">#GO,KEGG,GSEA</span></span><br><span class="line"><span class="comment">#install.packages(&quot;GOplot&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装Bioconductor</span></span><br><span class="line"><span class="comment">#if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE))</span></span><br><span class="line"><span class="comment"># install.packages(&quot;BiocManager&quot;)</span></span><br><span class="line"><span class="comment">#BiocManager::install()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装&#x27;topGO&#x27;包</span></span><br><span class="line"><span class="comment">#BiocManager::install(&quot;topGO&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载&#x27;topGO&#x27;包</span></span><br><span class="line">library(topGO)</span><br><span class="line">library(org.Hs.eg.db)</span><br><span class="line"></span><br><span class="line">library(org.Hs.eg.db)</span><br><span class="line"></span><br><span class="line">library(org.At.tair.db)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装Rgraphviz</span></span><br><span class="line"><span class="comment">#install.packages(&quot;Rgraphviz&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载 Rgraphviz 包</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#BiocManager::install(&quot;Rgraphviz&quot;)</span></span><br><span class="line">library(Rgraphviz)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">library(GOplot)</span><br><span class="line">library(GOplot)<span class="comment">#弦图，弦表图，系统聚类图</span></span><br><span class="line">library(DOSE)</span><br><span class="line">library(ggnewscale)</span><br><span class="line"><span class="comment">#install.packages(&quot;topGO&quot;)</span></span><br><span class="line">library(topGO)<span class="comment">#绘制通路网络图</span></span><br><span class="line">library(circlize)<span class="comment">#绘制富集分析圈图</span></span><br><span class="line">library(ComplexHeatmap)<span class="comment">#绘制图例</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#载入差异表达数据，只需基因ID(GO,KEGG,GSEA需要)和Log2FoldChange(GSEA需要)即可</span></span><br><span class="line">info &lt;- read.xlsx( <span class="string">&quot;At.tair.txt.xlsx&quot;</span>, rowNames = F,colNames = T)</span><br><span class="line"></span><br><span class="line"><span class="comment">#指定富集分析的物种库</span></span><br><span class="line">GO_database &lt;- <span class="string">&#x27;org.At.tair.db&#x27;</span></span><br><span class="line">KEGG_database &lt;- <span class="string">&#x27;ath&#x27;</span></span><br><span class="line"><span class="comment">#GO_database &lt;- &#x27;org.Hs.eg.db&#x27; #GO分析指定物种，物种缩写索引表详见http://bioconductor.org/packages/release/BiocViews.html#___OrgDb</span></span><br><span class="line"><span class="comment">#KEGG_database &lt;- &#x27;hsa&#x27; #KEGG分析指定物种，物种缩写索引表详见http://www.genome.jp/kegg/catalog/org_list.html</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#gene ID转换</span></span><br><span class="line">gene &lt;- bitr(info<span class="variable">$gene_symbol</span>,fromType = <span class="string">&#x27;SYMBOL&#x27;</span>,toType = <span class="string">&#x27;ENTREZID&#x27;</span>,OrgDb = org.At.tair.db)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">GO&lt;-enrichGO( gene<span class="variable">$ENTREZID</span>,<span class="comment">#GO富集分析</span></span><br><span class="line">              OrgDb = GO_database,</span><br><span class="line">              keyType = <span class="string">&quot;ENTREZID&quot;</span>,<span class="comment">#设定读取的gene ID类型</span></span><br><span class="line">              ont = <span class="string">&quot;ALL&quot;</span>,<span class="comment">#(ont为ALL因此包括 Biological Process,Cellular Component,Mollecular Function三部分）</span></span><br><span class="line">              pvalueCutoff = 0.05,<span class="comment">#设定p值阈值</span></span><br><span class="line">              qvalueCutoff = 0.05,<span class="comment">#设定q值阈值</span></span><br><span class="line">              readable = T</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">KEGG&lt;-enrichKEGG(gene<span class="variable">$ENTREZID</span>,<span class="comment">#KEGG富集分析</span></span><br><span class="line">                 organism = KEGG_database,</span><br><span class="line">                 pvalueCutoff = 0.05,</span><br><span class="line">                 qvalueCutoff = 0.05)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#names(info) &lt;- c(&#x27;SYMBOL&#x27;,&#x27;Log2FoldChange&#x27;,&#x27;pvalue&#x27;,&#x27;padj&#x27;)</span></span><br><span class="line">names(info) &lt;- c(<span class="string">&#x27;SYMBOL&#x27;</span>)</span><br><span class="line">info_merge &lt;- merge(info,gene,by=<span class="string">&#x27;SYMBOL&#x27;</span>)<span class="comment">#合并转换后的基因ID和Log2FoldChange</span></span><br><span class="line">GSEA_input &lt;- info_merge<span class="variable">$Log2FoldChange</span></span><br><span class="line">names(GSEA_input) = info_merge<span class="variable">$ENTREZID</span></span><br><span class="line">GSEA_input = <span class="built_in">sort</span>(GSEA_input, decreasing = TRUE)</span><br><span class="line">GSEA_KEGG &lt;- gseKEGG(GSEA_input, organism = KEGG_database, pvalueCutoff = 0.05)<span class="comment">#GSEA富集分析</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">barplot(GO, <span class="built_in">split</span>=<span class="string">&quot;ONTOLOGY&quot;</span>)+facet_grid(ONTOLOGY~., scale=<span class="string">&quot;free&quot;</span>)<span class="comment">#柱状图</span></span><br><span class="line">barplot(KEGG,showCategory = 40,title = <span class="string">&#x27;KEGG Pathway&#x27;</span>)</span><br><span class="line">dotplot(GO, <span class="built_in">split</span>=<span class="string">&quot;ONTOLOGY&quot;</span>)+facet_grid(ONTOLOGY~., scale=<span class="string">&quot;free&quot;</span>)<span class="comment">#点状图</span></span><br><span class="line">dotplot(KEGG)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">enrichplot::cnetplot(GO,circular=FALSE,colorEdge = TRUE)<span class="comment">#基因-通路关联网络图</span></span><br><span class="line">enrichplot::cnetplot(KEGG,circular=FALSE,colorEdge = TRUE)<span class="comment">#circluar为指定是否环化，基因过多时建议设置为FALSE</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">enrichplot::heatplot(GO,showCategory = 50)<span class="comment">#基因-通路关联热图</span></span><br><span class="line">enrichplot::heatplot(KEGG,showCategory = 50)</span><br><span class="line"></span><br><span class="line">GO2 &lt;- pairwise_termsim(GO)</span><br><span class="line">KEGG2 &lt;- pairwise_termsim(KEGG)</span><br><span class="line">enrichplot::emapplot(GO2,showCategory = 50, color = <span class="string">&quot;p.adjust&quot;</span>, layout = <span class="string">&quot;kk&quot;</span>)<span class="comment">#通路间关联网络图</span></span><br><span class="line">enrichplot::emapplot(KEGG2,showCategory =50, color = <span class="string">&quot;p.adjust&quot;</span>, layout = <span class="string">&quot;kk&quot;</span>)</span><br><span class="line"></span><br><span class="line">write.table(KEGG<span class="variable">$ID</span>, file = <span class="string">&quot;KEGG_IDs.txt&quot;</span>, <span class="comment">#将所有KEGG富集到的通路写入本地文件查看</span></span><br><span class="line">            append = FALSE, quote = TRUE, sep = <span class="string">&quot; &quot;</span>,</span><br><span class="line">            eol = <span class="string">&quot;\n&quot;</span>, na = <span class="string">&quot;NA&quot;</span>, dec = <span class="string">&quot;.&quot;</span>, row.names = TRUE,</span><br><span class="line">            col.names = TRUE, qmethod = c(<span class="string">&quot;escape&quot;</span>, <span class="string">&quot;double&quot;</span>),</span><br><span class="line">            fileEncoding = <span class="string">&quot;&quot;</span>)</span><br><span class="line">browseKEGG(KEGG,<span class="string">&quot;hsa05166&quot;</span>)<span class="comment">#选择其中的hsa05166通路进行展示</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">GO_BP&lt;-enrichGO( gene<span class="variable">$ENTREZID</span>,<span class="comment">#GO富集分析BP模块</span></span><br><span class="line">                 OrgDb = GO_database,</span><br><span class="line">                 keyType = <span class="string">&quot;ENTREZID&quot;</span>,</span><br><span class="line">                 ont = <span class="string">&quot;BP&quot;</span>,</span><br><span class="line">                 pvalueCutoff = 0.05,</span><br><span class="line">                 pAdjustMethod = <span class="string">&quot;BH&quot;</span>,</span><br><span class="line">                 qvalueCutoff = 0.05,</span><br><span class="line">                 minGSSize = 10,</span><br><span class="line">                 maxGSSize = 500,</span><br><span class="line">                 readable = T)</span><br><span class="line">plotGOgraph(GO_BP)<span class="comment">#GO-BP功能网络图</span></span><br><span class="line">GO_CC&lt;-enrichGO( gene<span class="variable">$ENTREZID</span>,<span class="comment">#GO富集分析CC模块</span></span><br><span class="line">                 OrgDb = GO_database,</span><br><span class="line">                 keyType = <span class="string">&quot;ENTREZID&quot;</span>,</span><br><span class="line">                 ont = <span class="string">&quot;CC&quot;</span>,</span><br><span class="line">                 pvalueCutoff = 0.05,</span><br><span class="line">                 pAdjustMethod = <span class="string">&quot;BH&quot;</span>,</span><br><span class="line">                 qvalueCutoff = 0.05,</span><br><span class="line">                 minGSSize = 10,</span><br><span class="line">                 maxGSSize = 500,</span><br><span class="line">                 readable = T)</span><br><span class="line">plotGOgraph(GO_CC)<span class="comment">#GO-CC功能网络图</span></span><br><span class="line">GO_MF&lt;-enrichGO( gene<span class="variable">$ENTREZID</span>,<span class="comment">#GO富集分析MF模块</span></span><br><span class="line">                 OrgDb = GO_database,</span><br><span class="line">                 keyType = <span class="string">&quot;ENTREZID&quot;</span>,</span><br><span class="line">                 ont = <span class="string">&quot;MF&quot;</span>,</span><br><span class="line">                 pvalueCutoff = 0.05,</span><br><span class="line">                 pAdjustMethod = <span class="string">&quot;BH&quot;</span>,</span><br><span class="line">                 qvalueCutoff = 0.05,</span><br><span class="line">                 minGSSize = 10,</span><br><span class="line">                 maxGSSize = 500,</span><br><span class="line">                 readable = T)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">genedata&lt;-data.frame(ID=info<span class="variable">$SYMBOL</span>,logFC=info<span class="variable">$Log2FoldChange</span>)</span><br><span class="line"><span class="comment">#genedata&lt;-data.frame(ID=info$gene_symbol,logFC=info$log2FoldChange)</span></span><br><span class="line">write.table(GO<span class="variable">$ONTOLOGY</span>, file = <span class="string">&quot;GO_ONTOLOGYs.txt&quot;</span>, <span class="comment">#将所有GO富集到的基因集所对应的类型写入本地文件从而得到BP/CC/MF各自的起始位置如我的数据里是1，2103，2410</span></span><br><span class="line">            append = FALSE, quote = TRUE, sep = <span class="string">&quot; &quot;</span>,</span><br><span class="line">            eol = <span class="string">&quot;\n&quot;</span>, na = <span class="string">&quot;NA&quot;</span>, dec = <span class="string">&quot;.&quot;</span>, row.names = TRUE,</span><br><span class="line">            col.names = TRUE, qmethod = c(<span class="string">&quot;escape&quot;</span>, <span class="string">&quot;double&quot;</span>),</span><br><span class="line">            fileEncoding = <span class="string">&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#genedata &lt;- genedata[, 2:ncol(genedata)]</span></span><br><span class="line"><span class="comment">#genedata &lt;- as.data.frame(genedata)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#genedata &lt;- genedata[-1, ]  # 去掉第一行</span></span><br><span class="line"><span class="comment">#colnames(gene)[1] &lt;- &quot;ID&quot;  # 修改第一列的名字为SYMBOL</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">GOplotIn_BP&lt;-GO[1:10,c(2,3,7,9)] <span class="comment">#提取GO富集BP的前10行,提取ID,Description,p.adjust,GeneID四列</span></span><br><span class="line">GOplotIn_CC&lt;-GO[11:20,c(2,3,7,9)]</span><br><span class="line">GOplotIn_MF&lt;-GO[21:30,c(2,3,7,9)]</span><br><span class="line"><span class="comment">#GOplotIn_CC&lt;-GO[2103:2112,c(2,3,7,9)]#提取GO富集CC的前10行,提取ID,Description,p.adjust,GeneID四列</span></span><br><span class="line"><span class="comment">#GOplotIn_MF&lt;-GO[2410:2419,c(2,3,7,9)]#提取GO富集MF的前10行,提取ID,Description,p.adjust,GeneID四列</span></span><br><span class="line">GOplotIn_BP<span class="variable">$geneID</span> &lt;-str_replace_all(GOplotIn_BP<span class="variable">$geneID</span>,<span class="string">&#x27;/&#x27;</span>,<span class="string">&#x27;,&#x27;</span>) <span class="comment">#把GeneID列中的’/’替换成‘,’</span></span><br><span class="line">GOplotIn_CC<span class="variable">$geneID</span> &lt;-str_replace_all(GOplotIn_CC<span class="variable">$geneID</span>,<span class="string">&#x27;/&#x27;</span>,<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">GOplotIn_MF<span class="variable">$geneID</span> &lt;-str_replace_all(GOplotIn_MF<span class="variable">$geneID</span>,<span class="string">&#x27;/&#x27;</span>,<span class="string">&#x27;,&#x27;</span>)</span><br><span class="line">names(GOplotIn_BP)&lt;-c(<span class="string">&#x27;ID&#x27;</span>,<span class="string">&#x27;Term&#x27;</span>,<span class="string">&#x27;adj_pval&#x27;</span>,<span class="string">&#x27;Genes&#x27;</span>)<span class="comment">#修改列名,后面弦图绘制的时候需要这样的格式</span></span><br><span class="line">names(GOplotIn_CC)&lt;-c(<span class="string">&#x27;ID&#x27;</span>,<span class="string">&#x27;Term&#x27;</span>,<span class="string">&#x27;adj_pval&#x27;</span>,<span class="string">&#x27;Genes&#x27;</span>)</span><br><span class="line">names(GOplotIn_MF)&lt;-c(<span class="string">&#x27;ID&#x27;</span>,<span class="string">&#x27;Term&#x27;</span>,<span class="string">&#x27;adj_pval&#x27;</span>,<span class="string">&#x27;Genes&#x27;</span>)</span><br><span class="line">GOplotIn_BP<span class="variable">$Category</span> = <span class="string">&quot;BP&quot;</span><span class="comment">#分类信息</span></span><br><span class="line">GOplotIn_CC<span class="variable">$Category</span> = <span class="string">&quot;CC&quot;</span></span><br><span class="line">GOplotIn_MF<span class="variable">$Category</span> = <span class="string">&quot;MF&quot;</span></span><br><span class="line">circ_BP&lt;-GOplot::circle_dat(GOplotIn_BP,genedata) <span class="comment">#GOplot导入数据格式整理</span></span><br><span class="line">circ_CC&lt;-GOplot::circle_dat(GOplotIn_CC,genedata) </span><br><span class="line">circ_MF&lt;-GOplot::circle_dat(GOplotIn_MF,genedata) </span><br><span class="line">chord_BP&lt;-chord_dat(data = circ_BP,genes = genedata) <span class="comment">#生成含有选定基因的数据框</span></span><br><span class="line">chord_CC&lt;-chord_dat(data = circ_CC,genes = genedata) </span><br><span class="line">chord_MF&lt;-chord_dat(data = circ_MF,genes = genedata) </span><br><span class="line">GOChord(data = chord_BP,<span class="comment">#弦图</span></span><br><span class="line">        title = <span class="string">&#x27;GO-Biological Process&#x27;</span>,space = 0.01,<span class="comment">#GO Term间距</span></span><br><span class="line">        <span class="built_in">limit</span> = c(1,1),gene.order = <span class="string">&#x27;logFC&#x27;</span>,gene.space = 0.25,gene.size = 5,</span><br><span class="line">        lfc.col = c(<span class="string">&#x27;red&#x27;</span>,<span class="string">&#x27;white&#x27;</span>,<span class="string">&#x27;blue&#x27;</span>), <span class="comment">#上下调基因颜色</span></span><br><span class="line">        process.label = 10) <span class="comment">#GO Term字体大小</span></span><br><span class="line">GOChord(data = chord_CC,title = <span class="string">&#x27;GO-Cellular Component&#x27;</span>,space = 0.01,</span><br><span class="line">        <span class="built_in">limit</span> = c(1,1),gene.order = <span class="string">&#x27;logFC&#x27;</span>,gene.space = 0.25,gene.size = 5,</span><br><span class="line">        lfc.col = c(<span class="string">&#x27;red&#x27;</span>,<span class="string">&#x27;white&#x27;</span>,<span class="string">&#x27;blue&#x27;</span>), </span><br><span class="line">        process.label = 10) </span><br><span class="line">GOChord(data = chord_MF,title = <span class="string">&#x27;GO-Mollecular Function&#x27;</span>,space = 0.01,</span><br><span class="line">        <span class="built_in">limit</span> = c(1,1),gene.order = <span class="string">&#x27;logFC&#x27;</span>,gene.space = 0.25,gene.size = 5,</span><br><span class="line">        lfc.col = c(<span class="string">&#x27;red&#x27;</span>,<span class="string">&#x27;white&#x27;</span>,<span class="string">&#x27;blue&#x27;</span>), </span><br><span class="line">        process.label = 10)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">GOCircle(circ_BP) <span class="comment">#弦表图</span></span><br><span class="line">GOCircle(circ_CC) </span><br><span class="line">GOCircle(circ_MF) </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">chord&lt;-chord_dat(data = circ_BP,genes = genedata) <span class="comment">#生成含有选定基因的数据框</span></span><br><span class="line">GOCluster(circ_BP,GOplotIn_BP<span class="variable">$Term</span>) <span class="comment">#系统聚类图</span></span><br><span class="line">chord&lt;-chord_dat(data = circ_CC,genes = genedata)</span><br><span class="line">GOCluster(circ_CC,GOplotIn_CC<span class="variable">$Term</span>) </span><br><span class="line">chord&lt;-chord_dat(data = circ_MF,genes = genedata) </span><br><span class="line">GOCluster(circ_MF,GOplotIn_MF<span class="variable">$Term</span>) </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ridgeplot(GSEA_KEGG) </span><br><span class="line">gseaplot2(GSEA_KEGG,1)</span><br><span class="line">gseaplot2(GSEA_KEGG,1:30)<span class="comment">#30是根据ridgeplot中有30个富集通路得到的</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">write.csv(KEGG, row.names=FALSE) <span class="comment"># 导出 CSV 文件</span></span><br><span class="line"><span class="comment"># 或</span></span><br><span class="line">library(openxlsx) <span class="comment"># 导入 openxlsx 包</span></span><br><span class="line">write.xlsx(KEGG, row.names=FALSE) <span class="comment"># 导出 Excel 文件</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">我的shiny代码部分是这样子的</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ui</span><br><span class="line">plotOutput(<span class="string">&quot;GO_barplot&quot;</span>),</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">enrichGO(gene()<span class="variable">$ENTREZID</span>,</span><br><span class="line">                     OrgDb = paste0(<span class="string">&#x27;org.&#x27;</span>, str_extract(input<span class="variable">$go_species</span>, <span class="string">&#x27;\\w+&#x27;</span>), <span class="string">&#x27;.eg.db&#x27;</span>),</span><br><span class="line">                     keyType = <span class="string">&quot;ENTREZID&quot;</span>,</span><br><span class="line">                     ont = <span class="string">&quot;ALL&quot;</span>,</span><br><span class="line">                     pvalueCutoff = input<span class="variable">$go_pvalueCutoff</span>,</span><br><span class="line">                     qvalueCutoff = input<span class="variable">$go_qvalueCutoff</span>,</span><br><span class="line">                     readable = T)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">server:</span><br><span class="line">output<span class="variable">$GO_barplot</span> &lt;- renderPlot(&#123;</span><br><span class="line">        <span class="keyword">if</span> (!is.null(GO_result())) &#123;</span><br><span class="line">            barplot(GO_result(), <span class="built_in">split</span>=<span class="string">&quot;ONTOLOGY&quot;</span>) + facet_grid(ONTOLOGY~., scale = <span class="string">&quot;free&quot;</span>) + </span><br><span class="line">                ggtitle(<span class="string">&quot;GO enrichment analysis bar chart&quot;</span>) +</span><br><span class="line">                <span class="comment">#theme(text = element_text(size = input$font1 , family = &quot;Arial&quot;, face = &quot;bold&quot;))</span></span><br><span class="line">                theme(</span><br><span class="line">                    text = element_text(size = input<span class="variable">$font1</span>, family = <span class="string">&quot;Arial&quot;</span>, face = <span class="string">&quot;bold&quot;</span>),</span><br><span class="line">                    axis.text.y = element_text(size = input<span class="variable">$font1</span> - 2),</span><br><span class="line">                    axis.title = element_text(size = input<span class="variable">$font2</span> + 2),</span><br><span class="line">                    legend.text = element_text(size = input<span class="variable">$font2</span>)</span><br><span class="line">                ) </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,  width = reactive(input<span class="variable">$plotWidth1</span>), height = reactive(input<span class="variable">$plotHeight1</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">等等，我想把下面的代码，转换成plotOutput(<span class="string">&quot;GO_barplot1&quot;</span>)，也用shiny的形式添加进去，能帮我改改吗？</span><br><span class="line"></span><br><span class="line"><span class="comment">###GO富集分析###</span></span><br><span class="line">GO_enrich = enrichGO(gene = entrezid_all[,1], <span class="comment">#表示前景基因，即待富集的基因列表;[,1]表示对entrezid_all数据集的第1列进行处理</span></span><br><span class="line">                     OrgDb = org.Hs.eg.db, </span><br><span class="line">                     keyType = <span class="string">&quot;ENTREZID&quot;</span>, <span class="comment">#输入数据的类型</span></span><br><span class="line">                     ont = <span class="string">&quot;ALL&quot;</span>, <span class="comment">#可以输入CC/MF/BP/ALL</span></span><br><span class="line">                     <span class="comment">#universe = 背景数据集 # 表示背景基因，无参的物种选择组装出来的全部unigenes作为背景基因；有参背景基因则不需要。</span></span><br><span class="line">                     pvalueCutoff = 1,qvalueCutoff = 1, <span class="comment">#表示筛选的阈值，阈值设置太严格可导致筛选不到基因。可指定 1 以输出全部</span></span><br><span class="line">                     readable = T) <span class="comment">#是否将基因ID映射到基因名称。</span></span><br><span class="line">GO_enrich  = data.frame(GO_enrich) <span class="comment">#将GO_enrich导成数据框格式</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">###GO/KEGG富集结果可视化###</span></span><br><span class="line"><span class="comment">#数据载入与处理#</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#纵向柱状图#</span></span><br><span class="line">ggplot(go_enrich, </span><br><span class="line">       aes(x=term,y=Count, fill=ONTOLOGY)) + <span class="comment">#x、y轴定义；根据ONTOLOGY填充颜色</span></span><br><span class="line">  geom_bar(<span class="built_in">stat</span>=<span class="string">&quot;identity&quot;</span>, width=0.8) +  <span class="comment">#柱状图宽度</span></span><br><span class="line">  scale_fill_manual(values = c(<span class="string">&quot;#6666FF&quot;</span>, <span class="string">&quot;#33CC33&quot;</span>, <span class="string">&quot;#FF6666&quot;</span>) ) +  <span class="comment">#柱状图填充颜色</span></span><br><span class="line">  facet_grid(ONTOLOGY~., scale = <span class="string">&#x27;free_y&#x27;</span>, space = <span class="string">&#x27;free_y&#x27;</span>)+</span><br><span class="line">  coord_flip() +  <span class="comment">#让柱状图变为纵向</span></span><br><span class="line">  xlab(<span class="string">&quot;GO term&quot;</span>) +  <span class="comment">#x轴标签</span></span><br><span class="line">  ylab(<span class="string">&quot;Gene_Number&quot;</span>) +  <span class="comment">#y轴标签</span></span><br><span class="line">  labs(title = <span class="string">&quot;GO Terms Enrich&quot;</span>)+  <span class="comment">#设置标题</span></span><br><span class="line">  theme_bw()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## 这个修改会出现一堆黑色的图</span></span><br><span class="line">ui:</span><br><span class="line"> plotOutput(<span class="string">&quot;GO_barplot1&quot;</span>),</span><br><span class="line"></span><br><span class="line"> output<span class="variable">$GO_barplot1</span> &lt;- renderPlot(&#123;</span><br><span class="line">            <span class="keyword">if</span> (!is.null(input<span class="variable">$go_species</span>) ) &#123;</span><br><span class="line">                GO_enrich &lt;- enrichGO(</span><br><span class="line">                    gene = gene()<span class="variable">$ENTREZID</span>, </span><br><span class="line">                    OrgDb = paste0(<span class="string">&#x27;org.&#x27;</span>, str_extract(input<span class="variable">$go_species</span>, <span class="string">&#x27;\\w+&#x27;</span>), <span class="string">&#x27;.eg.db&#x27;</span>), </span><br><span class="line">                    keyType = <span class="string">&quot;ENTREZID&quot;</span>,</span><br><span class="line">                    ont = <span class="string">&quot;ALL&quot;</span>,</span><br><span class="line">                    pvalueCutoff = input<span class="variable">$go_pvalueCutoff</span>,</span><br><span class="line">                    qvalueCutoff = input<span class="variable">$go_qvalueCutoff</span>,</span><br><span class="line">                    readable = TRUE</span><br><span class="line">                )</span><br><span class="line">                GO_enrich_df &lt;- data.frame(GO_enrich)  <span class="comment"># 将GO_enrich转换为数据框</span></span><br><span class="line">                </span><br><span class="line">                <span class="comment"># 绘制GO富集分析的柱状图</span></span><br><span class="line">                ggplot(GO_enrich_df, aes(x=Description, y=Count, fill=ONTOLOGY)) +</span><br><span class="line">                    geom_bar(<span class="built_in">stat</span>=<span class="string">&quot;identity&quot;</span>, width=0.8) +</span><br><span class="line">                    scale_fill_manual(values = c(<span class="string">&quot;#6666FF&quot;</span>, <span class="string">&quot;#33CC33&quot;</span>, <span class="string">&quot;#FF6666&quot;</span>)) +</span><br><span class="line">                    facet_grid(ONTOLOGY ~ ., scale = <span class="string">&#x27;free_y&#x27;</span>, space = <span class="string">&#x27;free_y&#x27;</span>) +</span><br><span class="line">                    coord_flip() +</span><br><span class="line">                    xlab(<span class="string">&quot;GO term&quot;</span>) +</span><br><span class="line">                    ylab(<span class="string">&quot;Gene Number&quot;</span>) +</span><br><span class="line">                    labs(title = <span class="string">&quot;GO Terms Enrichment&quot;</span>) +</span><br><span class="line">                    theme_bw()</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, width = reactive(input<span class="variable">$plotWidth1</span>), height = reactive(input<span class="variable">$plotHeight1</span>))</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a></h2><p>要在图表的右侧添加p-value的信息，它显示的adjust的信息</p>
+<p>GO&lt;-enrichGO( gene$ENTREZID,#GO富集分析<br>              OrgDb = GO_database,<br>              keyType = “ENTREZID”,#设定读取的gene ID类型<br>              ont = “ALL”,#(ont为ALL因此包括 Biological Process,Cellular Component,Mollecular Function三部分）<br>              pvalueCutoff = 0.05,#设定p值阈值<br>              qvalueCutoff = 0.05,#设定q值阈值<br>              readable = T<br>)</p>
+<p>除了这些参数还有什么参数吗？</p>
+<p>是的，<code>enrichGO</code>函数提供了多个参数来细化GO富集分析，除了你提到的这些参数外，还包括但不限于以下一些：</p>
+<ul>
+<li><p><strong>universe</strong>：用于指定背景基因集，即可能出现的所有基因。如果不指定，分析会默认使用OrgDb中的所有基因作为背景集。</p>
+</li>
+<li><p><strong>minGSSize</strong> 和 <strong>maxGSSize</strong>：分别用于设置富集分析中考虑的基因集的最小和最大尺寸。这可以帮助过滤掉太小或太大的基因集，这些基因集可能因为尺寸原因而不具代表性或统计意义。</p>
+</li>
+<li><p><strong>qvalueCutoff</strong>：用于设置q值（校正后的p值）的截断值，用于控制假发现率(FDR)。</p>
+</li>
+<li><p><strong>pAdjustMethod</strong>：用于调整p值的方法。包括”holm”、”hochberg”、”hommel”、”bonferroni”、”BH”（也称为”fdr”）、”BY”等，这些方法可以控制多重检验的错误率。</p>
+</li>
+<li><p><strong>evidence</strong>：允许用户根据证据代码过滤GO条目，例如通过特定实验验证的条目。</p>
+</li>
+<li><p><strong>ont</strong>：指定进行富集分析的本体类别，包括”BP”（生物过程）、”CC”（细胞组分）和”MF”（分子功能）以及”ALL”。</p>
+</li>
+<li><p><strong>readable</strong>：当设置为<code>TRUE</code>时，会尝试将基因ID转换为更易读的基因名称。</p>
+</li>
+<li><p><strong>pool</strong>：如果设置为<code>TRUE</code>，则会汇总不同本体的相同条目，这可能有助于简化输出结果。</p>
+</li>
+</ul>
+<p>这些参数允许用户根据具体的研究需求调整分析的细节。选择合适的参数设置可以帮助用户获得更准确和具有解释性的结果。为了深入了解这些参数及其用法，建议参阅<code>DOSE</code>包的官方文档或使用<code>?enrichGO</code>命令查看更详细的帮助信息。</p>
+<h3 id="一般情况下，用什么，给我代码"><a href="#一般情况下，用什么，给我代码" class="headerlink" title="一般情况下，用什么，给我代码"></a>一般情况下，用什么，给我代码</h3><p>library(clusterProfiler)<br>library(org.Hs.eg.db) # 以人类基因为例，如果是其他物种请替换相应的OrgDb包</p>
+<h1 id="假设你已经有了一个基因列表（Entrez-ID格式）"><a href="#假设你已经有了一个基因列表（Entrez-ID格式）" class="headerlink" title="假设你已经有了一个基因列表（Entrez ID格式）"></a>假设你已经有了一个基因列表（Entrez ID格式）</h1><p>gene_list &lt;- c(“geneID1”, “geneID2”, “geneID3”, …) # 请用实际的基因ID替换这里的示例ID</p>
+<h1 id="进行GO富集分析"><a href="#进行GO富集分析" class="headerlink" title="进行GO富集分析"></a>进行GO富集分析</h1><p>result &lt;- enrichGO(gene = gene_list,<br>                   OrgDb = org.Hs.eg.db,<br>                   keyType = “ENTREZID”,<br>                   ont = “ALL”, # 包括生物过程(BP)、细胞组分(CC)和分子功能(MF)<br>                   pAdjustMethod = “BH”, # 控制假发现率，”BH”即Benjamini-Hochberg方法<br>                   pvalueCutoff = 0.05, # p值截断<br>                   qvalueCutoff = 0.05, # q值截断，控制假发现率<br>                   readable = TRUE) # 转换基因ID为可读的基因名</p>
+<h1 id="查看富集分析结果"><a href="#查看富集分析结果" class="headerlink" title="查看富集分析结果"></a>查看富集分析结果</h1><p>head(result)</p>
+<h1 id="可视化富集分析结果"><a href="#可视化富集分析结果" class="headerlink" title="可视化富集分析结果"></a>可视化富集分析结果</h1><p>library(DOSE)<br>barplot(result, showCategory=20) # 显示前20个显著的GO项</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">花粱</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://wplfge3.github.io/2024/03/11/GO-KEGG%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/">https://wplfge3.github.io/2024/03/11/GO-KEGG%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">花粱</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2024/03/11/GO-KEGG%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="GO-KEGG富集分析">
+                        
+                        <span class="card-title">GO-KEGG富集分析</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            花粱
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/03/10/linux%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="linux服务器">
+                        
+                        <span class="card-title">linux服务器</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            花粱
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="tencent"
+                   type="playlist"
+                   id="2899252657"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2023-2024</span>
+            
+            <a href="/about" target="_blank">花粱</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

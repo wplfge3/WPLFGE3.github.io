@@ -685,6 +685,21 @@
 
 
 <p>不好分析，插件要java，项目，了解之间的关系，要用很长的时间，不如用docker。</p>
+<h2 id="docker-linux"><a href="#docker-linux" class="headerlink" title="docker linux"></a>docker linux</h2><p>是的，使用 Docker 运行 GATK 是一个非常好的选择，尤其是当你遇到环境依赖问题时，比如 Java 版本不匹配的情况。Docker 可以帮助你快速部署一个包含了所有必需依赖的隔离环境，从而避免直接在你的系统上安装不同版本的 Java。</p>
+<p>Broad Institute 提供了 GATK 的官方 Docker 镜像，你可以使用这些镜像来运行 GATK，而无需担心 Java 版本或其他依赖项的问题。以下是如何使用 Docker 运行 GATK 的大致步骤：</p>
+<h3 id="1-安装-Docker"><a href="#1-安装-Docker" class="headerlink" title="1. 安装 Docker"></a>1. 安装 Docker</h3><p>首先，确保你的 Linux 系统已经安装了 Docker。如果还没有安装，你可以访问 <a target="_blank" rel="noopener" href="https://docs.docker.com/get-docker/">Docker 官网</a> 获取安装指南。</p>
+<h3 id="2-拉取-GATK-的-Docker-镜像"><a href="#2-拉取-GATK-的-Docker-镜像" class="headerlink" title="2. 拉取 GATK 的 Docker 镜像"></a>2. 拉取 GATK 的 Docker 镜像</h3><p>打开终端，使用以下命令来拉取 GATK 的官方 Docker 镜像：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull broadinstitute/gatk:[tag]</span><br></pre></td></tr></table></figure>
+
+<p>这里的 <code>[tag]</code> 是你希望使用的 GATK 版本的标签。例如，如果你想使用 GATK 4.4.0.0 版本，你可以查找对应的标签在 Docker Hub 上的 GATK 镜像页面。</p>
+<h3 id="3-使用-Docker-运行-GATK"><a href="#3-使用-Docker-运行-GATK" class="headerlink" title="3. 使用 Docker 运行 GATK"></a>3. 使用 Docker 运行 GATK</h3><p>一旦镜像被拉取到你的机器上，你可以使用 <code>docker run</code> 命令来运行 GATK。例如，运行 GATK 的 <code>-h</code> 帮助命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --<span class="built_in">rm</span> broadinstitute/gatk:[tag] gatk -h</span><br></pre></td></tr></table></figure>
+
+<p>如果你需要处理本地文件（例如，读取或写入 VCF 文件、参考基因组文件等），你需要将这些文件挂载到 Docker 容器中。你可以使用 <code>-v</code> 参数来挂载本地目录到容器内部。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --<span class="built_in">rm</span> -v /path/to/your/data:/data broadinstitute/gatk:[tag] gatk -F /data/your-file.vcf ...</span><br></pre></td></tr></table></figure>
+
+<p>这里的 <code>/path/to/your/data</code> 是你的本地目录路径，<code>/data</code> 是容器内的挂载点。这样，容器内的 GATK 就可以访问到挂载目录中的文件了。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>使用 Docker 运行 GATK 可以显著简化环境配置过程，特别是对于涉及多个复杂依赖的生物信息学工具。通过使用官方提供的 Docker 镜像，你可以确保 GATK 运行在一个预配置且包含所有必需依赖的环境中，避免了直接在主机系统上安装和配置这些依赖的麻烦。</p>
 
                 
             </div>

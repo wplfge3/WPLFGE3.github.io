@@ -422,7 +422,7 @@ C:\Users\user\Desktop\blog\themes\hexo-theme-materyC:\Users\user\Desktop\blog\so
 <p>  Friends:<br>    url: /friends<br>    icon: fas fa-address-book<br>    children:<br>      - name: Music<br>        url: /music<br>        icon: fas fa-music<br>      - name: Movies<br>        url: /movies<br>        icon: fas fa-film<br>      - name: Books<br>        url: /books<br>        icon: fas fa-book<br>      - name: Galleries<br>        url: /galleries<br>        icon: fas fa-image</p>
 <p>账号密码：<a target="_blank" rel="noopener" href="https://blog.csdn.net/python8181/article/details/130757734?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~YuanLiJiHua~Position-2-130757734-blog-123957507.235%5Ev38%5Epc_relevant_sort_base1&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~YuanLiJiHua~Position-2-130757734-blog-123957507.235%5Ev38%5Epc_relevant_sort_base1&amp;utm_relevant_index=3">https://blog.csdn.net/python8181/article/details/130757734?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7EPosition-2-130757734-blog-123957507.235%5Ev38%5Epc_relevant_sort_base1&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EYuanLiJiHua%7EPosition-2-130757734-blog-123957507.235%5Ev38%5Epc_relevant_sort_base1&amp;utm_relevant_index=3</a></p>
 <p>令牌：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</p>
-<p>github:usename:<a href="mailto:&#x32;&#49;&#57;&#x32;&#x33;&#x34;&#49;&#x35;&#x33;&#x37;&#64;&#x71;&#113;&#46;&#x63;&#x6f;&#x6d;">&#x32;&#49;&#57;&#x32;&#x33;&#x34;&#49;&#x35;&#x33;&#x37;&#64;&#x71;&#113;&#46;&#x63;&#x6f;&#x6d;</a><br>密码：需要设置令牌</p>
+<p>github:usename:<a href="mailto:&#x32;&#x31;&#x39;&#50;&#51;&#52;&#49;&#53;&#x33;&#x37;&#64;&#x71;&#113;&#46;&#99;&#111;&#109;">&#x32;&#x31;&#x39;&#50;&#51;&#52;&#49;&#53;&#x33;&#x37;&#64;&#x71;&#113;&#46;&#99;&#111;&#109;</a><br>密码：需要设置令牌</p>
 <p>图片：</p>
 <p>比如我hexo n 1</p>
 <p>那么我会生成1.md和1文件夹，那么</p>
@@ -444,6 +444,188 @@ C:\Users\user\Desktop\blog\themes\hexo-theme-materyC:\Users\user\Desktop\blog\so
 <p>title: everyday2<br>date: 2023-11-16 20:37:04<br>tags:<br>encrypted: true<br>password: 7804a56a5c7636cc05814736f44139e32920810d3bd51aa099a5df932e754ce9<br>message: 7804a56a5c7636cc05814736f44139e32920810d3bd51aa099a5df932e754ce9</p>
 <hr>
 <p>这个输完密码后，还需要输入那个</p>
+<p>Hexo提供了许多功能和命令，帮助你高效地管理和发布你的博客内容。除了你提到的<code>hexo n &lt;名称&gt;</code>（<code>hexo new &lt;名称&gt;</code>）来创建新文章之外，还有其他一些有用的功能和命令：</p>
+<ol>
+<li><p><strong>服务器预览</strong>: 使用<code>hexo server</code>（或简写为<code>hexo s</code>）启动一个本地服务器，实时预览你的博客。这对于在发布前查看更改非常有帮助。</p>
+</li>
+<li><p><strong>生成静态文件</strong>: 通过<code>hexo generate</code>（或简写为<code>hexo g</code>）生成静态文件。这一步骤将你的Markdown文件和资源编译成静态HTML、CSS和JavaScript文件，以便上传到服务器或静态网站托管服务。</p>
+</li>
+<li><p><strong>部署到服务器</strong>: <code>hexo deploy</code>（或简写为<code>hexo d</code>）命令可以帮助你将生成的静态文件部署到远程服务器。使用这个命令之前，你需要在<code>_config.yml</code>配置文件中设置好部署选项。</p>
+</li>
+<li><p><strong>清除缓存</strong>: <code>hexo clean</code>命令用于清除缓存文件（db.json）和已生成的静态文件（public目录）。这对于解决某些构建问题非常有用。</p>
+</li>
+<li><p><strong>草稿管理</strong>: 你可以使用<code>hexo new draft &lt;名称&gt;</code>创建草稿，并通过<code>hexo publish &lt;草稿名&gt;</code>将草稿发布为正式文章。这有助于你管理未完成的文章。</p>
+</li>
+<li><p><strong>多环境部署</strong>: Hexo支持多环境配置，你可以为不同的部署环境（如开发环境和生产环境）设置不同的配置选项。</p>
+</li>
+<li><p><strong>主题和插件</strong>: Hexo有一个丰富的主题和插件生态系统，你可以轻松更换主题或添加插件来扩展你的博客功能。比如，添加搜索功能、评论系统、图像优化、SEO优化等。</p>
+</li>
+<li><p><strong>自定义</strong>: 你可以通过编辑<code>_config.yml</code>配置文件来自定义你的博客设置，如修改网站标题、描述、作者信息，以及其他全局配置选项。</p>
+</li>
+</ol>
+<p>这些是Hexo的核心功能，有助于你高效地管理和发布博客。根据你的具体需求，你还可以探索更多高级功能和插件，使你的博客更加个性化和功能丰富。</p>
+<h2 id="将带图片的Word文档转换成Markdown格式是可能的，但这个过程可能需要几个步骤，因为Markdown本身是一种轻量级标记语言，设计用于简化文档的格式设置并易于转换为HTML。对于包含图片的文档，转换过程通常涉及提取图片并在Markdown文件中适当引用它们。这里是一个大概的流程："><a href="#将带图片的Word文档转换成Markdown格式是可能的，但这个过程可能需要几个步骤，因为Markdown本身是一种轻量级标记语言，设计用于简化文档的格式设置并易于转换为HTML。对于包含图片的文档，转换过程通常涉及提取图片并在Markdown文件中适当引用它们。这里是一个大概的流程：" class="headerlink" title="将带图片的Word文档转换成Markdown格式是可能的，但这个过程可能需要几个步骤，因为Markdown本身是一种轻量级标记语言，设计用于简化文档的格式设置并易于转换为HTML。对于包含图片的文档，转换过程通常涉及提取图片并在Markdown文件中适当引用它们。这里是一个大概的流程："></a>将带图片的Word文档转换成Markdown格式是可能的，但这个过程可能需要几个步骤，因为Markdown本身是一种轻量级标记语言，设计用于简化文档的格式设置并易于转换为HTML。对于包含图片的文档，转换过程通常涉及提取图片并在Markdown文件中适当引用它们。这里是一个大概的流程：</h2><ol>
+<li><p><strong>文档转换</strong>:</p>
+<ul>
+<li>首先，你需要将Word文档的文本转换为Markdown格式。有一些工具和在线服务可以帮助你实现这一点，如Pandoc、MarkdownPad、Typora等。</li>
+<li>Pandoc是一个功能强大的文档转换工具，支持多种格式之间的转换，包括从Word（.docx）到Markdown。</li>
+</ul>
+</li>
+<li><p><strong>图片处理</strong>:</p>
+<ul>
+<li>在转换过程中，图片可能不会自动嵌入到Markdown文件中。通常，图片会被提取并保存在一个单独的文件夹中，你需要在Markdown文件中手动链接到这些图片。</li>
+<li>你可以使用Markdown的图片语法来引用这些图片，格式如下：<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">图片描述</span>](<span class="link">图片路径</span>)</span><br></pre></td></tr></table></figure></li>
+<li>其中，“图片描述”是图片的替代文本（对于视觉障碍人士的屏幕阅读器很重要），而“图片路径”是图片文件的相对或绝对路径。</li>
+</ul>
+</li>
+<li><p><strong>实践建议</strong>:</p>
+<ul>
+<li>确保转换后手动检查Markdown文件，特别是图片引用和格式设置，以保证转换的准确性。</li>
+<li>考虑图片的托管方式。如果你的Markdown文件将被用于网站或博客，你可能需要将图片上传到网上，如图像托管服务或你的网站服务器，并使用网络链接引用图片。</li>
+</ul>
+</li>
+<li><p><strong>使用Pandoc转换</strong>:</p>
+<ul>
+<li>如果你选择使用Pandoc，可以通过命令行使用以下命令将Word文档转换为Markdown：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandoc -s yourfile.docx -o output.md</span><br></pre></td></tr></table></figure></li>
+<li>这条命令将<code>yourfile.docx</code>转换为Markdown文件<code>output.md</code>。根据你的具体情况，你可能需要进一步调整Pandoc的命令行选项来满足你的需求。</li>
+</ul>
+</li>
+</ol>
+<p>这个过程可能稍显复杂，但通过适当的工具和一些手动调整，你应该能够将带图片的Word文档成功转换为Markdown格式。</p>
+<h2 id="我能部署看板娘吗？"><a href="#我能部署看板娘吗？" class="headerlink" title="我能部署看板娘吗？"></a>我能部署看板娘吗？</h2><p>是的，你可以在你的网站或博客上部署“看板娘”（Live2D模型）。这通常通过在网页上嵌入特定的JavaScript库来实现，例如使用<code>live2d-widget</code>或其他相似的库。这些库允许你在网站上添加可交互的2D模型，增加网站的互动性和吸引力。以下是基本的步骤和考虑事项：</p>
+<h3 id="步骤-1-选择一个看板娘库"><a href="#步骤-1-选择一个看板娘库" class="headerlink" title="步骤 1: 选择一个看板娘库"></a>步骤 1: 选择一个看板娘库</h3><ul>
+<li><strong>live2d-widget</strong>是一个流行的选择，可以让你轻松地将Live2D模型添加到你的网站上。</li>
+<li>还有其他库和工具可以实现类似的功能，比如<strong>PixiLive2D</strong>，它基于PixiJS。</li>
+</ul>
+<h3 id="步骤-2-获取Live2D模型"><a href="#步骤-2-获取Live2D模型" class="headerlink" title="步骤 2: 获取Live2D模型"></a>步骤 2: 获取Live2D模型</h3><ul>
+<li>你需要一个Live2D模型文件。有些库可能提供了一些基础模型，或者你可以在互联网上找到或购买符合你需求的模型。</li>
+<li>注意版权问题，确保你有权使用选定的模型。</li>
+</ul>
+<h3 id="步骤-3-部署到你的网站"><a href="#步骤-3-部署到你的网站" class="headerlink" title="步骤 3: 部署到你的网站"></a>步骤 3: 部署到你的网站</h3><ul>
+<li>根据你选择的库，你需要将特定的JS库和模型文件添加到你的网站项目中。</li>
+<li>通常，你需要在你的HTML中引入JS库，然后通过JS脚本初始化Live2D模型，指定模型的路径和其他配置。</li>
+</ul>
+<h3 id="示例（使用live2d-widget）"><a href="#示例（使用live2d-widget）" class="headerlink" title="示例（使用live2d-widget）:"></a>示例（使用live2d-widget）:</h3><ol>
+<li><p><strong>添加库到HTML</strong>:<br>在你的HTML文件中，添加以下代码来引入<code>live2d-widget</code>库：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;path/to/live2d-widget.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>注意替换<code>path/to/</code>为库文件的实际路径。</p>
+</li>
+<li><p><strong>初始化看板娘</strong>:<br>使用JavaScript初始化模型，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">L2Dwidget.<span class="title function_">init</span>(&#123;</span><br><span class="line">  <span class="attr">model</span>: &#123;</span><br><span class="line">    <span class="attr">jsonPath</span>: <span class="string">&quot;path/to/your/model.json&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">display</span>: &#123;</span><br><span class="line">    <span class="attr">position</span>: <span class="string">&quot;left&quot;</span>, <span class="comment">// 显示位置</span></span><br><span class="line">    <span class="attr">width</span>: <span class="number">150</span>, <span class="comment">// 宽度</span></span><br><span class="line">    <span class="attr">height</span>: <span class="number">300</span>, <span class="comment">// 高度</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">mobile</span>: &#123;</span><br><span class="line">    <span class="attr">show</span>: <span class="literal">true</span> <span class="comment">// 是否在移动设备上显示</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>替换<code>path/to/your/model.json</code>为你的Live2D模型的实际路径。</p>
+</li>
+</ol>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><ul>
+<li><strong>性能考虑</strong>：添加动态内容到你的网站可能会影响加载时间和性能，特别是在移动设备上。合理配置模型的大小和行为，以保持良好的用户体验。</li>
+<li><strong>兼容性</strong>：确保你的实现在主流浏览器上都能正常工作。</li>
+<li><strong>版权</strong>：使用任何第三方模型时，请确保你有权使用它，以避免侵犯版权。</li>
+</ul>
+<p>通过上述步骤，你可以在你的网站或博客上成功部署一个可爱的看板娘，为你的访问者提供独特的互动体验。</p>
+<p>在Hexo博客上部署看板娘，可以增添网站的互动性和视觉吸引力。下面是详细的步骤，包括安装、配置和启用看板娘。这个过程以在Hexo博客上使用一个常见的看板娘实现<code>live2d-widget.js</code>为例：</p>
+<h3 id="步骤-1-准备你的Hexo环境"><a href="#步骤-1-准备你的Hexo环境" class="headerlink" title="步骤 1: 准备你的Hexo环境"></a>步骤 1: 准备你的Hexo环境</h3><p>确保你的Hexo环境已经搭建好，且你能够正常运行和访问你的博客。</p>
+<h3 id="步骤-2-下载和安装Live2D库"><a href="#步骤-2-下载和安装Live2D库" class="headerlink" title="步骤 2: 下载和安装Live2D库"></a>步骤 2: 下载和安装Live2D库</h3><ol>
+<li><p><strong>选择一个看板娘库</strong>:<br>对于Hexo，一个常用的库是<code>live2d-widget.js</code>，这可以通过NPM安装或直接在HTML中通过标签引入。</p>
+</li>
+<li><p><strong>通过NPM安装</strong>（如果可用）:<br>打开命令行或终端，切换到你的Hexo博客目录，运行以下命令来安装live2d-widget（如果库支持NPM安装）:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save live2d-widget</span><br></pre></td></tr></table></figure>
+<p>注意：具体的包名可能有所不同，请参考你选择的看板娘库的文档。</p>
+</li>
+</ol>
+<h3 id="步骤-3-添加Live2D到你的主题"><a href="#步骤-3-添加Live2D到你的主题" class="headerlink" title="步骤 3: 添加Live2D到你的主题"></a>步骤 3: 添加Live2D到你的主题</h3><ol>
+<li><p><strong>编辑你的主题文件</strong>:<br>找到你的Hexo主题的布局文件，通常在<code>themes/[your-theme]/layout</code>目录下的<code>_layout.ejs</code>或<code>_layout.swig</code>文件中，具体取决于你的主题使用的模板引擎。</p>
+</li>
+<li><p><strong>引入Live2D脚本</strong>:<br>在上述文件的<code>&lt;body&gt;</code>标签结束之前（<code>&lt;/body&gt;</code>之前），添加以下代码来引入Live2D库和初始化看板娘。如果你通过NPM安装，可能需要将库文件放到你的主题的静态文件目录中，并适当修改路径。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;/path/to/live2d.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;/path/to/autoload.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>确保替换<code>/path/to/</code>为实际的路径。如果你直接下载库文件到你的主题中，确保路径正确指向这些文件。</p>
+</li>
+<li><p><strong>配置看板娘</strong>:<br>通常，<code>live2d-widget</code>或其他看板娘库会有一个或多个配置文件，你可以在其中指定模型、大小、位置等选项。根据你使用的库的文档来配置。</p>
+</li>
+</ol>
+<h3 id="步骤-4-调试和优化"><a href="#步骤-4-调试和优化" class="headerlink" title="步骤 4: 调试和优化"></a>步骤 4: 调试和优化</h3><ol>
+<li><p><strong>启动Hexo服务器</strong>:<br>使用<code>hexo server</code>命令启动本地服务器，然后在浏览器中访问你的博客，查看看板娘是否已正确显示和工作。</p>
+</li>
+<li><p><strong>调整配置</strong>:<br>根据你的需要调整看板娘的位置、大小等设置，确保它不会干扰网站内容的阅读。</p>
+</li>
+</ol>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li><strong>版权和使用许可</strong>：确保你使用的模型和看板娘库遵循其许可协议，特别是如果你的网站是公开的或具有商业性质。</li>
+<li><strong>性能影响</strong>：看板娘可能会增加网站的加载时间，特别是在移动设备上。测试并优化性能，以保持良好的用户体验。</li>
+<li><strong>兼容性测试</strong>：确保在不同的浏览器和设备上测试看板娘的显示和功能，以保证所有用户都能获得良好的体验。</li>
+</ul>
+<p>通过上述步骤，你应该能够在你的Hexo博客主页上成功部署一个看板娘。如果在过程中遇到任何具体问题，查阅相应的库文档和Hexo文</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><p>将CSDN或其他网站的内容下载并部署到自己的网站上需要考虑几个方面，特别是法律和道德问题。</p>
+<h3 id="法律和道德考虑"><a href="#法律和道德考虑" class="headerlink" title="法律和道德考虑"></a>法律和道德考虑</h3><ul>
+<li><strong>版权问题</strong>：大多数网站的内容，包括CSDN上的文章和博客，都受到版权保护。未经内容所有者的明确许可，直接复制和发布这些内容到你自己的网站是侵犯版权的行为，可能会导致法律后果。</li>
+<li><strong>内容归属</strong>：即使在获得了必要的权限后，也应该清楚地标明内容的原作者和来源，并确保遵守任何与该内容相关的许可协议的要求。</li>
+</ul>
+<h3 id="技术实现"><a href="#技术实现" class="headerlink" title="技术实现"></a>技术实现</h3><p>虽然从技术角度来看，下载网页内容并部署到自己的网站是可行的，这里简要说明可能的技术步骤，但请记得，除非你有权这么做，否则不应实施：</p>
+<ol>
+<li><p><strong>获取内容</strong>：</p>
+<ul>
+<li>使用网页抓取工具（如<code>wget</code>、<code>curl</code>或专门的爬虫软件）可以下载网页的HTML内容。</li>
+<li>开发一个爬虫程序，例如使用Python的<code>BeautifulSoup</code>或<code>Scrapy</code>，可以更精细地解析和提取网页内容。</li>
+</ul>
+</li>
+<li><p><strong>转换内容</strong>：</p>
+<ul>
+<li>将下载的内容转换为适合你网站的格式，可能需要一些手动编辑或编写脚本自动化处理，特别是如果涉及到从HTML转换为其他格式，如Markdown。</li>
+</ul>
+</li>
+<li><p><strong>部署内容</strong>：</p>
+<ul>
+<li>将转换后的内容部署到你的网站上，这可能包括上传到你的网站服务器、调整网站的内容管理系统（CMS）或通过静态网站生成器（如Jekyll、Hexo）重新生成站点。</li>
+</ul>
+</li>
+</ol>
+<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h3><ul>
+<li><strong>原创内容</strong>：鼓励创作和分享原创内容。这不仅避免了法律问题，也有助于构建个人或品牌的信誉。</li>
+<li><strong>合法使用第三方内容</strong>：如果你需要使用第三方内容，尝试联系原作者获取许可，或者使用标明为可自由使用（如遵循特定许可协议）的内容。</li>
+<li><strong>内容引用</strong>：对于引用或灵感来源于他人的内容，应该明确标注原作者和来源链接，尊重原创者的劳动成果。</li>
+</ul>
+<p>总之，尽管从技术上可能能够实现这一目标，但在没有明确授权的情况下直接复制他人网站的内容到自己的网站是不合法也不道德的行为。始终寻求合法和道德的方式来使用和分享内容。</p>
+<h2 id="html转md"><a href="#html转md" class="headerlink" title="html转md"></a>html转md</h2><p>在Hexo中部署一个自定义的HTML网页相对简单。通常，Hexo是用来生成静态博客的，它会将Markdown文件转换为HTML。但是，如果你已经有了一个HTML文件，你可以通过以下步骤将其添加到你的Hexo站点中：</p>
+<h3 id="方法-1-直接放置在-source-目录"><a href="#方法-1-直接放置在-source-目录" class="headerlink" title="方法 1: 直接放置在 source 目录"></a>方法 1: 直接放置在 <code>source</code> 目录</h3><ol>
+<li><p><strong>放置HTML文件</strong>：</p>
+<ul>
+<li>将你的HTML文件放置在Hexo项目的 <code>source</code> 目录中。你可以将文件放在根目录下，或者创建一个子目录来组织你的HTML文件。例如，如果你想要你的页面通过URL <code>/mypage</code> 访问，你可以将HTML文件命名为 <code>mypage.html</code> 并直接放置在 <code>source</code> 目录，或者创建一个名为 <code>mypage</code> 的文件夹并将文件命名为 <code>index.html</code> 放在里面。</li>
+</ul>
+</li>
+<li><p><strong>生成静态文件</strong>：</p>
+<ul>
+<li>运行 <code>hexo generate</code> 或简写 <code>hexo g</code> 来生成静态文件。Hexo会处理 <code>source</code> 目录下的所有文件，包括你的自定义HTML文件，将它们复制到 <code>public</code> 目录中。</li>
+</ul>
+</li>
+<li><p><strong>预览和部署</strong>：</p>
+<ul>
+<li>你可以通过运行 <code>hexo server</code> 来在本地预览你的站点，包括你的自定义HTML页面。</li>
+<li>如果一切看起来都不错，使用 <code>hexo deploy</code> 或简写 <code>hexo d</code> 来将你的网站部署到远程服务器。</li>
+</ul>
+</li>
+</ol>
+<h3 id="方法-2-使用-Hexo-页面生成器"><a href="#方法-2-使用-Hexo-页面生成器" class="headerlink" title="方法 2: 使用 Hexo 页面生成器"></a>方法 2: 使用 Hexo 页面生成器</h3><p>如果你希望更好地利用Hexo的模板系统（例如，使你的HTML页面包含通用的头部、尾部或侧边栏），你可以使用Hexo的页面（Page）功能。</p>
+<ol>
+<li><p><strong>创建新页面</strong>：</p>
+<ul>
+<li>运行 <code>hexo new page &quot;mypage&quot;</code> 来创建一个新页面。这将在 <code>source</code> 目录下创建一个名为 <code>mypage</code> 的新目录，并在该目录中创建一个 <code>index.md</code> 文件。</li>
+</ul>
+</li>
+<li><p><strong>修改为HTML内容</strong>：</p>
+<ul>
+<li>将 <code>index.md</code> 文件的扩展名改为 <code>.html</code>，然后用你自己的HTML内容替换该文件中的内容。如果你希望使用Hexo的模板功能，在HTML文件中插入模板标签。</li>
+</ul>
+</li>
+<li><p><strong>配置页面</strong>：</p>
+<ul>
+<li>如果需要，你可以编辑页面目录下的 <code>index.html</code>（原<code>index.md</code>）文件顶部的YAML头部，添加例如标题或日期等元数据。</li>
+</ul>
+</li>
+<li><p><strong>生成和部署</strong>：</p>
+<ul>
+<li>同样，使用 <code>hexo generate</code> 和 <code>hexo deploy</code> 来生成静态文件并将它们部署到服务器。</li>
+</ul>
+</li>
+</ol>
+<p>通过以上任一方法，你都可以将自定义HTML页面集成到你的Hexo站点中。选择哪一种方法取决于你的具体需求，比如是否需要Hexo的模板特性或者是简单地托管一个静态HTML文件。</p>
 
                 
             </div>
