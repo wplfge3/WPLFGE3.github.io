@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="linux服务器, HL&#39;s blog">
-    <meta name="description" content="java更新根据您提供的信息，尝试安装openjdk-11-jdk时出现了依赖关系问题，同时也提到了rstudio的依赖问题。这意味着您的系统中可能有一些先前安装的软件包存在问题，或者在安装openjdk-11-jdk过程中遇到了依赖问题。">
+    <meta name="description" content="java更新/usr/lib/jvm/java-11-openjdk-amd64/bin/java -version
+根据您提供的信息，尝试安装openjdk-11-jdk时出现了依赖关系问题，同时也提到了rstudio的依赖问题。这意味着">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -149,6 +150,17 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/html/lunpan.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-link" style="zoom: 0.6;"></i>
+      
+      <span>Lunpan</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -251,6 +263,17 @@
 			    <i class="fa-fw fas fa-address-book"></i>
 			
 			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/html/lunpan.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-link"></i>
+			
+			Lunpan
 		</a>
           
         </li>
@@ -409,7 +432,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="java更新"><a href="#java更新" class="headerlink" title="java更新"></a>java更新</h2><p>根据您提供的信息，尝试安装<code>openjdk-11-jdk</code>时出现了依赖关系问题，同时也提到了<code>rstudio</code>的依赖问题。这意味着您的系统中可能有一些先前安装的软件包存在问题，或者在安装<code>openjdk-11-jdk</code>过程中遇到了依赖问题。系统建议您运行<code>apt --fix-broken install</code>来尝试自动修复这些问题。</p>
+                <h2 id="java更新"><a href="#java更新" class="headerlink" title="java更新"></a>java更新</h2><p>/usr/lib/jvm/java-11-openjdk-amd64/bin/java -version</p>
+<p>根据您提供的信息，尝试安装<code>openjdk-11-jdk</code>时出现了依赖关系问题，同时也提到了<code>rstudio</code>的依赖问题。这意味着您的系统中可能有一些先前安装的软件包存在问题，或者在安装<code>openjdk-11-jdk</code>过程中遇到了依赖问题。系统建议您运行<code>apt --fix-broken install</code>来尝试自动修复这些问题。</p>
 <p>这里是一步步如何解决这个问题的指导：</p>
 <h3 id="1-修复损坏的依赖"><a href="#1-修复损坏的依赖" class="headerlink" title="1. 修复损坏的依赖"></a>1. 修复损坏的依赖</h3><p>首先，按照系统的建议执行以下命令，尝试自动修复损坏的依赖关系：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt --fix-broken install</span><br></pre></td></tr></table></figure>

@@ -5,7 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="转录本, HL&#39;s blog">
-    <meta name="description" content="从 ＮＣＢＩ数据库中获取６组转录组数据，分 别为 未 受 ＮＤＶ 感 染 的 对 照 组 （登 录 号 分 别 为ＳＲＲ１３０２１９４２、ＳＲＲ１３０２１９４３、ＳＲＲ１３０２１９４６）和 受ＮＤＶ 感染的处理组（登录号分别为 ＳＲＲ１３０">
+    <meta name="description" content="简单的转录组只需要两个文件
+SRR_Acc_List.txt
+里面的内容：SRR9115998SRR9115999SRR9116000SRR9116001SRR9116002SRR9116003SRR9116004SRR9116005SRR">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -149,6 +151,17 @@
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/html/lunpan.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-link" style="zoom: 0.6;"></i>
+      
+      <span>Lunpan</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -251,6 +264,17 @@
 			    <i class="fa-fw fas fa-address-book"></i>
 			
 			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/html/lunpan.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-link"></i>
+			
+			Lunpan
 		</a>
           
         </li>
@@ -409,7 +433,95 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>从 ＮＣＢＩ数据库中获取６组转录组数据，分 别为 未 受 ＮＤＶ 感 染 的 对 照 组 （登 录 号 分 别 为<br>ＳＲＲ１３０２１９４２、ＳＲＲ１３０２１９４３、ＳＲＲ１３０２１９４６）和 受ＮＤＶ 感染的处理组（登录号分别为 ＳＲＲ１３０２１９４７、<br>ＳＲＲ１３０２１９５５、ＳＲＲ１３０２１９５６），</p>
+                <p>简单的转录组<br>只需要两个文件</p>
+<p>SRR_Acc_List.txt</p>
+<p>里面的内容：<br>SRR9115998<br>SRR9115999<br>SRR9116000<br>SRR9116001<br>SRR9116002<br>SRR9116003<br>SRR9116004<br>SRR9116005<br>SRR9116006<br>SRR9116007<br>SRR9116008<br>SRR9116009</p>
+<p>和<br>RNA3_ensemble.py</p>
+<p>代码在下方，只需要改路径</p>
+<p>最后就能得到FPKM表</p>
+<p>import os<br>import subprocess</p>
+<h1 id="文件路径和目录设置"><a href="#文件路径和目录设置" class="headerlink" title="文件路径和目录设置"></a>文件路径和目录设置</h1><p>id_txt = “/home/data1/Ghl/test_RNA3/SRR_Acc_List.txt”<br>base_dir = “/home/data1/Ghl/test_RNA3”<br>directories = [<br>    “all_sra”,<br>    “fastq1_2”,<br>    “fastqc”,<br>    “fastp”,<br>    “sam”,<br>    “bam”,<br>    “short_bam”,<br>    “gtf”,<br>    “htseq”,<br>    “_e_gtf”<br>]</p>
+<h1 id="确保所有目录存在"><a href="#确保所有目录存在" class="headerlink" title="确保所有目录存在"></a>确保所有目录存在</h1><p>for directory in directories:<br>    dir_path = os.path.join(base_dir, directory)<br>    os.makedirs(dir_path, exist_ok=True)<br>print(“All directories are ensured to exist.”)</p>
+<h1 id="读取SRR序列ID"><a href="#读取SRR序列ID" class="headerlink" title="读取SRR序列ID"></a>读取SRR序列ID</h1><p>srr_ids = []<br>try:<br>    with open(id_txt, ‘r’) as file:<br>        for line in file:<br>            srr_id = line.strip()  # 去除行尾的换行符和空格<br>            if srr_id:  # 确保不是空行<br>                srr_ids.append(srr_id)<br>    print(“SRR IDs read successfully:”, srr_ids)<br>except FileNotFoundError:<br>    print(“File not found.”)<br>except Exception as e:<br>    print(“An error occurred:”, e)</p>
+<p>base_dir = “/home/data1/Ghl/test_RNA3”    #设置基本工作路径，一般是sra文件的上一级文件夹<br>sra_dir = f”{base_dir}/all_sra”<br>fastq_dir = f”{base_dir}/fastq1_2”<br>fastqc_dir = f”{base_dir}/fastqc”<br>fastp_dir = f”{base_dir}/fastp”<br>sam_dir = f”{base_dir}/sam”<br>bam_dir = f”{base_dir}/bam”<br>short_bam_dir = f”{base_dir}/short_bam”<br>gtf_dir = f”{base_dir}/gtf”<br>htseq_dir = f”{base_dir}/htseq”<br>e_gtf_dir = f”{base_dir}/_e_gtf”</p>
+<p>hisat2_index = “/home/data1/EN_ref/GallusGRCg7b_index”     #设置hisat2_index索引，这个暂时不要改变路径<br>reference_gtf = “/home/data1/EN_ref/GallusGRCg7b.gtf”   #设置参考基因的gtf文件，可以用此路径执行，未来也可以在ensembl中下载鸡的gtf文件<br>output_path = “/home/data1/EN_ref/mergelist.txt”  #设置输出mergelist.txt的输出路径，此时会创建一个mergelist.txt的文件，让输出的内容进入到这个txt文件夹里<br>stringtie_merge_path = “/home/data1/EN_ref/GallusGRCg7b.gtf”   #设置参考基因的gtf文件，用于不同路径参数设置<br>###注意：在最下方处也有要修改路径，在运行这个脚本前，应当新建一个_e_gtf文件夹，然后将_e_gtf文件夹的绝对路径输入至target_dir处</p>
+<h1 id="Ensure-all-directories-exist"><a href="#Ensure-all-directories-exist" class="headerlink" title="Ensure all directories exist"></a>Ensure all directories exist</h1><p>for d in [sra_dir, fastq_dir, fastqc_dir, fastp_dir, sam_dir, bam_dir, short_bam_dir, gtf_dir, htseq_dir, e_gtf_dir]:<br>    os.makedirs(d, exist_ok=True)</p>
+<h1 id="检查并下载缺失的SRA文件"><a href="#检查并下载缺失的SRA文件" class="headerlink" title="检查并下载缺失的SRA文件"></a>检查并下载缺失的SRA文件</h1><p>for srr_id in srr_ids:<br>    sra_file_path = os.path.join(sra_dir, f”{srr_id}.sra”)<br>    if not os.path.exists(sra_file_path):<br>        print(f”Downloading {srr_id}…”)<br>        subprocess.run([“prefetch”, srr_id], check=True)<br>        subprocess.run([“mv”, os.path.join(“sra”, f”{srr_id}.sra”), sra_dir], check=True)<br>    else:<br>        print(f”{srr_id}.sra already exists, skipping download.”)</p>
+<h1 id="Converting-SRA-to-FASTQ"><a href="#Converting-SRA-to-FASTQ" class="headerlink" title="Converting SRA to FASTQ"></a>Converting SRA to FASTQ</h1><p>for srr_id in srr_ids:<br>    print(f”Converting {srr_id} to FASTQ…”)<br>    subprocess.run([“fastq-dump”, “–outdir”, fastq_dir, “–split-files”, os.path.join(sra_dir, f”{srr_id}.sra”)], check=True)</p>
+<h1 id="Quality-control-with-FastQC"><a href="#Quality-control-with-FastQC" class="headerlink" title="Quality control with FastQC"></a>Quality control with FastQC</h1><p>for srr_id in srr_ids:<br>    print(f”Quality control for {srr_id}…”)<br>    subprocess.run([“fastqc”, os.path.join(fastq_dir, f”{srr_id}_1.fastq”), os.path.join(fastq_dir, f”{srr_id}_2.fastq”), “-o”, fastqc_dir], check=True)</p>
+<h1 id="Trimming-reads-with-Fastp"><a href="#Trimming-reads-with-Fastp" class="headerlink" title="Trimming reads with Fastp"></a>Trimming reads with Fastp</h1><pre><code>print(f&quot;Processing sample &#123;srr_id&#125; with fastp...&quot;)
+subprocess.run([
+    &quot;fastp&quot;,
+    &quot;-i&quot;, os.path.join(fastq_dir, f&quot;&#123;srr_id&#125;_1.fastq&quot;),
+    &quot;-I&quot;, os.path.join(fastq_dir, f&quot;&#123;srr_id&#125;_2.fastq&quot;),
+    &quot;-o&quot;, os.path.join(fastp_dir, f&quot;output&#123;srr_id&#125;_1.fastq&quot;),
+    &quot;-O&quot;, os.path.join(fastp_dir, f&quot;output&#123;srr_id&#125;_2.fastq&quot;),
+    &quot;--length_required&quot;, &quot;36&quot;,
+    &quot;--low_complexity_filter&quot;,
+    &quot;--qualified_quality_phred&quot;, &quot;10&quot;,
+    &quot;--unqualified_percent_limit&quot;, &quot;50&quot;,
+    &quot;--n_base_limit&quot;, &quot;10&quot;,
+    &quot;--compression&quot;, &quot;6&quot;,
+    &quot;-R&quot;, srr_id,
+    &quot;-h&quot;, os.path.join(fastp_dir, f&quot;&#123;srr_id&#125;.html&quot;)
+])
+</code></pre>
+<h1 id="Alignment-with-HISAT2"><a href="#Alignment-with-HISAT2" class="headerlink" title="Alignment with HISAT2"></a>Alignment with HISAT2</h1><p>for srr_id in srr_ids:<br>    print(f”Aligning {srr_id} using HISAT2…”)<br>    subprocess.run([<br>        “hisat2”, “-p”, “8”, “–dta”,<br>        “-x”, hisat2_index,<br>        “-1”, os.path.join(fastp_dir, f”output{srr_id}_1.fastq”),<br>        “-2”, os.path.join(fastp_dir, f”output{srr_id}_2.fastq”),<br>        “-S”, os.path.join(sam_dir, f”{srr_id}.sam”)<br>    ], check=True)</p>
+<h1 id="SAM转换为BAM并排序"><a href="#SAM转换为BAM并排序" class="headerlink" title="SAM转换为BAM并排序"></a>SAM转换为BAM并排序</h1><p>for srr_id in srr_ids:<br>    print(f”Converting and sorting {srr_id} SAM to BAM…”)</p>
+<pre><code># 临时BAM文件的路径
+temp_bam_path = os.path.join(sra_dir, f&quot;&#123;srr_id&#125;.bam&quot;)
+
+# 使用samtools view将SAM转换为未排序的BAM，输出到临时文件
+subprocess.run([&quot;samtools&quot;, &quot;view&quot;, &quot;-bS&quot;, os.path.join(sam_dir, f&quot;&#123;srr_id&#125;.sam&quot;)], stdout=open(temp_bam_path, &#39;wb&#39;), check=True)
+
+# 对临时BAM文件进行排序，并将结果保存到最终的路径
+sorted_bam_path = os.path.join(short_bam_dir, f&quot;&#123;srr_id&#125;.sorted.bam&quot;)
+subprocess.run([&quot;samtools&quot;, &quot;sort&quot;, &quot;-o&quot;, sorted_bam_path, temp_bam_path], check=True)
+
+# 删除临时BAM文件以节省空间
+os.remove(temp_bam_path)
+</code></pre>
+<h1 id="Generating-GTF-files-with-StringTie"><a href="#Generating-GTF-files-with-StringTie" class="headerlink" title="Generating GTF files with StringTie"></a>Generating GTF files with StringTie</h1><p>for srr_id in srr_ids:<br>    print(f”Generating GTF for {srr_id} with StringTie…”)<br>    subprocess.run([<br>        “stringtie”, “-p”, “8”, “-G”, reference_gtf, “-o”, os.path.join(gtf_dir, f”{srr_id}.gtf”),<br>        os.path.join(short_bam_dir, f”{srr_id}.sorted.bam”)<br>    ], check=True)</p>
+<p>for srr_id in srr_ids:<br>    print(f”Quantifying gene expression for {srr_id}…”)<br>    bam_file = os.path.join(short_bam_dir, f”{srr_id}.sorted.bam”)<br>    output_file = os.path.join(htseq_dir, f”{srr_id}.counts.txt”)<br>    with open(output_file, ‘w’) as out:<br>        subprocess.run([<br>            “htseq-count”, “-s”, “no”, “-f”, “bam”, bam_file, reference_gtf<br>        ], stdout=out, check=True)</p>
+<h1 id="Estimating-transcript-abundances-with-StringTie-using-merged-GTF"><a href="#Estimating-transcript-abundances-with-StringTie-using-merged-GTF" class="headerlink" title="Estimating transcript abundances with StringTie using merged GTF"></a>Estimating transcript abundances with StringTie using merged GTF</h1><p>for srr_id in srr_ids:<br>    out_dir = os.path.join(e_gtf_dir, srr_id)<br>    os.makedirs(out_dir, exist_ok=True)<br>    print(f”Estimating transcript abundances for {srr_id}…”)<br>    subprocess.run([<br>        “stringtie”, “-e”, “-B”, “-p”, “8”, “-G”, reference_gtf,<br>        “-o”, os.path.join(out_dir, f”{srr_id}.gtf”),<br>        os.path.join(short_bam_dir, f”{srr_id}.sorted.bam”)<br>    ], check=True)</p>
+<h1 id="遍历-e-gtf-文件夹中的所有子文件夹（以-SRR-开头的）"><a href="#遍历-e-gtf-文件夹中的所有子文件夹（以-SRR-开头的）" class="headerlink" title="遍历 _e_gtf 文件夹中的所有子文件夹（以 SRR 开头的）"></a>遍历 _e_gtf 文件夹中的所有子文件夹（以 SRR 开头的）</h1><p>sample_dirs = [d for d in os.listdir(e_gtf_dir) if os.path.isdir(os.path.join(e_gtf_dir, d)) and d.startswith(“SRR”)]</p>
+<h1 id="创建一个列表，用于存储每个子文件夹的名称和对应的路径"><a href="#创建一个列表，用于存储每个子文件夹的名称和对应的路径" class="headerlink" title="创建一个列表，用于存储每个子文件夹的名称和对应的路径"></a>创建一个列表，用于存储每个子文件夹的名称和对应的路径</h1><p>sample_paths = []</p>
+<h1 id="遍历每个子文件夹，获取其名称并构建其对应的完整路径，同时将名称和路径存储到-sample-paths-列表中"><a href="#遍历每个子文件夹，获取其名称并构建其对应的完整路径，同时将名称和路径存储到-sample-paths-列表中" class="headerlink" title="遍历每个子文件夹，获取其名称并构建其对应的完整路径，同时将名称和路径存储到 sample_paths 列表中"></a>遍历每个子文件夹，获取其名称并构建其对应的完整路径，同时将名称和路径存储到 sample_paths 列表中</h1><p>for sample_dir in sample_dirs:<br>    sample_id = sample_dir<br>    gtf_path = os.path.join(e_gtf_dir, sample_dir, f”{sample_dir}.gtf”)<br>    if os.path.exists(gtf_path):  # 检查 gtf 文件是否存在<br>        sample_paths.append((sample_id, gtf_path))</p>
+<h1 id="创建-mergelist-txt-文件并写入每个子文件夹的名称和路径"><a href="#创建-mergelist-txt-文件并写入每个子文件夹的名称和路径" class="headerlink" title="创建 mergelist.txt 文件并写入每个子文件夹的名称和路径"></a>创建 mergelist.txt 文件并写入每个子文件夹的名称和路径</h1><p>with open(output_path, “w”) as file:<br>    for sample_id, gtf_path in sample_paths:<br>        file.write(f”{sample_id} {gtf_path}\n”)</p>
+<h1 id="只有当有-gtf-文件时，才尝试执行后续的命令"><a href="#只有当有-gtf-文件时，才尝试执行后续的命令" class="headerlink" title="只有当有 .gtf 文件时，才尝试执行后续的命令"></a>只有当有 .gtf 文件时，才尝试执行后续的命令</h1><p>if sample_paths:  # 检查列表是否为空<br>    gtf_files = [path for _, path in sample_paths]  # 从路径列表中获取所有 gtf 文件<br>    gtf_list = “ “.join(gtf_files)<br>    # 你可以在这里继续你的处理，例如使用 stringtie –merge<br>    # 例如：subprocess.run([“stringtie”, “–merge”, “-o”, “merged.gtf”] + gtf_files)<br>else:<br>    print(“没有找到任何 .gtf 文件，请检查你的 e_gtf_dir 目录”)</p>
+<h1 id="执行stringtie-–merge命令"><a href="#执行stringtie-–merge命令" class="headerlink" title="执行stringtie –merge命令"></a>执行stringtie –merge命令</h1><p>import glob</p>
+<h1 id="使用-glob-寻找当前目录及其子目录下的所有-gtf-文件"><a href="#使用-glob-寻找当前目录及其子目录下的所有-gtf-文件" class="headerlink" title="使用 glob 寻找当前目录及其子目录下的所有 .gtf 文件"></a>使用 glob 寻找当前目录及其子目录下的所有 .gtf 文件</h1><h1 id="如果你只需要在当前目录下查找，去掉-‘-‘-即可"><a href="#如果你只需要在当前目录下查找，去掉-‘-‘-即可" class="headerlink" title="如果你只需要在当前目录下查找，去掉 ‘**/‘ 即可"></a>如果你只需要在当前目录下查找，去掉 ‘**/‘ 即可</h1><p>gtf_files = glob.glob(‘**/*.gtf’, recursive=True)</p>
+<h1 id="列表推导用于移除空字符串已经不再需要，因为-glob-不会返回空字符串"><a href="#列表推导用于移除空字符串已经不再需要，因为-glob-不会返回空字符串" class="headerlink" title="列表推导用于移除空字符串已经不再需要，因为 glob 不会返回空字符串"></a>列表推导用于移除空字符串已经不再需要，因为 glob 不会返回空字符串</h1><h1 id="将找到的文件路径列表转换为字符串，文件路径之间用空格分隔"><a href="#将找到的文件路径列表转换为字符串，文件路径之间用空格分隔" class="headerlink" title="将找到的文件路径列表转换为字符串，文件路径之间用空格分隔"></a>将找到的文件路径列表转换为字符串，文件路径之间用空格分隔</h1><p>gtf_list = “ “.join(gtf_files)</p>
+<p>print(gtf_list)</p>
+<h1 id="执行stringtie命令处理每个bam文件"><a href="#执行stringtie命令处理每个bam文件" class="headerlink" title="执行stringtie命令处理每个bam文件"></a>执行stringtie命令处理每个bam文件</h1><h1 id="执行-ls-命令查找-sorted-bam-文件"><a href="#执行-ls-命令查找-sorted-bam-文件" class="headerlink" title="执行 ls 命令查找 *.sorted.bam 文件"></a>执行 ls 命令查找 *.sorted.bam 文件</h1><p>bam_files = glob.glob(“**/*.sorted.bam”)</p>
+<h1 id="移除空字符串和空格"><a href="#移除空字符串和空格" class="headerlink" title="移除空字符串和空格"></a>移除空字符串和空格</h1><p>bam_files = [file.strip() for file in bam_files if file.strip()]</p>
+<h1 id="打印查找到的文件列表"><a href="#打印查找到的文件列表" class="headerlink" title="打印查找到的文件列表"></a>打印查找到的文件列表</h1><p>print(“Found BAM files:”, bam_files)</p>
+<p>for bam_file in bam_files:<br>    sample_id = os.path.splitext(bam_file)[0]<br>    output_dir = f”ballgown/{sample_id.split(‘_’)[0]}”<br>    os.makedirs(output_dir, exist_ok=True)<br>    subprocess.run([“stringtie”, bam_file, “-G”, stringtie_merge_path, “-o”, f”{output_dir}/{sample_id}.gtf”, “-A”, f”{sample_id}.tab”, “-B”, “-e”, “-p”, “16”])</p>
+<p>import subprocess<br>import os</p>
+<p>current_dir = os.getcwd()</p>
+<h1 id="指定目标路径"><a href="#指定目标路径" class="headerlink" title="指定目标路径"></a>指定目标路径</h1><p>target_dir = “/home/data1/Ghl/test_RNA3/_e_gtf”</p>
+<p>try:<br>    # 切换到目标路径<br>    os.chdir(target_dir)</p>
+<pre><code># 定义 gene_count_matrix.csv 和 transcript_count_matrix.csv 的路径
+gene_count_matrix = &quot;gene_count_matrix.csv&quot;
+transcript_count_matrix = &quot;transcript_count_matrix.csv&quot;
+
+# 调用 prepDE.py 脚本并传递参数
+subprocess.run([&quot;python3&quot;, &quot;/home/data1/RNA_get/prepDE.py3&quot;, &quot;-g&quot;, gene_count_matrix, &quot;-t&quot;, transcript_count_matrix])
+
+# 假设 getTPM.py 和 getFPKM.py 脚本需要 GTF 文件和输出文件路径
+
+tpm_output = &quot;output_tpm.csv&quot;
+fpkm_output = &quot;output_fpkm.csv&quot;
+
+# 调用 getTPM.py
+subprocess.run([&quot;python2&quot;, &quot;/home/data1/RNA_get/getTPM.py&quot;, &quot;-i&quot;, target_dir, &quot;-g&quot;, tpm_output])
+
+# 调用 getFPKM.py
+subprocess.run([&quot;python2&quot;, &quot;/home/data1/RNA_get/getFPKM.py&quot;, &quot;-i&quot;, target_dir, &quot;-g&quot;, fpkm_output])
+</code></pre>
+<p>finally:<br>    # 最后返回原始工作目录<br>    os.chdir(current_dir)</p>
+<p>print(“RNA-seq analysis pipeline completed.”)</p>
+<p>从 ＮＣＢＩ数据库中获取６组转录组数据，分 别为 未 受 ＮＤＶ 感 染 的 对 照 组 （登 录 号 分 别 为<br>ＳＲＲ１３０２１９４２、ＳＲＲ１３０２１９４３、ＳＲＲ１３０２１９４６）和 受ＮＤＶ 感染的处理组（登录号分别为 ＳＲＲ１３０２１９４７、<br>ＳＲＲ１３０２１９５５、ＳＲＲ１３０２１９５６），</p>
 <p>将 两 组 的３个 重 复均 一 化 后，通过各组数据中每千碱基百万片段（ＦＰＫＭ）值对 Ｗｎｔ表达谱进行评估，并采用ｌｏｇ２ 进行转换归一化</p>
 <p>你的问题涉及到转录组数据分析的一系列步骤，我将尽量简明地解释每个步骤及其意义。</p>
 <h3 id="转录组数据分析流程概述"><a href="#转录组数据分析流程概述" class="headerlink" title="转录组数据分析流程概述"></a>转录组数据分析流程概述</h3><ol>

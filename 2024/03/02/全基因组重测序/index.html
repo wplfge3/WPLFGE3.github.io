@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="全基因组重测序, HL&#39;s blog">
-    <meta name="description" content="UserNCBI中的全基因组重测序文件有哪些类型？
-NCBI (National Center for Biotechnology Information) 是一个重要的公共数据库，用于存储各类生物学数据，包括全基因组重测序（Whole G">
+    <meta name="description" content="#!/usr/local/bin/python3  
+-- coding: utf-8 --This script file shoud be at the same directory with Cleandata2022.02.09de">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -150,6 +150,17 @@ NCBI (National Center for Biotechnology Information) 是一个重要的公共数
     
   </li>
   
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/html/lunpan.html" class="waves-effect waves-light">
+      
+      <i class="fas fa-link" style="zoom: 0.6;"></i>
+      
+      <span>Lunpan</span>
+    </a>
+    
+  </li>
+  
   <li>
     <a href="#searchModal" class="modal-trigger waves-effect waves-light">
       <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
@@ -252,6 +263,17 @@ NCBI (National Center for Biotechnology Information) 是一个重要的公共数
 			    <i class="fa-fw fas fa-address-book"></i>
 			
 			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/html/lunpan.html" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-link"></i>
+			
+			Lunpan
 		</a>
           
         </li>
@@ -410,7 +432,130 @@ NCBI (National Center for Biotechnology Information) 是一个重要的公共数
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>User<br>NCBI中的全基因组重测序文件有哪些类型？</p>
+                <p>#!/usr/local/bin/python3  </p>
+<h1 id="coding-utf-8"><a href="#coding-utf-8" class="headerlink" title="-- coding: utf-8 --"></a>-<em>- coding: utf-8 -</em>-</h1><h1 id="This-script-file-shoud-be-at-the-same-directory-with-Cleandata"><a href="#This-script-file-shoud-be-at-the-same-directory-with-Cleandata" class="headerlink" title="This script file shoud be at the same directory with Cleandata"></a>This script file shoud be at the same directory with Cleandata</h1><h1 id="2022-02-09"><a href="#2022-02-09" class="headerlink" title="2022.02.09"></a>2022.02.09</h1><h1 id="delete-redundancy-bamFile"><a href="#delete-redundancy-bamFile" class="headerlink" title="delete redundancy  bamFile"></a>delete redundancy  bamFile</h1><h1 id="python3-0-t-9-i-input-dir-r-ReferenceFile"><a href="#python3-0-t-9-i-input-dir-r-ReferenceFile" class="headerlink" title="python3  $0 -t 9 -i input_dir -r ReferenceFile"></a>python3  $0 -t 9 -i input_dir -r ReferenceFile</h1><p>import os, sys, glob, time, argparse,threading</p>
+<p>my_parser = argparse.ArgumentParser()</p>
+<p>my_parser.add_argument(‘-t’, dest=’thread’,type=int,default=’4’) #线程数</p>
+<p>my_parser.add_argument(‘-i’, dest=’input_dir’) #线程数</p>
+<p>my_parser.add_argument(‘-r’, dest=’reference’) #线程数</p>
+<p>args = my_parser.parse_args()</p>
+<p>TimeTable = open(args.input_dir+’TimeTable.txt’,’w’)</p>
+<p>ref=args.reference</p>
+<p>output_bam_dir = args.input_dir + ‘_bam_dir’</p>
+<p>output_gvcf_dir = args.input_dir + ‘_gvcf_dir’</p>
+<p>if os.path.exists(output_bam_dir):</p>
+<pre><code>sys.exit(output_bam_dir+&#39; exist!!!&#39;)
+</code></pre>
+<p>elif os.path.exists(output_gvcf_dir):</p>
+<pre><code>sys.exit(output_gvcf_dir+&#39; exist!!!&#39;)
+</code></pre>
+<p>else:</p>
+<pre><code>os.makedirs(output_bam_dir)
+
+os.makedirs(output_gvcf_dir)
+</code></pre>
+<p>def mult(funct, ls, n=3):</p>
+<pre><code>pool = []  # 线程池
+
+length = len(ls)
+
+step = int(length / n) + 1
+
+for i in range(0, length, step):
+
+    p = threading.Thread(target=funct, args=(ls[i: i + step],)) #把ls切成了n段，每段step长，最后段可能断一点
+
+    pool.append(p)
+
+for p in pool: #pool包含列表的列表，长度为n（即n个列表），每一个列表长度为step。
+
+    p.start() #这里同时启动n个进程，一个进程里加入参数ls[i: i + step]，funct函数会对ls[i: i + step]慢慢处理。
+
+for p in pool:
+
+    p.join() #等待所有进程结束
+
+print(time.strftime(&#39;%Y-%m-%d %H:%M:%S&#39;,time.localtime(time.time()))+&#39;_Main thread STAR exiting&#39;, file=TimeTable)
+
+TimeTable.flush()
+</code></pre>
+<p>sample_names_dir = glob.glob(args.input_dir+’/*’) # Every sample has a directory which contain fq.gz file 每个样品单独一个文件夹，文件夹下包含fq.gz的文件 不包含绝对路径</p>
+<p>bam_list = []</p>
+<p>all_sample_fq = {} # This dictionary will include the sample’s name (key) and fq.gz (value) 字典以样品名为键，以1或2.fq.gz文件名为值</p>
+<p>def bwa(part_sample_directory): #把bwa封装</p>
+<pre><code>for sample_dir in part_sample_directory:
+
+    sample_head = os.path.basename(sample_dir)
+
+    if not (os.path.exists(sample_dir+&#39;/&#39;+sample_head+&#39;_R1.fq.gz&#39;) and os.path.exists(sample_dir+&#39;/&#39;+sample_head+&#39;_R1.fq.gz&#39;)):
+
+        sys.exit(sample_dir+&#39;/&#39;+sample_head+&#39;_R1.fq.gz&#39; + &#39; or &#39;+sample_dir+&#39;/&#39;+sample_head+&#39;_R1.fq.gz&#39; + &quot; don&#39;t exist!!!&quot;)
+
+    os.system(&#39;bwa mem -M -t 4 -R  &quot;@RG\\tID:&#123;0&#125;\\tSM:&#123;0&#125;\\tPL:illumina\\tLB:lib1\\tPU:unit1&quot; &#123;1&#125; &#123;2&#125;/&#123;0&#125;_R1.fq.gz &#123;2&#125;/&#123;0&#125;_R2.fq.gz | samtools view -bhS -o &#123;3&#125;/&#123;0&#125;.bam&#39;.format(sample_head, ref, sample_dir, output_bam_dir))
+
+    print(time.strftime(&#39;%Y-%m-%d %H:%M:%S&#39;,time.localtime(time.time()))+&#39;bwa programming finished***In threading***&#39;+sample_head, file=TimeTable)
+
+    TimeTable.flush()
+
+    time.sleep(0.2)
+
+    os.system(&#39;java -jar picard.jar SortSam INPUT=&#123;0&#125;/&#123;1&#125;.bam OUTPUT=&#123;0&#125;/&#123;1&#125;_sorted.bam SORT_ORDER=coordinate TMP_DIR=./tmp&#39;.format(output_bam_dir,sample_head))
+
+    time.sleep(0.2)
+
+    os.system(&#39;rm &#123;0&#125;/&#123;1&#125;.bam&#39;.format(output_bam_dir,sample_head))
+
+    os.system(&#39;java -jar picard.jar AddOrReplaceReadGroups I=&#123;0&#125;/&#123;1&#125;_sorted.bam O=&#123;0&#125;/&#123;1&#125;_sorted_add.bam RGLB=lib1 RGPL=illumina RGPU=unit1 RGSM=&#123;1&#125; TMP_DIR=./tmp&#39;.format(output_bam_dir,sample_head))
+
+    time.sleep(0.2)
+
+    os.system(&#39;rm &#123;0&#125;/&#123;1&#125;_sorted.bam&#39;.format(output_bam_dir,sample_head))
+
+    os.system(&#39;java -jar picard.jar MarkDuplicates I=&#123;0&#125;/&#123;1&#125;_sorted_add.bam O=&#123;0&#125;/&#123;1&#125;_sorted_add_dedup.bam M=&#123;0&#125;/&#123;1&#125;_sorted_add_dedup.metrics CREATE_INDEX=true MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=4000 TMP_DIR=./tmp&#39;.format(output_bam_dir,sample_head))
+
+    time.sleep(0.2)
+
+    os.system(&#39;rm &#123;0&#125;/&#123;1&#125;_sorted_add.bam&#39;.format(output_bam_dir,sample_head))
+
+    print(time.strftime(&#39;%Y-%m-%d %H:%M:%S&#39;,time.localtime(time.time()))+&#39;java -jar picard.jar BuildBamIndex programming finished***In threading***&#39;+sample_head, file=TimeTable)
+
+    os.system(&quot;java -jar /home/data1/renminpeng/SRR2131201/gatk-package-4.1.8.1-local.jar HaplotypeCaller -R &#123;0&#125; GVCF -I &#123;1&#125;/&#123;2&#125;_sorted_add_dedup.bam -o &#123;3&#125;/&#123;2&#125;.g.vcf&quot;.format(ref, output_bam_dir,sample_head,output_gvcf_dir))
+
+    print(time.strftime(&#39;%Y-%m-%d %H:%M:%S&#39;,time.localtime(time.time()))+&#39;java -jar /home/data1/renminpeng/SRR2131201/gatk-package-4.1.8.1-local.jar programming finished***In threading***&#39;+sample_head, file=TimeTable)
+
+    TimeTable.flush()
+
+    bam_list.append(&#39;--variant  &#123;0&#125;/&#123;1&#125;.g.vcf&#39;.format(output_gvcf_dir,sample_head))
+</code></pre>
+<h3 id="在linux中，我有一个文件夹名字为-数字，然后下面有很多文件，SRR213201，SRR213202等等，每个文件里有sra文件，我现在想让他们转换成faatq格式，在自己的文件夹下，有什么命令实现吗？"><a href="#在linux中，我有一个文件夹名字为-数字，然后下面有很多文件，SRR213201，SRR213202等等，每个文件里有sra文件，我现在想让他们转换成faatq格式，在自己的文件夹下，有什么命令实现吗？" class="headerlink" title="在linux中，我有一个文件夹名字为 数字，然后下面有很多文件，SRR213201，SRR213202等等，每个文件里有sra文件，我现在想让他们转换成faatq格式，在自己的文件夹下，有什么命令实现吗？"></a>在linux中，我有一个文件夹名字为 数字，然后下面有很多文件，SRR213201，SRR213202等等，每个文件里有sra文件，我现在想让他们转换成faatq格式，在自己的文件夹下，有什么命令实现吗？</h3><p>转换命令一般用这个 fastq-dump SRR213201 –outdir /home/data1/renminpeng/SRR213201 –split-files SRR213201</p>
+<p>要在Linux中将多个 <code>.sra</code> 文件转换为 <code>fastq</code> 格式，并保持每个文件在其自己的目录中，您可以使用一个简单的 <code>bash</code> 脚本来自动化这个过程。给定您的需求和已提供的转换命令模板，以下是一个示例脚本，它会遍历名为 <code>数字</code> 的文件夹中的所有子文件夹，查找 <code>.sra</code> 文件，并使用 <code>fastq-dump</code> 工具进行转换。</p>
+<p>首先，确保您有SRA Toolkit安装在您的系统上，因为 <code>fastq-dump</code> 命令是该工具包的一部分。</p>
+<p>然后，您可以创建一个脚本，如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置包含子文件夹的父文件夹路径</span></span><br><span class="line">PARENT_DIR=<span class="string">&quot;/path/to/数字&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 遍历每个子文件夹</span></span><br><span class="line"><span class="keyword">for</span> SUBDIR <span class="keyword">in</span> <span class="variable">$&#123;PARENT_DIR&#125;</span>/*; <span class="keyword">do</span></span><br><span class="line">    <span class="keyword">if</span> [ -d <span class="string">&quot;<span class="variable">$&#123;SUBDIR&#125;</span>&quot;</span> ]; <span class="keyword">then</span> <span class="comment"># 确保它是一个目录</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;Processing <span class="variable">$&#123;SUBDIR&#125;</span>...&quot;</span></span><br><span class="line">        <span class="comment"># 在每个子文件夹中查找所有.sra文件</span></span><br><span class="line">        <span class="keyword">for</span> SRA_FILE <span class="keyword">in</span> <span class="variable">$&#123;SUBDIR&#125;</span>/*.sra; <span class="keyword">do</span></span><br><span class="line">            <span class="keyword">if</span> [ -f <span class="string">&quot;<span class="variable">$&#123;SRA_FILE&#125;</span>&quot;</span> ]; <span class="keyword">then</span> <span class="comment"># 确保.sra文件存在</span></span><br><span class="line">                <span class="comment"># 获取不带扩展名的文件名</span></span><br><span class="line">                FILE_NAME=$(<span class="built_in">basename</span> <span class="string">&quot;<span class="variable">$&#123;SRA_FILE&#125;</span>&quot;</span> .sra)</span><br><span class="line">                <span class="comment"># 构建输出目录，这里使用与SRA文件相同的目录</span></span><br><span class="line">                OUT_DIR=<span class="string">&quot;<span class="variable">$&#123;SUBDIR&#125;</span>&quot;</span></span><br><span class="line">                <span class="comment"># 调用fastq-dump进行转换</span></span><br><span class="line">                fastq-dump <span class="string">&quot;<span class="variable">$&#123;SRA_FILE&#125;</span>&quot;</span> --outdir <span class="string">&quot;<span class="variable">$&#123;OUT_DIR&#125;</span>&quot;</span> --split-files</span><br><span class="line">                <span class="built_in">echo</span> <span class="string">&quot;Converted <span class="variable">$&#123;SRA_FILE&#125;</span> to fastq format.&quot;</span></span><br><span class="line">            <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;All .sra files have been converted to fastq format.&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>请按照以下步骤使用此脚本：</p>
+<ol>
+<li>将上述脚本保存到一个文件中，例如 <code>convert_sra_to_fastq.sh</code>。</li>
+<li>修改 <code>PARENT_DIR</code> 变量，使其指向包含所有子文件夹的父文件夹的路径（在您的例子中，这个路径是包含所有SRR开头的文件夹的 <code>数字</code> 文件夹的路径）。</li>
+<li>赋予脚本执行权限：<code>chmod +x convert_sra_to_fastq.sh</code>。</li>
+<li>执行脚本：<code>./convert_sra_to_fastq.sh</code>。</li>
+</ol>
+<p>这个脚本会遍历每个子文件夹，查找所有 <code>.sra</code> 文件，并使用 <code>fastq-dump</code> 将它们转换为 <code>fastq</code> 格式，转换后的文件将保存在源 <code>.sra</code> 文件相同的目录中。</p>
+<p>#!/usr/local/bin/python3</p>
+<h1 id="coding-utf-8-1"><a href="#coding-utf-8-1" class="headerlink" title="-- coding: utf-8 --"></a>-<em>- coding: utf-8 -</em>-</h1><h1 id="Genomic-data-analysis-script-adjusted-for-processing-files-1-sra-to-68-sra"><a href="#Genomic-data-analysis-script-adjusted-for-processing-files-1-sra-to-68-sra" class="headerlink" title="Genomic data analysis script adjusted for processing files 1.sra to 68.sra"></a>Genomic data analysis script adjusted for processing files 1.sra to 68.sra</h1><p>import os, sys, glob, time, argparse, threading</p>
+<h1 id="Setup-command-line-arguments"><a href="#Setup-command-line-arguments" class="headerlink" title="Setup command line arguments"></a>Setup command line arguments</h1><p>my_parser = argparse.ArgumentParser(description=’Genomic data analysis pipeline adjusted for specific .sra files’)<br>my_parser.add_argument(‘-t’, dest=’thread’, type=int, default=4, help=’Number of threads’)<br>my_parser.add_argument(‘-i’, dest=’input_dir’, default=’/home/data1/renminpeng/New1’, help=’Input directory containing .sra files’)<br>my_parser.add_argument(‘-r’, dest=’reference’, default=’/home/data1/renminpeng/New/reference.fasta’, help=’Reference genome file path’)<br>args = my_parser.parse_args()</p>
+<h1 id="Create-a-time-log-file"><a href="#Create-a-time-log-file" class="headerlink" title="Create a time log file"></a>Create a time log file</h1><p>TimeTable = open(os.path.join(args.input_dir, ‘TimeTable.txt’), ‘w’)</p>
+<p>ref = args.reference</p>
+<h1 id="Define-output-directories"><a href="#Define-output-directories" class="headerlink" title="Define output directories"></a>Define output directories</h1><p>output_bam_dir = args.input_dir + ‘_bam_dir’<br>output_gvcf_dir = args.input_dir + ‘_gvcf_dir’<br>fastq_dir = args.input_dir + ‘_fastq’</p>
+<h1 id="Check-and-create-output-directories-if-not-exist"><a href="#Check-and-create-output-directories-if-not-exist" class="headerlink" title="Check and create output directories if not exist"></a>Check and create output directories if not exist</h1><p>if not os.path.exists(output_bam_dir):<br>    os.makedirs(output_bam_dir)<br>if not os.path.exists(output_gvcf_dir):<br>    os.makedirs(output_gvcf_dir)<br>if not os.path.exists(fastq_dir):<br>    os.makedirs(fastq_dir)</p>
+<h1 id="Function-for-parallel-processing"><a href="#Function-for-parallel-processing" class="headerlink" title="Function for parallel processing"></a>Function for parallel processing</h1><p>def mult(funct, ls, n=3):<br>    pool = []  # Thread pool<br>    length = len(ls)<br>    step = int(length / n) + 1<br>    for i in range(0, length, step):<br>        p = threading.Thread(target=funct, args=(ls[i: i + step],))<br>        pool.append(p)<br>    for p in pool:<br>        p.start()<br>    for p in pool:<br>        p.join()<br>    print(time.strftime(‘%Y-%m-%d %H:%M:%S’, time.localtime(time.time())) + ‘_Main thread STAR exiting’, file=TimeTable)<br>    TimeTable.flush()</p>
+<h1 id="Convert-sra-to-fq-and-perform-alignment"><a href="#Convert-sra-to-fq-and-perform-alignment" class="headerlink" title="Convert .sra to .fq and perform alignment"></a>Convert .sra to .fq and perform alignment</h1><p>def sra_to_fq_and_bwa(sra_files):<br>    for sra_file in sra_files:<br>        sample_head = os.path.basename(sra_file).split(‘.’)[0]  # Assuming filename “1.sra”, sample_head would be “1”<br>        # Convert .sra to .fq.gz using fastq-dump<br>        fq1_path = os.path.join(fastq_dir, f”{sample_head}_1.fastq.gz”)<br>        fq2_path = os.path.join(fastq_dir, f”{sample_head}_2.fastq.gz”)<br>        os.system(f’fastq-dump –split-files –gzip –outdir {fastq_dir} {sra_file}’)<br>        # Check if FASTQ files were created<br>        if not os.path.exists(fq1_path) or not os.path.exists(fq2_path):<br>            sys.exit(f”Error converting {sra_file} to FASTQ format.”)<br>        # Execute BWA alignment, followed by processing steps<br>        bam_output = os.path.join(output_bam_dir, f”{sample_head}.bam”)<br>        # Ensure commands such as BWA, samtools are available in your environment<br>        os.system(f’bwa mem -M -t {args.thread} -R “@RG\tID:{sample_head}\tSM:{sample_head}\tPL:illumina\tLB:lib1\tPU:unit1” {ref} {fq1_path} {fq2_path} | samtools view -bhS - &gt; {bam_output}’)<br>        # Further processing steps can be adjusted here</p>
+<h1 id="Prepare-a-list-of-sra-files-to-process"><a href="#Prepare-a-list-of-sra-files-to-process" class="headerlink" title="Prepare a list of .sra files to process"></a>Prepare a list of .sra files to process</h1><p>sra_files_to_process = [os.path.join(args.input_dir, f”{i}.sra”) for i in range(1, 69)]</p>
+<h1 id="Process-sra-files"><a href="#Process-sra-files" class="headerlink" title="Process .sra files"></a>Process .sra files</h1><p>mult(sra_to_fq_and_bwa, sra_files_to_process, n=args.thread)</p>
+<p>运行命令：python3 institute2_DNA_to_VCF1.4.py -t 8 -i /home/data1/renminpeng/New1 -r /home/data1/renminpeng/New/reference.fasta</p>
+<p>上一步生成的bam_dir文件</p>
+<p>然后</p>
+<p>User<br>NCBI中的全基因组重测序文件有哪些类型？</p>
 <p>NCBI (National Center for Biotechnology Information) 是一个重要的公共数据库，用于存储各类生物学数据，包括全基因组重测序（Whole Genome Sequencing, WGS）文件。全基因组重测序文件可以采用多种格式存储，每种格式都有其特定的用途和特点。以下是一些常见的全基因组重测序文件类型：</p>
 <ol>
 <li><p>**FASTA (.fasta 或 .fa)**：这是最基本的序列数据格式，用于存储核酸（DNA或RNA）序列或蛋白质序列。在全基因组重测序中，FASTA格式常用于存储参考序列或重测序后的拼接序列。</p>
@@ -984,7 +1129,7 @@ NCBI (National Center for Biotechnology Information) 是一个重要的公共数
 <p>我下载的基因组文件在/home/data1/renminpeng/New1，命名为1.sra,2.sra等等，一直搭配68.sra<br>我的参考基因组文件在/home/data1/renminpeng/New里，命名为reference.fasta<br>我的软件也基本下载了</p>
 <p>然后我想让你适当修改下下面的代码，让我能运行分析上面的数据？</p>
 <p>#!/usr/local/bin/python3  </p>
-<h1 id="coding-utf-8"><a href="#coding-utf-8" class="headerlink" title="-- coding: utf-8 --"></a>-<em>- coding: utf-8 -</em>-</h1><h1 id="This-script-file-shoud-be-at-the-same-directory-with-Cleandata"><a href="#This-script-file-shoud-be-at-the-same-directory-with-Cleandata" class="headerlink" title="This script file shoud be at the same directory with Cleandata"></a>This script file shoud be at the same directory with Cleandata</h1><h1 id="2022-02-09"><a href="#2022-02-09" class="headerlink" title="2022.02.09"></a>2022.02.09</h1><h1 id="delete-redundancy-bamFile"><a href="#delete-redundancy-bamFile" class="headerlink" title="delete redundancy  bamFile"></a>delete redundancy  bamFile</h1><h1 id="python3-0-t-9-i-input-dir-r-ReferenceFile"><a href="#python3-0-t-9-i-input-dir-r-ReferenceFile" class="headerlink" title="python3  $0 -t 9 -i input_dir -r ReferenceFile"></a>python3  $0 -t 9 -i input_dir -r ReferenceFile</h1><p>import os, sys, glob, time, argparse,threading</p>
+<h1 id="coding-utf-8-2"><a href="#coding-utf-8-2" class="headerlink" title="-- coding: utf-8 --"></a>-<em>- coding: utf-8 -</em>-</h1><h1 id="This-script-file-shoud-be-at-the-same-directory-with-Cleandata-1"><a href="#This-script-file-shoud-be-at-the-same-directory-with-Cleandata-1" class="headerlink" title="This script file shoud be at the same directory with Cleandata"></a>This script file shoud be at the same directory with Cleandata</h1><h1 id="2022-02-09-1"><a href="#2022-02-09-1" class="headerlink" title="2022.02.09"></a>2022.02.09</h1><h1 id="delete-redundancy-bamFile-1"><a href="#delete-redundancy-bamFile-1" class="headerlink" title="delete redundancy  bamFile"></a>delete redundancy  bamFile</h1><h1 id="python3-0-t-9-i-input-dir-r-ReferenceFile-1"><a href="#python3-0-t-9-i-input-dir-r-ReferenceFile-1" class="headerlink" title="python3  $0 -t 9 -i input_dir -r ReferenceFile"></a>python3  $0 -t 9 -i input_dir -r ReferenceFile</h1><p>import os, sys, glob, time, argparse,threading</p>
 <p>my_parser = argparse.ArgumentParser()</p>
 <p>my_parser.add_argument(‘-t’, dest=’thread’,type=int,default=’4’) #线程数</p>
 <p>my_parser.add_argument(‘-i’, dest=’input_dir’) #线程数</p>
@@ -1146,7 +1291,7 @@ TimeTable.flush()
 </code></pre>
 <p>就这些代码，再给我设计一个脚本，运行这代码？你能参考这个，让我进行后续分析吗？开始的代码生成了1.bam到68.bam,在/home/data1/renminpeng/New1_bam_dir路径下，<br>我的参考基因组文件在/home/data1/renminpeng/New里，命名为reference.fasta，也已经索引了，软件基本也能用</p>
 <p>#!/usr/local/bin/python3</p>
-<h1 id="coding-utf-8-1"><a href="#coding-utf-8-1" class="headerlink" title="-- coding: utf-8 --"></a>-<em>- coding: utf-8 -</em>-</h1><p>“””<br>Script for processing BAM files and performing variant calling<br>to generate gVCF files.<br>“””</p>
+<h1 id="coding-utf-8-3"><a href="#coding-utf-8-3" class="headerlink" title="-- coding: utf-8 --"></a>-<em>- coding: utf-8 -</em>-</h1><p>“””<br>Script for processing BAM files and performing variant calling<br>to generate gVCF files.<br>“””</p>
 <p>import os<br>import subprocess<br>import argparse</p>
 <p>def parse_arguments():<br>    parser = argparse.ArgumentParser(description=’Perform variant calling on pre-processed BAM files.’)<br>    parser.add_argument(‘-b’, ‘–bam_dir’, required=True, help=’Directory containing pre-processed BAM files (sorted and deduped)’)<br>    parser.add_argument(‘-r’, ‘–reference’, required=True, help=’Path to the reference genome fasta file’)<br>    parser.add_argument(‘-o’, ‘–output_dir’, required=True, help=’Output directory for gVCF files’)<br>    return parser.parse_args()</p>
 <p>def call_variants(bam_dir, reference, output_dir):<br>    if not os.path.exists(output_dir):<br>        os.makedirs(output_dir)</p>
