@@ -4,9 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="linux服务器, HL&#39;s blog">
-    <meta name="description" content="java更新/usr/lib/jvm/java-11-openjdk-amd64/bin/java -version
-根据您提供的信息，尝试安装openjdk-11-jdk时出现了依赖关系问题，同时也提到了rstudio的依赖问题。这意味着">
+    <meta name="keywords" content="HL&#39;s blog">
+    <meta name="description" content="HL&#39;s blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>linux服务器 | HL&#39;s blog</title>
+    <title>HL&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -480,12 +479,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">linux服务器</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -521,7 +520,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-03-10
+                    2024-05-25
                 </div>
                 
 
@@ -542,114 +541,593 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="java更新"><a href="#java更新" class="headerlink" title="java更新"></a>java更新</h2><p>/usr/lib/jvm/java-11-openjdk-amd64/bin/java -version</p>
-<p>根据您提供的信息，尝试安装<code>openjdk-11-jdk</code>时出现了依赖关系问题，同时也提到了<code>rstudio</code>的依赖问题。这意味着您的系统中可能有一些先前安装的软件包存在问题，或者在安装<code>openjdk-11-jdk</code>过程中遇到了依赖问题。系统建议您运行<code>apt --fix-broken install</code>来尝试自动修复这些问题。</p>
-<p>这里是一步步如何解决这个问题的指导：</p>
-<h3 id="1-修复损坏的依赖"><a href="#1-修复损坏的依赖" class="headerlink" title="1. 修复损坏的依赖"></a>1. 修复损坏的依赖</h3><p>首先，按照系统的建议执行以下命令，尝试自动修复损坏的依赖关系：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt --fix-broken install</span><br></pre></td></tr></table></figure>
+                <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>时间管理</title>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <style>
+      body {
+        background-color: #282c34;
+        color: #ffffff;
+        font-family: 'Arial', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        color: #61dafb;
+        margin-bottom: 20px;
+      }
+      h2 {
+        color: #61dafb;
+      }
+      h3, h4 {
+        color: #61dafb;
+      }
+      input, button, textarea {
+        margin: 5px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+      }
+      input[type="number"], input[type="text"], input[type="time"], textarea {
+        width: 200px;
+      }
+      button {
+        background-color: #61dafb;
+        color: #282c34;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #21a1f1;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        margin-bottom: 10px;
+        background-color: #3b3f45;
+        padding: 10px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      li span {
+        cursor: pointer;
+      }
+      .delete {
+        background-color: #ff5555;
+        color: #ffffff;
+        margin-left: 10px;
+      }
+      .delete:hover {
+        background-color: #ff3333;
+      }
+      #taskForm, #taskList, #goal-sections {
+        width: 100%;
+        max-width: 600px;
+      }
+      #goal-sections section {
+        margin-bottom: 20px;
+      }
+      #daily-summary {
+        width: 100%;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>时间管理</h1>
 
-<p>这个命令会让APT尝试解决未满足的依赖问题，如果有需要的话，它会自动安装或者升级一些包。</p>
-<h3 id="2-更新软件包列表"><a href="#2-更新软件包列表" class="headerlink" title="2. 更新软件包列表"></a>2. 更新软件包列表</h3><p>修复依赖关系之后，最好更新您的软件包列表以确保您安装的是最新版本的软件包：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+    <div id="timer">
+      <label for="hours">Hours:</label>
+      <input type="number" id="hours" value="0" />
 
-<h3 id="3-重新尝试安装OpenJDK-11"><a href="#3-重新尝试安装OpenJDK-11" class="headerlink" title="3. 重新尝试安装OpenJDK 11"></a>3. 重新尝试安装OpenJDK 11</h3><p>依赖问题修复并更新软件包列表后，再次尝试安装<code>openjdk-11-jdk</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openjdk-11-jdk</span><br></pre></td></tr></table></figure>
+      <label for="minutes">Minutes:</label>
+      <input type="number" id="minutes" value="0" />
 
-<h3 id="4-检查RStudio的依赖问题"><a href="#4-检查RStudio的依赖问题" class="headerlink" title="4. 检查RStudio的依赖问题"></a>4. 检查RStudio的依赖问题</h3><p>如果在解决<code>openjdk-11-jdk</code>的依赖问题的过程中，<code>rstudio</code>的依赖问题依然存在，可能需要单独处理。由于<code>rstudio</code>依赖于特定版本的<code>libssl</code>库，您可能需要确定您的系统中是否可以安装这些库。Ubuntu 22.04（Jammy Jellyfish）默认应该是包含<code>libssl1.1</code>的，但如果因为某些原因没有安装，您可以尝试手动安装它：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install libssl1.1</span><br></pre></td></tr></table></figure>
+      <label for="seconds">Seconds:</label>
+      <input type="number" id="seconds" value="0" />
 
-<p>如果这个库的版本不兼容或因其他原因无法安装，您可能需要查看<code>rstudio</code>的官方安装说明，或者寻找关于如何在Ubuntu 22.04上安装<code>rstudio</code>的特定指南。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过上述步骤，您应该能够解决安装<code>openjdk-11-jdk</code>时遇到的依赖问题。如果在解决过程中遇到更具体的错误信息，可能需要根据那些信息进行进一步的故障排除。</p>
-<p>(base) dell@dell:/home/data1/renminpeng/SRR13786593$ java -version<br>openjdk version “1.8.0_92”<br>OpenJDK Runtime Environment (Zulu 8.15.0.1-linux64) (build 1.8.0_92-b15)<br>OpenJDK 64-Bit Server VM (Zulu 8.15.0.1-linux64) (build 25.92-b15, mixed mode)</p>
-<h3 id="我怎么还是老版本的，我按照你上面的安装了java11呀"><a href="#我怎么还是老版本的，我按照你上面的安装了java11呀" class="headerlink" title="我怎么还是老版本的，我按照你上面的安装了java11呀"></a>我怎么还是老版本的，我按照你上面的安装了java11呀</h3><p>如果您已经安装了OpenJDK 11，但是通过<code>java -version</code>命令检查时仍然显示为旧版本（例如OpenJDK 8），这通常意味着您的系统中安装了多个Java版本，并且默认Java版本尚未更新为新安装的版本。您可以通过更新系统的默认Java版本来解决这个问题。</p>
-<h3 id="更新默认Java版本"><a href="#更新默认Java版本" class="headerlink" title="更新默认Java版本"></a>更新默认Java版本</h3><p>在基于Debian（如Ubuntu）的系统中，您可以使用<code>update-alternatives</code>命令来管理和配置系统默认使用的Java版本。</p>
-<ol>
-<li><p><strong>列出所有安装的Java版本</strong>:</p>
-<p>执行下面的命令来查看系统上所有可用的Java版本及其配置：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-alternatives --config java</span><br></pre></td></tr></table></figure></li>
-<li><p><strong>选择默认Java版本</strong>:</p>
-<p>当您运行上面的命令时，系统会列出所有安装的Java版本，并且每个版本旁边都有一个编号。您会看到一个提示让您选择要作为默认的版本。输入您想要设置为默认（比如OpenJDK 11对应的编号）的Java版本旁边的编号，然后按<code>Enter</code>键。</p>
-</li>
-</ol>
-<p>例如，如果OpenJDK 11是列表中编号为<code>2</code>的选项，您就输入<code>2</code>，然后按<code>Enter</code>键。</p>
-<ol start="3">
-<li><p><strong>验证更改</strong>:</p>
-<p>完成上述步骤后，您可以再次使用<code>java -version</code>命令来验证默认的Java版本是否已经更新为OpenJDK 11。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>如果您按照上述步骤操作后，默认的Java版本仍然没有更新，可能需要检查您的环境变量设置。有时候，用户的<code>~/.bashrc</code>或<code>~/.profile</code>文件中可能硬编码了特定Java版本的路径。</p>
-<h3 id="检查并更新环境变量"><a href="#检查并更新环境变量" class="headerlink" title="检查并更新环境变量"></a>检查并更新环境变量</h3><p>打开您的<code>~/.bashrc</code>或<code>~/.profile</code>文件，并查找引用旧Java版本路径的行，比如含有<code>JAVA_HOME</code>的设置。如果存在，将其更新为OpenJDK 11的安装路径，这个路径通常是<code>/usr/lib/jvm/java-11-openjdk-amd64</code>（具体路径可能根据您的Linux发行版和安装方式有所不同）。修改后，保存文件并执行<code>source ~/.bashrc</code>或<code>source ~/.profile</code>来应用更改。</p>
-<p>这些步骤应该能帮助您将默认的Java版本更新为OpenJDK 11。</p>
-<p>如果您希望直接通过命令行来配置<code>JAVA_HOME</code>环境变量和更新您的<code>PATH</code>，而不是手动编辑文件，您可以按照以下步骤操作：</p>
-<ol>
-<li><p><strong>打开终端</strong>，并输入以下命令来为当前会话设置<code>JAVA_HOME</code>环境变量。这里假设您希望将<code>JAVA_HOME</code>设置为OpenJDK 11的安装路径：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64</span><br></pre></td></tr></table></figure></li>
-<li><p><strong>接下来，更新您的<code>PATH</code>环境变量</strong>，以包含新的<code>JAVA_HOME</code>目录下的<code>bin</code>目录。这确保了当您在终端中运行<code>java</code>命令时，系统会首先查找您指定的Java版本：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure></li>
-<li><p><strong>验证更改</strong>。输入以下命令来确认<code>JAVA_HOME</code>已正确设置，并且<code>java</code>命令指向了新的Java版本：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$JAVA_HOME</span></span><br><span class="line">java -version</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>以上步骤将仅对当前终端会话有效。如果您关闭终端或开启新的终端会话，这些变量设置将不再适用。为了使这些更改永久有效，您需要将它们添加到您的用户配置文件中，如<code>~/.bashrc</code>或<code>~/.profile</code>。</p>
-<h3 id="永久设置环境变量"><a href="#永久设置环境变量" class="headerlink" title="永久设置环境变量"></a>永久设置环境变量</h3><ol>
-<li><p><strong>打开您的用户配置文件</strong>。这里以<code>~/.bashrc</code>为例，使用文本编辑器打开它：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano ~/.bashrc</span><br></pre></td></tr></table></figure></li>
-<li><p><strong>在文件末尾添加以下行</strong>，以永久设置<code>JAVA_HOME</code>和更新<code>PATH</code>：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure></li>
-<li><p><strong>保存并关闭文件</strong>。如果您使用的是<code>nano</code>，可以通过按<code>Ctrl + O</code>保存更改，然后按<code>Ctrl + X</code>退出。</p>
-</li>
-<li><p><strong>应用更改</strong>。为了让这些更改立即生效，您可以运行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+      <br /><br />
 
-<p>或者，您也可以重新登录您的用户会话或重启计算机。</p>
-</li>
-</ol>
-<p>通过这些步骤，您就可以直接通过命令行永久配置<code>JAVA_HOME</code>环境变量和更新您的<code>PATH</code>，而不需要手动编辑配置文件。</p>
-<h2 id="配置别名"><a href="#配置别名" class="headerlink" title="配置别名"></a>配置别名</h2><p>如果你想直接使用命令行来配置别名，而不是手动编辑配置文件，你可以通过以下步骤来实现：</p>
-<ol>
-<li><p>**添加别名到<code>.bashrc</code>或<code>.zshrc</code>**：你可以直接将别名添加到你的shell配置文件中，而无需手动打开和编辑文件。使用下面的命令来添加一个别名到<code>.bashrc</code>（如果你使用的是bash shell）或<code>.zshrc</code>（如果你使用的是zsh）。</p>
-<p>对于bash用户：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;alias gatk=&#x27;java -jar /home/data1/renminpeng/SRR2131201/gatk-4.1.8.1/gatk-package-4.1.8.1-local.jar&#x27;&quot;</span> &gt;&gt; ~/.bashrc</span><br></pre></td></tr></table></figure>
+      <label for="music">Music URL:</label>
+      <input type="text" id="music" />
 
-<p>对于zsh用户：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;alias gatk=&#x27;java -jar /home/data1/renminpeng/SRR2131201/gatk-4.1.8.1/gatk-package-4.1.8.1-local.jar&#x27;&quot;</span> &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure></li>
-<li><p><strong>应用更改</strong>：为了使别名立即可用，你需要重新加载你的配置文件。根据你使用的shell，运行以下命令之一：</p>
-<p>如果你是bash用户：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+      <br /><br />
 
-<p>如果你是zsh用户：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>这样，你就可以直接在终端中使用<code>gatk</code>命令来运行GATK了，而不需要每次输入完整的java命令。</p>
-<p>请注意，这种方式仅在当前用户的shell环境中有效。如果你在不同的用户账户下或在不同的shell环境下工作，你需要为每个环境重复这个过程。此外，当你关闭并重新开启终端时，由于<code>source</code>命令的作用，这个别名将会自动可用，无需再次手动激活。</p>
-<h2 id="安装微信"><a href="#安装微信" class="headerlink" title="安装微信"></a>安装微信</h2><p>第一种方法使用的两条命令如下：</p>
-<p>wget <a target="_blank" rel="noopener" href="http://archive.ubuntukylin.com/software/pool/partner/weixin_2.1.2_amd64.deb">http://archive.ubuntukylin.com/software/pool/partner/weixin_2.1.2_amd64.deb</a><br>sudo dpkg -i weixin_2.1.2_amd64.deb</p>
-<p>安装包来自于优麒麟。<br>如果你想卸载已经安装的软件包并重新安装它，你可以按照以下步骤操作。这里的示例是针对<code>weixin_2.1.2_amd64.deb</code>软件包，但这个过程可以应用于任何通过<code>dpkg</code>安装的<code>.deb</code>软件包。</p>
-<p>首先，打开你的终端。然后，你可以使用以下命令来卸载<code>weixin</code>软件包：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -r weixin</span><br></pre></td></tr></table></figure>
+      <button onclick="startTimer()">Start Countdown</button>
+      <button onclick="resetTimer()">Refresh Countdown</button>
 
-<p>这个命令会从你的系统中删除<code>weixin</code>软件包，但会保留其配置文件。如果你想彻底删除包括配置文件在内的所有东西，可以使用：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -P weixin</span><br></pre></td></tr></table></figure>
+      <br /><br />
 
-<p>卸载完成后，如果你想重新安装相同版本的软件包，可以再次使用<code>dpkg -i</code>命令。如果软件包文件仍然在你的系统上，你不需要再次下载它，只需运行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i weixin_2.1.2_amd64.deb</span><br></pre></td></tr></table></figure>
+      <span id="countdown"></span>
+    </div>
 
-<p>如果你已经删除了该文件或者想要下载最新版本（如果有更新的话），你可能需要再次下载该文件。在这个例子中，你可以使用<code>wget</code>来下载软件包：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://archive.ubuntukylin.com/software/pool/partner/weixin_2.1.2_amd64.deb</span><br></pre></td></tr></table></figure>
+    <audio id="alarm" loop></audio>
 
-<p>然后，使用<code>dpkg -i</code>命令来安装下载的软件包：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i weixin_2.1.2_amd64.deb</span><br></pre></td></tr></table></figure>
+    <h1>番茄学习法</h1>
+    <p>
+      番茄学习法是一种时间管理技巧，旨在提高工作效率和专注度。它由弗朗西斯科·西里洛（Francesco Cirillo）于上世纪80年代创建。
+    </p>
+    <p>番茄学习法的具体步骤如下：</p>
+    <ol>
+      <li>设定目标： 首先，明确你要完成的任务或学习内容，并将其分解为小而可管理的任务</li>
+      <li>设置番茄钟： 将一个番茄钟（通常为25分钟）设定为工作或学习的时间段。这个时间段称为一个"番茄"</li>
+      <li>
+        专注工作： 在一个完整的番茄钟期间内，尽可能集中注意力进行工作，不受干扰。避免在这个时间段内处理其他任务或查看社交媒体
+      </li>
+      <li>
+        休息短暂时间： 当一个番茄钟结束时，休息短暂时间（通常为5分钟）。这是为了让大脑得到短暂的放松和恢复
+      </li>
+      <li>
+        番茄钟循环： 每完成四个番茄钟后，进行一次较长的休息（通常为15-30分钟）。这个周期称为一个番茄钟循环
+      </li>
+    </ol>
+    <p>
+      番茄学习法的核心原理是将工作切分为可管理的时间块，并通过设定明确的时间限制来激励自己集中注意力工作。它帮助你在工作和休息之间找到平衡，提高效率和专注度，并避免长时间连续工作所带来的疲劳和压力。
+    </p>
+    <p>
+      你可以使用一个简单的计时器或者专门的番茄钟应用程序来实践番茄学习法。比如上面这个，时间结束，会有音乐
+    </p>
 
-<p>请确保在安装过程中检查和解决可能出现的任何依赖问题。如果<code>dpkg</code>报告缺少依赖项，你可以通过运行以下命令来修复它们：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get -f install</span><br></pre></td></tr></table></figure>
+    <h1>任务设定目标方法</h1>
+    <ol>
+      <li>明确任务：</li>
+      <p>
+        首先，清楚地理解任务的本质和目标。搞清楚任务是什么，需要达到什么样的结果或完成什么样的工作。
+      </p>
 
-<p>这条命令会安装任何缺失的依赖项，有助于完成软件包的安装过程。</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ljzy666/p/17415371.html">https://www.cnblogs.com/ljzy666/p/17415371.html</a></p>
-<p>weget <a target="_blank" rel="noopener" href="http://archive.ubuntukylin.com/software/pool/partner/ukylin-wine_70.6.3.25_amd64.deb">http://archive.ubuntukylin.com/software/pool/partner/ukylin-wine_70.6.3.25_amd64.deb</a></p>
-<p>sudo apt-get install -f -y ./ukylin-wine_70.6.3.25_amd64.deb</p>
-<p>wget <a target="_blank" rel="noopener" href="http://archive.ubuntukylin.com/software/pool/partner/ukylin-wechat_3.0.0_amd64.deb">http://archive.ubuntukylin.com/software/pool/partner/ukylin-wechat_3.0.0_amd64.deb</a></p>
-<p>sudo apt-get install -f -y ./ukylin-wechat_3.0.0_amd64.deb</p>
-<h2 id="看文件前几行"><a href="#看文件前几行" class="headerlink" title="看文件前几行"></a>看文件前几行</h2><p>head -n 100 路径/文件</p>
-<h2 id="看内存-df-h"><a href="#看内存-df-h" class="headerlink" title="看内存 df -h"></a>看内存 df -h</h2>
+      <li>列出子任务：</li>
+      <p>
+        将整个任务分解为更小的子任务。思考完成该任务所需的步骤和行动，并将它们写下来。确保子任务是明确、可操作和具体的。
+      </p>
+
+      <li>确定优先级：</li>
+      <p>
+        对子任务进行评估，并确定它们的优先级顺序。考虑哪些子任务是最紧急或最重要的，或者哪些子任务需要在其他子任务之前完成。
+      </p>
+
+      <li>制定时间表：</li>
+      <p>
+        为每个子任务设定截止日期或预计完成时间。这将帮助你规划和管理时间，确保任务按时完成。
+      </p>
+
+      <li>分配资源：</li>
+      <p>
+        确定完成每个子任务所需的资源，例如时间、人力或资金。根据资源的可用性和限制，适当地安排和分配子任务。
+      </p>
+
+      <li>监督进展：</li>
+      <p>
+        在任务执行过程中，跟踪和监督每个子任务的进展。确保任务按计划进行，并调整计划以应对任何新的情况或挑战。
+      </p>
+
+      <li>反馈和调整：</li>
+      <p>
+        定期回顾任务的进展，并根据反馈信息进行调整和改进。如果需要，重新评估目标和优先级，以确保任务朝着正确的方向前进。
+      </p>
+    </ol>
+
+    <h1>每日科学任务管理器</h1>
+
+    <form id="taskForm">
+      <label for="task">任务：</label>
+      <input type="text" id="task" required />
+
+      <label for="time">时间：</label>
+      <input type="time" id="time" required />
+
+      <button type="button" onclick="addTask()">添加任务</button>
+    </form>
+
+    <ul id="taskList"></ul>
+
+    <h1>目标管理</h1>
+    <div id="goal-sections">
+      <section>
+        <h2>长期目标：</h2>
+        <article>
+          <ul id="longterm-goals">
+            <li>工作</li>
+            <li>liuji</li>
+            <li>teacher</li>
+            <li>chuguo</li>
+            <li>girl friend</li>
+            <li>眼睛变好</li>
+            <li>身体健康，变帅</li>
+            <li>没想好</li>
+            <li>写一本小说</li>
+          </ul>
+        </article>
+      </section>
+
+      <section>
+        <h2>中期目标：</h2>
+        <article>
+          <ul id="midterm-goals">
+            <li>毕业论文</li>
+            <li>核心文章</li>
+            <li>Python</li>
+            <li>PEAL</li>
+            <li>编制</li>
+            <li>rudang</li>
+          </ul>
+        </article>
+      </section>
+
+      <section>
+        <h2>短期目标：</h2>
+        <article>
+          <ul id="shortterm-goals">
+            <li>Bilibili收藏夹</li>
+            <li>训练投喂AI</li>
+            <li>对富集分析做富集分析</li>
+            <li>讲文献资料</li>
+            <li>做好这个目标管理（符合科学），做好每日的规划</li>
+            <li>长链非编码（了解）解决</li>
+            <li>SNP位点</li>
+            <li>护眼的学问</li>
+            <li>方舟的规划</li>
+          </ul>
+        </article>
+      </section>
+
+      <section>
+        <h2>当前目标：</h2>
+        <article>
+          <ul id="current-goals">
+            <li>完成lncRNA的挖掘，完成这个网站。
+              <button class="delete" onclick="deleteGoal(this)">删除</button>
+            </li>
+            <li>不熬夜<button class="delete" onclick="deleteGoal(this)">删除</button></li>
+          </ul>
+        </article>
+      </section>
+    </div>
+
+    <button onclick="addGoal()">添加目标</button>
+
+    <h1>参考</h1>
+
+    <input type="text" id="new-task" placeholder="输入任务名称" />
+    <input type="number" id="new-task-score" placeholder="输入任务分数" />
+    <button id="add-task">添加任务</button>
+
+    <ul id="task-list">
+      <li data-score="10">
+        <input type="checkbox" id="task1" />
+        <label for="task1">任务1</label>
+        <span>(10分)</span>
+        <button class="delete">删除</button>
+      </li>
+
+      <li data-score="20">
+        <input type="checkbox" id="task2" />
+        <label for="task2">任务2</label>
+        <span>(20分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="30">
+        <input type="checkbox" id="task3" />
+        <label for="task3">任务3</label>
+        <span>(30分)</span>
+        <button class="delete">删除</button>
+      </li>
+
+      <li data-score="15">
+        <input type="checkbox" id="task4" />
+        <label for="task5">学习专业课</label>
+        <span>(15分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="20">
+        <input type="checkbox" id="task33" />
+        <label for="task1">每日进入这个界面</label>
+        <span>(20分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="20">
+        <input type="checkbox" id="task34" />
+        <label for="task2">优先级处理得好</label>
+        <span>(20分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="20">
+        <input type="checkbox" id="task35" />
+        <label for="task3">10:30前睡觉</label>
+        <span>(20分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="10">
+        <input type="checkbox" id="task17" />
+        <label for="task17">多喝水</label>
+        <span>(10分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="10">
+        <input type="checkbox" id="task15" />
+        <label for="task15">勤洗脸</label>
+        <span>(10分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="20">
+        <input type="checkbox" id="task16" />
+        <label for="task16">一天户外运动一小时往上</label>
+        <span>(20分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="20">
+        <input type="checkbox" id="task10" />
+        <label for="task10">看手机屏幕少于6小时一天</label>
+        <span>(20分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="15">
+        <input type="checkbox" id="task11" />
+        <label for="task11">不玩游戏或少于15分钟</label>
+        <span>(15分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="15">
+        <input type="checkbox" id="task9" />
+        <label for="task9">散步</label>
+        <span>(15分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="10">
+        <input type="checkbox" id="task19" />
+        <label for="task19">减肥</label>
+        <span>(10分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="15">
+        <input type="checkbox" id="task4" />
+        <label for="task4">看篇论文</label>
+        <span>(15分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="10">
+        <input type="checkbox" id="task6" />
+        <label for="task6">预习与复习计算机学习</label>
+        <span>(10分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="10">
+        <input type="checkbox" id="task6" />
+        <label for="task6">看个ChatGTP的文章</label>
+        <span>(10分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="10">
+        <input type="checkbox" id="task7" />
+        <label for="task7">学英语单词30个</label>
+        <span>(10分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="10">
+        <input type="checkbox" id="task8" />
+        <label for="task8">练习键盘15分钟</label>
+        <span>(10分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="5">
+        <input type="checkbox" id="task18" />
+        <label for="task18">好的句子</label>
+        <span>(5分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="5">
+        <input type="checkbox" id="task27" />
+        <label for="task27">看个实验</label>
+        <span>(5分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="20">
+        <input type="checkbox" id="task12" />
+        <label for="task12">反思20分钟（专业课，小说灵感，赚钱方式,交友）</label>
+        <span>(20分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="30">
+        <input type="checkbox" id="task13" />
+        <label for="task13">不焦虑</label>
+        <span>(30分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="15">
+        <input type="checkbox" id="task14" />
+        <label for="task14">赚钱</label>
+        <span>(15分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="10">
+        <input type="checkbox" id="task20" />
+        <label for="task20">和同学搞好关系</label>
+        <span>(10分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="15">
+        <input type="checkbox" id="task21" />
+        <label for="task21">和老师搞好关系</label>
+        <span>(15分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="5">
+        <input type="checkbox" id="task22" />
+        <label for="task22">好的歌曲</label>
+        <span>(5分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="5">
+        <input type="checkbox" id="task23" />
+        <label for="task23">说话技巧</label>
+        <span>(10分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="5">
+        <input type="checkbox" id="task24" />
+        <label for="task24">搞笑段子</label>
+        <span>(5分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="5">
+        <input type="checkbox" id="task25" />
+        <label for="task25">心理学问</label>
+        <span>(5分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="5">
+        <input type="checkbox" id="task26" />
+        <label for="task26">经济学问</label>
+        <span>(5分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="20">
+        <input type="checkbox" id="task28" />
+        <label for="task28">学习新技能</label>
+        <span>(20分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="10">
+        <input type="checkbox" id="task29" />
+        <label for="task29">不拖延</label>
+        <span>(10分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="10">
+        <input type="checkbox" id="task30" />
+        <label for="task30">自我提醒</label>
+        <span>(10分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="10">
+        <input type="checkbox" id="task31" />
+        <label for="task31">漂亮的发型</label>
+        <span>(10分)</span>
+        <button class="delete">删除</button>
+      </li>
+      <li data-score="10">
+        <input type="checkbox" id="task32" />
+        <label for="task32">穿搭得体</label>
+        <span>(10分)</span>
+        <button class="delete">删除</button>
+      </li>
+    </ul>
+
+    <h2>总分：<span id="total-score">0</span></h2>
+
+    <label for="daily-summary">每日简述：</label>
+    <textarea id="daily-summary" placeholder="输入每日简述"></textarea>
+
+    <button id="refresh-btn">刷新</button>
+    <button id="export-btn">导出</button>
+
+    <script>
+      const taskList = document.getElementById("task-list");
+      const newTaskInput = document.getElementById("new-task");
+      const newTaskScoreInput = document.getElementById("new-task-score");
+      const addTaskButton = document.getElementById("add-task");
+      const totalScoreElement = document.getElementById("total-score");
+      let totalScore = 0;
+
+      const dailySummaryInput = document.getElementById("daily-summary");
+      let dailySummary = "";
+
+      const calculateTotalScore = () => {
+        let score = 0;
+        for (let i = 0; i < taskList.children.length; i++) {
+          const taskItem = taskList.children[i];
+          const taskScore = parseInt(taskItem.dataset.score);
+          if (taskItem.querySelector("input[type=checkbox]").checked) {
+            score += taskScore;
+          }
+        }
+        return score;
+      };
+
+      addTaskButton.addEventListener("click", () => {
+        const taskName = newTaskInput.value;
+        const taskScore = parseInt(newTaskScoreInput.value);
+
+        if (!taskName || !taskScore) {
+          alert("请输入任务名称和分数！");
+          return;
+        }
+
+        const taskItem = document.createElement("li");
+        taskItem.dataset.score = taskScore;
+
+        const taskCheckbox = document.createElement("input");
+        taskCheckbox.type = "checkbox";
+        taskCheckbox.id = `task${taskList.childElementCount + 1}`;
+
+        const taskLabel = document.createElement("label");
+        taskLabel.htmlFor = `task${taskList.childElementCount + 1}`;
+        taskLabel.textContent = taskName;
+
+        const taskScoreSpan = document.createElement("span");
+        taskScoreSpan.textContent = `(${taskScore}分)`;
+
+        const deleteButton = document.createElement("button");
+        deleteButton.classList.add("delete");
+        deleteButton.textContent = "删除";
+
+        taskItem.appendChild(taskCheckbox);
+        taskItem.appendChild(taskLabel);
+        taskItem.appendChild(taskScoreSpan);
+        taskItem.appendChild(deleteButton);
+
+        taskList.appendChild(taskItem);
+
+        totalScore += taskScore;
+        totalScoreElement.textContent = totalScore;
+
+        newTaskInput.value = "";
+        newTaskScoreInput.value = "";
+      });
+
+      taskList.addEventListener("click", (event) => {
+        if (event.target.tagName.toLowerCase() === "button") {
+          const taskItem = event.target.parentElement;
+          const taskScore = parseInt(taskItem.dataset.score);
+          taskList.removeChild(taskItem);
+          totalScore -= taskScore;
+          totalScoreElement.textContent = totalScore;
+        }
+      });
+
+      dailySummaryInput.addEventListener("input", (event) => {
+        dailySummary = event.target.value;
+      });
+
+      const refreshButton = document.getElementById("refresh-btn");
+      refreshButton.addEventListener("click", () => {
+        totalScore = calculateTotalScore();
+        totalScoreElement.textContent = totalScore;
+      });
+
+      document.getElementById("export-btn").addEventListener("click", () => {
+        html2canvas(document.body).then((canvas) => {
+          const dataURL = canvas.toDataURL("image/png");
+          const link = document.createElement("a");
+          link.download = "时间管理.png";
+          link.href = dataURL;
+          link.click();
+        });
+      });
+    </script>
+  </body>
+</html>
+
                 
             </div>
             <hr/>
@@ -675,7 +1153,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://wplfge3.github.io/2024/03/10/linux%E6%9C%8D%E5%8A%A1%E5%99%A8/">https://wplfge3.github.io/2024/03/10/linux%E6%9C%8D%E5%8A%A1%E5%99%A8/</a>
+                    <a href="https://wplfge3.github.io/html/%E5%AE%8C%E4%B8%8D%E6%88%90%E7%9A%84%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8A%A1.html">https://wplfge3.github.io/html/%E5%AE%8C%E4%B8%8D%E6%88%90%E7%9A%84%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8A%A1.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -789,54 +1267,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2024/03/11/GO-KEGG%E5%AF%8C%E9%9B%86%E5%88%86%E6%9E%90/">
+                <a href="/html/%E5%AE%8C%E4%B8%8D%E6%88%90%E7%9A%84%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8A%A1.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="GO-KEGG富集分析">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">GO-KEGG富集分析</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-03-11
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            花粱
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2024/03/09/%E8%BD%AC%E5%BD%95%E6%9C%AC/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="转录本">
-                        
-                        <span class="card-title">转录本</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -847,7 +1289,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-25
                             </span>
                         <span class="publish-author">
                             
@@ -857,6 +1299,45 @@
                         </span>
                     </div>
                 </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/html/%E5%AE%8C%E4%B8%8D%E6%88%90%E7%9A%84%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8A%A1.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-05-25
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            花粱
+                            
+                        </span>
+                    </div>
+                </div>
+
                 
             </div>
         </div>
