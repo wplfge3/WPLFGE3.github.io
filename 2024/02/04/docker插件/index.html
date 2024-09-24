@@ -1,0 +1,1692 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="docker插件, HL&#39;s blog">
+    <meta name="description" content="1，直接打包下docker我的docker安装路径：C:\Program Files\Docker\Dockertbtools的插件：F:\Users\user.TBtools
+直接用一下tbtools的那个插件CLI Program Wr">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>docker插件 | HL&#39;s blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">HL&#39;s blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-tools" style="zoom: 0.6;"></i>
+      
+      <span>有趣工具</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/html/%E9%9A%8F%E6%9C%BA%E8%BD%AE%E7%9B%98.html">
+          
+          <i class="fas fa-random" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>随机轮盘</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/html/%E4%B8%8D%E8%A6%81%E7%86%AC%E5%A4%9C.html">
+          
+          <i class="fas fa-moon" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>不要熬夜</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/html/%E4%BF%9D%E6%8A%A4%E7%9C%BC%E7%9D%9B.html">
+          
+          <i class="fas fa-eye" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>保护眼睛</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/html/%E5%A4%AA%E9%98%B3.html">
+          
+          <i class="fas fa-sun" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>太阳</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/html/%E6%96%87%E5%AD%97%E8%BD%AC%E8%AF%AD%E8%A8%80.html">
+          
+          <i class="fas fa-voice" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>文字转语言</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/html/tnt%E5%BC%B9%E9%81%93%E8%BE%85%E5%8A%A9.html">
+          
+          <i class="fas fa-bomb" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>tnt弹道辅助</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/html/%E5%AE%8C%E4%B8%8D%E6%88%90%E7%9A%84%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8A%A1.html">
+          
+          <i class="fas fa-tasks" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>完不成的每日任务</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/html/%E5%AD%A6%E4%B9%A0.html">
+          
+          <span>学习</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-book-open" style="zoom: 0.6;"></i>
+      
+      <span>日记</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/diaries/travel">
+          
+          <i class="fas fa-plane" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>我的旅行日记</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/diaries/daily">
+          
+          <i class="fas fa-home" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>日常生活</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-file-word" style="zoom: 0.6;"></i>
+      
+      <span>word教程</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/word-tutorials/basics">
+          
+          <i class="fas fa-graduation-cap" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>基础教程</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/word-tutorials/advanced">
+          
+          <i class="fas fa-user-graduate" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>高级技巧</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">HL&#39;s blog</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-tools"></i>
+			
+			有趣工具
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/html/%E9%9A%8F%E6%9C%BA%E8%BD%AE%E7%9B%98.html " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-random" style="position: absolute;left:50px" ></i>
+			      
+		          <span>随机轮盘</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/html/%E4%B8%8D%E8%A6%81%E7%86%AC%E5%A4%9C.html " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-moon" style="position: absolute;left:50px" ></i>
+			      
+		          <span>不要熬夜</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/html/%E4%BF%9D%E6%8A%A4%E7%9C%BC%E7%9D%9B.html " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-eye" style="position: absolute;left:50px" ></i>
+			      
+		          <span>保护眼睛</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/html/%E5%A4%AA%E9%98%B3.html " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-sun" style="position: absolute;left:50px" ></i>
+			      
+		          <span>太阳</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/html/%E6%96%87%E5%AD%97%E8%BD%AC%E8%AF%AD%E8%A8%80.html " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-voice" style="position: absolute;left:50px" ></i>
+			      
+		          <span>文字转语言</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/html/tnt%E5%BC%B9%E9%81%93%E8%BE%85%E5%8A%A9.html " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bomb" style="position: absolute;left:50px" ></i>
+			      
+		          <span>tnt弹道辅助</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/html/%E5%AE%8C%E4%B8%8D%E6%88%90%E7%9A%84%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8A%A1.html " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tasks" style="position: absolute;left:50px" ></i>
+			      
+		          <span>完不成的每日任务</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/html/%E5%AD%A6%E4%B9%A0.html " style="margin-left:75px">
+				  
+		          <span>学习</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-book-open"></i>
+			
+			日记
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/diaries/travel " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-plane" style="position: absolute;left:50px" ></i>
+			      
+		          <span>我的旅行日记</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/diaries/daily " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-home" style="position: absolute;left:50px" ></i>
+			      
+		          <span>日常生活</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-file-word"></i>
+			
+			word教程
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/word-tutorials/basics " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-graduation-cap" style="position: absolute;left:50px" ></i>
+			      
+		          <span>基础教程</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/word-tutorials/advanced " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-graduate" style="position: absolute;left:50px" ></i>
+			      
+		          <span>高级技巧</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">docker插件</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2024-02-04
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="1，直接打包下docker"><a href="#1，直接打包下docker" class="headerlink" title="1，直接打包下docker"></a>1，直接打包下docker</h2><p>我的docker安装路径：C:\Program Files\Docker\Docker<br>tbtools的插件：F:\Users\user.TBtools</p>
+<p>直接用一下tbtools的那个插件CLI Program Wrapper Creator，就是tbtools更新后改名字了！在下图这个位置。</p>
+<img src="/2024/02/04/docker%E6%8F%92%E4%BB%B6/%E6%8F%92%E4%BB%B6%E4%BD%8D%E7%BD%AE.png" class="" title="插件位置">
+
+<img src="/2024/02/04/docker%E6%8F%92%E4%BB%B6/%E4%B8%80%E8%88%AC%E6%8F%92%E4%BB%B6%E7%9A%84%E4%BD%8D%E7%BD%AE.png" class="" title="插件位置">
+
+<p>我发现了docker位置，试着打包下，大概率不行。</p>
+
+
+<img src="/2024/02/04/docker%E6%8F%92%E4%BB%B6/%E6%8F%92%E4%BB%B6%E6%89%93%E5%BC%80%E6%83%85%E5%86%B5.png" class="" title="插件打开情况">
+
+<p>自己的电脑报错后打开，另一台电脑打不开。说明不行。</p>
+<h2 id="2，简单说明为什么不行，"><a href="#2，简单说明为什么不行，" class="headerlink" title="2，简单说明为什么不行，"></a>2，简单说明为什么不行，</h2><h3 id="2-1-windows可以使用WSL运行linux脚本"><a href="#2-1-windows可以使用WSL运行linux脚本" class="headerlink" title="2.1 windows可以使用WSL运行linux脚本"></a>2.1 windows可以使用WSL运行linux脚本</h3><p>如果你希望在Windows上运行这个脚本，可以使用Windows Subsystem for Linux (WSL) 来模拟Linux环境，然后在WSL中运行脚本。以下是如何在WSL中运行上述Linux脚本的步骤：</p>
+<ol>
+<li><p>安装WSL:</p>
+<ul>
+<li>打开 PowerShell 作为管理员。</li>
+<li>运行以下命令来启用WSL功能：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</span><br></pre></td></tr></table></figure></li>
+<li>完成后，重新启动计算机。</li>
+</ul>
+</li>
+<li><p>安装Linux分发版：</p>
+<ul>
+<li>打开Microsoft Store，并搜索你喜欢的Linux分发版，比如Ubuntu、Debian、或者其他。</li>
+<li>安装所选的分发版。</li>
+</ul>
+</li>
+<li><p>初始化WSL：</p>
+<ul>
+<li>打开已安装的Linux分发版。</li>
+<li>初始化并设置Linux用户帐户和密码。</li>
+</ul>
+</li>
+<li><p>在WSL中运行脚本：</p>
+<ul>
+<li>将SRA文件和sratoolkit安装到WSL中，或者将它们放在WSL可以访问的共享目录中。</li>
+<li>打开WSL终端，并进入SRA文件所在的目录。</li>
+<li>使用以下命令运行脚本：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash script.sh</span><br></pre></td></tr></table></figure>
+其中，<code>script.sh</code>是你之前创建的脚本文件。</li>
+</ul>
+</li>
+</ol>
+<p>通过这种方式，在WSL中运行脚本，可以使用Linux环境来处理SRA文件，并执行上述脚本来将其转换为FASTQ格式。这是在Windows上处理SRA文件的一种方法，因为SRAToolkit通常是为Linux设计的。</p>
+<h3 id="2-2-另外一种就是docker"><a href="#2-2-另外一种就是docker" class="headerlink" title="2.2 另外一种就是docker"></a>2.2 另外一种就是docker</h3><p>Windows Subsystem for Linux (WSL) 与 Docker 有一些相似之处，因为它们都是用于在Windows操作系统上运行Linux应用程序的工具，但它们的工作方式和目的略有不同。</p>
+<ol>
+<li><p>WSL (Windows Subsystem for Linux):</p>
+<ul>
+<li>WSL是微软开发的一种技术，允许在Windows系统上运行一个完整的Linux内核，从而使用户能够在Windows中使用Linux命令行工具和应用程序。</li>
+<li>WSL提供了与本地Windows文件系统的集成，允许在Linux环境中访问和操作Windows文件。</li>
+<li>WSL不需要虚拟机或容器，它是通过虚拟文件系统进行实现的。</li>
+<li>适用于运行基于Linux的工具和应用程序，以及进行开发和测试。</li>
+</ul>
+</li>
+<li><p>Docker:</p>
+<ul>
+<li>Docker是一种容器化平台，允许你将应用程序及其依赖项打包成容器，然后在任何支持Docker的操作系统上运行这些容器。</li>
+<li>Docker容器是隔离的，具有自己的文件系统和运行时环境，但与主机操作系统共享内核。</li>
+<li>Docker容器是独立的，可移植的应用程序单元，允许开发人员轻松部署和运行应用程序，无论目标操作系统如何。</li>
+<li>Docker适用于将应用程序和微服务打包、部署和管理。</li>
+</ul>
+</li>
+</ol>
+<p>总结来说，WSL主要用于在Windows系统上模拟Linux环境以运行Linux工具和应用程序，而Docker主要用于容器化应用程序以便在不同环境中轻松部署和运行。虽然它们都有一些重叠的用途，但其重点和实现方式不同。如果你需要在Windows上运行Linux应用程序，可以使用WSL，而如果需要容器化应用程序，则可以使用Docker。</p>
+<h2 id="3，问：我有一个软件，功能是可以打包软件，比如一个文件夹里有一个exe可执行文件，然后我输exe文件和exe文件所处的文件夹，就能把这个打包成一个插件，我能不能把docker-desktop打包成插件呢？"><a href="#3，问：我有一个软件，功能是可以打包软件，比如一个文件夹里有一个exe可执行文件，然后我输exe文件和exe文件所处的文件夹，就能把这个打包成一个插件，我能不能把docker-desktop打包成插件呢？" class="headerlink" title="3，问：我有一个软件，功能是可以打包软件，比如一个文件夹里有一个exe可执行文件，然后我输exe文件和exe文件所处的文件夹，就能把这个打包成一个插件，我能不能把docker desktop打包成插件呢？"></a>3，问：我有一个软件，功能是可以打包软件，比如一个文件夹里有一个exe可执行文件，然后我输exe文件和exe文件所处的文件夹，就能把这个打包成一个插件，我能不能把docker desktop打包成插件呢？</h2><p>将Docker Desktop或任何其他软件打包成插件，需要考虑几个关键因素：</p>
+<ol>
+<li><p><strong>软件许可协议</strong>：首先，必须确保对Docker Desktop或任何其他软件的使用遵守其许可协议。Docker Desktop的使用受其许可协议的约束，这可能限制了软件的重新分发、修改或打包的方式。</p>
+</li>
+<li><p><strong>技术可行性</strong>：Docker Desktop不仅是一个可执行文件，它包括多个组件和服务，这些服务在系统级运行以支持容器化应用程序。这意味着简单地将其可执行文件和相关文件打包可能不足以让Docker Desktop正常运行。它的安装和运行可能需要更深层次的系统集成，比如对操作系统服务的安装和配置。</p>
+</li>
+<li><p><strong>依赖性和环境</strong>：Docker Desktop依赖于特定的系统环境和配置（例如，Windows上的Hyper-V或WSL2，MacOS上的特定虚拟化框架）。将其打包为插件可能需要包含这些依赖关系和配置过程，这可能是复杂且难以实现的。</p>
+</li>
+<li><p><strong>更新和维护</strong>：即使能够将Docker Desktop打包成插件，也需要考虑如何处理软件更新和维护。Docker Desktop定期发布更新以修复安全问题、添加新功能和改进性能。打包成插件的方式可能会使更新过程变得复杂。</p>
+</li>
+</ol>
+<p>如果你的目标是简化Docker Desktop的安装和部署，可能有其他途径可以探索，例如创建自动化脚本来执行标准安装步骤，而不是尝试将其转换成一个独立的插件形式。</p>
+<p>在考虑是否可以或应该这样做之前，建议详细阅读Docker Desktop的许可协议，并可能咨询法律专业人士。此外，探索技术解决方案时，考虑到Docker和其社区可能已经提供了一些部署和管理Docker环境的工具和最佳实践，这些可能更适合你的需求。</p>
+<h2 id="4，-研究下那个付费的插件"><a href="#4，-研究下那个付费的插件" class="headerlink" title="4， 研究下那个付费的插件"></a>4， 研究下那个付费的插件</h2><p>SRA批量下载及转为Fastq格式的，我有这个插件</p>
+<h3 id="4-1首先在linux中，想使用fastq-dump-要按照下面这样"><a href="#4-1首先在linux中，想使用fastq-dump-要按照下面这样" class="headerlink" title="4.1首先在linux中，想使用fastq-dump,要按照下面这样"></a>4.1首先在linux中，想使用fastq-dump,要按照下面这样</h3><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8322e00a9f8a">https://www.jianshu.com/p/8322e00a9f8a</a></p>
+<p>SRA格式转化<br>sra转化为fastq文件可以使用sratoolkit中的fastq-dump命令。</p>
+<p>fastq-dump –split-3 filename其中–split-3参数代表着如果是单端测序就生成一个 、.fastq文件，如果是双端测序就生成_1.fastq 和*_2.fastq 文件。</p>
+<p>进入到sra文件中我们可以用下述代码进行批量的格式转化：</p>
+<hr>
+<p>for i in *sra<br>do<br>echo $i<br>/path/sratoolkit.2.3.5-2-mac64/bin/fastq-dump –split-3 $i<br>done</p>
+<hr>
+<h3 id="4-2-在tbtools插件中，直接解压"><a href="#4-2-在tbtools插件中，直接解压" class="headerlink" title="4.2 在tbtools插件中，直接解压"></a>4.2 在tbtools插件中，直接解压</h3><img src="/2024/02/04/docker%E6%8F%92%E4%BB%B6/%E6%8F%92%E4%BB%B61.png" class="" title="插件解压">
+
+<img src="/2024/02/04/docker%E6%8F%92%E4%BB%B6/%E6%8F%92%E4%BB%B62.png" class="" title="插件内容">
+
+
+<h3 id="4-3-我有一个SRA批量下载及转为Fastq格式的插件，我直接解压，解压后一个为bin文件夹，里面有两个文件，fastq-dump-orig与fastq-dump-orig-exe，另外一个为Plugin-SRAtoFastq-jar，"><a href="#4-3-我有一个SRA批量下载及转为Fastq格式的插件，我直接解压，解压后一个为bin文件夹，里面有两个文件，fastq-dump-orig与fastq-dump-orig-exe，另外一个为Plugin-SRAtoFastq-jar，" class="headerlink" title="4.3 我有一个SRA批量下载及转为Fastq格式的插件，我直接解压，解压后一个为bin文件夹，里面有两个文件，fastq-dump-orig与fastq-dump-orig.exe，另外一个为Plugin_SRAtoFastq.jar，"></a>4.3 我有一个SRA批量下载及转为Fastq格式的插件，我直接解压，解压后一个为bin文件夹，里面有两个文件，fastq-dump-orig与fastq-dump-orig.exe，另外一个为Plugin_SRAtoFastq.jar，</h3><p>这个插件安装后可以界面化</p>
+<p>A little wrapper of NCBI SRA Toolkits.<br>This wrapper could only convert .sra files to .fastq files.</p>
+<p>能输入sra文件，然后转换成fastq文件。</p>
+<p>这个插件的结构反映了它的设计目的，即提供一个界面化工具来批量下载SRA数据并将其转换为FASTQ格式。以下是插件结构的详细解释：</p>
+<h4 id="bin文件夹"><a href="#bin文件夹" class="headerlink" title="bin文件夹"></a>bin文件夹</h4><ul>
+<li><strong>目的：</strong> 通常，<code>bin</code>文件夹包含二进制文件，即程序执行文件。在这种情况下，它包含了插件运行所需的核心工具。</li>
+<li><strong>内容：</strong><ul>
+<li><strong>fastq-dump-orig</strong>：这是<code>fastq-dump</code>工具的一个版本，用于Linux或Unix系统。<code>fastq-dump</code>是NCBI SRA Toolkit的一部分，用于将SRA文件转换为FASTQ格式，后者是生物信息学分析中常用的一种格式。</li>
+<li><strong>fastq-dump-orig.exe</strong>：这是<code>fastq-dump</code>工具的Windows可执行版本。<code>.exe</code>扩展名表明它是为Windows操作系统设计的。</li>
+</ul>
+</li>
+</ul>
+<h4 id="Plugin-SRAtoFastq-jar"><a href="#Plugin-SRAtoFastq-jar" class="headerlink" title="Plugin_SRAtoFastq.jar"></a>Plugin_SRAtoFastq.jar</h4><ul>
+<li><strong>目的：</strong> 这是一个Java归档文件（JAR），包含了插件的界面和逻辑。JAR文件是一种打包Java类文件（.class文件）和与应用程序相关的资源文件（如文本、图片等）的方式。它可以被Java运行时环境作为一个单一请求执行。</li>
+<li><strong>功能：</strong> 此JAR文件可能提供了一个图形用户界面（GUI），使用户能够方便地选择要下载和转换的SRA文件，无需直接与命令行交互。界面背后，它调用<code>bin</code>文件夹中的<code>fastq-dump-orig</code>或<code>fastq-dump-orig.exe</code>来执行实际的文件转换。</li>
+</ul>
+<h4 id="使用流程"><a href="#使用流程" class="headerlink" title="使用流程"></a>使用流程</h4><ol>
+<li><strong>启动JAR文件：</strong> 用户通过Java运行<code>Plugin_SRAtoFastq.jar</code>，启动图形界面。</li>
+<li><strong>操作界面：</strong> 通过图形界面，用户可以指定想要下载和转换的SRA文件。</li>
+<li><strong>后端处理：</strong> 用户提交请求后，插件背后的逻辑将调用<code>bin</code>目录下的相应<code>fastq-dump</code>版本来处理SRA文件，将其转换为FASTQ格式。</li>
+</ol>
+<h4 id="结构总结"><a href="#结构总结" class="headerlink" title="结构总结"></a>结构总结</h4><p>这个插件的结构设计旨在简化生物信息数据处理的流程，特别是将SRA格式数据转换为更通用的FASTQ格式。通过提供一个易于使用的图形界面（由<code>Plugin_SRAtoFastq.jar</code>提供），它降低了技术门槛，允许用户不必直接使用命令行工具（<code>fastq-dump-orig</code>和<code>fastq-dump-orig.exe</code>）也能完成数据转换工作。</p>
+<h3 id="4-4-逆向一下"><a href="#4-4-逆向一下" class="headerlink" title="4.4 逆向一下"></a>4.4 逆向一下</h3><p>如果你已经获得了作者的允许去查看和学习这些程序的代码，那么这是一个很好的学习机会。不过，基于你提到的文件类型（<code>fastq-dump-orig</code>、<code>fastq-dump-orig.exe</code>和<code>Plugin_SRAtoFastq.jar</code>），这里有一些方法和工具可以帮助你开始。</p>
+<h4 id="查看和学习Java程序（-jar文件）"><a href="#查看和学习Java程序（-jar文件）" class="headerlink" title="查看和学习Java程序（.jar文件）"></a>查看和学习Java程序（<code>.jar</code>文件）</h4><p>对于<code>Plugin_SRAtoFastq.jar</code>文件，由于它是一个Java归档文件，你可以使用一些特定的工具来查看里面的类文件：</p>
+<ol>
+<li><p><strong>JD-GUI</strong>：这是一个流行的Java反编译器，可以让你查看<code>.jar</code>文件中的源代码。你可以用它来打开<code>.jar</code>文件，浏览里面的类结构，并查看反编译的代码。</p>
+</li>
+<li><p><strong>JADX</strong>：这是一个能够将Dalvik字节码（用于Android应用）转换为Java源代码的工具，但它也可以作为一个通用的Java反编译器使用。JADX提供了一个图形用户界面（GUI）和命令行工具，可以用来查看<code>.jar</code>和<code>.class</code>文件。</p>
+</li>
+</ol>
+<h4 id="查看和分析可执行文件（fastq-dump-orig和fastq-dump-orig-exe）"><a href="#查看和分析可执行文件（fastq-dump-orig和fastq-dump-orig-exe）" class="headerlink" title="查看和分析可执行文件（fastq-dump-orig和fastq-dump-orig.exe）"></a>查看和分析可执行文件（<code>fastq-dump-orig</code>和<code>fastq-dump-orig.exe</code>）</h4><p>对于可执行文件（无论是Linux/Unix的二进制文件还是Windows的<code>.exe</code>文件），你可以使用一系列不同的逆向工程工具来分析它们：</p>
+<ol>
+<li><p><strong>Ghidra</strong>：这是由美国国家安全局（NSA）开发的一个软件逆向工程工具套件。它提供了反编译功能，可以将可执行文件转换回更易于理解的高级代码形式。Ghidra适用于多个平台，包括Windows、Linux和Mac。</p>
+</li>
+<li><p><strong>IDA Pro</strong>：这是一个非常强大的逆向工程工具，广泛用于安全研究和恶意软件分析。IDA Pro支持多种架构和操作系统下的可执行文件。它提供了图形用户界面和大量的插件，以支持不同的逆向工程任务。</p>
+</li>
+<li><p><strong>Radare2</strong>：这是一个开源的逆向工程框架，提供了丰富的工具链来处理各种文件类型（包括二进制文件和可执行文件）。它是命令行工具，适合那些喜欢在终端中工作的用户。</p>
+</li>
+</ol>
+<h4 id="开始之前"><a href="#开始之前" class="headerlink" title="开始之前"></a>开始之前</h4><ul>
+<li><strong>备份文件</strong>：在开始之前，确保备份所有文件，以免在分析过程中意外修改或损坏原始文件。</li>
+<li><strong>获取必要的权限</strong>：即使你已经得到了查看代码的许可，也确保你了解并遵守所有相关的法律和协议条款。</li>
+<li><strong>学习基础</strong>：如果你不熟悉Java编程或逆向工程的基础知识，开始之前先学习这些知识会很有帮助。</li>
+</ul>
+<p>通过使用这些工具和方法，你可以开始学习和分析这些程序的工作原理。记住，逆向工程是一个复杂但有趣的过程，需要时间和耐心来掌握。祝你学习顺利！</p>
+<p><a target="_blank" rel="noopener" href="http://java-decompiler.github.io/">http://java-decompiler.github.io/</a></p>
+<h3 id="4-5-下载jd-gui，逆向"><a href="#4-5-下载jd-gui，逆向" class="headerlink" title="4.5 下载jd-gui，逆向"></a>4.5 下载jd-gui，逆向</h3><p><a target="_blank" rel="noopener" href="http://java-decompiler.github.io/">http://java-decompiler.github.io/</a></p>
+<img src="/2024/02/04/docker%E6%8F%92%E4%BB%B6/java%E4%BB%A3%E7%A0%81%E6%9F%A5%E7%9C%8B.png" class="" title="java代码查看">
+
+<p>一个文件SRAtoFastq.ConvertSRAtoFastq.class，代码：</p>
+<p>package SRAtoFastq;</p>
+<p>import java.io.File;<br>import java.io.IOException;<br>import java.util.ArrayList;<br>import toolsKit.SystemCommander;<br>import toolsKit.getProgramPath;</p>
+<p>public class ConvertSRAtoFastq {<br>  public static void process(File inSRA, File outDir) throws IOException, InterruptedException {<br>    String wkDir = inSRA.getParentFile().getAbsolutePath();<br>    String bin = getProgramPath.getJarRealPath(ConvertSRAtoFastq.class) + File.separator + “bin”;<br>    if (!(new File(bin)).exists())<br>      throw new IOException(“ConvertSRAtoFastq is broken, please re-install it.”);<br>    for (File curFile : (new File(bin)).listFiles())<br>      curFile.setExecutable(true);<br>    SystemCommander sc = new SystemCommander();<br>    ArrayList<String> commandArr = new ArrayList<String>();<br>    commandArr.add(“fastq-dump-orig –split-3 .” + File.separator + inSRA.getName());<br>    System.err.println(“commandArr:” + commandArr);<br>    sc.setCrossPlatformCommand(commandArr);<br>    sc.excuteCommandsAndOutputStdOrSte(wkDir, bin);<br>  }<br>}</p>
+<p>这段Java代码定义了一个用于将SRA文件转换为Fastq格式文件的类，命名为<code>ConvertSRAtoFastq</code>，位于<code>SRAtoFastq</code>包中。下面是对代码中主要部分的解释：</p>
+<ol>
+<li><p><strong>包和导入</strong>：</p>
+<ul>
+<li><code>package SRAtoFastq;</code>：这行指定了当前类属于<code>SRAtoFastq</code>包。</li>
+<li>导入了几个Java类，包括<code>File</code>, <code>IOException</code>, <code>ArrayList</code>等，以及<code>toolsKit</code>包中的<code>SystemCommander</code>和<code>getProgramPath</code>类。这些导入使得代码可以使用文件操作、异常处理、集合框架、以及<code>toolsKit</code>包提供的功能。</li>
+</ul>
+</li>
+<li><p><strong>类定义</strong>：</p>
+<ul>
+<li><code>public class ConvertSRAtoFastq</code>：定义了一个公开的类，名为<code>ConvertSRAtoFastq</code>。</li>
+</ul>
+</li>
+<li><p><strong>方法定义</strong>：</p>
+<ul>
+<li><code>public static void process(File inSRA, File outDir)</code>：这是一个静态方法，接受两个参数：<code>inSRA</code>（输入的SRA文件）和<code>outDir</code>（输出的目录），并且可能抛出<code>IOException</code>和<code>InterruptedException</code>异常。这个方法是类的主要工作方法，用于处理SRA到Fastq的转换。</li>
+</ul>
+</li>
+<li><p><strong>工作目录和二进制文件目录的确定</strong>：</p>
+<ul>
+<li>方法内部首先获取输入SRA文件的父目录作为工作目录（<code>wkDir</code>）。</li>
+<li>接着，通过<code>getProgramPath.getJarRealPath(ConvertSRAtoFastq.class)</code>获取当前类所在JAR文件的绝对路径，然后添加上<code>File.separator + &quot;bin&quot;</code>来定位到<code>bin</code>目录。这个目录被假设为包含了转换所需的执行文件。</li>
+</ul>
+</li>
+<li><p><strong>检查和设置执行权限</strong>：</p>
+<ul>
+<li>检查<code>bin</code>目录是否存在，不存在则抛出<code>IOException</code>。</li>
+<li>遍历<code>bin</code>目录下的所有文件，并将它们设置为可执行，这是为了确保转换工具（如<code>fastq-dump-orig</code>）能被正常执行。</li>
+</ul>
+</li>
+<li><p><strong>构建并执行转换命令</strong>：</p>
+<ul>
+<li>使用<code>ArrayList&lt;String&gt;</code>构建命令行指令，指令中包含了<code>fastq-dump-orig --split-3</code>和输入SRA文件的名称，其中<code>--split-3</code>参数是指生成分离的3个文件（如果适用）。</li>
+<li>输出构建的命令行指令以供调试。</li>
+<li>使用<code>SystemCommander</code>类的实例执行命令，<code>SystemCommander</code>是<code>toolsKit</code>包提供的一个工具类，用于跨平台执行系统命令并捕获输出。</li>
+<li>执行的命令将在<code>bin</code>目录下执行，并以输入文件的父目录作为工作目录。</li>
+</ul>
+</li>
+</ol>
+<p>这段代码的主要功能是自动化地将SRA格式的生物序列数据文件转换为更通用的Fastq格式，它通过调用外部工具（假设为<code>fastq-dump-orig</code>）来完成这一任务。需要注意的是，这个过程依赖于外部工具的可执行文件以及这些文件的执行权限设置。<br>另一个文件SRAtoFastq.ConvertSRAtoFastqGUIPanel.class代码</p>
+<p>package SRAtoFastq;</p>
+<p>import biocjava.GUIexcutors.TBtools;<br>import java.awt.dnd.DropTarget;<br>import java.awt.dnd.DropTargetListener;<br>import java.awt.event.ActionEvent;<br>import java.awt.event.ActionListener;<br>import java.io.File;<br>import java.util.logging.Level;<br>import java.util.logging.Logger;<br>import javax.swing.BorderFactory;<br>import javax.swing.GroupLayout;<br>import javax.swing.JButton;<br>import javax.swing.JFileChooser;<br>import javax.swing.JLabel;<br>import javax.swing.JOptionPane;<br>import javax.swing.JPanel;<br>import javax.swing.JScrollPane;<br>import javax.swing.JTextArea;<br>import javax.swing.LayoutStyle;<br>import toolsKit.GUItools.DragDropMultiFilePathListener;<br>import toolsKit.GUItools.MyPopupMenu;</p>
+<p>public class ConvertSRAtoFastqGUIPanel extends JPanel {<br>  private String curDir = “.”;</p>
+<p>  private JButton InputSRAFileListButton;</p>
+<p>  private JTextArea InputSRAFileListTextArea;</p>
+<p>  private JButton StartButton;</p>
+<p>  private JLabel jLabel1;</p>
+<p>  private JPanel jPanel1;</p>
+<p>  private JPanel jPanel3;</p>
+<p>  private JScrollPane jScrollPane1;</p>
+<p>  private JScrollPane jScrollPane2;</p>
+<p>  private JTextArea jTextArea1;</p>
+<p>  public ConvertSRAtoFastqGUIPanel() {<br>    initComponents();<br>    this.StartButton.setBackground(TBtools.blueColor);<br>    this.InputSRAFileListTextArea.setDropTarget(new DropTarget(this, 1073741824, (DropTargetListener)new DragDropMultiFilePathListener(this.InputSRAFileListTextArea), true));<br>    this.InputSRAFileListTextArea.setDragEnabled(true);<br>    this.InputSRAFileListButton.addActionListener(new ActionListener() {<br>          public void actionPerformed(ActionEvent e) {<br>            JFileChooser jfc = new JFileChooser();<br>            jfc.setFileSelectionMode(0);<br>            jfc.setCurrentDirectory(new File(ConvertSRAtoFastqGUIPanel.this.curDir));<br>            jfc.setMultiSelectionEnabled(true);<br>            jfc.showOpenDialog(ConvertSRAtoFastqGUIPanel.this);<br>            ConvertSRAtoFastqGUIPanel.this.curDir = jfc.getSelectedFile().getPath();<br>            for (File f : jfc.getSelectedFiles())<br>              ConvertSRAtoFastqGUIPanel.this.InputSRAFileListTextArea.append(f.getAbsolutePath() + “\n”);<br>          }<br>        });<br>    this.StartButton.addActionListener(new ActionListener() {<br>          public void actionPerformed(ActionEvent e) {<br>            (new Thread() {<br>                public void run() {<br>                  ConvertSRAtoFastqGUIPanel.this.StartButton.setEnabled(false);<br>                  try {<br>                    String[] filePath = ConvertSRAtoFastqGUIPanel.this.InputSRAFileListTextArea.getText().split(“[\r\n]+”);<br>                    for (String curFilePath : filePath) {<br>                      File curFile = new File(curFilePath);<br>                      if (curFile.exists() &amp;&amp; curFile.isFile())<br>                        ConvertSRAtoFastq.process(curFile, curFile);<br>                    }<br>                    JOptionPane.showMessageDialog(null, “All Conversion Finished.”);<br>                  } catch (Exception ex) {<br>                    Logger.getLogger(ConvertSRAtoFastqGUIPanel.class.getName()).log(Level.SEVERE, (String)null, ex);<br>                  } finally {<br>                    ConvertSRAtoFastqGUIPanel.this.StartButton.setEnabled(true);<br>                  }<br>                }<br>              }).start();<br>          }<br>        });<br>    MyPopupMenu.installToTextComponent(this.InputSRAFileListTextArea);<br>  }</p>
+<p>  private void initComponents() {<br>    this.jLabel1 = new JLabel();<br>    this.StartButton = new JButton();<br>    this.jPanel1 = new JPanel();<br>    this.jScrollPane1 = new JScrollPane();<br>    this.jTextArea1 = new JTextArea();<br>    this.jPanel3 = new JPanel();<br>    this.jScrollPane2 = new JScrollPane();<br>    this.InputSRAFileListTextArea = new JTextArea();<br>    this.InputSRAFileListButton = new JButton();<br>    this.jLabel1.setFont(this.jLabel1.getFont().deriveFont(this.jLabel1.getFont().getSize() + 9.0F));<br>    this.jLabel1.setText(“Convert SRA to Fastq Files”);<br>    this.StartButton.setText(“Start”);<br>    this.jPanel1.setBorder(BorderFactory.createTitledBorder(“Note:”));<br>    this.jTextArea1.setColumns(20);<br>    this.jTextArea1.setRows(5);<br>    this.jTextArea1.setText(“A little wrapper of NCBI SRA Toolkits.\nThis wrapper could only convert .sra files to .fastq files.”);<br>    this.jScrollPane1.setViewportView(this.jTextArea1);<br>    GroupLayout jPanel1Layout = new GroupLayout(this.jPanel1);<br>    this.jPanel1.setLayout(jPanel1Layout);<br>    jPanel1Layout.setHorizontalGroup(jPanel1Layout<br>        .createParallelGroup(GroupLayout.Alignment.LEADING)<br>        .addGroup(jPanel1Layout.createSequentialGroup()<br>          .addContainerGap()<br>          .addComponent(this.jScrollPane1)<br>          .addContainerGap()));<br>    jPanel1Layout.setVerticalGroup(jPanel1Layout<br>        .createParallelGroup(GroupLayout.Alignment.LEADING)<br>        .addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()<br>          .addComponent(this.jScrollPane1, -1, 55, 32767)<br>          .addContainerGap()));<br>    this.jPanel3.setBorder(BorderFactory.createTitledBorder(“Set Input .sra File List”));<br>    this.InputSRAFileListTextArea.setColumns(20);<br>    this.InputSRAFileListTextArea.setRows(5);<br>    this.jScrollPane2.setViewportView(this.InputSRAFileListTextArea);<br>    this.InputSRAFileListButton.setText(“…”);<br>    GroupLayout jPanel3Layout = new GroupLayout(this.jPanel3);<br>    this.jPanel3.setLayout(jPanel3Layout);<br>    jPanel3Layout.setHorizontalGroup(jPanel3Layout<br>        .createParallelGroup(GroupLayout.Alignment.LEADING)<br>        .addGroup(jPanel3Layout.createSequentialGroup()<br>          .addContainerGap()<br>          .addComponent(this.jScrollPane2)<br>          .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)<br>          .addComponent(this.InputSRAFileListButton, -2, 99, -2)<br>          .addContainerGap()));<br>    jPanel3Layout.setVerticalGroup(jPanel3Layout<br>        .createParallelGroup(GroupLayout.Alignment.LEADING)<br>        .addGroup(jPanel3Layout.createSequentialGroup()<br>          .addContainerGap()<br>          .addGroup(jPanel3Layout.createParallelGroup(GroupLayout.Alignment.LEADING)<br>            .addComponent(this.jScrollPane2, -1, 209, 32767)<br>            .addComponent(this.InputSRAFileListButton, -1, -1, 32767))<br>          .addContainerGap()));<br>    GroupLayout layout = new GroupLayout(this);<br>    setLayout(layout);<br>    layout.setHorizontalGroup(layout<br>        .createParallelGroup(GroupLayout.Alignment.LEADING)<br>        .addGroup(layout.createSequentialGroup()<br>          .addGap(257, 257, 257)<br>          .addComponent(this.jLabel1)<br>          .addContainerGap(273, 32767))<br>        .addGroup(layout.createSequentialGroup()<br>          .addContainerGap()<br>          .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)<br>            .addComponent(this.StartButton, -1, -1, 32767)<br>            .addComponent(this.jPanel1, -1, -1, 32767)<br>            .addComponent(this.jPanel3, -1, -1, 32767))<br>          .addContainerGap()));<br>    layout.setVerticalGroup(layout<br>        .createParallelGroup(GroupLayout.Alignment.LEADING)<br>        .addGroup(layout.createSequentialGroup()<br>          .addGap(23, 23, 23)<br>          .addComponent(this.jLabel1, -2, 46, -2)<br>          .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)<br>          .addComponent(this.jPanel1, -2, -1, -2)<br>          .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)<br>          .addComponent(this.jPanel3, -1, -1, 32767)<br>          .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)<br>          .addComponent(this.StartButton, -2, 38, -2)<br>          .addContainerGap()));<br>  }<br>}</p>
+<img src="/2024/02/04/docker%E6%8F%92%E4%BB%B6/%E6%8F%92%E4%BB%B6%E6%A0%B7%E5%AD%90.png" class="" title="插件">
+
+
+<p>第一个文件 <code>SRAtoFastq.ConvertSRAtoFastq.class</code> 的代码是一个Java类，用于将SRA文件转换为Fastq格式。这个过程主要通过以下步骤实现：</p>
+<ol>
+<li><p><strong>定义包和引入依赖：</strong> 代码位于 <code>SRAtoFastq</code> 包中，引入了Java的 <code>File</code> 和 <code>IOException</code> 类，以及自定义的 <code>toolsKit.SystemCommander</code> 和 <code>toolsKit.getProgramPath</code> 类，用于执行系统命令和获取程序路径。</p>
+</li>
+<li><p><strong>类定义：</strong> <code>ConvertSRAtoFastq</code> 类有一个静态方法 <code>process</code>，接收SRA文件和输出目录作为参数。</p>
+</li>
+<li><p><strong>获取工作目录和二进制文件路径：</strong> 方法首先获取SRA文件的父目录作为工作目录，然后计算出二进制文件（bin）的路径，这里的二进制文件指的是实际执行SRA到Fastq转换的可执行文件。</p>
+</li>
+<li><p><strong>检查二进制文件存在性：</strong> 如果二进制文件路径不存在，则抛出 <code>IOException</code> 异常。</p>
+</li>
+<li><p><strong>设置二进制文件可执行权限：</strong> 遍历bin目录下的所有文件，设置它们为可执行。</p>
+</li>
+<li><p><strong>构建并执行命令：</strong> 构建一个命令列表，使用 <code>fastq-dump-orig</code> 命令（带有 <code>--split-3</code> 参数）来转换SRA文件。然后，使用 <code>SystemCommander</code> 类执行这些命令，并将输出定向到工作目录和二进制文件所在的目录。</p>
+</li>
+</ol>
+<p>第二个文件 <code>SRAtoFastq.ConvertSRAtoFastqGUIPanel.class</code> 的代码是一个Java类，用于提供一个图形用户界面（GUI），让用户能够通过界面选择SRA文件并启动转换过程。它主要通过以下步骤实现：</p>
+<ol>
+<li><p><strong>定义包和引入依赖：</strong> 代码位于 <code>SRAtoFastq</code> 包中，使用了多个Java Swing组件来构建GUI，以及自定义的工具类和监听器。</p>
+</li>
+<li><p><strong>类定义和变量声明：</strong> <code>ConvertSRAtoFastqGUIPanel</code> 类继承自 <code>JPanel</code>，声明了多个GUI组件，如按钮、标签、文本区域等。</p>
+</li>
+<li><p><strong>构造函数和初始化组件：</strong> 在构造函数中初始化GUI组件，并设置相关的事件监听器。例如，为“选择SRA文件列表”按钮添加了动作监听器，用于打开文件选择器让用户选择SRA文件。为“开始”按钮添加了动作监听器，用于启动一个新线程进行文件转换操作。</p>
+</li>
+<li><p><strong>文件拖拽支持和开始转换操作：</strong> 支持通过拖拽SRA文件到文本区域来添加文件路径。点击“开始”按钮时，将文本区域中列出的文件路径分割为数组，并对每个文件路径执行 <code>ConvertSRAtoFastq.process</code> 方法进行转换。</p>
+</li>
+<li><p><strong>GUI布局设置：</strong> 使用 <code>GroupLayout</code> 来定义面板的布局，包括组件的水平和垂直布局规则。</p>
+</li>
+</ol>
+<p>总之，这两个文件共同提供了一个完整的解决方案，用于将SRA文件转换为Fastq格式，包括后端的转换逻辑和前端的用户交互界面。</p>
+<p>简化一下</p>
+<p>要简化这两个代码，我们可以合并它们的核心功能，创建一个简单的Java程序，该程序提供命令行界面用于将SRA文件转换为Fastq格式。简化的程序将不包括GUI组件，而是直接通过命令行接受SRA文件路径和输出目录作为参数。这里提供一个简化版本的程序示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SimpleSRAtoFastqConverter</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 检查参数长度</span></span><br><span class="line">        <span class="keyword">if</span> (args.length != <span class="number">2</span>) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Usage: java SimpleSRAtoFastqConverter &lt;inputSRAFilePath&gt; &lt;outputDirectory&gt;&quot;</span>);</span><br><span class="line">            System.exit(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">File</span> <span class="variable">inSRA</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(args[<span class="number">0</span>]);</span><br><span class="line">        <span class="type">File</span> <span class="variable">outDir</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(args[<span class="number">1</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            process(inSRA, outDir);</span><br><span class="line">            System.out.println(<span class="string">&quot;Conversion completed successfully.&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException | InterruptedException e) &#123;</span><br><span class="line">            System.err.println(<span class="string">&quot;Error during conversion: &quot;</span> + e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">(File inSRA, File outDir)</span> <span class="keyword">throws</span> IOException, InterruptedException &#123;</span><br><span class="line">        <span class="comment">// 确保输出目录存在</span></span><br><span class="line">        <span class="keyword">if</span> (!outDir.exists()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!outDir.mkdirs()) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IOException</span>(<span class="string">&quot;Could not create output directory: &quot;</span> + outDir.getAbsolutePath());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 构建转换命令</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">command</span> <span class="operator">=</span> String.format(<span class="string">&quot;fastq-dump --split-3 -O %s %s&quot;</span>, outDir.getAbsolutePath(), inSRA.getAbsolutePath());</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 执行命令</span></span><br><span class="line">        Runtime.getRuntime().exec(command);</span><br><span class="line">        System.out.println(<span class="string">&quot;Executing command: &quot;</span> + command);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="如何使用："><a href="#如何使用：" class="headerlink" title="如何使用："></a>如何使用：</h3><ol>
+<li>编译Java程序：使用命令<code>javac SimpleSRAtoFastqConverter.java</code>进行编译。</li>
+<li>运行程序：使用命令<code>java SimpleSRAtoFastqConverter &lt;inputSRAFilePath&gt; &lt;outputDirectory&gt;</code>来运行程序，其中<code>&lt;inputSRAFilePath&gt;</code>是你的SRA文件路径，<code>&lt;outputDirectory&gt;</code>是你希望Fastq文件输出的目录。</li>
+</ol>
+<h3 id="注意事项："><a href="#注意事项：" class="headerlink" title="注意事项："></a>注意事项：</h3><ul>
+<li>确保你的环境变量PATH中包含了<code>fastq-dump</code>命令。<code>fastq-dump</code>是NCBI SRA Toolkit的一部分，用于将SRA文件转换成Fastq格式。如果尚未安装，你需要从NCBI网站下载并安装SRA Toolkit。</li>
+<li>这个简化的程序假设<code>fastq-dump</code>命令可以在命令行环境中直接调用。如果在你的系统中这不适用，你可能需要修改命令字符串来指定<code>fastq-dump</code>的完整路径。</li>
+<li>这个简化版本没有处理所有可能的错误情况，例如输入文件不存在或输出目录无法创建。在实际使用中，你可能需要增加更多的错误检查和处理逻辑。</li>
+</ul>
+<h1 id="接着看bin里面的文件"><a href="#接着看bin里面的文件" class="headerlink" title="接着看bin里面的文件"></a>接着看bin里面的文件</h1><img src="/2024/02/04/docker%E6%8F%92%E4%BB%B6/fastq_dump.png" class="" title="fastq_dump">
+
+<p>大小不一样<br>来自下面<br><a target="_blank" rel="noopener" href="https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit">https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit</a></p>
+<h1 id="win软件下载：https-github-com-ncbi-sra-tools-wiki-01-Downloading-SRA-Toolkit"><a href="#win软件下载：https-github-com-ncbi-sra-tools-wiki-01-Downloading-SRA-Toolkit" class="headerlink" title="win软件下载：https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit"></a>win软件下载：<a target="_blank" rel="noopener" href="https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit">https://github.com/ncbi/sra-tools/wiki/01.-Downloading-SRA-Toolkit</a></h1><p>我想看里面的代码</p>
+<p>下载Radare2</p>
+<p>要使用Docker拉取Radare2镜像并分析<code>fastq-dump-orig.exe</code>文件，你可以按照以下步骤操作：</p>
+<ol>
+<li><p><strong>拉取Radare2 Docker镜像</strong>：<br>打开命令行（CMD或PowerShell），执行以下命令来拉取Radare2的官方Docker镜像：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull radare/radare2</span><br></pre></td></tr></table></figure>
+<p>这条命令会从Docker Hub下载Radare2的最新镜像到你的机器上。</p>
+</li>
+<li><p><strong>运行Radare2 Docker容器并挂载目录</strong>：<br>为了分析位于<code>C:\Users\Administrator\Desktop\docker学习\SRAtoFastq_v1\SRAtoFastq\bin\fastq-dump-orig.exe</code>的文件，你需要在运行Docker容器时将该文件所在的目录挂载到容器内部。这样，容器内的Radare2就可以访问并分析该文件了。</p>
+<p>执行以下命令运行Radare2容器并挂载目录：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --rm -v C:/Users/Administrator/Desktop/docker学习/SRAtoFastq_v1/SRAtoFastq/bin:/data radare/radare2 radare2 /data/fastq-dump-orig.exe</span><br></pre></td></tr></table></figure>
+<p>这条命令做了几件事：</p>
+<ul>
+<li><code>-it</code> 选项让Docker以交互模式运行，并分配一个伪终端。</li>
+<li><code>--rm</code> 选项意味着容器在退出时会自动删除，不会留下任何残留数据。</li>
+<li><code>-v</code> 选项用于挂载本地目录到容器内部，<code>C:/Users/Administrator/Desktop/docker学习/SRAtoFastq_v1/SRAtoFastq/bin</code>是本地路径，<code>/data</code>是容器内的挂载点。</li>
+<li><code>radare/radare2</code> 是Docker镜像的名称。</li>
+<li><code>radare2 /data/fastq-dump-orig.exe</code> 是在容器内执行的命令，用于启动Radare2并打开<code>fastq-dump-orig.exe</code>进行分析。</li>
+</ul>
+</li>
+</ol>
+<p>请注意，由于Docker在Windows上的路径表示和Linux稍有不同，所以在挂载卷的路径中使用Windows路径时，需要按照Docker的规则调整路径格式（如示例中的<code>C:/Users/...</code>而不是<code>C:\Users\...</code>）。</p>
+<ol start="3">
+<li>**分析<code>fastq-dump-orig.exe</code>**：<br>一旦容器运行并且Radare2启动，你就可以使用Radare2的各种命令来分析<code>fastq-dump-orig.exe</code>文件了。Radare2是一个非常强大的逆向工程工具，拥有广泛的功能，包括静态分析、动态分析、图形化界面等。你可能需要参考Radare2的<a target="_blank" rel="noopener" href="https://www.radare.org/r/">官方文档</a>或在线教程来学习如何使用这些功能。</li>
+</ol>
+<p>以上步骤展示了如何通过Docker运行Radare2来分析Windows可执行文件。这种方式的好处是不需要在本地直接安装Radare2，通过Docker容器可以隔离环境，避免可能的依赖冲突，并且容易清理和管理。</p>
+<img src="/2024/02/04/docker%E6%8F%92%E4%BB%B6/%E9%80%86%E5%90%91exe.png" class="" title="aaa">
+
+
+
+<p>不好分析，插件要java，项目，了解之间的关系，要用很长的时间，不如用docker。</p>
+<h2 id="docker-linux"><a href="#docker-linux" class="headerlink" title="docker linux"></a>docker linux</h2><p>是的，使用 Docker 运行 GATK 是一个非常好的选择，尤其是当你遇到环境依赖问题时，比如 Java 版本不匹配的情况。Docker 可以帮助你快速部署一个包含了所有必需依赖的隔离环境，从而避免直接在你的系统上安装不同版本的 Java。</p>
+<p>Broad Institute 提供了 GATK 的官方 Docker 镜像，你可以使用这些镜像来运行 GATK，而无需担心 Java 版本或其他依赖项的问题。以下是如何使用 Docker 运行 GATK 的大致步骤：</p>
+<h3 id="1-安装-Docker"><a href="#1-安装-Docker" class="headerlink" title="1. 安装 Docker"></a>1. 安装 Docker</h3><p>首先，确保你的 Linux 系统已经安装了 Docker。如果还没有安装，你可以访问 <a target="_blank" rel="noopener" href="https://docs.docker.com/get-docker/">Docker 官网</a> 获取安装指南。</p>
+<h3 id="2-拉取-GATK-的-Docker-镜像"><a href="#2-拉取-GATK-的-Docker-镜像" class="headerlink" title="2. 拉取 GATK 的 Docker 镜像"></a>2. 拉取 GATK 的 Docker 镜像</h3><p>打开终端，使用以下命令来拉取 GATK 的官方 Docker 镜像：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull broadinstitute/gatk:[tag]</span><br></pre></td></tr></table></figure>
+
+<p>这里的 <code>[tag]</code> 是你希望使用的 GATK 版本的标签。例如，如果你想使用 GATK 4.4.0.0 版本，你可以查找对应的标签在 Docker Hub 上的 GATK 镜像页面。</p>
+<h3 id="3-使用-Docker-运行-GATK"><a href="#3-使用-Docker-运行-GATK" class="headerlink" title="3. 使用 Docker 运行 GATK"></a>3. 使用 Docker 运行 GATK</h3><p>一旦镜像被拉取到你的机器上，你可以使用 <code>docker run</code> 命令来运行 GATK。例如，运行 GATK 的 <code>-h</code> 帮助命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --<span class="built_in">rm</span> broadinstitute/gatk:[tag] gatk -h</span><br></pre></td></tr></table></figure>
+
+<p>如果你需要处理本地文件（例如，读取或写入 VCF 文件、参考基因组文件等），你需要将这些文件挂载到 Docker 容器中。你可以使用 <code>-v</code> 参数来挂载本地目录到容器内部。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --<span class="built_in">rm</span> -v /path/to/your/data:/data broadinstitute/gatk:[tag] gatk -F /data/your-file.vcf ...</span><br></pre></td></tr></table></figure>
+
+<p>这里的 <code>/path/to/your/data</code> 是你的本地目录路径，<code>/data</code> 是容器内的挂载点。这样，容器内的 GATK 就可以访问到挂载目录中的文件了。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>使用 Docker 运行 GATK 可以显著简化环境配置过程，特别是对于涉及多个复杂依赖的生物信息学工具。通过使用官方提供的 Docker 镜像，你可以确保 GATK 运行在一个预配置且包含所有必需依赖的环境中，避免了直接在主机系统上安装和配置这些依赖的麻烦。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">花粱</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://wplfge3.github.io/2024/02/04/docker%E6%8F%92%E4%BB%B6/">https://wplfge3.github.io/2024/02/04/docker%E6%8F%92%E4%BB%B6/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">花粱</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2024/02/04/tbtools%E6%8F%92%E4%BB%B6%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="tbtools插件的三种方法">
+                        
+                        <span class="card-title">tbtools插件的三种方法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-02-04
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            花粱
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/02/03/docker%E5%AD%A6%E4%B9%A0/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="docker学习">
+                        
+                        <span class="card-title">docker学习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-02-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            花粱
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="tencent"
+                   type="playlist"
+                   id="8835905093"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2023-2024</span>
+            
+            <a href="/about" target="_blank">花粱</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

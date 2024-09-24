@@ -1,0 +1,1596 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="转录本, HL&#39;s blog">
+    <meta name="description" content="简单的转录组只需要两个文件
+SRR_Acc_List.txt
+里面的内容：SRR9115998SRR9115999SRR9116000SRR9116001SRR9116002SRR9116003SRR9116004SRR9116005SRR">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>转录本 | HL&#39;s blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">HL&#39;s blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-tools" style="zoom: 0.6;"></i>
+      
+      <span>有趣工具</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/html/%E9%9A%8F%E6%9C%BA%E8%BD%AE%E7%9B%98.html">
+          
+          <i class="fas fa-random" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>随机轮盘</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/html/%E4%B8%8D%E8%A6%81%E7%86%AC%E5%A4%9C.html">
+          
+          <i class="fas fa-moon" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>不要熬夜</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/html/%E4%BF%9D%E6%8A%A4%E7%9C%BC%E7%9D%9B.html">
+          
+          <i class="fas fa-eye" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>保护眼睛</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/html/%E5%A4%AA%E9%98%B3.html">
+          
+          <i class="fas fa-sun" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>太阳</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/html/%E6%96%87%E5%AD%97%E8%BD%AC%E8%AF%AD%E8%A8%80.html">
+          
+          <i class="fas fa-voice" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>文字转语言</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/html/tnt%E5%BC%B9%E9%81%93%E8%BE%85%E5%8A%A9.html">
+          
+          <i class="fas fa-bomb" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>tnt弹道辅助</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/html/%E5%AE%8C%E4%B8%8D%E6%88%90%E7%9A%84%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8A%A1.html">
+          
+          <i class="fas fa-tasks" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>完不成的每日任务</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/html/%E5%AD%A6%E4%B9%A0.html">
+          
+          <span>学习</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-book-open" style="zoom: 0.6;"></i>
+      
+      <span>日记</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/diaries/travel">
+          
+          <i class="fas fa-plane" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>我的旅行日记</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/diaries/daily">
+          
+          <i class="fas fa-home" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>日常生活</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="" class="waves-effect waves-light">
+
+      
+      <i class="fas fa-file-word" style="zoom: 0.6;"></i>
+      
+      <span>word教程</span>
+      <i class="fas fa-chevron-down" aria-hidden="true" style="zoom: 0.6;"></i>
+    </a>
+    <ul class="sub-nav menus_item_child ">
+      
+      <li>
+        <a href="/word-tutorials/basics">
+          
+          <i class="fas fa-graduation-cap" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>基础教程</span>
+        </a>
+      </li>
+      
+      <li>
+        <a href="/word-tutorials/advanced">
+          
+          <i class="fas fa-user-graduate" style="margin-top: -20px; zoom: 0.6;"></i>
+          
+          <span>高级技巧</span>
+        </a>
+      </li>
+      
+    </ul>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">HL&#39;s blog</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-tools"></i>
+			
+			有趣工具
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/html/%E9%9A%8F%E6%9C%BA%E8%BD%AE%E7%9B%98.html " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-random" style="position: absolute;left:50px" ></i>
+			      
+		          <span>随机轮盘</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/html/%E4%B8%8D%E8%A6%81%E7%86%AC%E5%A4%9C.html " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-moon" style="position: absolute;left:50px" ></i>
+			      
+		          <span>不要熬夜</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/html/%E4%BF%9D%E6%8A%A4%E7%9C%BC%E7%9D%9B.html " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-eye" style="position: absolute;left:50px" ></i>
+			      
+		          <span>保护眼睛</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/html/%E5%A4%AA%E9%98%B3.html " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-sun" style="position: absolute;left:50px" ></i>
+			      
+		          <span>太阳</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/html/%E6%96%87%E5%AD%97%E8%BD%AC%E8%AF%AD%E8%A8%80.html " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-voice" style="position: absolute;left:50px" ></i>
+			      
+		          <span>文字转语言</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/html/tnt%E5%BC%B9%E9%81%93%E8%BE%85%E5%8A%A9.html " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-bomb" style="position: absolute;left:50px" ></i>
+			      
+		          <span>tnt弹道辅助</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/html/%E5%AE%8C%E4%B8%8D%E6%88%90%E7%9A%84%E6%AF%8F%E6%97%A5%E4%BB%BB%E5%8A%A1.html " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-tasks" style="position: absolute;left:50px" ></i>
+			      
+		          <span>完不成的每日任务</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/html/%E5%AD%A6%E4%B9%A0.html " style="margin-left:75px">
+				  
+		          <span>学习</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-book-open"></i>
+			
+			日记
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/diaries/travel " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-plane" style="position: absolute;left:50px" ></i>
+			      
+		          <span>我的旅行日记</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/diaries/daily " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-home" style="position: absolute;left:50px" ></i>
+			      
+		          <span>日常生活</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="javascript:;">
+			
+				<i class="fa-fw fas fa-file-word"></i>
+			
+			word教程
+			<span class="m-icon"><i class="fas fa-chevron-right"></i></span>
+		</a>
+            <ul  style="background:  ;" >
+              
+                <li>
+
+                  <a href="/word-tutorials/basics " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-graduation-cap" style="position: absolute;left:50px" ></i>
+			      
+		          <span>基础教程</span>
+                  </a>
+                </li>
+              
+                <li>
+
+                  <a href="/word-tutorials/advanced " style="margin-left:75px">
+				  
+				   <i class="fa fas fa-user-graduate" style="position: absolute;left:50px" ></i>
+			      
+		          <span>高级技巧</span>
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">转录本</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2024-03-09
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>简单的转录组<br>只需要两个文件</p>
+<p>SRR_Acc_List.txt</p>
+<p>里面的内容：<br>SRR9115998<br>SRR9115999<br>SRR9116000<br>SRR9116001<br>SRR9116002<br>SRR9116003<br>SRR9116004<br>SRR9116005<br>SRR9116006<br>SRR9116007<br>SRR9116008<br>SRR9116009</p>
+<p>和<br>RNA3_ensemble.py</p>
+<p>代码在下方，只需要改路径</p>
+<p>最后就能得到FPKM表</p>
+<p>import os<br>import subprocess</p>
+<h1 id="文件路径和目录设置"><a href="#文件路径和目录设置" class="headerlink" title="文件路径和目录设置"></a>文件路径和目录设置</h1><p>id_txt = “/home/data1/Ghl/test_RNA3/SRR_Acc_List.txt”<br>base_dir = “/home/data1/Ghl/test_RNA3”<br>directories = [<br>    “all_sra”,<br>    “fastq1_2”,<br>    “fastqc”,<br>    “fastp”,<br>    “sam”,<br>    “bam”,<br>    “short_bam”,<br>    “gtf”,<br>    “htseq”,<br>    “_e_gtf”<br>]</p>
+<h1 id="确保所有目录存在"><a href="#确保所有目录存在" class="headerlink" title="确保所有目录存在"></a>确保所有目录存在</h1><p>for directory in directories:<br>    dir_path = os.path.join(base_dir, directory)<br>    os.makedirs(dir_path, exist_ok=True)<br>print(“All directories are ensured to exist.”)</p>
+<h1 id="读取SRR序列ID"><a href="#读取SRR序列ID" class="headerlink" title="读取SRR序列ID"></a>读取SRR序列ID</h1><p>srr_ids = []<br>try:<br>    with open(id_txt, ‘r’) as file:<br>        for line in file:<br>            srr_id = line.strip()  # 去除行尾的换行符和空格<br>            if srr_id:  # 确保不是空行<br>                srr_ids.append(srr_id)<br>    print(“SRR IDs read successfully:”, srr_ids)<br>except FileNotFoundError:<br>    print(“File not found.”)<br>except Exception as e:<br>    print(“An error occurred:”, e)</p>
+<p>base_dir = “/home/data1/Ghl/test_RNA3”    #设置基本工作路径，一般是sra文件的上一级文件夹<br>sra_dir = f”{base_dir}/all_sra”<br>fastq_dir = f”{base_dir}/fastq1_2”<br>fastqc_dir = f”{base_dir}/fastqc”<br>fastp_dir = f”{base_dir}/fastp”<br>sam_dir = f”{base_dir}/sam”<br>bam_dir = f”{base_dir}/bam”<br>short_bam_dir = f”{base_dir}/short_bam”<br>gtf_dir = f”{base_dir}/gtf”<br>htseq_dir = f”{base_dir}/htseq”<br>e_gtf_dir = f”{base_dir}/_e_gtf”</p>
+<p>hisat2_index = “/home/data1/EN_ref/GallusGRCg7b_index”     #设置hisat2_index索引，这个暂时不要改变路径<br>reference_gtf = “/home/data1/EN_ref/GallusGRCg7b.gtf”   #设置参考基因的gtf文件，可以用此路径执行，未来也可以在ensembl中下载鸡的gtf文件<br>output_path = “/home/data1/EN_ref/mergelist.txt”  #设置输出mergelist.txt的输出路径，此时会创建一个mergelist.txt的文件，让输出的内容进入到这个txt文件夹里<br>stringtie_merge_path = “/home/data1/EN_ref/GallusGRCg7b.gtf”   #设置参考基因的gtf文件，用于不同路径参数设置<br>###注意：在最下方处也有要修改路径，在运行这个脚本前，应当新建一个_e_gtf文件夹，然后将_e_gtf文件夹的绝对路径输入至target_dir处</p>
+<h1 id="Ensure-all-directories-exist"><a href="#Ensure-all-directories-exist" class="headerlink" title="Ensure all directories exist"></a>Ensure all directories exist</h1><p>for d in [sra_dir, fastq_dir, fastqc_dir, fastp_dir, sam_dir, bam_dir, short_bam_dir, gtf_dir, htseq_dir, e_gtf_dir]:<br>    os.makedirs(d, exist_ok=True)</p>
+<h1 id="检查并下载缺失的SRA文件"><a href="#检查并下载缺失的SRA文件" class="headerlink" title="检查并下载缺失的SRA文件"></a>检查并下载缺失的SRA文件</h1><p>for srr_id in srr_ids:<br>    sra_file_path = os.path.join(sra_dir, f”{srr_id}.sra”)<br>    if not os.path.exists(sra_file_path):<br>        print(f”Downloading {srr_id}…”)<br>        subprocess.run([“prefetch”, srr_id], check=True)<br>        subprocess.run([“mv”, os.path.join(“sra”, f”{srr_id}.sra”), sra_dir], check=True)<br>    else:<br>        print(f”{srr_id}.sra already exists, skipping download.”)</p>
+<h1 id="Converting-SRA-to-FASTQ"><a href="#Converting-SRA-to-FASTQ" class="headerlink" title="Converting SRA to FASTQ"></a>Converting SRA to FASTQ</h1><p>for srr_id in srr_ids:<br>    print(f”Converting {srr_id} to FASTQ…”)<br>    subprocess.run([“fastq-dump”, “–outdir”, fastq_dir, “–split-files”, os.path.join(sra_dir, f”{srr_id}.sra”)], check=True)</p>
+<h1 id="Quality-control-with-FastQC"><a href="#Quality-control-with-FastQC" class="headerlink" title="Quality control with FastQC"></a>Quality control with FastQC</h1><p>for srr_id in srr_ids:<br>    print(f”Quality control for {srr_id}…”)<br>    subprocess.run([“fastqc”, os.path.join(fastq_dir, f”{srr_id}_1.fastq”), os.path.join(fastq_dir, f”{srr_id}_2.fastq”), “-o”, fastqc_dir], check=True)</p>
+<h1 id="Trimming-reads-with-Fastp"><a href="#Trimming-reads-with-Fastp" class="headerlink" title="Trimming reads with Fastp"></a>Trimming reads with Fastp</h1><pre><code>print(f&quot;Processing sample &#123;srr_id&#125; with fastp...&quot;)
+subprocess.run([
+    &quot;fastp&quot;,
+    &quot;-i&quot;, os.path.join(fastq_dir, f&quot;&#123;srr_id&#125;_1.fastq&quot;),
+    &quot;-I&quot;, os.path.join(fastq_dir, f&quot;&#123;srr_id&#125;_2.fastq&quot;),
+    &quot;-o&quot;, os.path.join(fastp_dir, f&quot;output&#123;srr_id&#125;_1.fastq&quot;),
+    &quot;-O&quot;, os.path.join(fastp_dir, f&quot;output&#123;srr_id&#125;_2.fastq&quot;),
+    &quot;--length_required&quot;, &quot;36&quot;,
+    &quot;--low_complexity_filter&quot;,
+    &quot;--qualified_quality_phred&quot;, &quot;10&quot;,
+    &quot;--unqualified_percent_limit&quot;, &quot;50&quot;,
+    &quot;--n_base_limit&quot;, &quot;10&quot;,
+    &quot;--compression&quot;, &quot;6&quot;,
+    &quot;-R&quot;, srr_id,
+    &quot;-h&quot;, os.path.join(fastp_dir, f&quot;&#123;srr_id&#125;.html&quot;)
+])
+</code></pre>
+<h1 id="Alignment-with-HISAT2"><a href="#Alignment-with-HISAT2" class="headerlink" title="Alignment with HISAT2"></a>Alignment with HISAT2</h1><p>for srr_id in srr_ids:<br>    print(f”Aligning {srr_id} using HISAT2…”)<br>    subprocess.run([<br>        “hisat2”, “-p”, “8”, “–dta”,<br>        “-x”, hisat2_index,<br>        “-1”, os.path.join(fastp_dir, f”output{srr_id}_1.fastq”),<br>        “-2”, os.path.join(fastp_dir, f”output{srr_id}_2.fastq”),<br>        “-S”, os.path.join(sam_dir, f”{srr_id}.sam”)<br>    ], check=True)</p>
+<h1 id="SAM转换为BAM并排序"><a href="#SAM转换为BAM并排序" class="headerlink" title="SAM转换为BAM并排序"></a>SAM转换为BAM并排序</h1><p>for srr_id in srr_ids:<br>    print(f”Converting and sorting {srr_id} SAM to BAM…”)</p>
+<pre><code># 临时BAM文件的路径
+temp_bam_path = os.path.join(sra_dir, f&quot;&#123;srr_id&#125;.bam&quot;)
+
+# 使用samtools view将SAM转换为未排序的BAM，输出到临时文件
+subprocess.run([&quot;samtools&quot;, &quot;view&quot;, &quot;-bS&quot;, os.path.join(sam_dir, f&quot;&#123;srr_id&#125;.sam&quot;)], stdout=open(temp_bam_path, &#39;wb&#39;), check=True)
+
+# 对临时BAM文件进行排序，并将结果保存到最终的路径
+sorted_bam_path = os.path.join(short_bam_dir, f&quot;&#123;srr_id&#125;.sorted.bam&quot;)
+subprocess.run([&quot;samtools&quot;, &quot;sort&quot;, &quot;-o&quot;, sorted_bam_path, temp_bam_path], check=True)
+
+# 删除临时BAM文件以节省空间
+os.remove(temp_bam_path)
+</code></pre>
+<h1 id="Generating-GTF-files-with-StringTie"><a href="#Generating-GTF-files-with-StringTie" class="headerlink" title="Generating GTF files with StringTie"></a>Generating GTF files with StringTie</h1><p>for srr_id in srr_ids:<br>    print(f”Generating GTF for {srr_id} with StringTie…”)<br>    subprocess.run([<br>        “stringtie”, “-p”, “8”, “-G”, reference_gtf, “-o”, os.path.join(gtf_dir, f”{srr_id}.gtf”),<br>        os.path.join(short_bam_dir, f”{srr_id}.sorted.bam”)<br>    ], check=True)</p>
+<p>for srr_id in srr_ids:<br>    print(f”Quantifying gene expression for {srr_id}…”)<br>    bam_file = os.path.join(short_bam_dir, f”{srr_id}.sorted.bam”)<br>    output_file = os.path.join(htseq_dir, f”{srr_id}.counts.txt”)<br>    with open(output_file, ‘w’) as out:<br>        subprocess.run([<br>            “htseq-count”, “-s”, “no”, “-f”, “bam”, bam_file, reference_gtf<br>        ], stdout=out, check=True)</p>
+<h1 id="Estimating-transcript-abundances-with-StringTie-using-merged-GTF"><a href="#Estimating-transcript-abundances-with-StringTie-using-merged-GTF" class="headerlink" title="Estimating transcript abundances with StringTie using merged GTF"></a>Estimating transcript abundances with StringTie using merged GTF</h1><p>for srr_id in srr_ids:<br>    out_dir = os.path.join(e_gtf_dir, srr_id)<br>    os.makedirs(out_dir, exist_ok=True)<br>    print(f”Estimating transcript abundances for {srr_id}…”)<br>    subprocess.run([<br>        “stringtie”, “-e”, “-B”, “-p”, “8”, “-G”, reference_gtf,<br>        “-o”, os.path.join(out_dir, f”{srr_id}.gtf”),<br>        os.path.join(short_bam_dir, f”{srr_id}.sorted.bam”)<br>    ], check=True)</p>
+<h1 id="遍历-e-gtf-文件夹中的所有子文件夹（以-SRR-开头的）"><a href="#遍历-e-gtf-文件夹中的所有子文件夹（以-SRR-开头的）" class="headerlink" title="遍历 _e_gtf 文件夹中的所有子文件夹（以 SRR 开头的）"></a>遍历 _e_gtf 文件夹中的所有子文件夹（以 SRR 开头的）</h1><p>sample_dirs = [d for d in os.listdir(e_gtf_dir) if os.path.isdir(os.path.join(e_gtf_dir, d)) and d.startswith(“SRR”)]</p>
+<h1 id="创建一个列表，用于存储每个子文件夹的名称和对应的路径"><a href="#创建一个列表，用于存储每个子文件夹的名称和对应的路径" class="headerlink" title="创建一个列表，用于存储每个子文件夹的名称和对应的路径"></a>创建一个列表，用于存储每个子文件夹的名称和对应的路径</h1><p>sample_paths = []</p>
+<h1 id="遍历每个子文件夹，获取其名称并构建其对应的完整路径，同时将名称和路径存储到-sample-paths-列表中"><a href="#遍历每个子文件夹，获取其名称并构建其对应的完整路径，同时将名称和路径存储到-sample-paths-列表中" class="headerlink" title="遍历每个子文件夹，获取其名称并构建其对应的完整路径，同时将名称和路径存储到 sample_paths 列表中"></a>遍历每个子文件夹，获取其名称并构建其对应的完整路径，同时将名称和路径存储到 sample_paths 列表中</h1><p>for sample_dir in sample_dirs:<br>    sample_id = sample_dir<br>    gtf_path = os.path.join(e_gtf_dir, sample_dir, f”{sample_dir}.gtf”)<br>    if os.path.exists(gtf_path):  # 检查 gtf 文件是否存在<br>        sample_paths.append((sample_id, gtf_path))</p>
+<h1 id="创建-mergelist-txt-文件并写入每个子文件夹的名称和路径"><a href="#创建-mergelist-txt-文件并写入每个子文件夹的名称和路径" class="headerlink" title="创建 mergelist.txt 文件并写入每个子文件夹的名称和路径"></a>创建 mergelist.txt 文件并写入每个子文件夹的名称和路径</h1><p>with open(output_path, “w”) as file:<br>    for sample_id, gtf_path in sample_paths:<br>        file.write(f”{sample_id} {gtf_path}\n”)</p>
+<h1 id="只有当有-gtf-文件时，才尝试执行后续的命令"><a href="#只有当有-gtf-文件时，才尝试执行后续的命令" class="headerlink" title="只有当有 .gtf 文件时，才尝试执行后续的命令"></a>只有当有 .gtf 文件时，才尝试执行后续的命令</h1><p>if sample_paths:  # 检查列表是否为空<br>    gtf_files = [path for _, path in sample_paths]  # 从路径列表中获取所有 gtf 文件<br>    gtf_list = “ “.join(gtf_files)<br>    # 你可以在这里继续你的处理，例如使用 stringtie –merge<br>    # 例如：subprocess.run([“stringtie”, “–merge”, “-o”, “merged.gtf”] + gtf_files)<br>else:<br>    print(“没有找到任何 .gtf 文件，请检查你的 e_gtf_dir 目录”)</p>
+<h1 id="执行stringtie-–merge命令"><a href="#执行stringtie-–merge命令" class="headerlink" title="执行stringtie –merge命令"></a>执行stringtie –merge命令</h1><p>import glob</p>
+<h1 id="使用-glob-寻找当前目录及其子目录下的所有-gtf-文件"><a href="#使用-glob-寻找当前目录及其子目录下的所有-gtf-文件" class="headerlink" title="使用 glob 寻找当前目录及其子目录下的所有 .gtf 文件"></a>使用 glob 寻找当前目录及其子目录下的所有 .gtf 文件</h1><h1 id="如果你只需要在当前目录下查找，去掉-‘-‘-即可"><a href="#如果你只需要在当前目录下查找，去掉-‘-‘-即可" class="headerlink" title="如果你只需要在当前目录下查找，去掉 ‘**/‘ 即可"></a>如果你只需要在当前目录下查找，去掉 ‘**/‘ 即可</h1><p>gtf_files = glob.glob(‘**/*.gtf’, recursive=True)</p>
+<h1 id="列表推导用于移除空字符串已经不再需要，因为-glob-不会返回空字符串"><a href="#列表推导用于移除空字符串已经不再需要，因为-glob-不会返回空字符串" class="headerlink" title="列表推导用于移除空字符串已经不再需要，因为 glob 不会返回空字符串"></a>列表推导用于移除空字符串已经不再需要，因为 glob 不会返回空字符串</h1><h1 id="将找到的文件路径列表转换为字符串，文件路径之间用空格分隔"><a href="#将找到的文件路径列表转换为字符串，文件路径之间用空格分隔" class="headerlink" title="将找到的文件路径列表转换为字符串，文件路径之间用空格分隔"></a>将找到的文件路径列表转换为字符串，文件路径之间用空格分隔</h1><p>gtf_list = “ “.join(gtf_files)</p>
+<p>print(gtf_list)</p>
+<h1 id="执行stringtie命令处理每个bam文件"><a href="#执行stringtie命令处理每个bam文件" class="headerlink" title="执行stringtie命令处理每个bam文件"></a>执行stringtie命令处理每个bam文件</h1><h1 id="执行-ls-命令查找-sorted-bam-文件"><a href="#执行-ls-命令查找-sorted-bam-文件" class="headerlink" title="执行 ls 命令查找 *.sorted.bam 文件"></a>执行 ls 命令查找 *.sorted.bam 文件</h1><p>bam_files = glob.glob(“**/*.sorted.bam”)</p>
+<h1 id="移除空字符串和空格"><a href="#移除空字符串和空格" class="headerlink" title="移除空字符串和空格"></a>移除空字符串和空格</h1><p>bam_files = [file.strip() for file in bam_files if file.strip()]</p>
+<h1 id="打印查找到的文件列表"><a href="#打印查找到的文件列表" class="headerlink" title="打印查找到的文件列表"></a>打印查找到的文件列表</h1><p>print(“Found BAM files:”, bam_files)</p>
+<p>for bam_file in bam_files:<br>    sample_id = os.path.splitext(bam_file)[0]<br>    output_dir = f”ballgown/{sample_id.split(‘_’)[0]}”<br>    os.makedirs(output_dir, exist_ok=True)<br>    subprocess.run([“stringtie”, bam_file, “-G”, stringtie_merge_path, “-o”, f”{output_dir}/{sample_id}.gtf”, “-A”, f”{sample_id}.tab”, “-B”, “-e”, “-p”, “16”])</p>
+<p>import subprocess<br>import os</p>
+<p>current_dir = os.getcwd()</p>
+<h1 id="指定目标路径"><a href="#指定目标路径" class="headerlink" title="指定目标路径"></a>指定目标路径</h1><p>target_dir = “/home/data1/Ghl/test_RNA3/_e_gtf”</p>
+<p>try:<br>    # 切换到目标路径<br>    os.chdir(target_dir)</p>
+<pre><code># 定义 gene_count_matrix.csv 和 transcript_count_matrix.csv 的路径
+gene_count_matrix = &quot;gene_count_matrix.csv&quot;
+transcript_count_matrix = &quot;transcript_count_matrix.csv&quot;
+
+# 调用 prepDE.py 脚本并传递参数
+subprocess.run([&quot;python3&quot;, &quot;/home/data1/RNA_get/prepDE.py3&quot;, &quot;-g&quot;, gene_count_matrix, &quot;-t&quot;, transcript_count_matrix])
+
+# 假设 getTPM.py 和 getFPKM.py 脚本需要 GTF 文件和输出文件路径
+
+tpm_output = &quot;output_tpm.csv&quot;
+fpkm_output = &quot;output_fpkm.csv&quot;
+
+# 调用 getTPM.py
+subprocess.run([&quot;python2&quot;, &quot;/home/data1/RNA_get/getTPM.py&quot;, &quot;-i&quot;, target_dir, &quot;-g&quot;, tpm_output])
+
+# 调用 getFPKM.py
+subprocess.run([&quot;python2&quot;, &quot;/home/data1/RNA_get/getFPKM.py&quot;, &quot;-i&quot;, target_dir, &quot;-g&quot;, fpkm_output])
+</code></pre>
+<p>finally:<br>    # 最后返回原始工作目录<br>    os.chdir(current_dir)</p>
+<p>print(“RNA-seq analysis pipeline completed.”)</p>
+<p>从 ＮＣＢＩ数据库中获取６组转录组数据，分 别为 未 受 ＮＤＶ 感 染 的 对 照 组 （登 录 号 分 别 为<br>ＳＲＲ１３０２１９４２、ＳＲＲ１３０２１９４３、ＳＲＲ１３０２１９４６）和 受ＮＤＶ 感染的处理组（登录号分别为 ＳＲＲ１３０２１９４７、<br>ＳＲＲ１３０２１９５５、ＳＲＲ１３０２１９５６），</p>
+<p>将 两 组 的３个 重 复均 一 化 后，通过各组数据中每千碱基百万片段（ＦＰＫＭ）值对 Ｗｎｔ表达谱进行评估，并采用ｌｏｇ２ 进行转换归一化</p>
+<p>你的问题涉及到转录组数据分析的一系列步骤，我将尽量简明地解释每个步骤及其意义。</p>
+<h3 id="转录组数据分析流程概述"><a href="#转录组数据分析流程概述" class="headerlink" title="转录组数据分析流程概述"></a>转录组数据分析流程概述</h3><ol>
+<li><p><strong>获取数据</strong>：首先，你从NCBI数据库获取了六组转录组数据，分别代表对照组和处理组（受NDV感染）的样本。这些数据通常以测序读段（reads）的形式提供，每个读段是一个短的DNA片段序列。</p>
+</li>
+<li><p><strong>质量控制</strong>：在进行下一步之前，通常需要对原始测序数据进行质量控制，移除低质量的读段和污染。</p>
+</li>
+<li><p><strong>读段比对</strong>：将清洗后的读段比对到参考基因组或转录组上。这一步是为了确定每个读段在基因组中的位置。</p>
+</li>
+<li><p><strong>计算表达量</strong>：在读段成功比对后，下一步是计算每个基因的表达量。FPKM（每千碱基百万片段）是一种常用的表达量衡量方式，用于描述某个基因表达水平的标准化值。</p>
+</li>
+</ol>
+<h3 id="均一化和FPKM"><a href="#均一化和FPKM" class="headerlink" title="均一化和FPKM"></a>均一化和FPKM</h3><ul>
+<li><p><strong>均一化（Normalization）</strong>：在生物信息学中，均一化是数据处理的一种方法，旨在消除实验设计和测序过程中的偏差。例如，不同样本的测序深度（即测序的总读段数）可能不同，直接比较原始的读段计数可能会误导。因此，需要进行均一化处理来确保样本间的可比性。</p>
+</li>
+<li><p><strong>FPKM</strong>：FPKM代表“每千碱基百万片段”。它是一种衡量基因表达量的标准化方法，考虑了基因长度和测序深度的影响，从而使不同样本或基因之间的表达量可比。计算FPKM之前已经包括了一种均一化过程，以消除样本间测序深度和基因长度变异带来的影响。</p>
+</li>
+</ul>
+<h3 id="log2转换"><a href="#log2转换" class="headerlink" title="log2转换"></a>log2转换</h3><ul>
+<li><strong>log2转换</strong>：在得到FPKM值后，为了使数据更适合统计分析，通常会进行log2转换。这一转换有几个好处：首先，它可以帮助稳定方差，因为大的FPKM值的波动对结果的影响会比小的FPKM值大；其次，log转换后的数据更接近正态分布，这对许多统计测试来说是一个重要的前提条件。log2转换也便于在处理组和对照组之间的比较中，用对数比率直观地表示表达量的变化。</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>所以，你的数据处理流程大致为：从NCBI获取数据 → 质量控制 → 读段比对 → 计算FPKM（已包含一种均一化） → 对FPKM值进行log2转换以进一步归一化和方便分析。</p>
+<p>每一步都有其特定的目的和重要性，确保了最终得到的数据既可比较又适合进行生物学上的解释和分析。</p>
+<p>下载NCBI数据库中的转录组数据并分析通常涉及多个步骤和不同的生物信息学工具。以下是一般的流程和相应代码示例，使用的是一些流行的命令行工具。请注意，实际分析可能需要根据具体数据和研究目标进行调整。</p>
+<h3 id="步骤1-下载数据"><a href="#步骤1-下载数据" class="headerlink" title="步骤1: 下载数据"></a>步骤1: 下载数据</h3><p>使用<code>SRA Toolkit</code>的<code>fastq-dump</code>工具从NCBI的SRA数据库下载数据。安装SRA Toolkit后，可以使用以下命令下载数据：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fastq-dump --split-files SRR13021942</span><br><span class="line">fastq-dump --split-files SRR13021943</span><br><span class="line">fastq-dump --split-files SRR13021946</span><br><span class="line">fastq-dump --split-files SRR13021947</span><br><span class="line">fastq-dump --split-files SRR13021955</span><br><span class="line">fastq-dump --split-files SRR13021956</span><br></pre></td></tr></table></figure>
+
+<p><code>--split-files</code>参数用于将成对的测序数据分开下载。</p>
+<h3 id="步骤2-质量控制"><a href="#步骤2-质量控制" class="headerlink" title="步骤2: 质量控制"></a>步骤2: 质量控制</h3><p>使用<code>FastQC</code>进行质量检查，并用<code>Trimmomatic</code>或<code>fastp</code>进行质量控制，去除低质量的序列。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fastp -i SRR13021942_1.fastq -I SRR13021942_2.fastq -o SRR13021942_1_trimmed.fastq -O SRR13021942_2_trimmed.fastq</span><br></pre></td></tr></table></figure>
+
+<p>重复上述命令，替换相应的SRR编号以处理所有样本。</p>
+<h3 id="步骤3-读段比对"><a href="#步骤3-读段比对" class="headerlink" title="步骤3: 读段比对"></a>步骤3: 读段比对</h3><p>使用<code>HISAT2</code>、<code>STAR</code>或<code>Bowtie2</code>等工具将读段比对到参考基因组。</p>
+<p>以<code>HISAT2</code>为例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hisat2 -x reference_genome_index -1 SRR13021942_1_trimmed.fastq -2 SRR13021942_2_trimmed.fastq -S SRR13021942_aligned.sam</span><br></pre></td></tr></table></figure>
+
+<p>这里<code>reference_genome_index</code>是参考基因组的索引，需要预先建立。重复上述命令处理所有样本。</p>
+<h3 id="步骤4-计算FPKM"><a href="#步骤4-计算FPKM" class="headerlink" title="步骤4: 计算FPKM"></a>步骤4: 计算FPKM</h3><p>使用<code>StringTie</code>或<code>Cufflinks</code>从比对结果中计算FPKM。</p>
+<p>以<code>StringTie</code>为例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stringtie SRR13021942_aligned.bam -G reference_annotation.gtf -e -B -o SRR13021942.gtf</span><br></pre></td></tr></table></figure>
+
+<p>这里<code>reference_annotation.gtf</code>是参考基因组的注释文件。</p>
+<h3 id="步骤5-log2转换"><a href="#步骤5-log2转换" class="headerlink" title="步骤5: log2转换"></a>步骤5: log2转换</h3><p>log2转换通常在数据汇总和分析阶段进行，这可以使用R语言来完成：</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 假设df是包含FPKM值的数据框架，其中一列名为FPKM</span></span><br><span class="line">df<span class="operator">$</span>log2FPKM <span class="operator">&lt;-</span> log2<span class="punctuation">(</span>df<span class="operator">$</span>FPKM <span class="operator">+</span> <span class="number">1</span><span class="punctuation">)</span> <span class="comment"># 加1是为了避免log2(0)的情况</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul>
+<li>每一步骤的具体命令和参数可能需要根据你的数据和实验设计进行调整。</li>
+<li>参考基因组的索引建立、注释文件等需要根据你的目标物种准备。</li>
+<li>上述过程中的每个步骤都可能需要相当的计算资源，尤其是读段比对和表达量计算步骤。</li>
+</ul>
+<p>这个流程是比较通用的，但根据具体的项目要求和数据特点，可能还需要其他的步骤或调整。</p>
+<p>创建一个自动化脚本来处理从下载到生成FPKM的整个流程是可能的，但需要你的环境中已经安装了所有必需的软件，并且有适当的参考基因组及其索引。下面是一个简化的示例流程，展示如何使用bash脚本来自动化这一过程。请注意，你可能需要根据自己的具体需求调整这个脚本。</p>
+<p>这个脚本假设你已经安装了：</p>
+<ul>
+<li>SRA Toolkit (对于<code>fastq-dump</code>)</li>
+<li>FastQC (对于质量检查)</li>
+<li>Trimmomatic 或 fastp (对于质量控制)</li>
+<li>HISAT2 (对于比对)</li>
+<li>StringTie (对于计算FPKM)</li>
+</ul>
+<h3 id="步骤1-创建下载列表"><a href="#步骤1-创建下载列表" class="headerlink" title="步骤1: 创建下载列表"></a>步骤1: 创建下载列表</h3><p>首先，创建一个文本文件（假设命名为<code>sra_list.txt</code>），其中包含你想下载的SRA运行编号，每行一个。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SRR13021942</span><br><span class="line">SRR13021943</span><br><span class="line">SRR13021946</span><br><span class="line">SRR13021947</span><br><span class="line">SRR13021955</span><br><span class="line">SRR13021956</span><br></pre></td></tr></table></figure>
+
+<h3 id="步骤2-编写自动化脚本"><a href="#步骤2-编写自动化脚本" class="headerlink" title="步骤2: 编写自动化脚本"></a>步骤2: 编写自动化脚本</h3><p>接下来，创建一个bash脚本（比如命名为<code>run_analysis.sh</code>），将以下内容粘贴进去。确保修改脚本中的路径以匹配你的环境和文件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置工作目录</span></span><br><span class="line">WORK_DIR=/path/to/your/workdir</span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$WORK_DIR</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 参考基因组和注释文件</span></span><br><span class="line">REF_GENOME=/path/to/reference/genome.fa</span><br><span class="line">REF_ANNOTATION=/path/to/reference/annotation.gtf</span><br><span class="line"></span><br><span class="line"><span class="comment"># HISAT2索引的基本名称</span></span><br><span class="line">GENOME_INDEX_BASENAME=/path/to/index/prefix</span><br><span class="line"></span><br><span class="line"><span class="comment"># 循环遍历SRA编号列表</span></span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> SRR; <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Processing <span class="variable">$SRR</span>...&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 下载数据</span></span><br><span class="line">    fastq-dump --split-files <span class="variable">$SRR</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 质量控制</span></span><br><span class="line">    fastp -i <span class="variable">$&#123;SRR&#125;</span>_1.fastq -I <span class="variable">$&#123;SRR&#125;</span>_2.fastq -o <span class="variable">$&#123;SRR&#125;</span>_1_trimmed.fastq -O <span class="variable">$&#123;SRR&#125;</span>_2_trimmed.fastq</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 比对</span></span><br><span class="line">    hisat2 -x <span class="variable">$GENOME_INDEX_BASENAME</span> -1 <span class="variable">$&#123;SRR&#125;</span>_1_trimmed.fastq -2 <span class="variable">$&#123;SRR&#125;</span>_2_trimmed.fastq -S <span class="variable">$&#123;SRR&#125;</span>.sam</span><br><span class="line"></span><br><span class="line">    <span class="comment"># SAM转BAM</span></span><br><span class="line">    samtools view -Sb <span class="variable">$&#123;SRR&#125;</span>.sam &gt; <span class="variable">$&#123;SRR&#125;</span>.bam</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 排序BAM</span></span><br><span class="line">    samtools <span class="built_in">sort</span> <span class="variable">$&#123;SRR&#125;</span>.bam -o <span class="variable">$&#123;SRR&#125;</span>_sorted.bam</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 计算FPKM</span></span><br><span class="line">    stringtie <span class="variable">$&#123;SRR&#125;</span>_sorted.bam -G <span class="variable">$REF_ANNOTATION</span> -e -B -o <span class="variable">$&#123;SRR&#125;</span>/stringtie_output.gtf</span><br><span class="line"></span><br><span class="line"><span class="keyword">done</span> &lt; sra_list.txt</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;All processes have been completed.&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>确保给予脚本执行权限：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x run_analysis.sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="步骤3-运行脚本"><a href="#步骤3-运行脚本" class="headerlink" title="步骤3: 运行脚本"></a>步骤3: 运行脚本</h3><p>在终端中运行脚本：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./run_analysis.sh</span><br></pre></td></tr></table></figure>
+
+<p>这个脚本将自动遍历你提供的SRA运行编号，下载数据，执行质量控制，比对到参考基因组，然后计算每个样本的FPKM值。</p>
+<h3 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h3><ul>
+<li>这个脚本非常基础，仅用于演示目的。在实际使用中，你可能需要添加额外的错误检查和日志记录，以确保每个步骤都按预期完成。</li>
+<li>根据你的具体情况，可能需要调整命令的参数或添加额外的步骤（如索引构建或质量评估报告）。</li>
+<li>确保所有软件的路径都设置正确，参考基因组和注释文件已准备好，并且相应的索引适合于你使用的比对工具。</li>
+</ul>
+<p>上面的脚本为一个基础示例，用于展示如何自动化处理转录组数据，从下载到FPKM计算的整个过程。在实际使用中，这个脚本需要根据你的环境和数据进行适当的调整。我会基于你的提问对代码进行简要的错误检查和提出潜在的冲突点，同时提供一些改进建议。</p>
+<h3 id="错误检查和潜在冲突"><a href="#错误检查和潜在冲突" class="headerlink" title="错误检查和潜在冲突"></a>错误检查和潜在冲突</h3><ol>
+<li><p><strong>环境依赖</strong>：确保所有依赖的软件（如<code>fastq-dump</code>、<code>fastp</code>、<code>hisat2</code>、<code>samtools</code>、<code>stringtie</code>）都已正确安装，并且在你的<code>$PATH</code>环境变量中，以便脚本能够直接调用这些命令。</p>
+</li>
+<li><p><strong>文件命名和路径</strong>：在处理多个样本时，输出文件（如BAM、SAM文件）的命名应该避免相互冲突。在脚本中，输出文件是根据SRA编号命名的，这有助于减少冲突。但是，如果脚本被多次运行而没有清理或移动上一次运行的结果，可能会导致输出文件被意外覆盖。</p>
+</li>
+<li><p><strong>并行处理和资源管理</strong>：脚本以序列方式处理每个样本，这意味着在处理大量数据时可能会非常慢。此外，没有对系统资源进行管理，可能会在资源有限的系统上遇到问题。</p>
+</li>
+</ol>
+<h3 id="改进建议"><a href="#改进建议" class="headerlink" title="改进建议"></a>改进建议</h3><ul>
+<li><strong>避免文件覆盖</strong>：在处理每个样本之前，检查输出文件是否已存在，如果已存在，则跳过该样本或提示用户。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ -f <span class="string">&quot;<span class="variable">$&#123;SRR&#125;</span>_sorted.bam&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$&#123;SRR&#125;</span>_sorted.bam already exists, skipping...&quot;</span></span><br><span class="line">    <span class="built_in">continue</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>并行处理</strong>：考虑使用<code>GNU parallel</code>或在一个高性能计算环境中使用作业调度系统来并行处理样本，这可以显著提高处理速度。</p>
+</li>
+<li><p><strong>日志记录和错误检查</strong>：对每个命令的执行结果进行检查，并将输出和错误记录到日志文件中。这有助于调试和跟踪进度。</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fastp -i <span class="variable">$&#123;SRR&#125;</span>_1.fastq -I <span class="variable">$&#123;SRR&#125;</span>_2.fastq -o <span class="variable">$&#123;SRR&#125;</span>_1_trimmed.fastq -O <span class="variable">$&#123;SRR&#125;</span>_2_trimmed.fastq &gt;&gt; <span class="variable">$&#123;SRR&#125;</span>_fastp.<span class="built_in">log</span> 2&gt;&amp;1</span><br><span class="line"><span class="keyword">if</span> [ $? -ne 0 ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;fastp failed for <span class="variable">$&#123;SRR&#125;</span>, see <span class="variable">$&#123;SRR&#125;</span>_fastp.log for details.&quot;</span></span><br><span class="line">    <span class="built_in">continue</span></span><br><span class="line"><span class="keyword">fi</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>资源管理</strong>：如果在资源受限的环境下运行，考虑限制并行任务的数量，或者根据工具的文档调整每个工具的资源使用（如内存和CPU）。</li>
+</ul>
+<p>记得在运行脚本前，根据实际路径和环境调整其中的路径和参数设置。希望这些建议能帮助你优化脚本，提高数据处理的效率和稳定性。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">花粱</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://wplfge3.github.io/2024/03/09/%E8%BD%AC%E5%BD%95%E6%9C%AC/">https://wplfge3.github.io/2024/03/09/%E8%BD%AC%E5%BD%95%E6%9C%AC/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">花粱</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2024/03/10/linux%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="linux服务器">
+                        
+                        <span class="card-title">linux服务器</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-03-10
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            花粱
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2024/03/09/GWAS-1/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="GWAS">
+                        
+                        <span class="card-title">GWAS</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-03-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            花粱
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="tencent"
+                   type="playlist"
+                   id="8835905093"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2023-2024</span>
+            
+            <a href="/about" target="_blank">花粱</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+        
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/sakura.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
