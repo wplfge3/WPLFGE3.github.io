@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习提醒计时器</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('/music/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+        }
+        .main-content {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .task-content {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 250px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .input-group, .task-group {
+            margin: 10px 0;
+        }
+        .input-group label, .task-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .input-group input, .task-group textarea {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .timer, #summary {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #333;
+        }
+        .clock {
+            width: 100px;
+            height: 100px;
+            background: url('/music/clock.png') no-repeat center center;
+            background-size: contain;
+            animation: rotate 900s linear infinite;
+            margin-top: 20px;
+        }
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <h1>学习提醒计时器</h1>
+        <div class="input-group">
+            <label for="study-time">学习时间（分钟）：</label>
+            <input type="number" id="study-time" value="15">
+        </div>
+        <div class="input-group">
+            <label for="rest-time">休息时间（分钟）：</label>
+            <input type="number" id="rest-time" value="5">
+        </div>
+        <button onclick="startStudyTimer()">开始学习</button>
+        <button onclick="startRestTimer()">开始放松</button>
+        <button onclick="toggleMusic()">关闭音乐</button>
+        <div id="message" class="timer"></div>
+        <div id="encouragement" class="timer"></div>
+        <div id="clock" class="clock"></div>
+    </div>
+
+    <div class="task-content">
+        <div class="task-group">
+            <label for="task">今天的学习目标：</label>
+            <textarea id="task" rows="2" placeholder="例如：完成数学作业"></textarea>
+            <label for="completed">完成了吗：</label>
+            <textarea id="completed" rows="2" placeholder="例如：是的，我完成了！"></textarea>
+            <label for="reason">如果没有，原因是：</label>
+            <textarea id="reason" rows="2" placeholder="例如：需要更多时间"></textarea>
+            <label for="ideas">让学习有趣的方法：</label>
+            <textarea id="ideas" rows="2" placeholder="例如：和朋友一起学习"></textarea>
+            <button onclick="summarizeTask()">生成总结</button>
+            <div id="summary" class="timer"></div>
+        </div>
+    </div>
+
+    <script>
+        let studyTimer;
+        let restTimer;
+        let audio;
+        let isMusicPlaying = true;
+        const messageElement = document.getElementById('message');
+        const encouragementElement = document.getElementById('encouragement');
+        const clockElement = document.getElementById('clock');
+
+        const encouragementMessages = [
+            "你做得很好！",
+            "继续保持！",
+            "专注！",
+            "你可以的！",
+            "快完成了，坚持住！"
+        ];
+
+        const musicFiles = [
+            '/music/music1.mp3',
+            '/music/music2.mp3',
+            '/music/music3.mp3',
+            '/music/music4.mp3',
+            '/music/music5.mp3',
+            '/music/music6.mp3',
+            '/music/music7.mp3',
+            '/music/music8.mp3',
+            '/music/music9.mp3',
+            '/music/music10.mp3'
+        ];
+
+        function getRandomEncouragement() {
+            const randomIndex = Math.floor(Math.random() * encouragementMessages.length);
+            return encouragementMessages[randomIndex];
+        }
+
+        function getRandomMusic() {
+            const randomIndex = Math.floor(Math.random() * musicFiles.length);
+            return musicFiles[randomIndex];
+        }
+
+        function startStudyTimer() {
+            const studyTime = parseInt(document.getElementById('study-time').value) * 60;
+            clearInterval(studyTimer);
+            clearInterval(restTimer);
+            encouragementElement.textContent = "";
+            runTimer(studyTime, '学习中...', () => {
+                const restMessage = getRandomEncouragement();
+                encouragementElement.textContent = restMessage;
+                playSound(getRandomMusic());
+                showNotification('休息一下！' + restMessage);
+                startRestTimer();
+            });
+        }
+
+        function startRestTimer() {
+            const restTime = parseInt(document.getElementById('rest-time').value) * 60;
+            clearInterval(studyTimer);
+            clearInterval(restTimer);
+            encouragementElement.textContent = "";
+            runTimer(restTime, '休息中...', () => {
+                playSound(getRandomMusic());
+                showNotification('继续学习！');
+                startStudyTimer();
+            });
+        }
+
+        function runTimer(duration, message, callback) {
+            let time = duration;
+            messageElement.textContent = message + formatTime(time);
+            const timer = setInterval(() => {
+                time--;
+                messageElement.textContent = message + formatTime(time);
+                if (time <= 0) {
+                    clearInterval(timer);
+                    callback();
+                }
+            }, 1000);
+            if (message.includes('学习')) {
+                studyTimer = timer;
+            } else {
+                restTimer = timer;
+            }
+        }
+
+        function formatTime(time) {
+            const minutes = Math.floor(time / 60);
+            const seconds = time % 60;
+            return `${minutes}分${seconds.toString().padStart(2, '0')}秒`;
+        }
+
+        function playSound(soundFile) {
+            if (audio) {
+                audio.pause();
+                audio.currentTime = 0;
+            }
+            audio = new Audio(soundFile);
+            if (isMusicPlaying) {
+                audio.play();
+            }
+        }
+
+        function toggleMusic() {
+            if (audio) {
+                if (isMusicPlaying) {
+                    audio.pause();
+                    isMusicPlaying = false;
+                    document.querySelector('button[onclick="toggleMusic()"]').textContent = "打开音乐";
+                } else {
+                    audio.play();
+                    isMusicPlaying = true;
+                    document.querySelector('button[onclick="toggleMusic()"]').textContent = "关闭音乐";
+                }
+            }
+        }
+
+        function showNotification(message) {
+            if (Notification.permission === 'granted') {
+                new Notification(message);
+            } else if (Notification.permission !== 'denied') {
+                Notification.requestPermission().then(permission => {
+                    if (permission === 'granted') {
+                        new Notification(message);
+                    }
+                });
+            }
+        }
+
+        function summarizeTask() {
+            const task = document.getElementById('task').value;
+            const completed = document.getElementById('completed').value;
+            const reason = document.getElementById('reason').value;
+            const ideas = document.getElementById('ideas').value;
+            const currentTime = new Date().toLocaleString();
+
+            const summary = `今天我计划的任务是：${task}。\n任务完成情况：${completed}。\n如果没有完成，原因是：${reason}。\n让任务变得有趣的想法：${ideas}。\n总结时间：${currentTime}`;
+            document.getElementById('summary').textContent = summary;
+        }
+
+        // 请求通知权限
+        if (Notification.permission !== 'granted' && Notification.permission !== 'denied') {
+            Notification.requestPermission();
+        }
+    </script>
+</body>
+</html>
