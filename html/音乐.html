@@ -785,7 +785,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-10-17
+                    2024-10-19
                 </div>
                 
 
@@ -815,55 +815,75 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #1e1e1e; /* 深色背景 */
-            color: #f0f0f0; /* 浅色字体 */
+            background-color: #121212; /* 深色背景 */
+            color: #e0e0e0; /* 浅色字体 */
             text-align: center;
             padding: 50px;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         h1 {
-            color: #f8f8f8; /* 标题颜色 */
-            font-size: 36px;
+            color: #ffffff; /* 标题颜色 */
+            font-size: 48px;
             margin-bottom: 40px;
+            letter-spacing: 2px;
         }
 
         .music-list {
             margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            width: 100%;
+            max-width: 800px;
         }
 
         .music-item {
-            background-color: #2a2a2a; /* 音乐项背景 */
+            background-color: #1e1e1e; /* 音乐项背景 */
             color: #ffffff; /* 音乐名颜色 */
             border: none;
-            border-radius: 10px;
-            padding: 15px;
+            border-radius: 12px;
+            padding: 20px;
             margin: 10px auto;
-            width: 300px;
+            text-align: center;
             cursor: pointer;
-            transition: background-color 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* 增加阴影 */
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* 阴影 */
+            font-size: 18px;
         }
 
         .music-item:hover {
-            background-color: #505050; /* 悬停时改变颜色 */
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* 悬停时加深阴影 */
+            background-color: #333333; /* 悬停时改变颜色 */
+            transform: translateY(-5px); /* 添加悬浮效果 */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); /* 加深阴影 */
+        }
+
+        .music-item:active {
+            transform: translateY(0); /* 点击时复位 */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
 
         audio {
-            margin-top: 30px;
+            margin-top: 40px;
             width: 100%;
+            max-width: 600px;
         }
 
         /* 音频播放器样式 */
         audio::-webkit-media-controls-panel {
-            background-color: #333333; /* 控制栏背景色 */
+            background-color: #222222; /* 控制栏背景色 */
         }
-        
+
         audio::-webkit-media-controls-play-button,
         audio::-webkit-media-controls-timeline,
         audio::-webkit-media-controls-current-time-display,
         audio::-webkit-media-controls-time-remaining-display {
-            color: #f0f0f0; /* 控件的字体颜色 */
+            color: #e0e0e0; /* 控件的字体颜色 */
         }
     </style>
 </head>
@@ -894,22 +914,22 @@
     </audio>
 
     <script>
-        const musicFiles = [
-            '/music/music1.mp3',
-            '/music/music2.mp3',
-            '/music/music3.mp3',
-            '/music/music4.mp3',
-            '/music/music5.mp3',
-            '/music/music6.mp3',
-            '/music/music7.mp3',
-            '/music/music8.mp3',
-            '/music/music9.mp3',
-            '/music/music10.mp3'
-            '/music/起来.mp3',
-            '/music/多维人生.mp3',
-            '/music/多维人生_1.mp3',
-            '/music/战斗力提升.mp3',
-            '/music/姑娘别哭泣.mp3'
+       const musicFiles = [
+        'https://wplfge3.github.io/music/music1.mp3',
+        'https://wplfge3.github.io/music/music2.mp3',
+        'https://wplfge3.github.io/music/music3.mp3',
+        'https://wplfge3.github.io/music/music4.mp3',
+        'https://wplfge3.github.io/music/music5.mp3',
+        'https://wplfge3.github.io/music/music6.mp3',
+        'https://wplfge3.github.io/music/music7.mp3',
+        'https://wplfge3.github.io/music/music8.mp3',
+        'https://wplfge3.github.io/music/music9.mp3',
+        'https://wplfge3.github.io/music/music10.mp3',
+        'https://wplfge3.github.io/music/起来.mp3',
+        'https://wplfge3.github.io/music/多维人生.mp3',
+        'https://wplfge3.github.io/music/多维人生_1.mp3',
+        'https://wplfge3.github.io/music/战斗力提升.mp3',
+        'https://wplfge3.github.io/music/姑娘别哭泣.mp3'
         ];
 
         function playMusic(index) {
@@ -1083,7 +1103,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-10-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-10-19
                             </span>
                         <span class="publish-author">
                             
@@ -1121,7 +1141,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-10-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-10-19
                             </span>
                         <span class="publish-author">
                             
