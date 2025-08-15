@@ -5,10 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="打包exe, HL&#39;s blog">
-    <meta name="description" content="我有一个plink.exe，执行以后这样的
-图1
-C:\Users\1\AppData\Roaming\Python\Python38\Scripts\pyinstaller –onefile –windowed plink_gui.py
-">
+    <meta name="description" content="能帮我做一个精美的lncRNA鉴定插件界面，用python的tkinter的，
+整合的界面
+我有几个脚本，StringTie合并转录本 .exe2. AWK初步筛选LncRNA .exe 3. Gffcompare分类筛选 .exe 4. ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -828,13 +827,61 @@ C:\Users\1\AppData\Roaming\Python\Python38\Scripts\pyinstaller –onefile –win
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>我有一个plink.exe，执行以后这样的</p>
+                <p>能帮我做一个精美的lncRNA鉴定插件界面，用python的tkinter的，</p>
+<p>整合的界面</p>
+<p>我有几个脚本，<br>StringTie合并转录本 .exe2. AWK初步筛选LncRNA .exe 3. Gffcompare分类筛选 .exe 4. GFFread序列提取 .exe 5. CPC2编码潜能预测  .exe6. CNCI编码潜能分析 .exe 7. PLEK2编码能力评估 .exe 等等</p>
+<p>我会把这些.exe的脚本这个脚本下面名为exe的文件夹里</p>
+<p>然后点击某个插件，就能执行</p>
+<p>给我精简的代码</p>
+<p>“C:\Users\aoao\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\Local-Packages\Python313\Scripts\pyinstaller.exe” –onefile –windowed –add-data “plek2-main;plek2-main” plek-test-5.py</p>
+<p>多个文件<br>“C:\Users\aoao\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\Local-Packages\Python313\Scripts\pyinstaller.exe” –windowed –add-data “stringtie-master;stringtie-master” stringtie.merge_mstrg.py</p>
+<p>单个文件<br>pyinstaller.exe –onefile –windowed –add-data “stringtie-master;stringtie-master” stringtie.merge_mstrg.py</p>
+<p>“C:\Users\aoao\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\Local-Packages\Python313\Scripts\pyinstaller.exe” –onefile –windowed –add-data “stringtie-master;stringtie-master” stringtie.merge_mstrg.py</p>
+<p>我有一个plink.exe，执行以后这样的</p>
 <p>图1</p>
 <p>C:\Users\1\AppData\Roaming\Python\Python38\Scripts\pyinstaller –onefile –windowed plink_gui.py</p>
 <p>C:\Users\1\AppData\Roaming\Python\Python38\Scripts\pyinstaller –windowed –add-data “sratoolkit.3.0.10-win64;sratoolkit.3.0.10-win64” prefetch.py</p>
 <p>pyinstaller –onefile –add-data “sratoolkit.3.0.10-win64;sratoolkit.3.0.10-win64” prefetch.py</p>
 <p>F:\zhen_exe\1_fastq-count&gt;C:\Users\1\AppData\Roaming\Python\Python38\Scripts\pyinstaller –onefile –add-data “sratoolkit.3.0.10-win64;sratoolkit.3.0.10-win64” fastq-count.py</p>
-<h1 id="大概思路"><a href="#大概思路" class="headerlink" title="大概思路"></a>大概思路</h1><p>要将PLINK打包成一个带有图形用户界面（GUI）的可视化软件，以下是一个逐步的指南来帮助你构建这个项目。整个流程包括构建一个图形界面来包装PLINK的命令行工具，让用户可以通过按钮和文本框轻松地执行PLINK命令。</p>
+<h1 id="大概思路"><a href="#大概思路" class="headerlink" title="大概思路"></a>大概思路</h1><h1 id="优化思路"><a href="#优化思路" class="headerlink" title="优化思路"></a>优化思路</h1><p>这个tkinter代码，用的是绝对路径</p>
+<p>我想使用相对路径，我会把这个代码命名为prefetch.py，然后放在sratoolkit.3.0.10-win64文件夹同一路径下，然后sratoolkit.3.0.10-win64路径下有bin文件夹，bin文件夹下有prefetch.exe软件</p>
+<p>最后我想执行pyinstaller –onefile –add-data “sratoolkit.3.0.10-win64;sratoolkit.3.0.10-win64” prefetch.py<br>打包</p>
+<p>请仔细给我代码，确保我可以用相对路径正确执行代码</p>
+<p>结构<br>📁 your_project/<br>    ├─ prefetch.py          ← 这里<br>    └─ sratoolkit.3.0.10-win64/<br>         └─ bin/<br>             └─ prefetch.exe</p>
+<h1 id="最终代码"><a href="#最终代码" class="headerlink" title="最终代码"></a>最终代码</h1><p>import os<br>import sys<br>import subprocess<br>import tkinter as tk<br>from tkinter import messagebox, filedialog</p>
+<h1 id="———————————————————–"><a href="#———————————————————–" class="headerlink" title="———————————————————–"></a>———————————————————–</h1><h1 id="资源路径工具：开发时用脚本所在目录，打包后用-sys-MEIPASS"><a href="#资源路径工具：开发时用脚本所在目录，打包后用-sys-MEIPASS" class="headerlink" title="资源路径工具：开发时用脚本所在目录，打包后用 sys._MEIPASS"></a>资源路径工具：开发时用脚本所在目录，打包后用 sys._MEIPASS</h1><h1 id="———————————————————–-1"><a href="#———————————————————–-1" class="headerlink" title="———————————————————–"></a>———————————————————–</h1><p>def resource_path(*relative_parts: str) -&gt; str:<br>    “””<br>    返回资源的绝对路径（兼容 PyInstaller 打包和源码运行）<br>    用法示例：<br>        resource_path(“sratoolkit.3.0.10-win64”, “bin”, “prefetch.exe”)<br>    “””<br>    if hasattr(sys, “_MEIPASS”):          # PyInstaller 打包后<br>        base_path = sys._MEIPASS          # type: ignore[attr-defined]<br>    else:                                 # 直接运行 .py 时<br>        base_path = os.path.dirname(os.path.abspath(<strong>file</strong>))<br>    return os.path.join(base_path, *relative_parts)</p>
+<h1 id="———————————————————–-2"><a href="#———————————————————–-2" class="headerlink" title="———————————————————–"></a>———————————————————–</h1><h1 id="prefetch-exe-的完整路径（相对路径-➜-绝对路径）"><a href="#prefetch-exe-的完整路径（相对路径-➜-绝对路径）" class="headerlink" title="prefetch.exe 的完整路径（相对路径 ➜ 绝对路径）"></a>prefetch.exe 的完整路径（相对路径 ➜ 绝对路径）</h1><h1 id="———————————————————–-3"><a href="#———————————————————–-3" class="headerlink" title="———————————————————–"></a>———————————————————–</h1><p>prefetch_path = resource_path(<br>    “sratoolkit.3.0.10-win64”, “bin”, “prefetch.exe”<br>)</p>
+<h1 id="———————————————————–-4"><a href="#———————————————————–-4" class="headerlink" title="———————————————————–"></a>———————————————————–</h1><h1 id="Tkinter-UI"><a href="#Tkinter-UI" class="headerlink" title="Tkinter UI"></a>Tkinter UI</h1><h1 id="———————————————————–-5"><a href="#———————————————————–-5" class="headerlink" title="———————————————————–"></a>———————————————————–</h1><p>root = tk.Tk()<br>root.title(“Prefetch SRR Downloader”)<br>root.geometry(“460x280”)</p>
+<h1 id="——-输入-SRR-编号-——"><a href="#——-输入-SRR-编号-——" class="headerlink" title="—— 输入 SRR 编号 ——"></a>—— 输入 SRR 编号 ——</h1><p>tk.Label(root, text=”请输入要下载的 SRR 编号（空格分隔）：”).pack(pady=8)<br>srr_input = tk.Entry(root, width=60)<br>srr_input.pack()</p>
+<h1 id="——-选择输出目录-——"><a href="#——-选择输出目录-——" class="headerlink" title="—— 选择输出目录 ——"></a>—— 选择输出目录 ——</h1><p>tk.Label(root, text=”选择输出文件夹：”).pack(pady=8)<br>output_dir_input = tk.Entry(root, width=60)<br>output_dir_input.pack()</p>
+<p>def browse_folder() -&gt; None:<br>    “””浏览选择输出文件夹”””<br>    folder = filedialog.askdirectory()<br>    if folder:<br>        output_dir_input.delete(0, tk.END)<br>        output_dir_input.insert(0, folder)</p>
+<p>tk.Button(root, text=”浏览…”, command=browse_folder).pack(pady=4)</p>
+<p>def download_srr() -&gt; None:<br>    “””执行 prefetch 下载”””<br>    srr_files = srr_input.get().strip()<br>    output_dir = output_dir_input.get().strip()</p>
+<pre><code>if not srr_files:
+    messagebox.showwarning(&quot;警告&quot;, &quot;请输入至少一个 SRR 编号！&quot;)
+    return
+if not output_dir:
+    messagebox.showwarning(&quot;警告&quot;, &quot;请选择输出文件夹！&quot;)
+    return
+
+# 将 “SRR123 SRR456” → [&quot;SRR123&quot;, &quot;SRR456&quot;]
+srr_list = srr_files.split()
+
+# 构建命令列表，避免手动拼字符串带来的转义问题
+cmd = [prefetch_path, *srr_list, &quot;--output-directory&quot;, output_dir]
+
+try:
+    result = subprocess.run(cmd, check=False)
+    if result.returncode == 0:
+        messagebox.showinfo(&quot;完成&quot;, &quot;文件下载成功！&quot;)
+    else:
+        messagebox.showerror(&quot;错误&quot;, &quot;下载失败，请检查 SRR 编号。&quot;)
+except Exception as e:
+    messagebox.showerror(&quot;错误&quot;, f&quot;执行命令时出错：&#123;e&#125;&quot;)
+</code></pre>
+<p>tk.Button(root, text=”开始下载”, command=download_srr).pack(pady=18)</p>
+<p>if <strong>name</strong> == “<strong>main</strong>“:<br>    root.mainloop()</p>
+<p>要将PLINK打包成一个带有图形用户界面（GUI）的可视化软件，以下是一个逐步的指南来帮助你构建这个项目。整个流程包括构建一个图形界面来包装PLINK的命令行工具，让用户可以通过按钮和文本框轻松地执行PLINK命令。</p>
 <h3 id="1-选择编程语言和工具"><a href="#1-选择编程语言和工具" class="headerlink" title="1. 选择编程语言和工具"></a>1. <strong>选择编程语言和工具</strong></h3><p>为了创建一个GUI工具，以下是常见的选择：</p>
 <ul>
 <li><strong>Python + Tkinter</strong>：简单易用，可以快速开发桌面应用程序。</li>
@@ -1120,6 +1167,40 @@ C:\Users\1\AppData\Roaming\Python\Python38\Scripts\pyinstaller –onefile –win
 <li>使用 Inno Setup 编译 <code>.iss</code> 文件生成最终的安装程序。</li>
 </ol>
 <p>如果你遇到其他问题或有进一步的需求，可以随时继续讨论。</p>
+<p>请参考这个tkinter脚本。</p>
+<p>我想修改成执行这个代码;</p>
+<p>输入：<br>执行：<br>输出：</p>
+<p>请给我正确的代码：</p>
+<p>精简一下，如果想做个插件，输入时拖到文件拖到的，设置输出结果的文件，然后点击执行，可以执行，要怎么描述，先不要给代码，语言描述</p>
+<p>然后参考下面那个代码，输出输出修改成上面的，正确的代码时什么</p>
+<p>lncRNA打包</p>
+<p>文件信息：E:\I\工作\lncRNA挖掘(7.2) .pptx</p>
+<p>E:\I\工作\8. 非编码RNA与表观遗传学\LncRNA代码的sh\sh\sh   代码</p>
+<p>需要找到vmware的外显子和内含子的py脚本。</p>
+<p>前面的打开stringtie</p>
+<h1 id="构建-StringTie-命令"><a href="#构建-StringTie-命令" class="headerlink" title="构建 StringTie 命令"></a>构建 StringTie 命令</h1><pre><code>        command = [
+            stringtie_path, bam_file, &quot;-G&quot;, gtf_file, &quot;-o&quot;, output_gtf, 
+            &quot;-A&quot;, output_tab, &quot;-B&quot;, &quot;-e&quot;, &quot;-p&quot;, threads
+        ]
+
+        # 打印并执行命令
+        print(f&quot;执行命令: &#123;&#39; &#39;.join(command)&#125;&quot;)
+        result = subprocess.run(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding=&#39;utf-8&#39;, errors=&#39;ignore&#39;)
+</code></pre>
+<p>linux里执行的</p>
+<p>#!/bin/bash</p>
+<h1 id="您提供的SRR-IDs列表"><a href="#您提供的SRR-IDs列表" class="headerlink" title="您提供的SRR IDs列表"></a>您提供的SRR IDs列表</h1><p>declare -a SRR_ids=(<br>“SRR10210158” “SRR10210159” “SRR10210160”<br>)</p>
+<h1 id="合并GTF文件的路径"><a href="#合并GTF文件的路径" class="headerlink" title="合并GTF文件的路径"></a>合并GTF文件的路径</h1><p>MERGED_GTF=”/home/data1/renminpeng/RNA_seq/mergelist.gtf”</p>
+<h1 id="输入BAM文件夹的路径"><a href="#输入BAM文件夹的路径" class="headerlink" title="输入BAM文件夹的路径"></a>输入BAM文件夹的路径</h1><p>BAM_DIR=”/home/data1/renminpeng/RNA_seq/short_bam”</p>
+<h1 id="基础输出文件夹路径"><a href="#基础输出文件夹路径" class="headerlink" title="基础输出文件夹路径"></a>基础输出文件夹路径</h1><p>BASE_OUT_DIR=”/home/data1/renminpeng/RNA_seq/_e_gtf”</p>
+<h1 id="循环处理每一个SRR-ID"><a href="#循环处理每一个SRR-ID" class="headerlink" title="循环处理每一个SRR ID"></a>循环处理每一个SRR ID</h1><p>for srr in “${SRR_ids[@]}”<br>do<br>    # 为每个SRR_id创建一个单独的输出文件夹<br>    OUT_DIR=”${BASE_OUT_DIR}/${srr}”<br>    # 确保输出目录存在<br>    mkdir -p “${OUT_DIR}”</p>
+<pre><code>echo &quot;Processing $&#123;srr&#125; with StringTie...&quot;
+stringtie -e -B -p 16 -G &quot;$&#123;MERGED_GTF&#125;&quot; -o &quot;$&#123;OUT_DIR&#125;/$&#123;srr&#125;.gtf&quot; &quot;$&#123;BAM_DIR&#125;/$&#123;srr&#125;.short.bam&quot;
+</code></pre>
+<p>done</p>
+<p>echo “StringTie processing done for all samples!”</p>
+<p> command = [<br>                stringtie_path, bam_file, “-G”, gtf_file, “-o”, output_gtf,<br>                “-A”, output_tab, “-B”, “-p”, threads<br>            ]</p>
+<p>不要-e，筛选新的转录本。</p>
 
                 
             </div>
