@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#176b45">
+  <meta name="description" content="西峡县米坪镇大家互助信息站，汇集客运出行、北山发车时间表、农产交换、邻里互助和公开资料。">
+  <meta name="keywords" content="西峡县米坪镇,米坪镇,西峡米坪,客运出行,北山发车时间表,老汽车站,大家互助,农产交换">
+  <meta property="og:title" content="西峡县米坪镇生活通">
+  <meta property="og:description" content="西峡县米坪镇大家互助、农产交换和本地动态，一处就能找到。">
+  <meta property="og:image" content="assets/miping-hero.jpg">
+  <title>西峡县米坪镇生活通｜政务、产业与便民信息</title>
+  <link rel="preload" href="assets/miping-hero.jpg" as="image">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "西峡县米坪镇生活通",
+      "description": "西峡县米坪镇客运出行、大家互助、产业动态和便民信息导航",
+      "inLanguage": "zh-CN",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
+
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="米坪镇生活通首页">
+        <span class="brand-mark" aria-hidden="true">坪</span>
+        <span class="brand-copy">
+          <strong>米坪镇生活通</strong>
+          <small>本地 · 便民 · 及时</small>
+        </span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="主导航">
+        <a href="#bus">出行互助</a>
+        <a href="#events">乡镇动态</a>
+        <a href="#services">大家互助</a>
+        <a href="#local-story">产业与乡情</a>
+        <a href="#local-info">本地信息</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="button button-primary publish-trigger" type="button">
+          <i data-lucide="square-pen" aria-hidden="true"></i>
+          <span>邮箱投稿</span>
+        </button>
+        <button class="icon-button menu-toggle" type="button" aria-label="打开导航" aria-expanded="false" aria-controls="mobile-nav">
+          <i data-lucide="menu" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="移动端导航" hidden>
+      <a href="#bus">出行互助</a>
+      <a href="#events">乡镇动态</a>
+      <a href="#services">大家互助</a>
+      <a href="#local-story">产业与乡情</a>
+      <a href="#local-info">本地信息</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="hero-eyebrow"><span></span> 河南省南阳市西峡县 · 米坪镇</p>
+        <h1 id="hero-title">米坪镇生活通</h1>
+        <p class="hero-intro">大家互助、农产交换和本地生活信息，一处就能找到。</p>
+
+        <form class="search-box" id="search-form" role="search">
+          <i data-lucide="search" aria-hidden="true"></i>
+          <label class="visually-hidden" for="site-search">搜索米坪本地信息</label>
+          <input id="site-search" name="q" type="search" autocomplete="off" placeholder="搜索农产、互助、失物、活动……">
+          <button type="submit">搜索</button>
+          <div class="search-results" id="search-results" role="status" aria-live="polite" hidden></div>
+        </form>
+
+        <div class="quick-links" aria-label="常用入口">
+          <span>常用：</span>
+          <a href="#bus">出行互助</a>
+          <a href="#services">大家互助</a>
+          <a href="#local-story">产业与乡情</a>
+          <a href="#local-info" data-feed-filter="public">公开资料</a>
+        </div>
+
+        <p class="demo-note">
+          <i data-lucide="info" aria-hidden="true"></i>
+          官方链接仅用于查看公开原文；本页面通过邮箱收集投稿，信息发布前请相互核实。
+        </p>
+      </div>
+    </section>
+
+    <section class="notice-strip" aria-label="社区提示">
+      <div class="section-inner notice-inner">
+        <span class="notice-label"><i data-lucide="megaphone" aria-hidden="true"></i> 社区提示</span>
+        <p id="notice-text">正在加载本地通知……</p>
+        <a href="#local-info">查看全部 <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+      </div>
+    </section>
+
+    <section class="service-band" id="services" aria-labelledby="services-title">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">大家一起办</p>
+            <h2 id="services-title">大家互助</h2>
+          </div>
+          <p class="section-summary">出行、农产、邻里和本地生活</p>
+        </div>
+        <div class="service-grid" id="service-grid"></div>
+      </div>
+    </section>
+
+    <section class="section travel-section" id="bus" aria-labelledby="bus-title">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">今日出行</p>
+            <h2 id="bus-title">米坪镇客运出行</h2>
+          </div>
+          <div class="update-status">
+            <span class="status-dot" aria-hidden="true"></span>
+            大家补充中 · 请先核实
+          </div>
+        </div>
+
+        <div class="route-list" id="route-list"></div>
+
+        <div class="passenger-source-grid" id="passenger-source-grid" aria-label="客运资料来源"></div>
+
+        <details class="schedule-details" id="schedule-details">
+          <summary>
+            <span class="schedule-title"><i data-lucide="table-2" aria-hidden="true"></i> 北山发车时间表</span>
+            <span class="schedule-summary" id="schedule-summary">正在加载班次……</span>
+            <i class="schedule-chevron" data-lucide="chevron-down" aria-hidden="true"></i>
+          </summary>
+          <div class="schedule-content">
+            <p class="schedule-note"><i data-lucide="circle-alert" aria-hidden="true"></i> “经过米坪”时间为表格中的预计时间，轮班及临时调整请以现场实际发车为准。</p>
+            <div class="schedule-filters" id="schedule-filters" aria-label="北山班次筛选"></div>
+            <div class="schedule-table-wrap">
+              <table class="schedule-table">
+                <caption class="visually-hidden">北山客运发车、返回及预计经过米坪时间</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">发车时间</th>
+                    <th scope="col">车号</th>
+                    <th scope="col">路线</th>
+                    <th scope="col">返回时间</th>
+                    <th scope="col">车主</th>
+                    <th scope="col">电话</th>
+                    <th scope="col">是否经过米坪</th>
+                    <th scope="col">预计经过米坪</th>
+                  </tr>
+                </thead>
+                <tbody id="schedule-body"></tbody>
+              </table>
+            </div>
+            <div class="schedule-actions">
+              <a class="text-button" href="北山发车时间表.xlsx" download="北山发车时间表.xlsx">下载原始 Excel <i data-lucide="download" aria-hidden="true"></i></a>
+              <a class="text-button" href="https://www.xixia.gov.cn/2026/01-21/1376725.html" target="_blank" rel="noopener">老汽车站政府原文 <i data-lucide="external-link" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </details>
+
+        <div class="section-footnote">
+            <p><i data-lucide="circle-alert" aria-hidden="true"></i> 时刻表来自公开资料与本地整理，班次、票价和停靠站可能变化，出发前请电话或现场核实。</p>
+          <button class="text-button feedback-trigger" type="button">信息需要更正？ <i data-lucide="arrow-up-right" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section story-section" id="local-story" aria-labelledby="story-title">
+      <div class="section-inner">
+        <div class="section-heading story-heading">
+          <div>
+            <p class="section-kicker">产业与乡情</p>
+            <h2 id="story-title">米坪山货 · 吉祥物征集</h2>
+          </div>
+          <p class="section-summary">认识米坪的山货，也为家乡画一个新朋友</p>
+        </div>
+
+        <div class="story-grid">
+          <figure class="story-card story-image-card reveal">
+            <div class="story-media">
+              <img src="assets/cornus-officinalis.jpg" alt="枝头成簇的鲜红山茱萸果实" loading="lazy" decoding="async" width="1200" height="800">
+            </div>
+            <figcaption>
+              <span class="story-label">山茱萸</span>
+              <strong>伏牛山里的红果</strong>
+              <small>秋天成熟的山茱萸，是米坪山地物产的一抹亮色。</small>
+              <a href="https://commons.wikimedia.org/wiki/File:Cornus_officinalis_1.jpg" target="_blank" rel="noopener">图片来源：Wikimedia Commons（CC0） <i data-lucide="external-link" aria-hidden="true"></i></a>
+            </figcaption>
+          </figure>
+
+          <figure class="story-card story-image-card reveal">
+            <div class="story-media">
+              <img src="assets/shiitake-public-domain.jpg" alt="新鲜香菇与切开的香菇" loading="lazy" decoding="async" width="1500" height="1125">
+            </div>
+            <figcaption>
+              <span class="story-label">香菇</span>
+              <strong>山里长出的鲜味</strong>
+              <small>香菇是米坪常被提起的特色产业，也连接着许多人的日常。</small>
+              <a href="https://commons.wikimedia.org/wiki/File:Lentinula_edodes_20101113_c.jpg" target="_blank" rel="noopener">图片来源：Wikimedia Commons（公版） <i data-lucide="external-link" aria-hidden="true"></i></a>
+            </figcaption>
+          </figure>
+
+          <article class="story-card story-video-card reveal">
+            <div class="story-media video-media">
+              <video id="intro-video" preload="metadata" poster="assets/miping-hero.jpg" playsinline controls>
+                <source src="河南米的自我介绍.mp4" type="video/mp4">
+                当前浏览器不支持播放 MP4 视频。
+              </video>
+              <button class="video-play" id="intro-video-play" type="button" aria-label="播放河南米的自我介绍">
+                <i data-lucide="play" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="story-video-copy">
+              <span class="story-label">视频介绍</span>
+              <strong>河南米的自我介绍</strong>
+              <small>点击播放，听一听米坪的故事。</small>
+            </div>
+          </article>
+
+          <article class="story-card mascot-card reveal">
+            <div class="mascot-mark" aria-hidden="true"><i data-lucide="sparkles"></i></div>
+            <div class="mascot-copy">
+              <span class="story-label">米坪镇吉祥物征集</span>
+              <strong>把山里的灵气画出来</strong>
+              <p>欢迎用手绘、照片或文字提交创意。可以从山茱萸、香菇、伏牛山和米坪生活中寻找灵感。</p>
+              <button class="button button-secondary publish-trigger" type="button" data-submission-type="mascot"><i data-lucide="send" aria-hidden="true"></i> 提交创意</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section events-section" id="events" aria-labelledby="events-title">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">官方动态摘编</p>
+            <h2 id="events-title">乡镇动态</h2>
+          </div>
+          <button class="text-button publish-trigger" type="button">提交活动 <i data-lucide="plus" aria-hidden="true"></i></button>
+        </div>
+        <div class="event-grid" id="event-grid"></div>
+      </div>
+    </section>
+
+    <section class="section local-section" id="local-info" aria-labelledby="local-title">
+      <div class="section-inner local-layout">
+        <div class="local-main">
+          <div class="section-heading local-heading">
+            <div>
+              <p class="section-kicker">大家身边事</p>
+              <h2 id="local-title">本地信息</h2>
+            </div>
+          </div>
+
+          <div class="filter-bar" id="feed-filters" aria-label="本地信息分类"></div>
+          <div class="feed-list" id="feed-list"></div>
+          <button class="button button-secondary load-more" id="load-more" type="button">查看更多信息 <i data-lucide="chevron-down" aria-hidden="true"></i></button>
+        </div>
+
+        <aside class="local-aside" aria-labelledby="today-title">
+          <p class="section-kicker">公开资料速览</p>
+          <h2 id="today-title">米坪镇概况</h2>
+          <dl class="today-list">
+            <div>
+              <dt><i data-lucide="calendar-days" aria-hidden="true"></i> 日期</dt>
+              <dd id="today-date">--</dd>
+            </div>
+            <div>
+              <dt><i data-lucide="route" aria-hidden="true"></i> 距县城</dt>
+              <dd>约58公里</dd>
+            </div>
+            <div>
+              <dt><i data-lucide="map" aria-hidden="true"></i> 行政村</dt>
+              <dd>17个</dd>
+            </div>
+            <div>
+              <dt><i data-lucide="sprout" aria-hidden="true"></i> 产业</dt>
+              <dd>中药材 · 香菇</dd>
+            </div>
+          </dl>
+          <div class="aside-divider"></div>
+          <h3>安全提醒</h3>
+          <p class="aside-note">遇到紧急情况请按当地应急流程求助；普通信息可按格式发送至投稿邮箱。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="community-callout" aria-labelledby="community-title">
+      <div class="section-inner callout-inner">
+        <div class="callout-icon" aria-hidden="true"><i data-lucide="heart-handshake"></i></div>
+        <div>
+          <p class="section-kicker">一起把信息补全</p>
+          <h2 id="community-title">知道新消息？发邮件告诉我们</h2>
+          <p>按格式填写投稿内容，我们看到邮件后会在 3 个工作日内回复。</p>
+        </div>
+        <button class="button button-light publish-trigger" type="button">
+          <i data-lucide="send" aria-hidden="true"></i>
+          按格式投稿
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="section-inner footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true">坪</span>
+        <div><strong>米坪镇生活通</strong><p>让身边的信息更好找。</p></div>
+      </div>
+      <nav aria-label="页脚导航">
+        <a href="#bus">班车</a>
+        <a href="#events">活动</a>
+        <a href="#services">互助</a>
+        <button class="link-button feedback-trigger" type="button">内容更正</button>
+      </nav>
+      <p class="copyright">© <span id="current-year"></span> 米坪镇生活通 · 投稿邮箱：2192341537@qq.com</p>
+    </div>
+  </footer>
+
+  <dialog class="submit-dialog" id="submit-dialog" aria-labelledby="dialog-title">
+    <form class="submit-form" id="submit-form" method="dialog">
+      <div class="dialog-header">
+        <div>
+          <p class="section-kicker">信息投稿</p>
+          <h2 id="dialog-title">按格式投稿到邮箱</h2>
+        </div>
+        <button class="icon-button dialog-close" type="button" aria-label="关闭">
+          <i data-lucide="x" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <div class="submission-guide">
+        <p><i data-lucide="mail-check" aria-hidden="true"></i> 当前页面暂不能直接接收或保存投稿，请填写下面的内容后，通过邮件发送给我们。</p>
+        <a class="submission-email" href="mailto:2192341537@qq.com">2192341537@qq.com <i data-lucide="external-link" aria-hidden="true"></i></a>
+        <small>我们看到邮件后会在 3 个工作日内回复。</small>
+      </div>
+
+      <label for="submission-type">信息类型</label>
+      <select id="submission-type" name="type" required>
+        <option value="">请选择</option>
+        <option value="bus">班车变化</option>
+        <option value="event">活动预告</option>
+        <option value="help">邻里互助</option>
+        <option value="job">招聘零工</option>
+        <option value="trade">农产品 / 闲置</option>
+        <option value="lost">失物招领</option>
+        <option value="mascot">吉祥物创意</option>
+        <option value="feedback">内容更正</option>
+      </select>
+
+      <label for="submission-title">标题</label>
+      <input id="submission-title" name="title" maxlength="40" placeholder="一句话说清楚是什么信息" required>
+
+      <label for="submission-detail">详细内容</label>
+      <textarea id="submission-detail" name="detail" rows="5" maxlength="500" placeholder="时间、地点、费用等关键信息" required></textarea>
+
+      <label for="submission-contact">联系方式</label>
+      <input id="submission-contact" name="contact" maxlength="30" placeholder="手机号或微信号（不会直接公开）">
+
+      <p class="form-notice"><i data-lucide="file-text" aria-hidden="true"></i> 按照上面的格式填写即可。点击“生成投稿邮件”后，会打开你的邮件客户端并自动填入收件人、标题和正文。</p>
+      <div class="dialog-actions">
+        <button class="button button-secondary dialog-close" type="button">取消</button>
+        <button class="button button-primary" type="submit"><i data-lucide="mail" aria-hidden="true"></i> 生成投稿邮件</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden>
+    <i data-lucide="circle-check" aria-hidden="true"></i>
+    <span></span>
+  </div>
+
+  <script src="assets/lucide.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
