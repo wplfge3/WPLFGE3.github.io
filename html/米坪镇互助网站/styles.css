@@ -1477,8 +1477,15 @@ svg {
 }
 
 .local-aside h2 {
-  margin-bottom: 22px;
+  margin-bottom: 10px;
   font-size: 23px;
+}
+
+.local-description {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
 }
 
 .today-list {
