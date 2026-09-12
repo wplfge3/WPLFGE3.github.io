@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>西峡县交互地图</title>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  >
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div>
+        <p class="eyebrow">Leaflet Template</p>
+        <h1>西峡县交互地图</h1>
+        <p class="intro">
+          当前版本已接入真实的西峡县县级边界和乡镇边界。你可以继续叠加点位、说明、统计值和自定义业务图层。
+        </p>
+      </div>
+
+      <section class="panel">
+        <h2>当前图层</h2>
+        <ul class="legend">
+          <li><span class="swatch swatch-boundary"></span>县级边界</li>
+          <li><span class="swatch swatch-town"></span>乡镇边界</li>
+          <li><span class="swatch swatch-village"></span>米坪镇村级定位范围（约）</li>
+          <li><span class="swatch swatch-point"></span>信息点</li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>数据文件</h2>
+        <p><code>data/xixia-boundary.geojson</code>：西峡县县级边界</p>
+        <p><code>data/xixia-towns.geojson</code>：西峡县乡镇边界</p>
+        <p><code>data/points.json</code>：地图上的默认业务点位</p>
+      </section>
+
+      <section class="panel">
+        <h2>底图切换</h2>
+        <div class="base-map-switch">
+          <button type="button" class="base-map-btn" data-base="standard">标准地图</button>
+          <button type="button" class="base-map-btn is-active" data-base="satellite">卫星地图</button>
+        </div>
+        <p>点击按钮即可切换底图。</p>
+      </section>
+
+      <section class="panel village-panel">
+        <h2>米坪镇村级详情</h2>
+        <div class="village-toolbar">
+          <button id="focus-miping" type="button" class="focus-btn">定位米坪镇</button>
+          <label class="layer-toggle"><input id="village-toggle" type="checkbox" checked> 显示村庄点位</label>
+        </div>
+        <label class="field village-search-field">
+          <span>筛选行政村</span>
+          <input id="village-search" type="search" placeholder="输入村名">
+        </label>
+        <p id="village-summary">正在读取 17 个行政村...</p>
+        <p class="panel-note">橙色圆圈用于快速定位村庄中心，半径约 650 米，不代表法定村界。</p>
+        <ul id="village-list" class="village-list"></ul>
+      </section>
+
+      <section class="panel">
+        <h2 id="point-form-title">新增点位</h2>
+        <p>先点击地图拾取经纬度，或手动填写经纬度，再保存。</p>
+        <form id="point-form" class="point-form">
+          <label class="field">
+            <span>点位名称</span>
+            <input id="point-name" name="name" type="text" placeholder="例如：某企业" required>
+          </label>
+          <label class="field">
+            <span>点位类型</span>
+            <input id="point-type" name="type" type="text" placeholder="例如：产业、学校、景区">
+          </label>
+          <div class="field-grid">
+            <label class="field">
+              <span>纬度</span>
+              <input id="point-lat" name="lat" type="number" step="0.000001" placeholder="33.307700" required>
+            </label>
+            <label class="field">
+              <span>经度</span>
+              <input id="point-lng" name="lng" type="number" step="0.000001" placeholder="111.485700" required>
+            </label>
+          </div>
+          <label class="field">
+            <span>点位颜色</span>
+            <input id="point-color" name="color" type="color" value="#a61e4d">
+          </label>
+          <label class="field">
+            <span>说明信息</span>
+            <textarea id="point-desc" name="desc" rows="3" placeholder="填写这个点位的说明"></textarea>
+          </label>
+          <div class="form-actions">
+            <button id="point-submit" type="submit" class="submit-btn">保存点位</button>
+            <button id="point-cancel" type="button" class="ghost-btn" hidden>取消编辑</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>已保存点位</h2>
+        <ul id="point-list" class="point-list"></ul>
+      </section>
+
+      <section class="panel panel-status">
+        <h2>加载状态</h2>
+        <div id="status">正在初始化地图...</div>
+      </section>
+    </aside>
+
+    <main class="map-shell">
+      <div id="map" aria-label="西峡县地图"></div>
+    </main>
+  </div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script src="https://webapi.amap.com/maps?v=1.4.15&key=b6ba147ffd1e49158d12f7cb16d0f381"></script>
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
+  <script>
+    document.querySelectorAll(".base-map-btn").forEach((button) => {
+      button.addEventListener("click", () => {
+        const mode = button.dataset.base;
+        window.switchBaseMap(mode);
+        document.querySelectorAll(".base-map-btn").forEach((btn) => {
+          btn.classList.toggle("is-active", btn === button);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
