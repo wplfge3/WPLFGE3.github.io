@@ -2217,3 +2217,85 @@ svg {
     height: 62vh;
   }
 }
+
+/* ---- 米坪新闻 ---- */
+.news-section {
+  border-bottom: 1px solid var(--line);
+}
+
+.news-frame-wrap {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: #eef1ee;
+}
+
+.news-frame {
+  display: block;
+  width: 100%;
+  height: clamp(520px, 72vh, 860px);
+  border: 0;
+}
+
+.news-fallback {
+  margin-top: 20px;
+}
+
+.news-fallback h3 {
+  margin: 0 0 10px;
+  font-size: 15px;
+}
+
+.news-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.news-list a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface-soft);
+  text-decoration: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.news-list a:hover {
+  border-color: var(--green);
+  background: var(--green-soft);
+}
+
+.news-tag {
+  flex: 0 0 auto;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.news-title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .news-frame {
+    height: 62vh;
+  }
+
+  .news-title {
+    white-space: normal;
+  }
+}
