@@ -232,6 +232,8 @@ const scheduleSummary = document.querySelector("#schedule-summary");
 const scheduleDetails = document.querySelector("#schedule-details");
 const introVideo = document.querySelector("#intro-video");
 const introVideoPlay = document.querySelector("#intro-video-play");
+const promoVideo = document.querySelector("#promo-video");
+const promoVideoPlay = document.querySelector("#promo-video-play");
 
 function escapeHTML(value) {
   return String(value)
@@ -494,7 +496,15 @@ function buildSearchCatalog() {
     keywords: `${item.label} ${item.title} ${item.detail}`
   }));
 
-  return [...routes, ...events, ...services, ...passengerSources, ...feed];
+  const videos = [{
+    title: "米坪官方宣传片「米坪美哉」",
+    description: "走进米坪 · 视频了解米坪",
+    section: "#video",
+    icon: "video",
+    keywords: "视频 宣传片 米坪美哉 走进米坪 了解米坪"
+  }];
+
+  return [...routes, ...events, ...services, ...passengerSources, ...videos, ...feed];
 }
 
 const searchCatalog = buildSearchCatalog();
@@ -645,21 +655,24 @@ scheduleFilters.addEventListener("click", (event) => {
   setScheduleFilter(button.dataset.scheduleFilter);
 });
 
-introVideoPlay.addEventListener("click", () => {
-  introVideo.play().catch(() => showToast("视频暂时无法播放，请检查浏览器权限。"));
-});
+function wireVideoPlayer(video, playButton) {
+  if (!video || !playButton) return;
+  playButton.addEventListener("click", () => {
+    video.play().catch(() => showToast("视频暂时无法播放，请检查浏览器权限。"));
+  });
+  video.addEventListener("play", () => {
+    playButton.hidden = true;
+  });
+  video.addEventListener("pause", () => {
+    playButton.hidden = false;
+  });
+  video.addEventListener("ended", () => {
+    playButton.hidden = false;
+  });
+}
 
-introVideo.addEventListener("play", () => {
-  introVideoPlay.hidden = true;
-});
-
-introVideo.addEventListener("pause", () => {
-  introVideoPlay.hidden = false;
-});
-
-introVideo.addEventListener("ended", () => {
-  introVideoPlay.hidden = false;
-});
+wireVideoPlayer(introVideo, introVideoPlay);
+wireVideoPlayer(promoVideo, promoVideoPlay);
 
 document.querySelectorAll("[data-feed-filter]").forEach((link) => {
   if (link.closest("#feed-filters")) return;
