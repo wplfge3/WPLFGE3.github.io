@@ -169,7 +169,7 @@ svg {
 .desktop-nav {
   display: flex;
   align-items: center;
-  gap: 34px;
+  gap: 26px;
   height: 100%;
 }
 
@@ -280,6 +280,16 @@ svg {
   display: none;
 }
 
+@media (max-width: 1000px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: inline-grid;
+  }
+}
+
 .mobile-nav {
   position: absolute;
   top: 100%;
@@ -304,8 +314,8 @@ svg {
   overflow: visible;
   color: #fff;
   background-color: #345541;
-  background-image: url("assets/miping-hero.jpg");
-  background-position: center 49%;
+  background-image: url("assets/cornus-hero.jpg");
+  background-position: center 45%;
   background-size: cover;
 }
 
@@ -1141,6 +1151,80 @@ svg {
   display: none;
 }
 
+.promo-section {
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+
+.promo-video-wrap {
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+.promo-video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #10281b;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.promo-video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.promo-caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px 10px;
+  margin: 15px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+.promo-caption svg {
+  flex: 0 0 15px;
+  color: var(--green);
+}
+
+.guestbook-section {
+  background: #fff;
+  border-top: 1px solid var(--line);
+}
+
+.guestbook-box {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 22px;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.guestbook-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  padding: 30px 14px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: center;
+}
+
+.guestbook-placeholder svg {
+  flex: 0 0 17px;
+  color: var(--green);
+}
+
 .section-footnote {
   display: flex;
   align-items: center;
@@ -1446,6 +1530,16 @@ svg {
   margin: 0 0 5px;
   font-size: 16px;
   line-height: 1.45;
+}
+
+.feed-title-link {
+  color: inherit;
+}
+
+.feed-title-link:hover {
+  color: var(--green-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .feed-item p {
@@ -1880,7 +1974,7 @@ svg {
 
   .hero {
     min-height: 474px;
-    background-position: 57% center;
+    background-position: center 45%;
   }
 
   .hero-shade {

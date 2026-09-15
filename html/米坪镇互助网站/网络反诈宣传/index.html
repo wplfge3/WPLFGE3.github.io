@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026反诈周 · 网络反诈知识问答 | 米坪镇</title>
+<style>
+  :root{
+    --blue-900:#0f2f6b;
+    --blue-700:#16408a;
+    --blue-500:#1d5bbf;
+    --blue-100:#e7eefb;
+    --red:#e11d2e;
+    --gold:#f5a623;
+    --green:#16a34a;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --bg:#eef3fb;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{width:100%;}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",-apple-system,"Segoe UI",sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  button{font-family:inherit;cursor:pointer;border:none;}
+  a{text-decoration:none;}
+
+  /* ===== 答题页 ===== */
+  .view{min-height:100vh;}
+  .wrap{max-width:680px;margin:0 auto;padding:0 16px 40px;}
+
+  .hero{
+    background:linear-gradient(135deg,#0a2350 0%,#16408a 55%,#1d5bbf 100%);
+    color:#fff;text-align:center;
+    padding:34px 20px 44px;
+    border-radius:0 0 28px 28px;
+    position:relative;overflow:hidden;
+  }
+  .hero .badge{
+    display:inline-block;background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.35);
+    padding:4px 14px;border-radius:999px;font-size:13px;letter-spacing:2px;
+  }
+  .hero h1{font-size:28px;margin:14px 0 6px;letter-spacing:1px;}
+  .hero .sub{font-size:15px;opacity:.92;}
+  .hero .hotline{
+    margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  }
+  .hero .hotline span{
+    background:var(--red);padding:6px 14px;border-radius:8px;font-weight:700;font-size:14px;
+  }
+  .hero .hotline .app{background:rgba(255,255,255,.18);font-weight:600;}
+
+  .badge-link{color:#fff;cursor:pointer;}
+  .badge-link:hover{background:rgba(255,255,255,.30);}
+  .badge-link .ext{font-size:11px;opacity:.9;margin-left:2px;}
+  .ext-note{display:block;font-size:11.5px;opacity:.82;margin-top:6px;font-weight:500;}
+
+  .life-link{
+    position:fixed;top:10px;right:10px;z-index:60;
+    background:#fff;color:var(--blue-700);text-decoration:none;font-size:13px;font-weight:700;
+    padding:8px 14px;border-radius:999px;border:1.5px solid #c9d8f2;
+    box-shadow:0 4px 14px rgba(15,47,107,.20);white-space:nowrap;
+  }
+  .life-link:hover{background:#eef4ff;border-color:var(--blue-500);}
+
+  .link-panel{
+    background:#fff;border-radius:14px;padding:12px 12px;margin-top:14px;
+    box-shadow:0 6px 20px rgba(15,47,107,.07);
+  }
+  .link-panel .panel-title{font-size:13px;color:var(--muted);font-weight:700;margin-bottom:8px;letter-spacing:1px;}
+  .link-row{display:flex;gap:10px;}
+  .ext-link{
+    display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);
+    padding:9px 10px;border-radius:10px;background:#f6f9ff;border:1px solid #e3ecfb;
+    flex:1;min-width:0;
+  }
+  .ext-link:hover{border-color:var(--blue-500);background:#eef4ff;}
+  .ext-link .ic{font-size:17px;flex:0 0 auto;}
+  .ext-link .t{flex:1;font-size:13px;font-weight:600;line-height:1.4;min-width:0;}
+  .ext-link .src{display:block;font-size:10.5px;color:var(--muted);font-weight:400;margin-top:2px;}
+  .ext-link .go{color:var(--blue-700);font-weight:700;font-size:15px;flex:0 0 auto;}
+  @media (max-width:560px){
+    .link-row{flex-direction:column;}
+  }
+
+  .jijiang{
+    margin-top:14px;background:linear-gradient(135deg,#fff7ed,#ffe9d6);
+    border:1.5px dashed var(--gold);border-radius:14px;padding:13px 16px;text-align:center;
+  }
+  .jijiang .jj{font-size:14.5px;font-weight:700;color:#9a3412;line-height:1.55;}
+  .jijiang .jj b{color:var(--red);font-size:16px;}
+
+  .progress-bar{
+    background:#dbe5f5;height:10px;border-radius:999px;margin:20px 0 6px;overflow:hidden;
+  }
+  .progress-bar i{
+    display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue-500),#3b82f6);
+    border-radius:999px;transition:width .35s ease;
+  }
+  .progress-label{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);}
+
+  .card{
+    background:#fff;border-radius:18px;padding:24px 22px;
+    box-shadow:0 8px 30px rgba(15,47,107,.08);
+    margin-top:16px;
+  }
+  .q-no{color:var(--blue-700);font-weight:700;font-size:13px;letter-spacing:1px;}
+  .q-text{font-size:19px;font-weight:700;margin:8px 0 18px;line-height:1.5;}
+
+  .option{
+    display:flex;align-items:flex-start;gap:12px;width:100%;text-align:left;
+    background:#f6f9ff;border:2px solid #e3ecfb;border-radius:12px;
+    padding:13px 14px;margin-bottom:11px;font-size:16px;color:var(--ink);
+    transition:.15s;position:relative;
+  }
+  .option:hover{border-color:var(--blue-500);background:#eef4ff;}
+  .option .tag{
+    flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:#fff;
+    border:2px solid #c9d8f2;display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;color:var(--blue-700);
+  }
+  .option .txt{padding-top:1px;}
+  .option.correct{background:#eafaf0;border-color:var(--green);}
+  .option.correct .tag{background:var(--green);border-color:var(--green);color:#fff;}
+  .option.wrong{background:#fdecee;border-color:var(--red);}
+  .option.wrong .tag{background:var(--red);border-color:var(--red);color:#fff;}
+  .option.dim{opacity:.55;}
+  .option.disabled{pointer-events:none;}
+
+  .feedback{
+    margin-top:4px;border-radius:12px;padding:13px 15px;font-size:15px;
+    font-weight:600;display:none;
+  }
+  .feedback.good{display:block;background:#eafaf0;color:#166534;border:1px solid #bce8c9;}
+  .feedback.bad{display:block;background:#fdecee;color:#991b1b;border:1px solid #f3c1c5;}
+  .feedback .small{font-weight:500;color:var(--muted);margin-top:4px;font-size:14px;}
+
+  .next-btn{
+    display:none;width:100%;margin-top:16px;background:linear-gradient(90deg,var(--blue-700),var(--blue-500));
+    color:#fff;font-size:17px;font-weight:700;padding:15px;border-radius:12px;
+    box-shadow:0 6px 16px rgba(29,91,191,.32);letter-spacing:1px;
+  }
+  .next-btn:hover{filter:brightness(1.06);}
+  .next-btn.show{display:block;}
+
+  .skip-row{text-align:center;margin-top:22px;}
+  .skip-btn{
+    background:none;color:var(--blue-700);font-size:14px;text-decoration:underline;
+    padding:8px 12px;
+  }
+  .skip-btn:hover{color:var(--blue-500);}
+
+  /* ===== 结果页 ===== */
+  .result-box{text-align:center;padding-top:28px;}
+  .score-ring{
+    width:180px;height:180px;border-radius:50%;margin:0 auto;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    color:#fff;font-weight:800;position:relative;
+    box-shadow:0 12px 30px rgba(15,47,107,.25);
+  }
+  .score-ring .num{font-size:52px;line-height:1;}
+  .score-ring .den{font-size:18px;opacity:.85;margin-top:2px;}
+  .result-title{font-size:24px;font-weight:800;margin:22px 0 6px;}
+  .result-msg{font-size:16px;color:var(--muted);max-width:480px;margin:0 auto 20px;}
+  .result-tip{
+    background:#fff;border-radius:14px;padding:16px;font-size:15px;text-align:left;
+    box-shadow:0 6px 20px rgba(15,47,107,.07);max-width:480px;margin:0 auto 26px;
+    color:#374151;
+  }
+  .result-tip b{color:var(--blue-700);}
+  .poster-btn{
+    display:inline-block;background:linear-gradient(90deg,#e11d2e,#f0433c);color:#fff;
+    font-size:17px;font-weight:700;padding:16px 34px;border-radius:999px;
+    box-shadow:0 8px 20px rgba(225,29,46,.35);letter-spacing:1px;
+  }
+  .poster-btn:hover{filter:brightness(1.05);}
+  .retry-btn{
+    display:block;margin:18px auto 0;background:none;color:var(--blue-700);
+    text-decoration:underline;font-size:14px;
+  }
+
+  /* ===== A4 宣传页 ===== */
+  .poster-view{background:#dfe3e8;padding:24px 8px 60px;}
+  .poster-toolbar{
+    max-width:760px;margin:0 auto 16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
+  }
+  .tool-btn{
+    background:#fff;color:var(--blue-700);border:1.5px solid #c9d8f2;border-radius:10px;
+    padding:10px 18px;font-size:14px;font-weight:600;box-shadow:0 3px 10px rgba(0,0,0,.06);
+  }
+  .tool-btn.primary{background:var(--blue-700);color:#fff;border-color:var(--blue-700);}
+  .tool-btn:hover{filter:brightness(1.05);}
+
+  .a4{
+    width:210mm;min-height:297mm;margin:0 auto;background:#fff;
+    box-shadow:0 10px 40px rgba(0,0,0,.28);
+    padding:10mm 9mm;position:relative;
+    font-size:12.5px;color:#1f2937;
+  }
+  .a4 .p-head{
+    background:linear-gradient(135deg,#0a2350,#16408a 60%,#1d5bbf);
+    color:#fff;border-radius:10px;padding:14px 16px;text-align:center;position:relative;
+  }
+  .a4 .p-head .week{
+    display:inline-block;background:var(--gold);color:#7a4a00;font-weight:800;
+    font-size:12px;padding:3px 12px;border-radius:999px;letter-spacing:2px;
+  }
+  .a4 .p-head h1{font-size:24px;letter-spacing:2px;margin:8px 0 2px;}
+  .a4 .p-head .slogan{font-size:14px;opacity:.95;font-weight:600;}
+  .a4 .p-head .nums{
+    margin-top:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;
+  }
+  .a4 .p-head .nums span{
+    background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);
+    padding:4px 12px;border-radius:8px;font-weight:700;font-size:13px;
+  }
+
+  .a4 h2{
+    font-size:15.5px;color:var(--blue-700);margin:16px 0 8px;
+    padding-left:10px;border-left:4px solid var(--red);line-height:1.3;
+  }
+  .a4 .lead{font-size:13px;color:#374151;background:#f2f6ff;border-radius:8px;padding:10px 12px;}
+  .a4 ul{list-style:none;}
+  .a4 li{
+    position:relative;padding:7px 6px 7px 24px;border-bottom:1px dashed #e5e7eb;
+    font-size:12.5px;
+  }
+  .a4 li:last-child{border-bottom:none;}
+  .a4 li .dot{
+    position:absolute;left:4px;top:9px;width:14px;height:14px;border-radius:50%;
+    background:var(--blue-500);color:#fff;font-size:10px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .a4 li b{color:var(--blue-700);}
+  .a4 li .r{color:var(--red);font-weight:700;}
+
+  .a4 .koujue{
+    display:flex;flex-wrap:wrap;gap:8px;margin-top:2px;
+  }
+  .a4 .koujue .k{
+    flex:1 1 30%;background:linear-gradient(135deg,#eef4ff,#e2ecfd);
+    border:1px solid #cfe0f7;border-radius:10px;padding:10px 8px;text-align:center;
+  }
+  .a4 .koujue .k .q{font-weight:800;color:var(--red);font-size:13px;}
+  .a4 .koujue .k .a{font-weight:700;color:var(--blue-700);font-size:15px;margin-top:2px;}
+
+  .a4 .call{
+    display:flex;gap:10px;flex-wrap:wrap;margin-top:4px;
+  }
+  .a4 .call .c{
+    flex:1 1 28%;border-radius:10px;padding:12px 10px;text-align:center;color:#fff;font-weight:700;
+  }
+  .a4 .call .c .n{font-size:22px;letter-spacing:1px;}
+  .a4 .call .c .t{font-size:11.5px;opacity:.95;font-weight:500;margin-top:2px;}
+  .c-blue{background:linear-gradient(135deg,#16408a,#2f6bd8);}
+  .c-red{background:linear-gradient(135deg,#c81a2a,#f0433c);}
+  .c-green{background:linear-gradient(135deg,#0e7a3a,#22a35b);}
+
+  .a4 .p-foot{
+    margin-top:16px;background:#0a2350;color:#fff;border-radius:10px;
+    text-align:center;padding:11px 14px;font-size:13px;font-weight:700;letter-spacing:1px;
+  }
+  .a4 .p-foot .small{font-size:11px;font-weight:500;opacity:.8;margin-top:2px;letter-spacing:0;}
+
+  @media print{
+    body{background:#fff;}
+    .poster-toolbar{display:none !important;}
+    .life-link{display:none !important;}
+    .a4{box-shadow:none;margin:0;width:210mm;min-height:297mm;padding:8mm 8mm;}
+    .poster-view{padding:0;background:#fff;}
+  }
+  @media (max-width:560px){
+    .hero h1{font-size:24px;}
+    .hero{padding-top:52px;}
+    .q-text{font-size:17px;}
+    .a4{width:100%;min-height:auto;padding:16px 14px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- 右上角：米坪镇生活通 -->
+<a class="life-link" href="https://wplfge3.github.io/miping/" target="_blank" rel="noopener">📍 米坪镇生活通</a>
+
+<!-- ============ 答题页 ============ -->
+<div id="quizView" class="view">
+  <div class="hero">
+    <a class="badge badge-link"
+       href="https://www.cac.gov.cn/gzzt/ztzl/zt/waz/A0920011313index_1.htm?f_link_type=f_linkinlinenote&flow_extra=eyJpbmxpbmVfZGlzcGxheV9wb3NpdGlvbiI6MCwiZG9jX3Bvc2l0aW9uIjowLCJkb2NfaWQiOiJkZjVjZWMyOTI3YzBiZWI0LTk2YTdlMjVjNmY2NzgyOTAifQ%3D%3D"
+       target="_blank" rel="noopener" title="点击将跳转到国家网络安全宣传周官网（外部链接）">
+      🛡️ 国家网络安全宣传周 <span class="ext">↗</span>
+    </a>
+    <span class="ext-note">↑ 点击上方标题即可跳转官网（这是一个外部链接）</span>
+    <h1>网络反诈知识问答</h1>
+    <p class="sub">先来测一测，看看你反诈意识有多强？</p>
+    <div class="hotline">
+      <span>☎ 96110 反诈专线</span>
+      <span class="app">📱 国家反诈中心 APP</span>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="link-panel">
+      <div class="panel-title">📚 反诈延伸阅读 · 点击跳转（外部链接）</div>
+      <div class="link-row">
+        <a class="ext-link" href="https://weixin.qq.com/sph/AFRivUKfAq" target="_blank" rel="noopener">
+          <span class="ic">📰</span>
+          <span class="t">【南阳日报】点开那一刻：一个陌生链接引发的“连锁危机”<span class="src">来源：微信视频号</span></span>
+          <span class="go">↗</span>
+        </a>
+        <a class="ext-link" href="https://mp.weixin.qq.com/s/bgOH2ceJ0rUWQX2_z9grlA" target="_blank" rel="noopener">
+          <span class="ic">📖</span>
+          <span class="t">2026版防范电信网络诈骗宣传手册<span class="src">来源：微信公众号</span></span>
+          <span class="go">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="jijiang">
+      <div class="jj">📝 <b>答题挑战：</b>10 道反诈题，看看你能答对几道？</div>
+    </div>
+
+    <div class="progress-bar"><i id="bar"></i></div>
+    <div class="progress-label">
+      <span id="qIndex">第 1 / 10 题</span>
+      <span id="scoreLabel">✅ 已答对 0 题</span>
+    </div>
+
+    <div class="card" id="questionCard">
+      <div class="q-no" id="qNo">第 1 题</div>
+      <div class="q-text" id="qText"></div>
+      <div id="options"></div>
+      <div class="feedback" id="feedback"></div>
+      <button class="next-btn" id="nextBtn">下一题 →</button>
+    </div>
+
+    <div class="skip-row">
+      <button class="skip-btn" onclick="gotoPoster()">跳过答题，直接查看宣传页 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 结果页 ============ -->
+<div id="resultView" class="view" hidden>
+  <div class="wrap result-box">
+    <div class="score-ring" id="scoreRing">
+      <div class="num" id="scoreNum">0</div>
+      <div class="den">/ 10</div>
+    </div>
+    <div class="result-title" id="resultTitle"></div>
+    <p class="result-msg" id="resultMsg"></p>
+    <div class="result-tip" id="resultTip"></div>
+    <button class="poster-btn" onclick="gotoPoster()">📄 查看反诈宣传页 →</button>
+    <button class="retry-btn" onclick="restart()">↻ 再测一次</button>
+  </div>
+</div>
+
+<script>
+const QUESTIONS = [
+  {q:"国家反诈预警专用 APP 叫什么名字？",
+   opts:["全民防骗 APP","国家反诈中心 APP","平安守护 APP"], correct:1},
+  {q:"全国反诈劝阻专线号码是？",
+   opts:["12345","96110","12315"], correct:1},
+  {q:"网上说点赞刷单在家轻松赚钱，靠谱吗？",
+   opts:["小额任务能赚钱，大任务谨慎点","全部是诈骗，不能参与","正规兼职，很多人在做"], correct:1},
+  {q:"AI 换脸视频冒充在外子女，说急需医药费，该怎么办？",
+   opts:["视频看着像，马上转账","另外打电话核实清楚再决定","先转一部分钱应急"], correct:1},
+  {q:"出租自己的银行卡、微信账号帮别人收钱，属于？",
+   opts:["只是帮忙，没有事","涉嫌违法犯罪（帮信罪）","可以赚点零花钱"], correct:1},
+  {q:"自称客服打电话说要给你退款理赔，索要短信验证码，应该？",
+   opts:["直接把验证码发给对方","拒绝提供，自己在官方平台核实","先问能退多少钱再给"], correct:1},
+  {q:"公检法机关会要求你把钱转到“安全账户”吗？",
+   opts:["案情保密，需要转","不存在安全账户，是骗局","重大案件才需要"], correct:1},
+  {q:"有人自称收购商，高价收山茱萸、香菇，先让交保证金，这是？",
+   opts:["生意规矩，先交定金","大概率是骗局","签合同就没问题"], correct:1},
+  {q:"点开陌生诈骗钓鱼链接，下面哪种行为最容易被骗走钱？",
+   opts:["只点开看一眼，不操作","在网页输入银行卡号、短信验证码","看完直接关掉网页"], correct:1},
+  {q:"陌生链接点开，提示要下载“核验 APP”，安装之后骗子可以？",
+   opts:["远程看到你手机屏幕、读取短信验证码","直接烧毁手机","自动帮你拦截诈骗电话"], correct:0}
+];
+
+const TAGS = ["A","B","C"];
+const FEEDBACK_TIERS = [
+  {min:10, title:"🎉 满分！反诈高手！",
+   msg:"10 道全对，火眼金睛！骗子见到你都得绕着走，继续保持！",
+   tip:"你是街坊邻里里的<b>反诈明白人</b>，有空多提醒身边的老人、孩子一起防骗。"},
+  {min:8, title:"👍 太棒了！反诈意识很强！", msg:"答对 8-9 道，反诈意识杠杠的，再学一点点就能拿满分啦！",
+   tip:"建议重点看看宣传页里的<b>“AI 换脸”和“高价收购”</b>两类新骗局。"},
+  {min:6, title:"🙂 不错！基础打得很牢！", msg:"答对 6-7 道，基本防骗常识过关，但骗子套路花样多，还得继续充电！",
+   tip:"把下面的宣传页<b>完整看一遍</b>，尤其记牢“96110”和“国家反诈中心 APP”。"},
+  {min:4, title:"⚠️ 要留个心眼啦！", msg:"答对 4-5 道，有些套路还没认清，容易被骗子钻空子，赶紧补补课！",
+   tip:"遇到<b>要转账、要验证码、先交保证金</b>的，先停一停，打 96110 问清楚。"},
+  {min:0, title:"🚨 危险！反诈知识急需补课！", msg:"答对不足 4 道，骗子最爱盯上这种情况，千万别掉以轻心！",
+   tip:"请<b>一定认真看完下面的宣传页</b>，再下载“国家反诈中心 APP”开启预警。"}
+];
+
+let cur = 0, score = 0, answered = false;
+
+const $ = id => document.getElementById(id);
+
+function render(){
+  answered = false;
+  const q = QUESTIONS[cur];
+  $("qNo").textContent = "第 " + (cur+1) + " 题";
+  $("qIndex").textContent = "第 " + (cur+1) + " / " + QUESTIONS.length + " 题";
+  $("scoreLabel").textContent = "✅ 已答对 " + score + " 题";
+  $("qText").textContent = q.q;
+  $("bar").style.width = (cur / QUESTIONS.length * 100) + "%";
+
+  const box = $("options");
+  box.innerHTML = "";
+  q.opts.forEach((o, i)=>{
+    const b = document.createElement("button");
+    b.className = "option";
+    b.innerHTML = '<span class="tag">' + TAGS[i] + '</span><span class="txt">' + o + '</span>';
+    b.onclick = ()=>choose(i);
+    box.appendChild(b);
+  });
+
+  const fb = $("feedback");
+  fb.className = "feedback";
+  fb.innerHTML = "";
+  const nb = $("nextBtn");
+  nb.classList.remove("show");
+  nb.textContent = (cur === QUESTIONS.length-1) ? "查看成绩 🎉" : "下一题 →";
+  nb.onclick = next;
+}
+
+function choose(i){
+  if(answered) return;
+  answered = true;
+  const q = QUESTIONS[cur];
+  const opts = $("options").children;
+  for(let k=0;k<opts.length;k++) opts[k].classList.add("disabled");
+  opts[q.correct].classList.add("correct");
+
+  const fb = $("feedback");
+  if(i === q.correct){
+    score++;
+    opts[i].classList.add("correct");
+    fb.className = "feedback good";
+    fb.innerHTML = "✅ 真棒！答对了！";
+    setTimeout(next, 700);
+  }else{
+    opts[i].classList.add("wrong");
+    for(let k=0;k<opts.length;k++) if(k!==i && k!==q.correct) opts[k].classList.add("dim");
+    fb.className = "feedback bad";
+    fb.innerHTML = "❌ 答错了，正确答案是 <b>" + TAGS[q.correct] + "．" + q.opts[q.correct] + "</b>";
+  }
+  $("scoreLabel").textContent = "✅ 已答对 " + score + " 题";
+  if(i !== q.correct) $("nextBtn").classList.add("show");
+}
+
+function next(){
+  cur++;
+  if(cur < QUESTIONS.length){
+    render();
+  }else{
+    $("bar").style.width = "100%";
+    showResult();
+  }
+}
+
+function showResult(){
+  $("quizView").hidden = true;
+  $("resultView").hidden = false;
+  $("scoreNum").textContent = score;
+
+  const ring = $("scoreRing");
+  const pct = score / QUESTIONS.length;
+  const color = pct >= 0.8 ? "#16a34a" : (pct >= 0.6 ? "#1d5bbf" : (pct >= 0.4 ? "#f5a623" : "#e11d2e"));
+  ring.innerHTML = '<div class="num">' + score + '</div><div class="den">/ ' + QUESTIONS.length + '</div>';
+  ring.style.background = "conic-gradient(" + color + " " + (pct*360) + "deg, #e5eaf2 0deg)";
+
+  const tier = FEEDBACK_TIERS.find(t => score >= t.min);
+  $("resultTitle").textContent = tier.title;
+  $("resultMsg").textContent = tier.msg;
+  $("resultTip").innerHTML = tier.tip;
+
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+function gotoPoster(){
+  window.location.href = "poster.html";
+}
+
+function restart(){
+  cur = 0; score = 0;
+  $("resultView").hidden = true;
+  $("quizView").hidden = false;
+  render();
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+render();
+</script>
+</body>
+</html>

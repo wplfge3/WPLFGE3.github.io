@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>米坪镇 · 2026 反诈宣传周 · A4 宣传页</title>
+<style>
+  :root{
+    --blue-700:#16408a;
+    --blue-500:#1d5bbf;
+    --red:#e11d2e;
+    --gold:#f5a623;
+    --green:#16a34a;
+    --ink:#1f2937;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{width:100%;}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",-apple-system,"Segoe UI",sans-serif;
+    color:var(--ink);background:#dfe3e8;line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  button{font-family:inherit;cursor:pointer;border:none;}
+  a{text-decoration:none;}
+
+  .poster-view{padding:24px 8px 60px;}
+  .poster-toolbar{
+    max-width:760px;margin:0 auto 16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
+  }
+  .tool-btn{
+    display:inline-block;background:#fff;color:var(--blue-700);border:1.5px solid #c9d8f2;border-radius:10px;
+    padding:10px 18px;font-size:14px;font-weight:600;box-shadow:0 3px 10px rgba(0,0,0,.06);
+  }
+  .tool-btn.primary{background:var(--blue-700);color:#fff;border-color:var(--blue-700);}
+  .tool-btn:hover{filter:brightness(1.05);}
+
+  .a4{
+    width:210mm;min-height:297mm;margin:0 auto;background:#fff;
+    box-shadow:0 10px 40px rgba(0,0,0,.28);
+    padding:10mm 9mm;position:relative;
+    font-size:12.5px;color:#1f2937;
+  }
+  .a4 .p-head{
+    background:linear-gradient(135deg,#0a2350,#16408a 60%,#1d5bbf);
+    color:#fff;border-radius:10px;padding:14px 16px;text-align:center;position:relative;
+  }
+  .a4 .p-head .week{
+    display:inline-block;background:var(--gold);color:#7a4a00;font-weight:800;
+    font-size:12px;padding:3px 12px;border-radius:999px;letter-spacing:2px;
+  }
+  .a4 .p-head h1{font-size:24px;letter-spacing:2px;margin:8px 0 2px;}
+  .a4 .p-head .slogan{font-size:14px;opacity:.95;font-weight:600;}
+  .a4 .p-head .nums{
+    margin-top:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;
+  }
+  .a4 .p-head .nums span{
+    background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);
+    padding:4px 12px;border-radius:8px;font-weight:700;font-size:13px;
+  }
+
+  .a4 h2{
+    font-size:15.5px;color:var(--blue-700);margin:16px 0 8px;
+    padding-left:10px;border-left:4px solid var(--red);line-height:1.3;
+  }
+  .a4 .lead{font-size:13px;color:#374151;background:#f2f6ff;border-radius:8px;padding:10px 12px;}
+  .a4 ul{list-style:none;}
+  .a4 li{
+    position:relative;padding:7px 6px 7px 24px;border-bottom:1px dashed #e5e7eb;
+    font-size:12.5px;
+  }
+  .a4 li:last-child{border-bottom:none;}
+  .a4 li .dot{
+    position:absolute;left:4px;top:9px;width:14px;height:14px;border-radius:50%;
+    background:var(--blue-500);color:#fff;font-size:10px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .a4 li b{color:var(--blue-700);}
+  .a4 li .r{color:var(--red);font-weight:700;}
+
+  .a4 .koujue{
+    display:flex;flex-wrap:wrap;gap:8px;margin-top:2px;
+  }
+  .a4 .koujue .k{
+    flex:1 1 30%;background:linear-gradient(135deg,#eef4ff,#e2ecfd);
+    border:1px solid #cfe0f7;border-radius:10px;padding:10px 8px;text-align:center;
+  }
+  .a4 .koujue .k .q{font-weight:800;color:var(--red);font-size:13px;}
+  .a4 .koujue .k .a{font-weight:700;color:var(--blue-700);font-size:15px;margin-top:2px;}
+
+  .a4 .call{
+    display:flex;gap:10px;flex-wrap:wrap;margin-top:4px;
+  }
+  .a4 .call .c{
+    flex:1 1 28%;border-radius:10px;padding:12px 10px;text-align:center;color:#fff;font-weight:700;
+  }
+  .a4 .call .c .n{font-size:22px;letter-spacing:1px;}
+  .a4 .call .c .t{font-size:11.5px;opacity:.95;font-weight:500;margin-top:2px;}
+  .c-blue{background:linear-gradient(135deg,#16408a,#2f6bd8);}
+  .c-red{background:linear-gradient(135deg,#c81a2a,#f0433c);}
+  .c-green{background:linear-gradient(135deg,#0e7a3a,#22a35b);}
+
+  .a4 .p-foot{
+    margin-top:16px;background:#0a2350;color:#fff;border-radius:10px;
+    text-align:center;padding:11px 14px;font-size:13px;font-weight:700;letter-spacing:1px;
+  }
+  .a4 .p-foot .small{font-size:11px;font-weight:500;opacity:.8;margin-top:2px;letter-spacing:0;}
+
+  @media print{
+    body{background:#fff;}
+    .poster-toolbar{display:none !important;}
+    .a4{box-shadow:none;margin:0;width:210mm;min-height:297mm;padding:8mm 8mm;}
+    .poster-view{padding:0;background:#fff;}
+  }
+  @media (max-width:560px){
+    .a4{width:100%;min-height:auto;padding:16px 14px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="poster-view">
+  <div class="poster-toolbar no-print">
+    <a class="tool-btn" href="index.html">← 返回答题</a>
+    <button class="tool-btn primary" onclick="window.print()">🖨️ 打印 / 保存 PDF</button>
+  </div>
+
+  <div class="a4" id="poster">
+    <div class="p-head">
+      <span class="week">2026 · 反诈宣传周</span>
+      <h1>全民反诈 · 你我同行</h1>
+      <div class="slogan">天上不会掉馅饼，掉下来的都是陷阱</div>
+      <div class="nums">
+        <span>☎ 96110 反诈专线</span>
+        <span>🚔 110 报警</span>
+        <span>📱 国家反诈中心 APP</span>
+      </div>
+    </div>
+
+    <h2>一、三个“一律”，守好钱袋子</h2>
+    <ul>
+      <li><span class="dot">1</span>陌生电话、短信、链接要你<b>转账、要验证码</b>的，<span class="r">一律不点、不信、不转账</span>。</li>
+      <li><span class="dot">2</span>自称“<b>客服、公检法、领导、熟人</b>”开口要钱的，<span class="r">一律先核实</span>。</li>
+      <li><span class="dot">3</span>网上“<b>刷单返利、高额回报</b>”的兼职，<span class="r">一律是诈骗</span>。</li>
+    </ul>
+
+    <h2>二、米坪镇老乡要当心的六种骗局</h2>
+    <ul>
+      <li><span class="dot">1</span><b>刷单返利：</b>点赞、刷单“动动手指就赚钱”，先给甜头再骗大钱——全是骗局，坚决不做。</li>
+      <li><span class="dot">2</span><b>冒充客服退款：</b>说快递丢失要理赔退款，要你开屏幕共享、输验证码——挂断电话，上官方平台查。</li>
+      <li><span class="dot">3</span><b>冒充公检法：</b>说“涉嫌洗钱”“安全账户”，让你转钱——公安不会电话办案，更没有“安全账户”。</li>
+      <li><span class="dot">4</span><b>AI 换脸冒充子女：</b>视频里“孩子”要医药费、要钱——别慌，另外打电话核实清楚再决定。</li>
+      <li><span class="dot">5</span><b>高价收购骗局：</b>有人“高价收山茱萸、香菇、猕猴桃”，先让你交“保证金、定金”——先让掏钱的收购多是骗局，<span class="r">一手交钱一手交货</span>。</li>
+      <li><span class="dot">6</span><b>出租出售“两卡”：</b>借出银行卡、微信、支付宝“帮人收钱赚佣金”——这是<span class="r">帮信罪</span>，坐牢罚款，千万不能干。</li>
+    </ul>
+
+    <h2>三、防骗口诀 · 记牢这五条</h2>
+    <div class="koujue">
+      <div class="k"><div class="q">要验证码？</div><div class="a">不给！</div></div>
+      <div class="k"><div class="q">要转账？</div><div class="a">先核实！</div></div>
+      <div class="k"><div class="q">陌生链接？</div><div class="a">不点！</div></div>
+      <div class="k"><div class="q">刷单返利？</div><div class="a">不干！</div></div>
+      <div class="k"><div class="q">两卡外借？</div><div class="a">不借！</div></div>
+    </div>
+
+    <h2>四、记住这几个救命号码</h2>
+    <div class="call">
+      <div class="c c-blue"><div class="n">96110</div><div class="t">反诈专线 · 一定要接<br>来电说明你可能正被骗</div></div>
+      <div class="c c-red"><div class="n">110</div><div class="t">报警电话<br>遇骗立刻拨打</div></div>
+      <div class="c c-green"><div class="n">国家反诈中心 APP</div><div class="t">下载安装<br>开启来电预警</div></div>
+    </div>
+
+    <div class="p-foot">
+      🌾 米坪镇 · 2026 反诈宣传周
+      <div class="small">赚钱不易，守好血汗钱 · 遇到拿不准的，先打 96110 问一问</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

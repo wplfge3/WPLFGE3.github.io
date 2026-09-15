@@ -168,6 +168,15 @@ const siteData = {
     {
       category: "public",
       label: "公开资料",
+      icon: "shield-alert",
+      title: "网络反诈宣传 · 知识问答与宣传页",
+      detail: "米坪镇反诈知识问答：10 道题测测反诈意识，还能查看并打印 A4 反诈宣传页。",
+      date: "2026",
+      localUrl: "网络反诈宣传/index.html"
+    },
+    {
+      category: "public",
+      label: "公开资料",
       icon: "bell-ring",
       title: "米坪镇公开村情与产业资料",
       detail: "米坪镇位于西峡县北部山区，距县城58公里，辖17个行政村、204个村民小组。",
@@ -209,6 +218,16 @@ const state = {
   activeScheduleFilter: "all",
   visibleFeedCount: 5,
   toastTimer: null
+};
+
+// ===== 留言板配置（Twikoo）=====
+// 开通步骤见同目录《留言板开通说明.md》。
+// envId：腾讯云填"环境ID"（形如 xxx-1gxxxxxx，不带 https://）；
+//        Netlify / Vercel 填完整地址（形如 https://xxx.netlify.app/.netlify/functions/twikoo 或 https://xxx.vercel.app）。
+// region：仅腾讯云需要，如 ap-shanghai / ap-guangzhou；其他平台留空即可。
+const GUESTBOOK = {
+  envId: "",
+  region: ""
 };
 
 const routeList = document.querySelector("#route-list");
@@ -432,9 +451,13 @@ function renderFeed() {
     <article class="feed-item reveal" data-search-id="feed-${escapeHTML(item.category)}-${index}">
       <span class="feed-category"><i data-lucide="${escapeHTML(item.icon)}"></i>${escapeHTML(item.label)}</span>
       <div>
-        <h3>${escapeHTML(item.title)}</h3>
+        <h3>${item.localUrl ? `<a class="feed-title-link" href="${escapeHTML(item.localUrl)}">${escapeHTML(item.title)}</a>` : escapeHTML(item.title)}</h3>
         <p>${escapeHTML(item.detail)}</p>
-        ${item.sourceUrl ? `<a class="feed-source" href="${escapeHTML(item.sourceUrl)}" target="_blank" rel="noopener">官方来源 <i data-lucide="external-link"></i></a>` : ""}
+        ${item.localUrl
+          ? `<a class="feed-source feed-local" href="${escapeHTML(item.localUrl)}">查看页面 <i data-lucide="arrow-right"></i></a>`
+          : item.sourceUrl
+            ? `<a class="feed-source" href="${escapeHTML(item.sourceUrl)}" target="_blank" rel="noopener">官方来源 <i data-lucide="external-link"></i></a>`
+            : ""}
       </div>
       <time class="feed-date">${escapeHTML(item.date)}</time>
     </article>
@@ -491,7 +514,7 @@ function buildSearchCatalog() {
   const feed = siteData.feed.map((item) => ({
     title: item.title,
     description: `${item.label} · ${item.detail}`,
-    section: "#local-info",
+    section: item.localUrl || "#local-info",
     icon: item.icon,
     keywords: `${item.label} ${item.title} ${item.detail}`
   }));
@@ -504,7 +527,15 @@ function buildSearchCatalog() {
     keywords: "视频 宣传片 米坪美哉 走进米坪 了解米坪"
   }];
 
-  return [...routes, ...events, ...services, ...passengerSources, ...videos, ...feed];
+  const movies = [{
+    title: "电影放映 · 文化广场露天电影",
+    description: "公益影片放映筹备中，敬请期待",
+    section: "#movie",
+    icon: "clapperboard",
+    keywords: "电影 放映 露天 公益 影片 文化广场"
+  }];
+
+  return [...routes, ...events, ...services, ...passengerSources, ...videos, ...movies, ...feed];
 }
 
 const searchCatalog = buildSearchCatalog();
@@ -596,6 +627,53 @@ function observeReveals() {
   document.querySelectorAll(".reveal:not(.is-visible)").forEach((element) => revealObserver.observe(element));
 }
 
+function loadScript(src, onLoad, onError) {
+  const script = document.createElement("script");
+  script.src = src;
+  script.async = true;
+  script.onload = onLoad;
+  script.onerror = onError;
+  document.body.appendChild(script);
+}
+
+function renderGuestbook() {
+  const container = document.querySelector("#tcomment");
+  const placeholder = document.querySelector("#guestbook-placeholder");
+  if (!container || !placeholder) return;
+
+  const envId = GUESTBOOK.envId.trim();
+  if (!envId) {
+    placeholder.hidden = false;
+    return;
+  }
+
+  placeholder.hidden = true;
+  const init = () => {
+    if (!window.twikoo) return;
+    const options = { envId, el: "#tcomment", lang: "zh-CN" };
+    if (GUESTBOOK.region.trim()) options.region = GUESTBOOK.region.trim();
+    window.twikoo.init(options);
+  };
+
+  if (window.twikoo) {
+    init();
+    return;
+  }
+
+  loadScript(
+    "https://registry.npmmirror.com/twikoo/1.7.22/files/dist/twikoo.all.min.js",
+    init,
+    () => loadScript(
+      "https://cdn.jsdelivr.net/npm/twikoo@1.7.22/dist/twikoo.all.min.js",
+      init,
+      () => {
+        placeholder.querySelector("span").textContent = "留言板加载失败，请检查网络后刷新重试。";
+        placeholder.hidden = false;
+      }
+    )
+  );
+}
+
 function initializePage() {
   document.querySelector("#notice-text").textContent = siteData.notice;
   document.querySelector("#current-year").textContent = new Date().getFullYear();
@@ -615,6 +693,7 @@ function initializePage() {
   renderFeed();
   refreshIcons();
   observeReveals();
+  renderGuestbook();
 
   const initialQuery = new URLSearchParams(window.location.search).get("q");
   if (initialQuery) {
