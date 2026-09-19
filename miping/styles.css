@@ -2647,3 +2647,111 @@ svg {
     padding: 14px;
   }
 }
+
+/* ===== 手机端 · 小巧精致 ===== */
+@media (max-width: 720px) {
+  body {
+    font-size: 15px;
+  }
+
+  .section {
+    padding: 42px 0;
+  }
+
+  .service-band {
+    padding: 42px 0;
+  }
+
+  .section-heading {
+    margin-bottom: 18px;
+  }
+
+  .section-heading h2,
+  .local-aside h2,
+  .community-callout h2,
+  .submit-dialog h2 {
+    font-size: 20px;
+  }
+
+  .section-kicker {
+    font-size: 12px;
+  }
+
+  .hero {
+    min-height: 400px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero-intro {
+    font-size: 14px;
+  }
+
+  .brand-copy strong {
+    font-size: 16px;
+  }
+
+  .event-card {
+    padding: 18px;
+  }
+
+  .event-card h3 {
+    font-size: 16px;
+  }
+
+  .event-detail {
+    font-size: 12px;
+  }
+
+  .service-item {
+    min-height: 92px;
+    padding: 12px;
+  }
+
+  .service-item strong {
+    font-size: 14px;
+  }
+
+  .service-item small {
+    font-size: 11px;
+  }
+
+  .route-name strong {
+    font-size: 16px;
+  }
+
+  .time-group strong {
+    min-width: 50px;
+    padding: 3px 7px;
+    font-size: 14px;
+  }
+
+  .story-card figcaption,
+  .story-video-copy {
+    min-height: 140px;
+    padding: 14px 15px 15px;
+  }
+
+  .story-card figcaption strong,
+  .story-video-copy strong {
+    font-size: 15px;
+  }
+
+  .mascot-card strong {
+    font-size: 16px;
+  }
+
+  .feed-item {
+    padding: 16px 2px;
+  }
+
+  .feed-item h3 {
+    font-size: 15px;
+  }
+
+  .guestbook-box {
+    padding: 12px;
+  }
+}
