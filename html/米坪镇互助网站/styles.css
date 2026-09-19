@@ -2520,3 +2520,130 @@ svg {
     white-space: normal;
   }
 }
+
+/* ===== 手机端优化 ===== */
+@media (max-width: 720px) {
+  /* 首屏更紧凑 */
+  .hero {
+    min-height: 430px;
+  }
+
+  .hero-inner {
+    padding-top: 42px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+  }
+
+  .hero-intro {
+    margin: 9px 0 18px;
+    font-size: 15px;
+  }
+
+  /* 移动端导航改为两列，少滚动 */
+  .mobile-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px 14px;
+    padding: 10px 20px 16px;
+    max-height: calc(100vh - var(--header-height));
+    overflow-y: auto;
+  }
+
+  .mobile-nav a {
+    padding: 11px 4px;
+  }
+
+  /* 北山发车时间表：手机改成卡片，不用左右滑动 */
+  .schedule-table-wrap {
+    overflow: visible;
+    border: 0;
+  }
+
+  .schedule-table {
+    min-width: 0;
+  }
+
+  .schedule-table thead {
+    display: none;
+  }
+
+  .schedule-table tbody,
+  .schedule-table tr,
+  .schedule-table td,
+  .schedule-table th {
+    display: block;
+  }
+
+  .schedule-group-row th {
+    margin-top: 16px;
+    padding: 8px 12px;
+    border-radius: 6px 6px 0 0;
+    border-bottom: 0;
+  }
+
+  .schedule-row {
+    margin-bottom: 12px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .schedule-row td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 9px 12px;
+    border-bottom: 1px solid #edf0ed;
+    text-align: right;
+    white-space: normal;
+  }
+
+  .schedule-row td:last-child {
+    border-bottom: 0;
+  }
+
+  .schedule-row td::before {
+    content: attr(data-label);
+    flex: 0 0 auto;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  .schedule-row td:first-child {
+    background: var(--surface-soft);
+  }
+
+  .schedule-row td[data-label="电话"] a {
+    color: var(--green-dark);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* 更大的点击热区 */
+  .button {
+    min-height: 46px;
+  }
+
+  .schedule-filter,
+  .filter-button {
+    min-height: 40px;
+    padding: 6px 14px;
+  }
+
+  /* 电影海报标题在小屏上稍收小 */
+  .movie-title {
+    font-size: 22px;
+  }
+
+  /* 留言板外框收窄 */
+  .guestbook-box {
+    padding: 14px;
+  }
+}

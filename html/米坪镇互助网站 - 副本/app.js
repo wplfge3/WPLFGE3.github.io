@@ -527,7 +527,15 @@ function buildSearchCatalog() {
     keywords: "视频 宣传片 米坪美哉 走进米坪 了解米坪"
   }];
 
-  return [...routes, ...events, ...services, ...passengerSources, ...videos, ...feed];
+  const movies = [{
+    title: "电影放映 · 文化广场露天电影",
+    description: "公益影片放映筹备中，敬请期待",
+    section: "#movie",
+    icon: "clapperboard",
+    keywords: "电影 放映 露天 公益 影片 文化广场"
+  }];
+
+  return [...routes, ...events, ...services, ...passengerSources, ...videos, ...movies, ...feed];
 }
 
 const searchCatalog = buildSearchCatalog();

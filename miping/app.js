@@ -368,14 +368,14 @@ function renderSchedule() {
 
     return `${groupRow}
       <tr class="schedule-row ${statusClass}">
-        <td><strong>${escapeHTML(item.departure)}</strong></td>
-        <td>${escapeHTML(item.plate)}</td>
-        <td>${escapeHTML(item.route)}</td>
-        <td>${escapeHTML(item.returnTime)}</td>
-        <td>${escapeHTML(item.owner)}</td>
-        <td>${phoneCell}</td>
-        <td><span class="schedule-status ${statusClass}">${statusLabel}</span></td>
-        <td>${escapeHTML(item.mipingTime)}</td>
+        <td data-label="发车时间"><strong>${escapeHTML(item.departure)}</strong></td>
+        <td data-label="车号">${escapeHTML(item.plate)}</td>
+        <td data-label="路线">${escapeHTML(item.route)}</td>
+        <td data-label="返回时间">${escapeHTML(item.returnTime)}</td>
+        <td data-label="车主">${escapeHTML(item.owner)}</td>
+        <td data-label="电话">${phoneCell}</td>
+        <td data-label="是否经过米坪"><span class="schedule-status ${statusClass}">${statusLabel}</span></td>
+        <td data-label="预计经过米坪">${escapeHTML(item.mipingTime)}</td>
       </tr>`;
   }).join("");
 }
