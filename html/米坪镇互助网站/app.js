@@ -843,4 +843,32 @@ window.addEventListener("scroll", () => {
   document.querySelector(".site-header").classList.toggle("is-scrolled", window.scrollY > 8);
 }, { passive: true });
 
+// ===== 大字模式 =====
+const largeTextToggle = document.querySelector("#large-text-toggle");
+const largeTextLabel = document.querySelector("#large-text-label");
+
+function applyLargeText(enabled) {
+  document.documentElement.classList.toggle("large-text", enabled);
+  if (largeTextToggle) largeTextToggle.setAttribute("aria-pressed", String(enabled));
+  if (largeTextLabel) largeTextLabel.textContent = enabled ? "标准" : "大字";
+  try {
+    localStorage.setItem("miping-large-text", enabled ? "1" : "0");
+  } catch (error) {
+    // localStorage 不可用时忽略
+  }
+}
+
+if (largeTextToggle) {
+  let enabled = false;
+  try {
+    enabled = localStorage.getItem("miping-large-text") === "1";
+  } catch (error) {
+    enabled = false;
+  }
+  applyLargeText(enabled);
+  largeTextToggle.addEventListener("click", () => {
+    applyLargeText(!document.documentElement.classList.contains("large-text"));
+  });
+}
+
 initializePage();
