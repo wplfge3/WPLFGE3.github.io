@@ -368,14 +368,14 @@ function renderSchedule() {
 
     return `${groupRow}
       <tr class="schedule-row ${statusClass}">
-        <td><strong>${escapeHTML(item.departure)}</strong></td>
-        <td>${escapeHTML(item.plate)}</td>
-        <td>${escapeHTML(item.route)}</td>
-        <td>${escapeHTML(item.returnTime)}</td>
-        <td>${escapeHTML(item.owner)}</td>
-        <td>${phoneCell}</td>
-        <td><span class="schedule-status ${statusClass}">${statusLabel}</span></td>
-        <td>${escapeHTML(item.mipingTime)}</td>
+        <td data-label="发车时间"><strong>${escapeHTML(item.departure)}</strong></td>
+        <td data-label="车号">${escapeHTML(item.plate)}</td>
+        <td data-label="路线">${escapeHTML(item.route)}</td>
+        <td data-label="返回时间">${escapeHTML(item.returnTime)}</td>
+        <td data-label="车主">${escapeHTML(item.owner)}</td>
+        <td data-label="电话">${phoneCell}</td>
+        <td data-label="是否经过米坪"><span class="schedule-status ${statusClass}">${statusLabel}</span></td>
+        <td data-label="预计经过米坪">${escapeHTML(item.mipingTime)}</td>
       </tr>`;
   }).join("");
 }
@@ -842,5 +842,33 @@ mobileNav.addEventListener("click", (event) => {
 window.addEventListener("scroll", () => {
   document.querySelector(".site-header").classList.toggle("is-scrolled", window.scrollY > 8);
 }, { passive: true });
+
+// ===== 大字模式 =====
+const largeTextToggle = document.querySelector("#large-text-toggle");
+const largeTextLabel = document.querySelector("#large-text-label");
+
+function applyLargeText(enabled) {
+  document.documentElement.classList.toggle("large-text", enabled);
+  if (largeTextToggle) largeTextToggle.setAttribute("aria-pressed", String(enabled));
+  if (largeTextLabel) largeTextLabel.textContent = enabled ? "标准" : "大字";
+  try {
+    localStorage.setItem("miping-large-text", enabled ? "1" : "0");
+  } catch (error) {
+    // localStorage 不可用时忽略
+  }
+}
+
+if (largeTextToggle) {
+  let enabled = false;
+  try {
+    enabled = localStorage.getItem("miping-large-text") === "1";
+  } catch (error) {
+    enabled = false;
+  }
+  applyLargeText(enabled);
+  largeTextToggle.addEventListener("click", () => {
+    applyLargeText(!document.documentElement.classList.contains("large-text"));
+  });
+}
 
 initializePage();

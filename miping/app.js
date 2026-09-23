@@ -177,6 +177,15 @@ const siteData = {
     {
       category: "public",
       label: "公开资料",
+      icon: "land-plot",
+      title: "农村集体“三资”清查图斑核查应知应会100问",
+      detail: "西峡县农村集体“三资”清查图斑核查应知应会知识问答，共100问，可在线查阅。",
+      date: "2026",
+      localUrl: "图斑100问/图斑100问.html"
+    },
+    {
+      category: "public",
+      label: "公开资料",
       icon: "bell-ring",
       title: "米坪镇公开村情与产业资料",
       detail: "米坪镇位于西峡县北部山区，距县城58公里，辖17个行政村、204个村民小组。",
