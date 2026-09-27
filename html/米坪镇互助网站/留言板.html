@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0d0d0d">
+<title>畅所欲言 · 夜间护眼版</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; }
+  body {
+    min-height: 100vh;
+    color: #c9d1c9;
+    background: #0d0d0d;
+    font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { text-decoration: none; }
+
+  .wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 36px 16px 56px;
+  }
+
+  .head { text-align: center; margin-bottom: 22px; }
+  .head .badge {
+    display: inline-block;
+    padding: 3px 13px;
+    color: #7fd3a5;
+    background: rgba(23, 107, 69, 0.18);
+    border: 1px solid rgba(127, 211, 165, 0.3);
+    border-radius: 999px;
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+  .head h1 {
+    margin: 14px 0 6px;
+    color: #ececec;
+    font-size: 28px;
+    letter-spacing: 2px;
+  }
+  .head p { color: #7c857c; font-size: 13px; }
+
+  .box {
+    padding: 20px;
+    background: #141414;
+    border: 1px solid #262626;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Twikoo 深色适配 */
+  .twikoo { color: #c9d1c9; }
+  .twikoo .tk-input__inner {
+    color: #c9d1c9;
+    background: #0d0d0d;
+    border-color: #33363a;
+  }
+  .twikoo .tk-nick-link { color: #c9d1c9; }
+  .twikoo .tk-comments-title { color: #ececec; }
+  .twikoo .tk-content { color: #c9d1c9; }
+  .twikoo .tk-extras { color: #7c857c; }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 24px 12px 40px; }
+    .head h1 { font-size: 24px; }
+    .box { padding: 14px; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="head">
+      <span class="badge">夜间护眼版</span>
+      <h1>畅所欲言</h1>
+      <p>注意文明发言</p>
+    </header>
+
+    <div class="box">
+      <div id="tcomment"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var envId = "https://miping-liuyan.netlify.app/.netlify/functions/twikoo";
+      function init() {
+        window.twikoo.init({ envId: envId, el: "#tcomment", path: "/night", lang: "zh-CN" });
+      }
+      if (window.twikoo) { init(); return; }
+      var s = document.createElement("script");
+      s.src = "https://registry.npmmirror.com/twikoo/2.0.9/files/dist/twikoo.min.js";
+      s.onload = init;
+      s.onerror = function () {
+        var s2 = document.createElement("script");
+        s2.src = "https://cdn.jsdelivr.net/npm/twikoo@2.0.9/dist/twikoo.min.js";
+        s2.onload = init;
+        document.body.appendChild(s2);
+      };
+      document.body.appendChild(s);
+    })();
+  </script>
+</body>
+</html>

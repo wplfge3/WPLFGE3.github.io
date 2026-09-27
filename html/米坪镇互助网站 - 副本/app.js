@@ -177,6 +177,15 @@ const siteData = {
     {
       category: "public",
       label: "公开资料",
+      icon: "land-plot",
+      title: "农村集体“三资”清查图斑核查应知应会100问",
+      detail: "西峡县农村集体“三资”清查图斑核查应知应会知识问答，共100问，可在线查阅。",
+      date: "2026",
+      localUrl: "图斑100问/图斑100问.html"
+    },
+    {
+      category: "public",
+      label: "公开资料",
       icon: "bell-ring",
       title: "米坪镇公开村情与产业资料",
       detail: "米坪镇位于西峡县北部山区，距县城58公里，辖17个行政村、204个村民小组。",
@@ -226,7 +235,7 @@ const state = {
 //        Netlify / Vercel 填完整地址（形如 https://xxx.netlify.app/.netlify/functions/twikoo 或 https://xxx.vercel.app）。
 // region：仅腾讯云需要，如 ap-shanghai / ap-guangzhou；其他平台留空即可。
 const GUESTBOOK = {
-  envId: "",
+  envId: "https://miping-liuyan.netlify.app/.netlify/functions/twikoo",
   region: ""
 };
 
@@ -661,10 +670,10 @@ function renderGuestbook() {
   }
 
   loadScript(
-    "https://registry.npmmirror.com/twikoo/1.7.22/files/dist/twikoo.all.min.js",
+    "https://registry.npmmirror.com/twikoo/2.0.9/files/dist/twikoo.min.js",
     init,
     () => loadScript(
-      "https://cdn.jsdelivr.net/npm/twikoo@1.7.22/dist/twikoo.all.min.js",
+      "https://cdn.jsdelivr.net/npm/twikoo@2.0.9/dist/twikoo.min.js",
       init,
       () => {
         placeholder.querySelector("span").textContent = "留言板加载失败，请检查网络后刷新重试。";

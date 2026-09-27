@@ -93,12 +93,12 @@
         <a href="#events">乡镇动态</a>
         <a href="#movie">电影放映</a>
         <a href="#services">大家互助</a>
+        <a href="#guestbook">留言板</a>
         <a href="#local-story">产业与乡情</a>
         <a href="#video">走进米坪</a>
         <a href="#local-info">本地信息</a>
         <a href="#map">米坪地图</a>
         <a href="#news">米坪新闻</a>
-        <a href="#guestbook">留言板</a>
       </nav>
 
       <div class="header-actions">
@@ -117,12 +117,12 @@
       <a href="#events">乡镇动态</a>
       <a href="#movie">电影放映</a>
       <a href="#services">大家互助</a>
+      <a href="#guestbook">留言板</a>
       <a href="#local-story">产业与乡情</a>
       <a href="#video">走进米坪</a>
       <a href="#local-info">本地信息</a>
       <a href="#map">米坪地图</a>
       <a href="#news">米坪新闻</a>
-      <a href="#guestbook">留言板</a>
     </nav>
   </header>
 
@@ -175,6 +175,30 @@
           <p class="section-summary">出行、农产、邻里和本地生活</p>
         </div>
         <div class="service-grid" id="service-grid"></div>
+      </div>
+    </section>
+
+    <section class="section guestbook-section" id="guestbook" aria-labelledby="guestbook-title">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">畅所欲言</p>
+            <h2 id="guestbook-title">米坪留言板</h2>
+          </div>
+        </div>
+
+        <div class="guestbook-intro">
+          <i data-lucide="message-circle-heart" aria-hidden="true"></i>
+          <p>欢迎在这里<strong>畅所欲言</strong>——唠家常、提建议、找搭子、报喜事都可以。也请大家<strong>文明发言、互相尊重</strong>，不发广告、谣言和伤人的话。</p>
+        </div>
+
+        <div class="guestbook-box">
+          <div id="tcomment"></div>
+          <p class="guestbook-placeholder" id="guestbook-placeholder" hidden>
+            <i data-lucide="message-square-text" aria-hidden="true"></i>
+            <span>留言板正在开通中，开通后大家就能在这里留言。</span>
+          </p>
+        </div>
       </div>
     </section>
 
@@ -404,6 +428,52 @@
       </div>
     </section>
 
+    <section class="section category-guestbook-section" id="category-guestbook" aria-labelledby="cg-title">
+      <div class="section-inner">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">分类留言</p>
+            <h2 id="cg-title">分类互助留言板</h2>
+          </div>
+          <p class="section-summary">按分类发帖，找信息更快</p>
+        </div>
+
+        <div class="cg-tabs" id="cg-tabs" role="tablist" aria-label="互助分类">
+          <button class="cg-tab is-active" type="button" role="tab" aria-selected="true" data-cg="culture">电影放映与本地活动</button>
+          <button class="cg-tab" type="button" role="tab" aria-selected="false" data-cg="trade">农产交换</button>
+          <button class="cg-tab" type="button" role="tab" aria-selected="false" data-cg="help">邻里互助</button>
+          <button class="cg-tab" type="button" role="tab" aria-selected="false" data-cg="lost">失物招领</button>
+          <button class="cg-tab" type="button" role="tab" aria-selected="false" data-cg="house">房屋场地</button>
+          <button class="cg-tab" type="button" role="tab" aria-selected="false" data-cg="job">就业互助</button>
+        </div>
+
+        <div class="cg-panel is-active" data-cg-panel="culture">
+          <p class="cg-hint"><i data-lucide="info" aria-hidden="true"></i><span>电影放映与本地活动：广场电影放映、文化公益，发布或了解活动都来这。</span></p>
+          <div class="cg-twikoo" id="cg-culture"></div>
+        </div>
+        <div class="cg-panel" data-cg-panel="trade" hidden>
+          <p class="cg-hint"><i data-lucide="info" aria-hidden="true"></i><span>农产交换：发布自家农产、寻找买家，也可以直接留言求购或出售。</span></p>
+          <div class="cg-twikoo" id="cg-trade"></div>
+        </div>
+        <div class="cg-panel" data-cg-panel="help" hidden>
+          <p class="cg-hint"><i data-lucide="info" aria-hidden="true"></i><span>邻里互助：拼车、搭把手、临时帮工，需要帮忙或能帮忙都可以留言。</span></p>
+          <div class="cg-twikoo" id="cg-help"></div>
+        </div>
+        <div class="cg-panel" data-cg-panel="lost" hidden>
+          <p class="cg-hint"><i data-lucide="info" aria-hidden="true"></i><span>失物招领：捡到东西或丢了东西，在这里说一声。</span></p>
+          <div class="cg-twikoo" id="cg-lost"></div>
+        </div>
+        <div class="cg-panel" data-cg-panel="house" hidden>
+          <p class="cg-hint"><i data-lucide="info" aria-hidden="true"></i><span>房屋场地：出租、求租、借用场地，欢迎留言。</span></p>
+          <div class="cg-twikoo" id="cg-house"></div>
+        </div>
+        <div class="cg-panel" data-cg-panel="job" hidden>
+          <p class="cg-hint"><i data-lucide="info" aria-hidden="true"></i><span>就业互助：零工、招工、技能交换，找工作招人都可以留言。</span></p>
+          <div class="cg-twikoo" id="cg-job"></div>
+        </div>
+      </div>
+    </section>
+
     <section class="section local-section" id="local-info" aria-labelledby="local-title">
       <div class="section-inner local-layout">
         <div class="local-main">
@@ -541,26 +611,6 @@
       </div>
     </section>
 
-    <section class="section guestbook-section" id="guestbook" aria-labelledby="guestbook-title">
-      <div class="section-inner">
-        <div class="section-heading">
-          <div>
-            <p class="section-kicker">大家留言</p>
-            <h2 id="guestbook-title">米坪留言板</h2>
-          </div>
-          <p class="section-summary">说说你想说的，也给乡亲们留个言</p>
-        </div>
-
-        <div class="guestbook-box">
-          <div id="tcomment"></div>
-          <p class="guestbook-placeholder" id="guestbook-placeholder" hidden>
-            <i data-lucide="message-square-text" aria-hidden="true"></i>
-            <span>留言板正在开通中，开通后大家就能在这里留言。</span>
-          </p>
-        </div>
-      </div>
-    </section>
-
     <noscript>
       <section class="seo-noscript section" aria-labelledby="seo-summary-title">
         <div class="section-inner">
@@ -588,7 +638,7 @@
         <a href="#guestbook">留言板</a>
         <button class="link-button feedback-trigger" type="button">内容更正</button>
       </nav>
-      <p class="copyright">© <span id="current-year"></span> 米坪镇生活通 · 投稿邮箱：2192341537@qq.com</p>
+      <p class="copyright">© <span id="current-year"></span> 米坪镇生活通 · 投稿邮箱：2192341537@qq.com <a class="hidden-guestbook-link" href="留言板.html" aria-label="留言板">·</a></p>
     </div>
   </footer>
 
@@ -650,7 +700,12 @@
     <span id="large-text-label">大字</span>
   </button>
 
+  <button class="guestbook-fab" id="guestbook-fab" type="button" aria-label="快速前往留言板">
+    <i data-lucide="message-square-text" aria-hidden="true"></i>
+    <span>留言</span>
+  </button>
+
   <script src="assets/lucide.min.js"></script>
-  <script src="app.js"></script>
+  <script src="app.js?v=20260924"></script>
 </body>
 </html>

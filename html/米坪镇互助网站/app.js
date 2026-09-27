@@ -106,6 +106,12 @@ const siteData = {
   ],
   services: [
     {
+      title: "畅所欲言 · 留言板",
+      subtitle: "唠家常、提建议、找搭子",
+      icon: "message-circle-heart",
+      section: "#guestbook"
+    },
+    {
       title: "米坪客车出行",
       subtitle: "北山班车 · 老汽车站时刻表",
       icon: "bus-front",
@@ -235,7 +241,7 @@ const state = {
 //        Netlify / Vercel 填完整地址（形如 https://xxx.netlify.app/.netlify/functions/twikoo 或 https://xxx.vercel.app）。
 // region：仅腾讯云需要，如 ap-shanghai / ap-guangzhou；其他平台留空即可。
 const GUESTBOOK = {
-  envId: "",
+  envId: "https://miping-liuyan.netlify.app/.netlify/functions/twikoo",
   region: ""
 };
 
@@ -670,10 +676,10 @@ function renderGuestbook() {
   }
 
   loadScript(
-    "https://registry.npmmirror.com/twikoo/1.7.22/files/dist/twikoo.all.min.js",
+    "https://registry.npmmirror.com/twikoo/2.0.9/files/dist/twikoo.min.js",
     init,
     () => loadScript(
-      "https://cdn.jsdelivr.net/npm/twikoo@1.7.22/dist/twikoo.all.min.js",
+      "https://cdn.jsdelivr.net/npm/twikoo@2.0.9/dist/twikoo.min.js",
       init,
       () => {
         placeholder.querySelector("span").textContent = "留言板加载失败，请检查网络后刷新重试。";
@@ -878,6 +884,80 @@ if (largeTextToggle) {
   largeTextToggle.addEventListener("click", () => {
     applyLargeText(!document.documentElement.classList.contains("large-text"));
   });
+}
+
+// ===== 快速前往留言板 =====
+const guestbookFab = document.querySelector("#guestbook-fab");
+if (guestbookFab) {
+  guestbookFab.addEventListener("click", () => {
+    document.querySelector("#guestbook")?.scrollIntoView({ behavior: "smooth" });
+  });
+}
+
+// ===== 分类留言板 =====
+const CATEGORY_GUESTBOOKS = [
+  { key: "trade", path: "/trade" },
+  { key: "help", path: "/help" },
+  { key: "lost", path: "/lost" },
+  { key: "house", path: "/house" },
+  { key: "culture", path: "/culture" },
+  { key: "job", path: "/job" }
+];
+
+const cgInitialized = {};
+
+function initCategoryTwikoo(key) {
+  const container = document.querySelector(`#cg-${key}`);
+  if (!container || cgInitialized[key]) return;
+  cgInitialized[key] = true;
+
+  const category = CATEGORY_GUESTBOOKS.find((item) => item.key === key);
+  const envId = GUESTBOOK.envId.trim();
+  if (!envId || !category) return;
+
+  const init = () => {
+    if (!window.twikoo) return;
+    const options = { envId, el: `#cg-${key}`, path: category.path, lang: "zh-CN" };
+    if (GUESTBOOK.region.trim()) options.region = GUESTBOOK.region.trim();
+    window.twikoo.init(options);
+  };
+
+  if (window.twikoo) {
+    init();
+    return;
+  }
+
+  loadScript(
+    "https://registry.npmmirror.com/twikoo/2.0.9/files/dist/twikoo.min.js",
+    init,
+    () => loadScript(
+      "https://cdn.jsdelivr.net/npm/twikoo@2.0.9/dist/twikoo.min.js",
+      init,
+      () => {}
+    )
+  );
+}
+
+function activateCategory(key) {
+  document.querySelectorAll(".cg-tab").forEach((tab) => {
+    const active = tab.dataset.cg === key;
+    tab.classList.toggle("is-active", active);
+    tab.setAttribute("aria-selected", String(active));
+  });
+  document.querySelectorAll(".cg-panel").forEach((panel) => {
+    const active = panel.dataset.cgPanel === key;
+    panel.hidden = !active;
+    panel.classList.toggle("is-active", active);
+  });
+  initCategoryTwikoo(key);
+}
+
+document.querySelectorAll(".cg-tab").forEach((tab) => {
+  tab.addEventListener("click", () => activateCategory(tab.dataset.cg));
+});
+
+if (GUESTBOOK.envId.trim()) {
+  initCategoryTwikoo("culture");
 }
 
 initializePage();
