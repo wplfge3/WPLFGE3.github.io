@@ -826,7 +826,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2026-09-27
+                    2026-10-03
                 </div>
                 
 
@@ -847,117 +847,185 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="米坪镇生活通-·-留言板开通说明"><a href="#米坪镇生活通-·-留言板开通说明" class="headerlink" title="米坪镇生活通 · 留言板开通说明"></a>米坪镇生活通 · 留言板开通说明</h1><h2 id="一、先说原理（很重要）"><a href="#一、先说原理（很重要）" class="headerlink" title="一、先说原理（很重要）"></a>一、先说原理（很重要）</h2><p>这个网站是<strong>纯静态网站</strong>（托管在 GitHub Pages，没有服务器和数据库）。<br>所以”留言板”的留言数据不能存在网页文件里，而是借用一个叫 <strong>Twikoo</strong> 的开源评论系统，把数据存在云端。</p>
-<p>要开通留言板，一共就三件事：</p>
-<ol>
-<li><strong>部署一个 Twikoo 后端</strong>（免费），得到一个”环境 ID”（下面叫 <code>envId</code>）；</li>
-<li>把这个 <code>envId</code> 填进网站的 <code>app.js</code>；</li>
-<li>打开留言板，设置一个<strong>管理员密码</strong>，之后你就能在后台删帖、审核。</li>
-</ol>
-<p>下面一步步来。</p>
-<hr>
-<h2 id="二、选一个部署平台（三选一）"><a href="#二、选一个部署平台（三选一）" class="headerlink" title="二、选一个部署平台（三选一）"></a>二、选一个部署平台（三选一）</h2><table>
-<thead>
-<tr>
-<th>平台</th>
-<th>是否免费</th>
-<th>国内访问</th>
-<th>说明</th>
-<th>推荐</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>Netlify</strong></td>
-<td>✅ 免费</td>
-<td>不错</td>
-<td>免费额度充足，国内能访问，需要 MongoDB Atlas 数据库</td>
-<td>✅ <strong>推荐</strong></td>
-</tr>
-<tr>
-<td>腾讯云（云开发）</td>
-<td>❌ 需付费</td>
-<td>最快</td>
-<td>国内最快，但要花钱买环境 + 实名认证</td>
-<td>想要最快就选它</td>
-</tr>
-<tr>
-<td>Vercel</td>
-<td>✅ 免费</td>
-<td>慢 / 可能打不开</td>
-<td>免费，但国内访问不稳定</td>
-<td>不推荐国内用</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>说明：官方已<strong>不推荐</strong>“腾讯云一键部署”——它免费额度不够留言板用，用完会扣费。所以免费方案首选 Netlify。</p>
-</blockquote>
-<hr>
-<h2 id="三、推荐路线：Netlify-部署（免费）"><a href="#三、推荐路线：Netlify-部署（免费）" class="headerlink" title="三、推荐路线：Netlify 部署（免费）"></a>三、推荐路线：Netlify 部署（免费）</h2><h3 id="第-0-步：注册-MongoDB-Atlas，拿到”数据库连接字符串”"><a href="#第-0-步：注册-MongoDB-Atlas，拿到”数据库连接字符串”" class="headerlink" title="第 0 步：注册 MongoDB Atlas，拿到”数据库连接字符串”"></a>第 0 步：注册 MongoDB Atlas，拿到”数据库连接字符串”</h3><ol>
-<li>打开 <a target="_blank" rel="noopener" href="https://www.mongodb.com/cloud/atlas/register">https://www.mongodb.com/cloud/atlas/register</a>，用邮箱注册（免费）。</li>
-<li>创建免费 <strong>M0</strong> 集群（Cluster），地区选离你近的（如新加坡 / 香港），一路默认即可。</li>
-<li>进入 <strong>Database Access</strong>，新建一个数据库用户（用户名、密码自己设，记住它们）。</li>
-<li>进入 <strong>Network Access</strong>，点 <strong>Add IP Address</strong>，选 <strong>Allow access from anywhere</strong>（<code>0.0.0.0/0</code>），确认。</li>
-<li>回到 <strong>Database</strong>，点 <strong>Connect → Drivers</strong>，复制那串连接字符串，形如：<br><code>mongodb+srv://你的用户名:你的密码@xxxxx.mongodb.net/?retryWrites=true&amp;w=majority</code></li>
-</ol>
-<p>   mongodb+srv://<wolfge2>:&lt;19727341537ab&gt;@cluster0.fxfwr3p.mongodb.net/?appName=Cluster0<br>   （把里面的 <code>你的用户名</code>、<code>你的密码</code> 替换成第 3 步设置的，<strong>密码不要带 <code>@</code> 等特殊符号</strong>）</p>
-<blockquote>
-<p>更详细的图文教程见官方文档：<a target="_blank" rel="noopener" href="https://twikoo.js.org/mongodb-atlas.html">https://twikoo.js.org/mongodb-atlas.html</a></p>
-</blockquote>
-<h3 id="第-1-步：注册-Netlify-并部署-Twikoo"><a href="#第-1-步：注册-Netlify-并部署-Twikoo" class="headerlink" title="第 1 步：注册 Netlify 并部署 Twikoo"></a>第 1 步：注册 Netlify 并部署 Twikoo</h3><ol>
-<li>打开 <a target="_blank" rel="noopener" href="https://app.netlify.com/">https://app.netlify.com</a>，用 GitHub 账号登录（没有 GitHub 就先用邮箱注册一个 GitHub）。</li>
-<li>打开 <a target="_blank" rel="noopener" href="https://github.com/twikoojs/twikoo-netlify">https://github.com/twikoojs/twikoo-netlify</a>，点右上角 <strong>Fork</strong>，把它复制到你的 GitHub 账号下。</li>
-<li>回到 Netlify，点 <strong>Add new site → Import an existing project → Deploy with GitHub</strong>，授权后选择你刚 fork 的 <code>twikoo-netlify</code>。</li>
-<li>在 <strong>Environment variables</strong> 里点 <strong>Add</strong>，Key 填 <code>MONGODB_URI</code>，Value 填第 0 步拿到的连接字符串，然后 <strong>Deploy</strong>。</li>
-<li>部署完成后，点 <strong>Domain settings</strong>，设置一个你自己的三级域名，比如 <code>miping-liuyan</code>，最终得到 <code>https://miping-liuyan.netlify.app</code>。</li>
-</ol>
-<h3 id="第-2-步：得到你的-envId"><a href="#第-2-步：得到你的-envId" class="headerlink" title="第 2 步：得到你的 envId"></a>第 2 步：得到你的 envId</h3><p>你的 envId 就是：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://你的域名.netlify.app/.netlify/functions/twikoo</span><br></pre></td></tr></table></figure>
+                <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>米坪镇 · 2026 反诈宣传周 · A4 宣传页</title>
+<style>
+  :root{
+    --blue-700:#16408a;
+    --blue-500:#1d5bbf;
+    --red:#e11d2e;
+    --gold:#f5a623;
+    --green:#16a34a;
+    --ink:#1f2937;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{width:100%;}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",-apple-system,"Segoe UI",sans-serif;
+    color:var(--ink);background:#dfe3e8;line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  button{font-family:inherit;cursor:pointer;border:none;}
+  a{text-decoration:none;}
 
-<p>例如：<code>https://miping-liuyan.netlify.app/.netlify/functions/twikoo</code></p>
-<blockquote>
-<p>验证：在浏览器打开这个地址，如果页面显示 **”Twikoo 云函数运行正常”**，就说明部署成功了。</p>
-</blockquote>
-<hr>
-<h2 id="四、把-envId-填进网站"><a href="#四、把-envId-填进网站" class="headerlink" title="四、把 envId 填进网站"></a>四、把 envId 填进网站</h2><ol>
-<li>打开网站根目录的 <code>app.js</code>。</li>
-<li>找到最上面这一块：</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="variable constant_">GUESTBOOK</span> = &#123;</span><br><span class="line">  <span class="attr">envId</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">region</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+  .poster-view{padding:24px 8px 60px;}
+  .poster-toolbar{
+    max-width:760px;margin:0 auto 16px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
+  }
+  .tool-btn{
+    display:inline-block;background:#fff;color:var(--blue-700);border:1.5px solid #c9d8f2;border-radius:10px;
+    padding:10px 18px;font-size:14px;font-weight:600;box-shadow:0 3px 10px rgba(0,0,0,.06);
+  }
+  .tool-btn.primary{background:var(--blue-700);color:#fff;border-color:var(--blue-700);}
+  .tool-btn:hover{filter:brightness(1.05);}
 
-<ol start="3">
-<li>把 <code>envId</code> 填上（Netlify 填完整地址，<code>region</code> 留空即可）：</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="variable constant_">GUESTBOOK</span> = &#123;</span><br><span class="line">  <span class="attr">envId</span>: <span class="string">&quot;https://miping-liuyan.netlify.app/.netlify/functions/twikoo&quot;</span>,</span><br><span class="line">  <span class="attr">region</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+  .a4{
+    width:210mm;min-height:297mm;margin:0 auto;background:#fff;
+    box-shadow:0 10px 40px rgba(0,0,0,.28);
+    padding:10mm 9mm;position:relative;
+    font-size:12.5px;color:#1f2937;
+  }
+  .a4 .p-head{
+    background:linear-gradient(135deg,#0a2350,#16408a 60%,#1d5bbf);
+    color:#fff;border-radius:10px;padding:14px 16px;text-align:center;position:relative;
+  }
+  .a4 .p-head .week{
+    display:inline-block;background:var(--gold);color:#7a4a00;font-weight:800;
+    font-size:12px;padding:3px 12px;border-radius:999px;letter-spacing:2px;
+  }
+  .a4 .p-head h1{font-size:24px;letter-spacing:2px;margin:8px 0 2px;}
+  .a4 .p-head .slogan{font-size:14px;opacity:.95;font-weight:600;}
+  .a4 .p-head .nums{
+    margin-top:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;
+  }
+  .a4 .p-head .nums span{
+    background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);
+    padding:4px 12px;border-radius:8px;font-weight:700;font-size:13px;
+  }
 
-<ol start="4">
-<li>保存，重新上传到 GitHub Pages（或刷新本地预览）。留言板就出现了。</li>
-</ol>
-<blockquote>
-<p>如果你选的是<strong>腾讯云</strong>：<code>envId</code> 填”环境 ID”（形如 <code>xxx-1gxxxxxx</code>，不带 <code>https://</code>），<code>region</code> 填 <code>ap-shanghai</code> 或 <code>ap-guangzhou</code>。<br>如果你选的是 <strong>Vercel</strong>：<code>envId</code> 填 <code>https://xxx.vercel.app</code>（没有后缀），<code>region</code> 留空。</p>
-</blockquote>
-<hr>
-<h2 id="五、设置管理员密码（删帖-审核用）"><a href="#五、设置管理员密码（删帖-审核用）" class="headerlink" title="五、设置管理员密码（删帖 / 审核用）"></a>五、设置管理员密码（删帖 / 审核用）</h2><ol>
-<li>打开网站，滚到留言板，右下角会有一个<strong>小齿轮</strong>图标。</li>
-<li>点它，按提示<strong>设置管理员密码</strong>（一定要记住）。</li>
-<li>以后点齿轮登录，就能看到”管理”面板：删帖、审核、置顶都在里面。</li>
-</ol>
-<blockquote>
-<p>建议开启管理面板里的”<strong>垃圾评论过滤</strong>“和”<strong>私密评论</strong>“等开关，能挡掉大部分广告。</p>
-</blockquote>
-<hr>
-<h2 id="六、常见问题"><a href="#六、常见问题" class="headerlink" title="六、常见问题"></a>六、常见问题</h2><ul>
-<li><strong>留言板显示”正在开通中”</strong> → 说明 <code>envId</code> 还没填或填错了，检查 <code>app.js</code>。</li>
-<li><strong>显示”加载失败”</strong> → 网络问题，刷新重试；或换国内 CDN（见下）。</li>
-<li><strong>能显示但发不出留言</strong> → 检查 MongoDB 的 Network Access 是否放行了 <code>0.0.0.0/0</code>，以及 Netlify 环境变量是否填对后点了 Redeploy。</li>
-<li><strong>国内加载慢</strong> → 前端脚本默认已用国内镜像（npmmirror），一般没问题；也可换 <code>https://s4.zstatic.net/npm/twikoo@2.0.9/dist/twikoo.min.js</code>。</li>
-</ul>
-<hr>
-<h2 id="附：官方文档"><a href="#附：官方文档" class="headerlink" title="附：官方文档"></a>附：官方文档</h2><ul>
-<li>Twikoo 快速上手：<a target="_blank" rel="noopener" href="https://twikoo.js.org/quick-start.html">https://twikoo.js.org/quick-start.html</a></li>
-<li>云函数部署（各平台）：<a target="_blank" rel="noopener" href="https://twikoo.js.org/backend.html">https://twikoo.js.org/backend.html</a></li>
-<li>前端部署：<a target="_blank" rel="noopener" href="https://twikoo.js.org/frontend.html">https://twikoo.js.org/frontend.html</a></li>
-<li>MongoDB Atlas 教程：<a target="_blank" rel="noopener" href="https://twikoo.js.org/mongodb-atlas.html">https://twikoo.js.org/mongodb-atlas.html</a></li>
-</ul>
+  .a4 h2{
+    font-size:15.5px;color:var(--blue-700);margin:16px 0 8px;
+    padding-left:10px;border-left:4px solid var(--red);line-height:1.3;
+  }
+  .a4 .lead{font-size:13px;color:#374151;background:#f2f6ff;border-radius:8px;padding:10px 12px;}
+  .a4 ul{list-style:none;}
+  .a4 li{
+    position:relative;padding:7px 6px 7px 24px;border-bottom:1px dashed #e5e7eb;
+    font-size:12.5px;
+  }
+  .a4 li:last-child{border-bottom:none;}
+  .a4 li .dot{
+    position:absolute;left:4px;top:9px;width:14px;height:14px;border-radius:50%;
+    background:var(--blue-500);color:#fff;font-size:10px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .a4 li b{color:var(--blue-700);}
+  .a4 li .r{color:var(--red);font-weight:700;}
+
+  .a4 .koujue{
+    display:flex;flex-wrap:wrap;gap:8px;margin-top:2px;
+  }
+  .a4 .koujue .k{
+    flex:1 1 30%;background:linear-gradient(135deg,#eef4ff,#e2ecfd);
+    border:1px solid #cfe0f7;border-radius:10px;padding:10px 8px;text-align:center;
+  }
+  .a4 .koujue .k .q{font-weight:800;color:var(--red);font-size:13px;}
+  .a4 .koujue .k .a{font-weight:700;color:var(--blue-700);font-size:15px;margin-top:2px;}
+
+  .a4 .call{
+    display:flex;gap:10px;flex-wrap:wrap;margin-top:4px;
+  }
+  .a4 .call .c{
+    flex:1 1 28%;border-radius:10px;padding:12px 10px;text-align:center;color:#fff;font-weight:700;
+  }
+  .a4 .call .c .n{font-size:22px;letter-spacing:1px;}
+  .a4 .call .c .t{font-size:11.5px;opacity:.95;font-weight:500;margin-top:2px;}
+  .c-blue{background:linear-gradient(135deg,#16408a,#2f6bd8);}
+  .c-red{background:linear-gradient(135deg,#c81a2a,#f0433c);}
+  .c-green{background:linear-gradient(135deg,#0e7a3a,#22a35b);}
+
+  .a4 .p-foot{
+    margin-top:16px;background:#0a2350;color:#fff;border-radius:10px;
+    text-align:center;padding:11px 14px;font-size:13px;font-weight:700;letter-spacing:1px;
+  }
+  .a4 .p-foot .small{font-size:11px;font-weight:500;opacity:.8;margin-top:2px;letter-spacing:0;}
+
+  @media print{
+    body{background:#fff;}
+    .poster-toolbar{display:none !important;}
+    .a4{box-shadow:none;margin:0;width:210mm;min-height:297mm;padding:8mm 8mm;}
+    .poster-view{padding:0;background:#fff;}
+  }
+  @media (max-width:560px){
+    .a4{width:100%;min-height:auto;padding:16px 14px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="poster-view">
+  <div class="poster-toolbar no-print">
+    <a class="tool-btn" href="index.html">← 返回答题</a>
+    <button class="tool-btn primary" onclick="window.print()">🖨️ 打印 / 保存 PDF</button>
+  </div>
+
+  <div class="a4" id="poster">
+    <div class="p-head">
+      <span class="week">2026 · 反诈宣传周</span>
+      <h1>全民反诈 · 你我同行</h1>
+      <div class="slogan">天上不会掉馅饼，掉下来的都是陷阱</div>
+      <div class="nums">
+        <span>☎ 96110 反诈专线</span>
+        <span>🚔 110 报警</span>
+        <span>📱 国家反诈中心 APP</span>
+      </div>
+    </div>
+
+    <h2>一、三个“一律”，守好钱袋子</h2>
+    <ul>
+      <li><span class="dot">1</span>陌生电话、短信、链接要你<b>转账、要验证码</b>的，<span class="r">一律不点、不信、不转账</span>。</li>
+      <li><span class="dot">2</span>自称“<b>客服、公检法、领导、熟人</b>”开口要钱的，<span class="r">一律先核实</span>。</li>
+      <li><span class="dot">3</span>网上“<b>刷单返利、高额回报</b>”的兼职，<span class="r">一律是诈骗</span>。</li>
+    </ul>
+
+    <h2>二、米坪镇老乡要当心的六种骗局</h2>
+    <ul>
+      <li><span class="dot">1</span><b>刷单返利：</b>点赞、刷单“动动手指就赚钱”，先给甜头再骗大钱——全是骗局，坚决不做。</li>
+      <li><span class="dot">2</span><b>冒充客服退款：</b>说快递丢失要理赔退款，要你开屏幕共享、输验证码——挂断电话，上官方平台查。</li>
+      <li><span class="dot">3</span><b>冒充公检法：</b>说“涉嫌洗钱”“安全账户”，让你转钱——公安不会电话办案，更没有“安全账户”。</li>
+      <li><span class="dot">4</span><b>AI 换脸冒充子女：</b>视频里“孩子”要医药费、要钱——别慌，另外打电话核实清楚再决定。</li>
+      <li><span class="dot">5</span><b>高价收购骗局：</b>有人“高价收山茱萸、香菇、猕猴桃”，先让你交“保证金、定金”——先让掏钱的收购多是骗局，<span class="r">一手交钱一手交货</span>。</li>
+      <li><span class="dot">6</span><b>出租出售“两卡”：</b>借出银行卡、微信、支付宝“帮人收钱赚佣金”——这是<span class="r">帮信罪</span>，坐牢罚款，千万不能干。</li>
+    </ul>
+
+    <h2>三、防骗口诀 · 记牢这五条</h2>
+    <div class="koujue">
+      <div class="k"><div class="q">要验证码？</div><div class="a">不给！</div></div>
+      <div class="k"><div class="q">要转账？</div><div class="a">先核实！</div></div>
+      <div class="k"><div class="q">陌生链接？</div><div class="a">不点！</div></div>
+      <div class="k"><div class="q">刷单返利？</div><div class="a">不干！</div></div>
+      <div class="k"><div class="q">两卡外借？</div><div class="a">不借！</div></div>
+    </div>
+
+    <h2>四、记住这几个救命号码</h2>
+    <div class="call">
+      <div class="c c-blue"><div class="n">96110</div><div class="t">反诈专线 · 一定要接<br>来电说明你可能正被骗</div></div>
+      <div class="c c-red"><div class="n">110</div><div class="t">报警电话<br>遇骗立刻拨打</div></div>
+      <div class="c c-green"><div class="n">国家反诈中心 APP</div><div class="t">下载安装<br>开启来电预警</div></div>
+    </div>
+
+    <div class="p-foot">
+      🌾 米坪镇 · 2026 反诈宣传周
+      <div class="small">赚钱不易，守好血汗钱 · 遇到拿不准的，先打 96110 问一问</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
 
                 
             </div>
@@ -984,7 +1052,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://wplfge3.github.io/html/%E7%B1%B3%E5%9D%AA%E9%95%87%E4%BA%92%E5%8A%A9%E7%BD%91%E7%AB%99%20-%20%E5%89%AF%E6%9C%AC/%E7%95%99%E8%A8%80%E6%9D%BF%E5%BC%80%E9%80%9A%E8%AF%B4%E6%98%8E.html">https://wplfge3.github.io/html/%E7%B1%B3%E5%9D%AA%E9%95%87%E4%BA%92%E5%8A%A9%E7%BD%91%E7%AB%99%20-%20%E5%89%AF%E6%9C%AC/%E7%95%99%E8%A8%80%E6%9D%BF%E5%BC%80%E9%80%9A%E8%AF%B4%E6%98%8E.html</a>
+                    <a href="https://wplfge3.github.io/html/%E7%B1%B3%E5%9D%AA%E9%95%87%E4%BA%92%E5%8A%A9%E7%BD%91%E7%AB%99%20-%20%E5%89%AF%E6%9C%AC%20(2)/%E7%BD%91%E7%BB%9C%E5%8F%8D%E8%AF%88%E5%AE%A3%E4%BC%A0/poster.html">https://wplfge3.github.io/html/%E7%B1%B3%E5%9D%AA%E9%95%87%E4%BA%92%E5%8A%A9%E7%BD%91%E7%AB%99%20-%20%E5%89%AF%E6%9C%AC%20(2)/%E7%BD%91%E7%BB%9C%E5%8F%8D%E8%AF%88%E5%AE%A3%E4%BC%A0/poster.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1103,7 +1171,7 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/html/%E7%B1%B3%E5%9D%AA%E9%95%87%E4%BA%92%E5%8A%A9%E7%BD%91%E7%AB%99%20-%20%E5%89%AF%E6%9C%AC/%E7%95%99%E8%A8%80%E6%9D%BF%E5%BC%80%E9%80%9A%E8%AF%B4%E6%98%8E.html">
+                <a href="/html/%E7%B1%B3%E5%9D%AA%E9%95%87%E4%BA%92%E5%8A%A9%E7%BD%91%E7%AB%99%20-%20%E5%89%AF%E6%9C%AC%20(2)/%E7%BD%91%E7%BB%9C%E5%8F%8D%E8%AF%88%E5%AE%A3%E4%BC%A0/poster.html">
                     <div class="card-image">
                         
                         
@@ -1120,7 +1188,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2026-09-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-10-03
                             </span>
                         <span class="publish-author">
                             
@@ -1141,7 +1209,7 @@
                 本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/html/%E7%B1%B3%E5%9D%AA%E9%95%87%E4%BA%92%E5%8A%A9%E7%BD%91%E7%AB%99%20-%20%E5%89%AF%E6%9C%AC/%E7%95%99%E8%A8%80%E6%9D%BF%E5%BC%80%E9%80%9A%E8%AF%B4%E6%98%8E.html">
+                <a href="/html/%E7%B1%B3%E5%9D%AA%E9%95%87%E4%BA%92%E5%8A%A9%E7%BD%91%E7%AB%99%20-%20%E5%89%AF%E6%9C%AC%20(2)/%E7%BD%91%E7%BB%9C%E5%8F%8D%E8%AF%88%E5%AE%A3%E4%BC%A0/poster.html">
                     <div class="card-image">
                         
                         
@@ -1158,7 +1226,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2026-09-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-10-03
                             </span>
                         <span class="publish-author">
                             

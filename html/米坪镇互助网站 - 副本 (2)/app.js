@@ -106,6 +106,12 @@ const siteData = {
   ],
   services: [
     {
+      title: "畅所欲言 · 留言板",
+      subtitle: "唠家常、提建议、找搭子",
+      icon: "message-circle-heart",
+      section: "#guestbook"
+    },
+    {
       title: "米坪客车出行",
       subtitle: "北山班车 · 老汽车站时刻表",
       icon: "bus-front",
@@ -182,6 +188,24 @@ const siteData = {
       detail: "西峡县农村集体“三资”清查图斑核查应知应会知识问答，共100问，可在线查阅。",
       date: "2026",
       localUrl: "图斑100问/图斑100问.html"
+    },
+    {
+      category: "public",
+      label: "公开资料",
+      icon: "book-marked",
+      title: "农村集体“三资”清查整治100问",
+      detail: "农村集体“三资”清查整治政策问答（修订版），共100问，可在线查阅。",
+      date: "2026",
+      localUrl: "三资清查100问/农村集体三资清查整治100问.html"
+    },
+    {
+      category: "public",
+      label: "公开资料",
+      icon: "home",
+      title: "居家技巧100问",
+      detail: "居家清洁、床品、收纳、装饰与省钱实用技巧，共100问，可在线查阅。",
+      date: "2026",
+      localUrl: "居家技巧100问/居家技巧100问.html"
     },
     {
       category: "public",
@@ -880,4 +904,205 @@ if (largeTextToggle) {
   });
 }
 
+// ===== 快速前往留言板 =====
+const guestbookFab = document.querySelector("#guestbook-fab");
+if (guestbookFab) {
+  guestbookFab.addEventListener("click", () => {
+    document.querySelector("#guestbook")?.scrollIntoView({ behavior: "smooth" });
+  });
+}
+
+// ===== 分类留言板 =====
+const CATEGORY_GUESTBOOKS = [
+  { key: "trade", path: "/trade" },
+  { key: "help", path: "/help" },
+  { key: "lost", path: "/lost" },
+  { key: "house", path: "/house" },
+  { key: "culture", path: "/culture" },
+  { key: "job", path: "/job" }
+];
+
+const cgInitialized = {};
+
+function initCategoryTwikoo(key) {
+  const container = document.querySelector(`#cg-${key}`);
+  if (!container || cgInitialized[key]) return;
+  cgInitialized[key] = true;
+
+  const category = CATEGORY_GUESTBOOKS.find((item) => item.key === key);
+  const envId = GUESTBOOK.envId.trim();
+  if (!envId || !category) return;
+
+  const init = () => {
+    if (!window.twikoo) return;
+    const options = { envId, el: `#cg-${key}`, path: category.path, lang: "zh-CN" };
+    if (GUESTBOOK.region.trim()) options.region = GUESTBOOK.region.trim();
+    window.twikoo.init(options);
+  };
+
+  if (window.twikoo) {
+    init();
+    return;
+  }
+
+  loadScript(
+    "https://registry.npmmirror.com/twikoo/2.0.9/files/dist/twikoo.min.js",
+    init,
+    () => loadScript(
+      "https://cdn.jsdelivr.net/npm/twikoo@2.0.9/dist/twikoo.min.js",
+      init,
+      () => {}
+    )
+  );
+}
+
+function activateCategory(key) {
+  document.querySelectorAll(".cg-tab").forEach((tab) => {
+    const active = tab.dataset.cg === key;
+    tab.classList.toggle("is-active", active);
+    tab.setAttribute("aria-selected", String(active));
+  });
+  document.querySelectorAll(".cg-panel").forEach((panel) => {
+    const active = panel.dataset.cgPanel === key;
+    panel.hidden = !active;
+    panel.classList.toggle("is-active", active);
+  });
+  initCategoryTwikoo(key);
+}
+
+document.querySelectorAll(".cg-tab").forEach((tab) => {
+  tab.addEventListener("click", () => activateCategory(tab.dataset.cg));
+});
+
+if (GUESTBOOK.envId.trim()) {
+  initCategoryTwikoo("culture");
+}
+
 initializePage();
+
+// ===== 电影故事（纯属虚构，只为博君一笑）=====
+const movieStories = {
+  mushroom: {
+    emoji: "🍄",
+    tag: "喜剧 · 悬疑",
+    title: "香菇大王的秘密",
+    tagline: "全村香菇会发光",
+    story: [
+      "米坪镇的老周号称“香菇大王”，种了一辈子香菇，什么大风大浪没见过。可最近他家的菇棚出了怪事——半夜里，香菇会发出幽幽的绿光。",
+      "消息一传开，全村人都来围观：有人说山神显灵，有人说外星孢子，还有老太太当场焚香祈祷。老周的儿子小周是“福尔摩斯迷”，拍着胸脯保证三天破案。",
+      "小周连夜蹲守，又是架夜视仪又是摆符纸。结果后半夜绿光又起，他壮着胆子摸过去，顺着光一查——发光的根本不是香菇，是隔壁王婶晒在棚边的荧光鞋带掉了下来。",
+      "真相大白那天，王婶红着脸来认领鞋带，还补了一句：“我就说这鞋带晚上能发光，你们非说像葱。”全村人笑了整整一晚上。"
+    ]
+  },
+  tractor: {
+    emoji: "🚜",
+    tag: "奇幻 · 喜剧",
+    title: "会飞的拖拉机",
+    tagline: "赶集日飞上天",
+    story: [
+      "李老汉的拖拉机开了三十年，除了喇叭不响，哪儿都响。可就在赶集那天早上，它突然“嗡”地一声——飞起来了！",
+      "李老汉攥着方向盘一头扎进云里，把正在航拍的无人机吓得当场掉头。全村人抬头看着拖拉机在天上画圈，最后稳稳落在集市门口。",
+      "更离谱的是，车斗里还“顺路”捎回了三只迷路的野鸭。一个村民赶来一拍大腿：“下届赶集节，拖拉机飞行表演，必须有！”"
+    ]
+  },
+  mountain: {
+    emoji: "🦌",
+    tag: "奇幻 · 冒险",
+    title: "伏牛山奇妙夜",
+    tagline: "后山会说话",
+    story: [
+      "五个孩子在后山捉迷藏，最小的铁蛋躲进一片没去过的林子，竟听见山茱萸在聊天：“今年你结的果子怎么比我的红？”“因为我多喝了两口露水。”",
+      "孩子们顺着会说话的山茱萸往前走，找到一条藏在雾里的古驿道，还捡到一块石碑，上面刻着“到此一游”——落款是乾隆年间某位同样迷路的老乡。",
+      "铁蛋回家把这事讲给爷爷听，爷爷打着哈欠说：“山茱萸要是真会说话，第一句肯定骂你——上树摘果子也不洗脚。”"
+    ]
+  },
+  radio: {
+    emoji: "📻",
+    tag: "温情 · 年代",
+    title: "老槐树下的广播站",
+    tagline: "一支喇叭三代人",
+    story: [
+      "村口老槐树上挂着一支几十年不坏的喇叭，每天早上七点准时“喂喂喂”，然后念一段天气预报。",
+      "大学生小孙回村，觉得这广播太土，想换成手机推送。结果第一天断电、第二天断网，全村人集体失眠——原来大家早把“喂喂喂”当成了起床铃。",
+      "小孙红着脸把喇叭擦了三遍，从此每天准时开嗓：“喂喂喂，今天晴，适合晒被褥；明天有雨，别忘收玉米。”全村人这才睡上了踏实觉。"
+    ]
+  },
+  alien: {
+    emoji: "👽",
+    tag: "科幻 · 喜剧",
+    title: "玉米地的外星人",
+    tagline: "外星快递员迷路了",
+    story: [
+      "深夜，一团光坠进老赵家的玉米地。全村人举着手电筒围过去，只见一个“外星人”蹲在地里啃生玉米。",
+      "胆大的二狗上前用土话问：“你是哪来的？”对方委屈巴巴：“我是城里送快递的，导航把我导沟里了。”所谓飞行器，不过是他摔碎的头盔和一堆发光的快递盒。",
+      "最后村民帮他把快递分完了，还留他吃了顿热乎饭。临走时快递小哥郑重承诺：“回去我就投诉那个导航，下次一定把你们村的路画清楚。”"
+    ]
+  },
+  kitchen: {
+    emoji: "🎸",
+    tag: "音乐 · 喜剧",
+    title: "土灶台音乐会",
+    tagline: "锅碗瓢盆乐队",
+    story: [
+      "腊月里，五个庄稼汉在土灶台边突发奇想组了支乐队：铁锹当吉他，锅盖当镲，脸盆当鼓，水瓢当沙锤，簸箕当……反正什么都当。",
+      "第一场“演唱会”把全村的狗都招来了，但越敲越上头，最后连隔壁村都翻山来听。村长点评：“咱这音乐，有股子柴火味。”",
+      "从此“灶台五虎”成了镇上最火的草根乐队，演出费很实在——一顿热乎的杀猪菜。"
+    ]
+  }
+};
+
+const movieDialog = document.querySelector("#movie-dialog");
+const movieDialogEmoji = document.querySelector("#movie-dialog-emoji");
+const movieDialogTag = document.querySelector("#movie-dialog-tag");
+const movieDialogTitle = document.querySelector("#movie-dialog-title");
+const movieDialogTagline = document.querySelector("#movie-dialog-tagline");
+const movieDialogStory = document.querySelector("#movie-dialog-story");
+
+function openMovieDialog(movieId) {
+  const movie = movieStories[movieId];
+  if (!movie || !movieDialog) return;
+  movieDialogEmoji.textContent = movie.emoji;
+  movieDialogTag.textContent = movie.tag;
+  movieDialogTitle.textContent = movie.title;
+  movieDialogTagline.textContent = movie.tagline;
+  movieDialogStory.innerHTML = movie.story.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join("");
+  if (typeof movieDialog.showModal === "function") {
+    movieDialog.showModal();
+  } else {
+    movieDialog.setAttribute("open", "");
+  }
+  document.body.classList.add("dialog-open");
+  refreshIcons();
+}
+
+function closeMovieDialog() {
+  if (!movieDialog) return;
+  if (typeof movieDialog.close === "function") {
+    movieDialog.close();
+  } else {
+    movieDialog.removeAttribute("open");
+  }
+  document.body.classList.remove("dialog-open");
+}
+
+document.querySelectorAll(".movie-card").forEach((card) => {
+  const openMovie = () => openMovieDialog(card.dataset.movieId);
+  card.addEventListener("click", openMovie);
+  card.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openMovie();
+    }
+  });
+});
+
+document.querySelectorAll(".movie-dialog-close").forEach((button) => {
+  button.addEventListener("click", closeMovieDialog);
+});
+
+if (movieDialog) {
+  movieDialog.addEventListener("click", (event) => {
+    if (event.target === movieDialog) closeMovieDialog();
+  });
+  movieDialog.addEventListener("close", () => document.body.classList.remove("dialog-open"));
+}

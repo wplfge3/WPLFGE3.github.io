@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=1160, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#176b45">
   <meta name="author" content="米坪镇生活通">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
@@ -23,7 +23,7 @@
   <meta name="twitter:image" content="https://wplfge3.github.io/miping/assets/miping-hero.jpg">
   <title>西峡县米坪镇生活通｜客运班车、便民信息与邻里互助</title>
   <link rel="preload" href="assets/cornus-hero.jpg" as="image">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260924e">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -374,56 +374,74 @@
             <p class="section-kicker">文化广场 · 露天电影</p>
             <h2 id="movie-title">电影放映</h2>
           </div>
-          <p class="section-summary">正在筹备中 · 敬请期待</p>
+          <p class="section-summary">精选片单 · 公益露天放映</p>
         </div>
 
         <div class="movie-notice">
           <i data-lucide="clapperboard" aria-hidden="true"></i>
-          <p>目前正在筹备，计划未来在文化广场（或米坪合适场地）放映公益影片，大家可以期待一下～</p>
+          <p>这是米坪文化广场露天电影的「预选片单」，每部都配了趣味简介。放映时间、场次确定后会在这里公布，想看的片可以在留言板举手～</p>
         </div>
 
         <div class="movie-grid">
-          <figure class="movie-card reveal">
+          <figure class="movie-card reveal" data-movie-id="mushroom" tabindex="0" role="button" aria-haspopup="dialog" aria-label="阅读《香菇大王的秘密》完整故事">
             <div class="movie-cover movie-cover--1">
-              <span class="movie-tag">红色经典</span>
-              <strong class="movie-title">地道战</strong>
+              <span class="movie-tag">喜剧 · 悬疑</span>
+              <span class="movie-emoji" aria-hidden="true">🍄</span>
+              <strong class="movie-title">香菇大王的秘密</strong>
+              <span class="movie-tagline">全村香菇会发光</span>
             </div>
+            <figcaption class="movie-intro">米坪最大的香菇一夜之间会发光，追查真相的父子俩却撞上一连串啼笑皆非的误会。<span class="movie-more">点开看完整故事 <i data-lucide="arrow-right" aria-hidden="true"></i></span></figcaption>
           </figure>
-          <figure class="movie-card reveal">
+          <figure class="movie-card reveal" data-movie-id="tractor" tabindex="0" role="button" aria-haspopup="dialog" aria-label="阅读《会飞的拖拉机》完整故事">
             <div class="movie-cover movie-cover--2">
-              <span class="movie-tag">战争片</span>
-              <strong class="movie-title">地雷战</strong>
+              <span class="movie-tag">奇幻 · 喜剧</span>
+              <span class="movie-emoji" aria-hidden="true">🚜</span>
+              <strong class="movie-title">会飞的拖拉机</strong>
+              <span class="movie-tagline">赶集日飞上天</span>
             </div>
+            <figcaption class="movie-intro">一台老掉牙的拖拉机突然会飞，载着全村人把赶集日过成了天空派对。<span class="movie-more">点开看完整故事 <i data-lucide="arrow-right" aria-hidden="true"></i></span></figcaption>
           </figure>
-          <figure class="movie-card reveal">
+          <figure class="movie-card reveal" data-movie-id="mountain" tabindex="0" role="button" aria-haspopup="dialog" aria-label="阅读《伏牛山奇妙夜》完整故事">
             <div class="movie-cover movie-cover--3">
-              <span class="movie-tag">红色经典</span>
-              <strong class="movie-title">英雄儿女</strong>
+              <span class="movie-tag">奇幻 · 冒险</span>
+              <span class="movie-emoji" aria-hidden="true">🦌</span>
+              <strong class="movie-title">伏牛山奇妙夜</strong>
+              <span class="movie-tagline">后山会说话</span>
             </div>
+            <figcaption class="movie-intro">几个孩子误入后山，发现会说话的山茱萸，和藏在雾里的古驿道。<span class="movie-more">点开看完整故事 <i data-lucide="arrow-right" aria-hidden="true"></i></span></figcaption>
           </figure>
-          <figure class="movie-card reveal">
+          <figure class="movie-card reveal" data-movie-id="radio" tabindex="0" role="button" aria-haspopup="dialog" aria-label="阅读《老槐树下的广播站》完整故事">
             <div class="movie-cover movie-cover--4">
-              <span class="movie-tag">战争片</span>
-              <strong class="movie-title">上甘岭</strong>
+              <span class="movie-tag">温情 · 年代</span>
+              <span class="movie-emoji" aria-hidden="true">📻</span>
+              <strong class="movie-title">老槐树下的广播站</strong>
+              <span class="movie-tagline">一支喇叭三代人</span>
             </div>
+            <figcaption class="movie-intro">一支旧喇叭串起三代人的乡愁，也广播出小镇最暖的家长里短。<span class="movie-more">点开看完整故事 <i data-lucide="arrow-right" aria-hidden="true"></i></span></figcaption>
           </figure>
-          <figure class="movie-card reveal">
+          <figure class="movie-card reveal" data-movie-id="alien" tabindex="0" role="button" aria-haspopup="dialog" aria-label="阅读《玉米地的外星人》完整故事">
             <div class="movie-cover movie-cover--5">
-              <span class="movie-tag">战争片</span>
-              <strong class="movie-title">小兵张嘎</strong>
+              <span class="movie-tag">科幻 · 喜剧</span>
+              <span class="movie-emoji" aria-hidden="true">👽</span>
+              <strong class="movie-title">玉米地的外星人</strong>
+              <span class="movie-tagline">外星快递员迷路了</span>
             </div>
+            <figcaption class="movie-intro">坠落的“外星人”其实是走失的城里快递员，却引发一场全村级大救援。<span class="movie-more">点开看完整故事 <i data-lucide="arrow-right" aria-hidden="true"></i></span></figcaption>
           </figure>
-          <figure class="movie-card reveal">
+          <figure class="movie-card reveal" data-movie-id="kitchen" tabindex="0" role="button" aria-haspopup="dialog" aria-label="阅读《土灶台音乐会》完整故事">
             <div class="movie-cover movie-cover--6">
-              <span class="movie-tag">抗战片</span>
-              <strong class="movie-title">平原游击队</strong>
+              <span class="movie-tag">音乐 · 喜剧</span>
+              <span class="movie-emoji" aria-hidden="true">🎸</span>
+              <strong class="movie-title">土灶台音乐会</strong>
+              <span class="movie-tagline">锅碗瓢盆乐队</span>
             </div>
+            <figcaption class="movie-intro">五个庄稼汉组成乐队，在腊月里用锅碗瓢盆敲出了一场真正的演唱会。<span class="movie-more">点开看完整故事 <i data-lucide="arrow-right" aria-hidden="true"></i></span></figcaption>
           </figure>
         </div>
 
         <p class="movie-footnote">
           <i data-lucide="info" aria-hidden="true"></i>
-          <span>以上为示例封面，正式片单与放映时间、地点待定，确定后会在这里公布。</span>
+          <span>片名与简介为社区趣味预选片单；正式片单、放映时间与地点待定，以现场公告为准。</span>
         </p>
       </div>
     </section>
@@ -690,6 +708,26 @@
     </form>
   </dialog>
 
+  <dialog class="movie-dialog" id="movie-dialog" aria-labelledby="movie-dialog-title">
+    <div class="movie-dialog-inner">
+      <div class="movie-dialog-head">
+        <span class="movie-dialog-emoji" id="movie-dialog-emoji" aria-hidden="true">🍄</span>
+        <div class="movie-dialog-heading">
+          <span class="movie-dialog-tag" id="movie-dialog-tag">喜剧 · 悬疑</span>
+          <h2 id="movie-dialog-title">香菇大王的秘密</h2>
+          <p class="movie-dialog-tagline" id="movie-dialog-tagline">全村香菇会发光</p>
+        </div>
+        <button class="icon-button movie-dialog-close" type="button" aria-label="关闭">
+          <i data-lucide="x" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="movie-dialog-body">
+        <div class="movie-dialog-story" id="movie-dialog-story"></div>
+        <p class="movie-dialog-fake"><i data-lucide="party-popper" aria-hidden="true"></i> 以上内容纯属虚构，只为博君一笑</p>
+      </div>
+    </div>
+  </dialog>
+
   <div class="toast" id="toast" role="status" aria-live="polite" hidden>
     <i data-lucide="circle-check" aria-hidden="true"></i>
     <span></span>
@@ -706,6 +744,6 @@
   </button>
 
   <script src="assets/lucide.min.js"></script>
-  <script src="app.js?v=20260924"></script>
+  <script src="app.js?v=20260924d"></script>
 </body>
 </html>
