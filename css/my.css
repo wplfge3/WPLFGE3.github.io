@@ -1,1 +1,71 @@
 /* Here is your custom css styles. */
+
+/* ============================================================
+   移动端侧边栏（左上角"三条杠"菜单）兼容性兜底
+   ------------------------------------------------------------
+   症状：手机上（尤其是微信内置浏览器的 X5 内核）侧边栏能滑出来，
+        但里面是空白的，看不到任何菜单项。
+   排查结论：产物 HTML 里 11 个菜单项都正常输出，CSS 里也没有任何
+        隐藏它们的规则，Materialize 的初始化（$('.sidenav').sidenav()）
+   也正常——所以是移动端 WebView 的渲染问题，不是内容缺失。
+   下面几条针对安卓 WebView 上最常见的几个坑做兜底，并按"打开侧边栏
+   后应当长什么样"显式写死关键样式。
+   ============================================================ */
+
+/* 坑 1：Materialize 1.0 给 .sidenav 加了 will-change: transform 和
+   backface-visibility: hidden，这会强制生成一个独立的合成层。
+   部分安卓 WebView（微信 X5）不绘制这类图层的子元素，
+   表现就是"侧边栏滑出来了，但是一片空白"。把这两个属性关掉。 */
+.sidenav,
+#mobile-nav {
+    will-change: auto !important;
+    -webkit-backface-visibility: visible !important;
+    backface-visibility: visible !important;
+}
+
+/* 坑 2：.sidenav 的 height 用了 calc(100% + 60px)，个别 WebView 会算成 0，
+   再配合 overflow-y: auto 就什么都看不见。这里显式给一个可靠的高度。
+   注意 left 保持 0：开合动画靠 transform 完成，不要覆盖 transform。 */
+#mobile-nav.sidenav {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    height: 100% !important;
+    max-height: 100vh !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    background-color: #fff !important;
+    z-index: 999 !important;
+}
+
+/* 坑 3：兜底确保菜单列表和每一项都可见、可点，并显式指定深色文字，
+   避免任何情况下出现"白底白字"（例如 body 上有 DarkMode 类时的滤镜叠加）。 */
+#mobile-nav .menu-list,
+#mobile-nav .mobile-menu-list {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    height: auto !important;
+}
+
+#mobile-nav .menu-list > li {
+    display: block !important;
+    float: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#mobile-nav .menu-list > li > a {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #34495e !important;
+}
+
+#mobile-nav .menu-list > li > a i {
+    color: #34495e !important;
+}
+
+/* 子菜单（有趣工具 / 日记 / word 教程）仍保持默认收起，
+   展开逻辑由 js/matery.js 里 $('.m-nav-item>a') 的点击事件控制，
+   所以这里不要动 display。 */
