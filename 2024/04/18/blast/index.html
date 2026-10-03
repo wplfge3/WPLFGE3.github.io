@@ -1296,50 +1296,126 @@
 
 <script>
 /*
- * 浏览器的自动播放策略：带声音的媒体必须先有"用户手势"才允许播放。
- * 单靠 APlayer 的 autoplay 选项，首次访问会被浏览器直接拦截并报
- * "play() failed because the user didn't interact with the document first"。
- * 所以这里监听第一次点击 / 触摸 / 按键，用户一有动作就立刻开始播放，
- * 达到"打开网页就能听到音乐"的效果。
+ * 静态博客每点一次链接都是整页重新加载，播放器跟着重新初始化，
+ * 结果每翻一页就变成另一首歌。这里一起解决两件事：
+ *
+ * 1) 把"当前第几首 + 播到第几秒"存进 localStorage，新页面加载后接着放同一首的同一位置，
+ *    实现翻页不断歌。超过 TTL 才重新开始。
+ * 2) 浏览器不允许带声音自动播放，必须先有"用户手势"。所以监听第一次点击 / 触摸 / 按键，
+ *    用户一有动作就立刻开始播放。
  */
 (function () {
+    var KEY = 'blogMusicResume';
+    var TTL = 2 * 60 * 60 * 1000;   // 2 小时内继续上次进度，隔太久就重新开始
     var GESTURES = ['pointerdown', 'click', 'touchstart', 'keydown'];
+    var SAVE_EVERY = 2000;          // 播放中每 2 秒记一次进度
 
-    function getPlayer() {
+    var player = null;              // APlayer 实例
+    var resumed = false;            // 是否已恢复过进度（只做一次，避免反复换歌）
+    var hasPlayed = false;          // 是否真的出过声（防止用 0 覆盖掉有效进度）
+
+    function findPlayer() {
         var el = document.querySelector('meting-js');
-        return el && el.aplayer ? el.aplayer : null;
+        var p = el && el.aplayer;
+        return p && p.list && p.list.audios && p.list.audios.length ? p : null;
     }
 
-    function stopWatching() {
-        GESTURES.forEach(function (name) {
-            document.removeEventListener(name, onGesture, true);
-        });
+    function readState() {
+        try {
+            var raw = localStorage.getItem(KEY);
+            if (!raw) { return null; }
+            var s = JSON.parse(raw);
+            if (!s || typeof s.index !== 'number' || typeof s.time !== 'number') { return null; }
+            if (Date.now() - (s.ts || 0) > TTL) { return null; }
+            return s;
+        } catch (err) {
+            return null;
+        }
     }
 
-    function onGesture(event) {
-        // 用户点的就是播放器本身（比如想暂停），不要抢他的操作
-        if (event.target && event.target.closest && event.target.closest('.aplayer')) {
-            return;
-        }
-        var player = getPlayer();
-        if (!player) {
-            return; // 歌单还没加载完，留着监听等下一次手势
-        }
+    function saveState(force) {
+        if (!player || !player.audio) { return; }
+        if (!player.audio.paused || player.audio.currentTime > 0) { hasPlayed = true; }
+        if (!hasPlayed) { return; }                 // 一次都没播过，别去覆盖上次的进度
+        if (player.audio.paused && !force) { return; }
+        try {
+            localStorage.setItem(KEY, JSON.stringify({
+                index: player.list.index,
+                time: player.audio.currentTime || 0,
+                ts: Date.now()
+            }));
+        } catch (err) { /* 无痕模式下 localStorage 可能不可写 */ }
+    }
+
+    function resume() {
+        if (resumed) { return; }
+        resumed = true;
+
+        var s = readState();
+        if (!s || s.index >= player.list.audios.length) { return; }
+
+        player.list.switch(s.index);        // 换回上次那一首
+        var audio = player.audio;
+        var seek = function () {            // 等元数据就绪再跳回上次的秒数
+            audio.removeEventListener('loadedmetadata', seek);
+            try { audio.currentTime = s.time; } catch (err) {}
+        };
+        audio.addEventListener('loadedmetadata', seek);
+    }
+
+    function tryStart() {
+        if (!player) { return false; }
+        resume();
         try {
             player.play();
         } catch (err) {
+            return false;
+        }
+        return true;
+    }
+
+    // 歌单要先请求接口，轮询等播放器就绪（就绪后立刻续播）
+    var tries = 0;
+    var timer = setInterval(function () {
+        tries += 1;
+        player = findPlayer();
+        if (player) {
+            clearInterval(timer);
+            tryStart();
+            setInterval(function () { saveState(false); }, SAVE_EVERY);
+        } else if (tries > 60) {
+            clearInterval(timer);
+        }
+    }, 150);
+
+    // 自动播放被浏览器拦截时，用户第一次点击 / 触摸 / 按键就开始播
+    function onGesture(event) {
+        // 点的是播放器本身（比如想暂停），不要抢他的操作
+        if (event.target && event.target.closest && event.target.closest('.aplayer')) {
             return;
         }
+        if (!player) { player = findPlayer(); }
+        if (!player) { return; }
+        tryStart();
         setTimeout(function () {
             // 真的播起来了才收工，否则继续等下一次手势
-            if (!player.audio || !player.audio.paused) {
-                stopWatching();
+            if (player.audio && !player.audio.paused) {
+                GESTURES.forEach(function (name) {
+                    document.removeEventListener(name, onGesture, true);
+                });
             }
         }, 300);
     }
 
     GESTURES.forEach(function (name) {
         document.addEventListener(name, onGesture, true);
+    });
+
+    // 离开页面或切到后台时立刻存一次，避免丢掉最后的进度
+    window.addEventListener('pagehide', function () { saveState(true); });
+    window.addEventListener('beforeunload', function () { saveState(true); });
+    document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'hidden') { saveState(true); }
     });
 })();
 </script>
