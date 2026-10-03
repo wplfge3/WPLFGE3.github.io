@@ -912,13 +912,14 @@
                    id="3778678"
                    api="https://api.injahow.cn/meting/?server=:server&type=:type&id=:id"
                    fixed='true'
-                   autoplay='false'
+                   autoplay='true'
                    theme='#42b983'
                    loop='all'
                    order='random'
                    preload='auto'
                    volume='0.7'
-                   list-folded='true'
+                   list-folded='false'
+                   list-max-height='360px'
         >
         </meting-js>
     </div>
@@ -926,6 +927,58 @@
 
 <script src="/libs/aplayer/APlayer.min.js"></script>
 <script src="/libs/aplayer/Meting.min.js"></script>
+
+
+<script>
+/*
+ * 浏览器的自动播放策略：带声音的媒体必须先有"用户手势"才允许播放。
+ * 单靠 APlayer 的 autoplay 选项，首次访问会被浏览器直接拦截并报
+ * "play() failed because the user didn't interact with the document first"。
+ * 所以这里监听第一次点击 / 触摸 / 按键，用户一有动作就立刻开始播放，
+ * 达到"打开网页就能听到音乐"的效果。
+ */
+(function () {
+    var GESTURES = ['pointerdown', 'click', 'touchstart', 'keydown'];
+
+    function getPlayer() {
+        var el = document.querySelector('meting-js');
+        return el && el.aplayer ? el.aplayer : null;
+    }
+
+    function stopWatching() {
+        GESTURES.forEach(function (name) {
+            document.removeEventListener(name, onGesture, true);
+        });
+    }
+
+    function onGesture(event) {
+        // 用户点的就是播放器本身（比如想暂停），不要抢他的操作
+        if (event.target && event.target.closest && event.target.closest('.aplayer')) {
+            return;
+        }
+        var player = getPlayer();
+        if (!player) {
+            return; // 歌单还没加载完，留着监听等下一次手势
+        }
+        try {
+            player.play();
+        } catch (err) {
+            return;
+        }
+        setTimeout(function () {
+            // 真的播起来了才收工，否则继续等下一次手势
+            if (!player.audio || !player.audio.paused) {
+                stopWatching();
+            }
+        }, 300);
+    }
+
+    GESTURES.forEach(function (name) {
+        document.addEventListener(name, onGesture, true);
+    });
+})();
+</script>
+
 
     
 
