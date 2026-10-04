@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Easy-RNA-seq 标志">
+  <rect x="1" y="1" width="46" height="46" rx="9" fill="#245744"/>
+  <g stroke="#1a9dc4" stroke-width="2.4" stroke-linecap="round" fill="none">
+    <path d="M15 10c0 9 18 10 18 19s-18 10-18 19" transform="translate(0,-5)"/>
+    <path d="M33 10c0 9-18 10-18 19s18 10 18 19" transform="translate(0,-5)"/>
+    <path d="M16.6 15.5h14.8M16 21.5h16M16 27.5h16M16.6 33.5h14.8" stroke="#f6f0de" stroke-width="1.7"/>
+  </g>
+  <circle cx="24" cy="24" r="2.4" fill="#c24a33"/>
+</svg>

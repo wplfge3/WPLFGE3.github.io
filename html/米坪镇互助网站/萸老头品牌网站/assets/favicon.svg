@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="萸老头印章标识">
+  <rect width="64" height="64" rx="13" fill="#a8232a"/>
+  <rect x="4.5" y="4.5" width="55" height="55" rx="10" fill="none" stroke="#f6e7d8" stroke-width="1.6" stroke-opacity=".75"/>
+  <text x="32" y="45.5" text-anchor="middle" font-size="38" fill="#fbf1e2"
+        style="font-family:'Songti SC','STSong','SimSun',serif;font-weight:600">萸</text>
+</svg>

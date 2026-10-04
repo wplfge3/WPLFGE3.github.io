@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-labelledby="tmT tmD">
+  <title id="tmT">天麻本草插画</title>
+  <desc id="tmD">线描风格的天麻：带环状横纹的椭圆形块茎、直立花茎与鳞片状苞片。</desc>
+  <g fill="none" stroke="#2f5a3f" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 块茎 -->
+    <ellipse cx="196" cy="222" rx="74" ry="44" transform="rotate(-8 196 222)"/>
+    <g stroke="#8aa88d" stroke-width="1.3">
+      <path d="M136 206c34-8 84-9 122-2"/>
+      <path d="M130 222c36-9 92-10 132-2"/>
+      <path d="M134 238c34-8 86-9 124-1"/>
+      <path d="M142 252c30-7 74-8 108-1"/>
+    </g>
+    <!-- 顶芽 -->
+    <path d="M264 200c10-6 18-14 22-24-12 0-22 6-28 15" fill="#e8d3a4" fill-opacity=".5"/>
+    <!-- 须根 -->
+    <path d="M148 258c-6 10-12 16-20 21M176 264c-3 11-6 18-11 25M214 262c3 11 6 18 12 24M244 254c7 9 13 15 22 20" stroke="#6f8f74" stroke-width="1.3"/>
+    <!-- 花茎 -->
+    <path d="M196 178c2-36 4-64 8-88"/>
+    <!-- 鳞片苞片 -->
+    <g stroke-width="1.8">
+      <path d="M198 164c-14-3-25-10-32-20 13-2 25 2 34 11"/>
+      <path d="M200 148c14-3 25-10 32-20-13-2-25 2-34 11"/>
+      <path d="M202 132c-13-3-24-9-31-19 12-2 24 2 33 10"/>
+      <path d="M204 116c13-3 24-9 31-19-12-2-24 2-33 10"/>
+      <path d="M205 102c-12-3-22-8-28-17 11-2 22 1 30 9"/>
+    </g>
+    <!-- 顶生穗状小花 -->
+    <g stroke="#b1832f" stroke-width="1.7">
+      <path d="M206 92c-11-4-19-12-23-23 12 1 21 8 25 18z" fill="#e8d3a4" fill-opacity=".55"/>
+      <path d="M208 90c11-4 19-12 23-23-12 1-21 8-25 18z" fill="#e8d3a4" fill-opacity=".55"/>
+      <path d="M206 74c-10-4-17-11-21-21 11 1 19 7 23 16z" fill="#e8d3a4" fill-opacity=".55"/>
+      <path d="M208 72c10-4 17-11 21-21-11 1-19 7-23 16z" fill="#e8d3a4" fill-opacity=".55"/>
+      <path d="M207 58c-8-4-14-10-17-19 10 1 17 6 20 14z" fill="#e8d3a4" fill-opacity=".55"/>
+      <path d="M208 56c8-4 14-10 17-19-10 1-17 6-20 14z" fill="#e8d3a4" fill-opacity=".55"/>
+      <path d="M207 44v-12"/>
+    </g>
+  </g>
+</svg>

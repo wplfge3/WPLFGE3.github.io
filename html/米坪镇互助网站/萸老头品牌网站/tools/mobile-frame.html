@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>手机版预览容器（390px）</title>
+<style>
+  html, body { margin: 0; background: #6f7468; }
+  /* iframe 宽度决定内部页面的布局视口，这样才是真正的手机版布局；
+     Chrome 窗口本身有最小宽度，直接改 --window-size 会得到被裁切的画面。 */
+  iframe { display: block; border: 0; width: 390px; height: 26000px; background: #fff; }
+</style>
+</head>
+<body>
+  <iframe src="../index.html" title="萸老头手机版整页预览"></iframe>
+</body>
+</html>

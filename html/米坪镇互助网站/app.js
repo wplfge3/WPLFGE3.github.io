@@ -210,6 +210,15 @@ const siteData = {
     {
       category: "public",
       label: "公开资料",
+      icon: "leaf",
+      title: "萸老头品牌网站 · 伏牛山道地药材",
+      detail: "米坪镇行上村道地药材品牌：野生山茱萸、九蒸九晒黄精，兼有天麻、连翘、土蜂蜜与香菇，原产地直供。",
+      date: "2026",
+      localUrl: "萸老头品牌网站/index.html"
+    },
+    {
+      category: "public",
+      label: "公开资料",
       icon: "bell-ring",
       title: "米坪镇公开村情与产业资料",
       detail: "米坪镇位于西峡县北部山区，距县城58公里，辖17个行政村、204个村民小组。",

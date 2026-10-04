@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-labelledby="fmT fmD">
+  <title id="fmT">伏牛山土蜂蜜插画</title>
+  <desc id="fmD">线描风格的山花蜂蜜：带蜂巢纹的玻璃罐、木质蜂蜜勺与远山剪影。</desc>
+  <g fill="none" stroke="#2f5a3f" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+    <!-- 远山 -->
+    <path d="M28 196c26-34 44-30 62-6 14-24 30-22 44 2 16-30 34-28 50 0 16-22 30-24 46-4" stroke="#8aa88d" stroke-width="1.5"/>
+    <!-- 罐体 -->
+    <path d="M132 132h108v98c0 20-14 32-54 32s-54-12-54-32z" fill="#f3e6c6" fill-opacity=".5"/>
+    <path d="M132 132c0-10 24-16 54-16s54 6 54 16" />
+    <path d="M136 136c0 96-2 118 50 118"/>
+    <!-- 蜜面 -->
+    <path d="M133 206c14 8 32 12 53 12s38-4 53-12" stroke="#b1832f" stroke-width="1.6"/>
+    <!-- 蜂巢纹 -->
+    <g stroke="#b1832f" stroke-width="1.2" opacity=".8">
+      <path d="M158 168l10-6 10 6v12l-10 6-10-6z"/>
+      <path d="M178 168l10-6 10 6v12l-10 6-10-6z"/>
+      <path d="M198 168l10-6 10 6v12l-10 6-10-6z"/>
+      <path d="M168 186l10-6 10 6v12l-10 6-10-6z"/>
+      <path d="M188 186l10-6 10 6v12l-10 6-10-6z"/>
+    </g>
+    <!-- 木勺 -->
+    <path d="M286 96c14-14 30-18 40-10s8 24-6 34c-10 7-22 6-30-2z" fill="#e8d3a4" fill-opacity=".6"/>
+    <path d="M282 124l-64 68c-6 7-4 16 3 21s16 4 21-3l52-72" stroke-width="1.9"/>
+    <!-- 蜜滴 -->
+    <path d="M232 186c5 8 8 13 8 18 0 5-4 8-8 8s-8-3-8-8c0-5 3-10 8-18z" fill="#dcae4e" fill-opacity=".85" stroke="#b1832f" stroke-width="1.3"/>
+    <!-- 蜂 -->
+    <g transform="translate(96 104)" stroke="#4a4433" stroke-width="1.5">
+      <ellipse cx="0" cy="0" rx="11" ry="7" fill="#e8c96a"/>
+      <path d="M-2 -7c3-4 8-5 12-3M-2 7c3 4 8 5 12 3"/>
+      <ellipse cx="-7" cy="-11" rx="9" ry="5" fill="#fbf7ee" fill-opacity=".7" stroke-width="1"/>
+      <ellipse cx="6" cy="-13" rx="9" ry="5" fill="#fbf7ee" fill-opacity=".7" stroke-width="1"/>
+      <path d="M8 0h7M-9 0h-7"/>
+    </g>
+  </g>
+</svg>
