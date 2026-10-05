@@ -11,12 +11,17 @@ Easy-RNA-seq官网/
 ├─ tutorial.html            完整图文教程（对照教程原文逐节展开）
 ├─ 启动本地预览.bat          一键起本地服务并打开浏览器（需要 Python）
 ├─ README.md                本文件
+├─ preview/                 预览图（桌面 / 护眼模式 / 手机 / 教程页 / 正版凭证板块）
 └─ assets/
    ├─ styles.css            全部样式（品牌配色 + 护眼模式 + 响应式）
-   ├─ app.js                交互脚本（主题、导航、滚动动效、复制、标签页）
+   ├─ app.js                交互脚本（主题、导航、滚动动效、复制、标签页、图片放大）
    ├─ logo.svg / favicon.svg
+   ├─ certificate-copyright.png  软件著作权登记证书（正版凭证，原件）
    └─ screenshots/          11 张界面截图（来自教程 docx，已重命名）
 ```
+
+> 证书原件原先放在站点根目录（文件名 `软著.png`），已改用纯英文文件名
+> `assets/certificate-copyright.png`，避免中文文件名在部分服务器 / CDN 上出现编码问题。
 
 ## 本地预览
 
@@ -46,6 +51,9 @@ Easy-RNA-seq官网/
 - **可访问性**：跳转链接、`aria-selected` / `aria-expanded` / `aria-pressed`、
   `role="tablist"`、`aria-live` 提示、键盘 `Esc` 关闭菜单、`prefers-reduced-motion` 降级。
 - **无外部依赖**：不加载任何 CDN、字体或图标库，完全离线可用。
+- **正版凭证可查看**：首页首屏与「正版服务」板块展示国家版权局《计算机软件著作权登记证书》
+  （登记号 `2025SR0259964`、证书号 `软著登字第14916162号`），点击证书可放大查看原件；
+  放大浮层支持点击背景 / 关闭按钮 / `Esc` 关闭，关闭后焦点回到原按钮。
 
 ## 修改内容时看这里
 
@@ -55,6 +63,8 @@ Easy-RNA-seq官网/
 | 视频教程链接 | 搜索 `bilibili.com` |
 | 十步流程名称 | `index.html` 的 `#pipeline`；顶部跑马灯 `.ticker` 里同样有一份（两份都要改） |
 | 常见问题 | `index.html` 的 `#faq`，每个 `<details class="qa">` 一条 |
+| 软著登记号 / 证书号 / 登记日期 | `index.html` 与 `tutorial.html` 中搜索 `2025SR0259964` 或 `14916162`；注意「复制全部联系方式」按钮的 `data-copy` 里也各有一份 |
+| 著作权证书图片 | 替换 `assets/certificate-copyright.png` 即可（保持同名，无需改 HTML）；`alt` 文案在 `index.html` 与 `tutorial.html` 的 `<img>` 上 |
 | 配色 / 字号 / 间距 | `assets/styles.css` 顶部的 CSS 变量（`:root` 与 `html[data-theme="dark"]`） |
 | 界面截图 | 替换 `assets/screenshots/` 下的同名文件即可，无需改 HTML |
 
@@ -68,4 +78,8 @@ Easy-RNA-seq官网/
 - **软件不含激活码系统**：不需要机器码、购买订单号或任何验证步骤，打开即用。
   站点口径统一为「正版提供服务」与「我们承诺提供服务」，
   刻意保留的「无激活码系统 / 不需要激活码」表述是为了直接回答用户疑问，不是遗漏。
+- **正版凭证来自证书原件**：登记号 `2025SR0259964`、证书号 `软著登字第14916162号`、
+  软件名称「基于Python框架的转录组分析软件 V1.0」、著作权人、权利取得方式与范围、
+  登记日期 2025 年 02 月 14 日，均照抄 `assets/certificate-copyright.png` 上的内容。
+  由于证书登记名称与本软件的对外名称不同，页面专门说明了两者是同一个程序，避免读者误解。
 - 页脚已注明：本软件为独立开发的 Windows 桌面程序，与 TBtools 官方团队无从属关系。

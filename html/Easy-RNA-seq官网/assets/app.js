@@ -69,9 +69,72 @@
     });
   }
 
+  /* ---------- 图片放大（软著证书等） ---------- */
+  var lightbox = null;
+  var lightboxOpener = null;
+
+  function buildLightbox() {
+    var box = document.createElement('div');
+    box.className = 'lightbox';
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-modal', 'true');
+    box.setAttribute('aria-hidden', 'true');
+    box.innerHTML =
+      '<button class="lightbox__close" type="button" data-lightbox-close aria-label="关闭放大图片">' +
+        '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
+      '</button>' +
+      '<div class="lightbox__inner">' +
+        '<img class="lightbox__img" alt="">' +
+        '<p class="lightbox__cap"></p>' +
+      '</div>';
+    document.body.appendChild(box);
+    return box;
+  }
+
+  function openLightbox(src, caption, opener) {
+    if (!lightbox) lightbox = buildLightbox();
+    var img = lightbox.querySelector('.lightbox__img');
+    img.setAttribute('src', src);
+    img.setAttribute('alt', caption || '放大查看的图片');
+    lightbox.querySelector('.lightbox__cap').textContent = caption || '';
+    lightbox.classList.add('is-on');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.documentElement.style.overflow = 'hidden';
+    lightboxOpener = opener || null;
+    var close = lightbox.querySelector('[data-lightbox-close]');
+    if (close) close.focus();
+  }
+
+  function closeLightbox() {
+    if (!lightbox || !lightbox.classList.contains('is-on')) return;
+    lightbox.classList.remove('is-on');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.documentElement.style.overflow = '';
+    if (lightboxOpener && lightboxOpener.focus) lightboxOpener.focus();
+    lightboxOpener = null;
+  }
+
   /* ---------- 全局点击代理 ---------- */
   document.addEventListener('click', function (ev) {
-    var t = ev.target.closest('[data-theme-toggle]');
+    if (lightbox && lightbox.classList.contains('is-on') &&
+        (ev.target === lightbox || ev.target.closest('[data-lightbox-close]'))) {
+      closeLightbox();
+      return;
+    }
+
+    var t = ev.target.closest('[data-zoom]');
+    if (t) {
+      ev.preventDefault();
+      var inner = t.querySelector('img');
+      openLightbox(
+        t.getAttribute('data-zoom'),
+        t.getAttribute('data-zoom-title') || (inner ? inner.getAttribute('alt') : ''),
+        t
+      );
+      return;
+    }
+
+    t = ev.target.closest('[data-theme-toggle]');
     if (t) {
       setTheme(doc.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true);
       return;
@@ -131,6 +194,10 @@
 
   document.addEventListener('keydown', function (ev) {
     if (ev.key !== 'Escape') return;
+    if (lightbox && lightbox.classList.contains('is-on')) {
+      closeLightbox();
+      return;
+    }
     var d = document.getElementById('drawer');
     if (d && d.classList.contains('is-open')) {
       d.classList.remove('is-open');
