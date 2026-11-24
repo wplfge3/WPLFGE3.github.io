@@ -227,18 +227,23 @@ const assetPaths = {
   yardCart: 'assets/yard-cart.png'
 };
 
-const deferredMaps = new Set(['land','pool','canyon','dance','chaos','war','newspaper','tunnels']);
-const images = {};
-for (const [key, src] of Object.entries(assetPaths)) {
-  images[key] = new Image();
-  if (!deferredMaps.has(key)) images[key].src = src;
+// Allocate an image only when its map, fighter or weapon is first requested.
+function lazyImages(paths) {
+  const bank = {};
+  for (const [key, path] of Object.entries(paths)) {
+    let image;
+    Object.defineProperty(bank, key, { enumerable: true, get() {
+      if (!image) {
+        image = new Image();
+        image.src = path;
+      }
+      return image;
+    } });
+  }
+  return bank;
 }
 
-function prepareMapImage(map) {
-  const image = images[map];
-  if (image && !image.src) image.src = assetPaths[map];
-  return image;
-}
+const images = lazyImages(assetPaths);
 
 const weapons = {
   fruitKnife: { label: '水果飞刀', image: 'fruitKnife', damage: 28, radius: 62, crater: 40, tint: '#dce8ed', drawWidth: 48, drawHeight: 16, launchSfx: 'bladeSwish', sfx: 'bladeTick' },
@@ -261,13 +266,12 @@ weapons.ultimate = { label: '末日爆发', image: 'doom', damage: 56, radius: 1
 weapons.clownBlast = { label: '小丑爆破', image: 'clownZombieArmed', damage: 999, radius: 190, crater: 112, tint: '#ffbf4b', bigBlast: true, sfx: 'clownBlast' };
 
 weapons.dogwood = { label: '山茱萸', image: 'dogwood', damage: weapons.fire.damage * 2, radius: 82, crater: 58, tint: '#df2140', homing: true, homingRange: 210, drawWidth: 36, drawHeight: 26, launchSfx: 'shot', sfx: 'berryPop' };
-const impactSheets = {};
+const impactPaths = {};
 for (const weapon of Object.keys(weapons)) {
   if (weapon === 'dogwood') continue; // The berry burst is rendered on canvas.
-  const sheet = new Image();
-  sheet.src = weapon === 'ultimate' ? 'assets/impacts/doom-cloud.png' : `assets/impacts/${weapon}.png`;
-  impactSheets[weapon] = sheet;
+  impactPaths[weapon] = weapon === 'ultimate' ? 'assets/impacts/doom-cloud.png' : `assets/impacts/${weapon}.png`;
 }
+const impactSheets = lazyImages(impactPaths);
 
 const enchantments = {
   none: { label: '无附魔', cost: 0 },
@@ -756,6 +760,8 @@ const sfxSettings = {
   win: { volume: .58, cooldown: 1000 }, lose: { volume: .56, cooldown: 1000 }
 };
 
+const selectionMusicPath = 'assets/audio/level-select-tnt.m4a.mp3';
+let selectionMusic;
 const readyMusic = new Map();
 const bgmPaths = {
   yard: 'assets/audio/bgm-yard.ogg.mp3', pool: 'assets/audio/rose-garden-93c0046f8ec4.m4a.mp3', canyon: 'assets/audio/bgm-canyon.ogg.mp3',
@@ -859,15 +865,17 @@ const battleSounds = new Map();
 const pendingSounds = new Map();
 const timedSounds = new Set();
 const commonCues = ['peaBu','peaBoom','shot','fireShot','fireImpact','iceShot','iceImpact',
-  'potatoShot','potatoImpact','earthThump','nuke','battleStart','platformBreak','flight'];
+  'potatoShot','potatoImpact','earthThump','nuke','battleStart','platformBreak','flight',
+  'aimRatchet','flightReady','doomReady','supplyPick','seedPick','enchantNote','soilSoft','stoneTick','step','charge',
+  'heal','turn','button','blast','splat','win','lose','dave','prize'];
 const stageCues = {
-  yard: ['huaqiangThrow','bladeTick'],
-  land: ['vendorChallenge','clownBlast'],
-  canyon: ['huaqiangThrow','bladeTick','berryPop'],
-  pool: ['huaqiangThrow','bladeTick','vendorChallenge','clownBlast'],
-  dance: ['ballPass','ballBounce','paperShot','paperImpact','heavyImpact','zomboniImpact','cartImpact','dancerDefeat'],
-  chaos: ['huaqiangThrow','bladeTick','vendorChallenge','clownBlast','ballPass','ballBounce','paperShot',
-    'paperImpact','heavyImpact','zomboniImpact','cartImpact','poisonShot','poisonImpact','starShot','starImpact','frostShot']
+  yard: ['huaqiangThrow','bladeSwish','bladeTick'],
+  land: ['vendorChallenge','clownArm','clownBlast'],
+  canyon: ['huaqiangThrow','bladeSwish','bladeTick','berryPop','zombieTurn'],
+  pool: ['huaqiangThrow','bladeSwish','bladeTick','vendorChallenge','clownArm','clownBlast'],
+  dance: ['zombieTurn','dance','summon','newspaperRip','newspaperRage','zomboni','cart','dancerDefeat','ballPass','ballBounce','paperShot','paperImpact','heavyImpact','zomboniImpact','cartImpact'],
+  chaos: ['huaqiangThrow','bladeSwish','bladeTick','vendorChallenge','clownArm','clownBlast','zombieTurn','dance','summon','newspaperRip','newspaperRage','zomboni','cart','dancerDefeat','ballPass','ballBounce','paperShot',
+    'paperImpact','heavyImpact','zomboniImpact','cartImpact','poisonShot','poisonImpact','starShot','starImpact','frostShot','shieldHit','shieldEquip']
 };
 function prepareBattleSounds(cues) {
   if (!/^https?:$/.test(window.location?.protocol) || !audio.enabled) return [];
@@ -961,7 +969,7 @@ function playBackgroundMusic(path, volume) {
   if (!audio.enabled || !window.Audio) return;
   if (!audio.bgm || audio.bgmPath !== path) {
     if (audio.bgm) audio.bgm.pause();
-    audio.bgm = new window.Audio(readyMusic.get(path) || path);
+    audio.bgm = path === selectionMusicPath && selectionMusic ? selectionMusic : new window.Audio(readyMusic.get(path) || path);
     audio.bgmPath = path;
     audio.bgm.loop = true;
   }
@@ -972,7 +980,7 @@ function playBackgroundMusic(path, volume) {
 
 function startBackgroundMusic() {
   if (document.getElementById('levelOverlay')?.hidden === false) {
-    playBackgroundMusic('assets/audio/level-select-tnt.m4a.mp3', .32);
+    playBackgroundMusic(selectionMusicPath, .32);
     return;
   }
   const nextPath = bgmPaths[state.map] || bgmPaths.yard;
@@ -1214,8 +1222,9 @@ function resetLittleDave(showStart) {
   if (!showStart && (opening !== gardenOpening || !littleDaveSeen)) openLittleDaveChat(true);
 }
 
+let waitingForFirstStage = document.getElementById('gardenBoot')?.open === true;
 function resetGame(showStart = false) {
-  prepareMapImage(state.map);
+  if (!showStart) waitingForFirstStage = false;
   stopCharacterVoice();
   const locationLabel = document.getElementById('gardenLocation');
   if (locationLabel) locationLabel.textContent = ui.mapSelect.selectedOptions?.[0]?.textContent || '晴日后院';
@@ -1373,7 +1382,7 @@ function resetGame(showStart = false) {
   if (ui.pumpkinButton) ui.pumpkinButton.hidden = true;
   if (ui.ultimateButton) ui.ultimateButton.hidden = false;
   const ultimateIcon = ui.ultimateButton?.querySelector?.('img');
-  if (ultimateIcon) ultimateIcon.src = assetPaths.doom;
+  if (ultimateIcon && !waitingForFirstStage) ultimateIcon.src = assetPaths.doom;
   if (ui.healButton) ui.healButton.hidden = false;
   if (state.mode === 'chaos') {
     state.running = false;
@@ -1387,7 +1396,7 @@ function resetGame(showStart = false) {
   ui.angleRange.max = 170;
   setWeapon('normal');
   setEnchant('none');
-  resetLittleDave(showStart);
+  if (!waitingForFirstStage) resetLittleDave(showStart);
   updateUI();
 }
 
@@ -5023,6 +5032,11 @@ function stepSimulation() {
 }
 
 function loop(now) {
+  if (waitingForFirstStage) {
+    state.lastTick = now;
+    requestAnimationFrame(loop);
+    return;
+  }
   updateCharging(now);
   const delta = Math.max(0, Math.min(100, now - state.lastTick));
   state.lastTick = now;

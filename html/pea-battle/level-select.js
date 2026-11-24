@@ -72,7 +72,10 @@ function showCampaignGreeting() {
 document.getElementById('campaignHost').addEventListener('click', showCampaignGreeting);
 function openLevelSelect() {
   if (!levelOverlay.hidden) return;
-  Promise.allSettled(prepareBattleSounds(['peaBu','peaBoom']));
+  for (const img of levelOverlay.querySelectorAll('img[data-src]')) {
+    img.src = img.dataset.src;
+    img.removeAttribute('data-src');
+  }
   campaignGreetingIndex = 0;
   showCampaignGreeting();
   resumeBattleMusic = !!audio.bgm && !audio.bgm.paused;
@@ -126,10 +129,18 @@ window.unlockAllCampaignStages = function unlockAllCampaignStages() {
   renderStageLocks();
 };
 
-function startStage(stage) {
+let enteringStage = false;
+async function startStage(stage) {
   stage = Number(stage);
   const config = stageConfigs[stage];
   if (!config || (stage > unlockedStage && !allStagesUnlocked)) return;
+  if (enteringStage) return;
+  enteringStage = true;
+  try {
+    await prepareStage(stage);
+  } finally {
+    enteringStage = false;
+  }
   currentStage = stage;
   resumeBattleMusic = false;
   closeLevelSelect();
