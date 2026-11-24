@@ -1,0 +1,454 @@
+/* 豌豆弹道 · 界面精修
+ *
+ * 只做覆盖，不改布局骨架：材质配方统一、字号最小可读、交互反馈补齐。
+ * 载入顺序在 styles.css 之后，因此不依赖 !important。
+ * .android-app 的那套布局在 styles.css 里自成体系，这里只碰视觉属性，
+ * 不动任何尺寸与排布，避免和 WebView 的适配规则打架。
+ */
+
+/* ---------- 统一材质配方 ---------- */
+
+:root {
+  --plate-rim: inset 0 1px rgba(255, 255, 255, .16);
+  --plate-rim-soft: inset 0 1px rgba(255, 255, 255, .09);
+  --plate-bevel: 0 2px 0 rgba(5, 12, 8, .5);
+  --plate-lift: 0 6px 18px rgba(4, 10, 7, .34);
+  --focus-ring: 2px solid #ffe08a;
+  --focus-glow: 0 0 0 4px rgba(255, 214, 110, .2);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* 所有交互元素共用一套焦点环，键盘操作时位置固定、亮度一致。 */
+:is(.title-command, .level-card, .almanac-entry, .icon-button, .square-button,
+    .primary-button, .secondary-button, .enemy-scout, .campaign-host):focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 3px;
+  box-shadow: var(--focus-glow);
+}
+
+::selection {
+  color: #16240f;
+  background: #d8f0a0;
+}
+
+/* 长面板的滚动条：暗底浅轨，避免默认白色条把画面切一道亮边。 */
+.title-subview,
+.level-panel,
+.result-content,
+.title-exit-dialog {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(214, 235, 200, .28) transparent;
+}
+
+.title-subview::-webkit-scrollbar,
+.level-panel::-webkit-scrollbar,
+.result-content::-webkit-scrollbar {
+  width: 9px;
+}
+
+.title-subview::-webkit-scrollbar-track,
+.level-panel::-webkit-scrollbar-track,
+.result-content::-webkit-scrollbar-track {
+  background: rgba(8, 16, 11, .35);
+}
+
+.title-subview::-webkit-scrollbar-thumb,
+.level-panel::-webkit-scrollbar-thumb,
+.result-content::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 6px;
+  background: rgba(196, 220, 180, .32);
+  background-clip: content-box;
+}
+
+.title-subview::-webkit-scrollbar-thumb:hover,
+.level-panel::-webkit-scrollbar-thumb:hover,
+.result-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(216, 240, 200, .5);
+  background-clip: content-box;
+}
+
+/* ---------- 标题屏 ---------- */
+
+.title-command {
+  position: relative;
+  box-shadow: var(--plate-rim), 0 5px 0 rgba(16, 45, 19, .9), 0 9px 22px rgba(15, 40, 10, .3);
+}
+
+/* 左内侧一道竖光，鼠标移上去才亮，作为「这条能点」的隐式提示。
+   inset 往内收几像素并自带圆角，免得和按钮自身的 6px 圆角在四角处打架 ——
+   不用 overflow:hidden，那张豌豆图 hover 时会放大旋转，别把它裁掉。 */
+.title-command::before {
+  content: "";
+  position: absolute;
+  inset: 3px auto 3px 2px;
+  width: 3px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #fff6c0, #a8d45a 62%, #6d9c3c);
+  opacity: .5;
+  transition: opacity .18s ease, width .18s ease;
+}
+
+.title-command:is(:hover, :focus-visible)::before {
+  width: 5px;
+  opacity: 1;
+}
+
+.title-command:active::before {
+  opacity: .8;
+}
+
+.title-command b {
+  letter-spacing: .02em;
+  text-shadow: 0 2px 3px rgba(10, 28, 10, .5);
+}
+
+.title-command small {
+  color: #c2cfb8;
+  font-size: 10.5px;
+  letter-spacing: .02em;
+}
+
+.title-version {
+  color: #eef6e2;
+  background: rgba(20, 48, 19, .72);
+  box-shadow: inset 0 1px rgba(255, 255, 255, .1);
+  font-size: 10px;
+  letter-spacing: .08em;
+}
+
+.title-mode-switch {
+  box-shadow: var(--plate-rim-soft), 0 3px 10px rgba(10, 20, 8, .34);
+}
+
+.title-music-button:active {
+  transform: translateY(1px);
+}
+
+.almanac-entry {
+  box-shadow: var(--plate-rim-soft);
+}
+
+.almanac-entry:is(:hover, :focus-visible) {
+  background: linear-gradient(160deg, #26382b, #1d2d22 70%);
+  box-shadow: var(--plate-rim), 0 12px 26px rgba(0, 0, 0, .28);
+}
+
+/* ---------- 顶栏 ---------- */
+
+.topbar {
+  box-shadow: var(--plate-rim-soft), 0 6px 18px rgba(5, 12, 8, .38);
+}
+
+.map-picker,
+.time-speed-picker {
+  font-size: 10px;
+  letter-spacing: .07em;
+  font-weight: 800;
+}
+
+.topbar .map-picker select {
+  color: #f4f7e6;
+  border-color: rgba(214, 235, 200, .22);
+  background: linear-gradient(180deg, #2f3d26, #22301c);
+  box-shadow: inset 0 1px rgba(255, 255, 255, .1), 0 1px 0 rgba(6, 14, 9, .5);
+}
+
+.topbar .map-picker select:hover {
+  border-color: rgba(246, 202, 67, .45);
+}
+
+.icon-button {
+  box-shadow: var(--plate-rim-soft), 0 2px 0 rgba(5, 12, 8, .45);
+  transition: transform .12s ease, border-color .12s ease, background .12s ease;
+}
+
+.icon-button:is(:hover, :focus-visible) {
+  border-color: rgba(246, 202, 67, .5);
+  background: #35452b;
+}
+
+.icon-button:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 4px rgba(5, 12, 8, .5);
+}
+
+.fighter-name {
+  color: #e2ead9;
+  letter-spacing: .03em;
+}
+
+.topbar .fighter {
+  --hp-light: #d7ee94;
+  --hp-main: #86bd69;
+  --hp-shadow: #437d52;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 2px 6px;
+  padding-top: 0;
+}
+.topbar .fighter-rival {
+  --hp-light: #ffc590;
+  --hp-main: #e48a65;
+  --hp-shadow: #a2534c;
+  grid-template-columns: auto 1fr;
+}
+.topbar .fighter-name { grid-area: 1 / 1; margin: 0; }
+.topbar .fighter-rival .fighter-name { grid-column: 2; }
+.topbar .health-text { position: static; grid-area: 1 / 2; align-items: baseline; color: var(--hp-light); font-variant-numeric: tabular-nums; }
+.topbar .fighter-rival .health-text { grid-column: 1; }
+.topbar .health-track {
+  grid-area: 2 / 1 / 3 / -1;
+  position: relative;
+  height: 10px;
+  padding: 1px;
+  border: 1px solid #85998988;
+  border-radius: 99px;
+  background: #111e20;
+  box-shadow: inset 0 1px 3px #091511, 0 1px #ffffff16;
+}
+.topbar .health-track span {
+  border-radius: inherit;
+  background: linear-gradient(var(--hp-light), var(--hp-main) 46%, var(--hp-shadow));
+}
+.topbar .health-track::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: repeating-linear-gradient(90deg, transparent 0 calc(20% - 1px), #18272366 calc(20% - 1px) 20%);
+  pointer-events: none;
+}
+@media (max-height: 560px), (max-width: 700px) {
+  .topbar .fighter { grid-template-columns: auto minmax(0, 1fr); align-items: center; }
+  .topbar .fighter-rival { grid-template-columns: minmax(0, 1fr) auto; }
+  .topbar .fighter-name, .topbar .health-text span { display: none; }
+  .topbar .health-track { grid-area: 1 / 2; }
+  .topbar .fighter-rival .health-track { grid-column: 1; }
+  .topbar .health-text, .topbar .fighter-rival .health-text {
+    grid-area: 1 / 1;
+    justify-content: center;
+    min-width: 3ch;
+    padding: 1px 4px;
+    border-radius: 5px;
+    background: #122323;
+  }
+  .topbar .fighter-rival .health-text { grid-column: 2; }
+  .topbar .health-text strong { font-size: 12px; }
+}
+
+.turn-copy {
+  letter-spacing: .03em;
+}
+
+/* ---------- 战斗 HUD ---------- */
+
+#battleHud .hud-tools button {
+  transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease, background .12s ease;
+  box-shadow: inset 0 1px #ddffff35, inset 0 -1px rgba(4, 16, 20, .45), 0 2px 3px #091c2345;
+}
+
+#battleHud .hud-tools button:active:enabled {
+  transform: translateY(1px) scale(.985);
+  box-shadow: inset 0 2px 5px rgba(3, 14, 18, .6), 0 0 0 rgba(0, 0, 0, 0);
+}
+
+#battleHud .hud-tools button:is(.active, .armed, .ready) {
+  box-shadow: inset 0 -2px #f6cd78, inset 0 1px rgba(255, 248, 214, .28), 0 0 8px rgba(233, 173, 70, .32);
+}
+
+#battleHud .group-label {
+  letter-spacing: .08em;
+  box-shadow: inset 0 1px rgba(255, 255, 255, .1);
+}
+
+#battleHud .aim-compass {
+  box-shadow: inset 0 0 0 1px #477984, inset 0 2px 8px rgba(4, 18, 24, .45), 0 2px 7px #15231f60;
+}
+
+#battleHud .compass-key:active:enabled {
+  color: #ffe08a;
+  background: #99e6ed33;
+}
+
+#battleHud .compass-value {
+  box-shadow: inset 0 1px rgba(255, 255, 255, .12), 0 1px 3px rgba(4, 14, 18, .5);
+}
+
+/* 力度条：加粗滑块并补一道握持纹，拖起来更有实体感。 */
+#battleHud #powerRange {
+  box-shadow: inset 0 1px 2px rgba(3, 12, 16, .55), 0 1px 4px #13282b75;
+}
+
+#battleHud #powerRange::-webkit-slider-thumb {
+  width: 8px;
+  height: 23px;
+  border: 1px solid #5d4a33;
+  border-radius: 3px;
+  background-image:
+    repeating-linear-gradient(180deg, rgba(90, 70, 40, .22) 0 1px, transparent 1px 4px),
+    linear-gradient(180deg, #fffef4, #f4e2b8 52%, #cbb184);
+  box-shadow: 0 0 0 1px rgba(255, 247, 214, .4), 0 1px 3px rgba(6, 20, 24, .55);
+}
+
+#battleHud #powerRange::-moz-range-thumb {
+  width: 8px;
+  height: 23px;
+  border: 1px solid #5d4a33;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #fffef4, #f4e2b8 52%, #cbb184);
+}
+
+#battleHud .hud-power.charging #powerRange::-webkit-slider-thumb {
+  width: 9px;
+}
+
+#battleHud .fire-button {
+  box-shadow: inset 0 2px 2px #ffe3ab66, 0 3px 0 #513b2b, 0 6px 10px #192d3380;
+}
+
+#battleHud .fire-icon {
+  box-shadow: inset 0 1px rgba(255, 255, 255, .25), 0 0 6px rgba(255, 218, 148, .28);
+}
+
+/* ---------- 仪表与图表 ---------- */
+
+.battle-chart {
+  box-shadow: 0 0 0 1px #16232a, 0 4px 12px #10191e8c, inset 0 0 0 1px #8da7a04d;
+}
+
+.chart-cap {
+  letter-spacing: .04em;
+}
+
+.chart-counter {
+  font-size: 10px;
+  letter-spacing: .04em;
+}
+
+.rage-hud {
+  box-shadow: inset 0 1px rgba(255, 255, 255, .08), 0 2px 8px rgba(6, 14, 10, .4);
+}
+
+.enemy-scout {
+  box-shadow: inset 0 1px rgba(255, 255, 255, .08), 0 2px 8px rgba(4, 12, 14, .45);
+}
+
+.shot-reference {
+  box-shadow: inset 0 1px rgba(255, 255, 255, .09), 0 2px 8px rgba(4, 12, 14, .35);
+}
+
+.toast {
+  letter-spacing: .02em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .45);
+}
+
+/* ---------- 关卡卡片 ---------- */
+
+.level-card {
+  box-shadow: var(--plate-rim-soft);
+  transition: transform .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+
+.level-card:not(.locked):is(:hover, :focus-visible) {
+  transform: translateY(-3px);
+}
+
+/* 底部压深一层，卡片标题在亮图上也能读清。 */
+.level-card::after {
+  background: linear-gradient(180deg, rgba(8, 15, 11, .06) 18%, rgba(6, 13, 10, .82) 74%, rgba(4, 10, 8, .95) 100%);
+}
+
+.level-number {
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: rgba(8, 16, 11, .55);
+  box-shadow: inset 0 1px rgba(255, 255, 255, .14);
+  text-shadow: 0 2px 4px #000;
+}
+
+.level-state {
+  border-radius: 3px;
+  background: rgba(8, 16, 11, .62);
+  box-shadow: inset 0 1px rgba(255, 255, 255, .16);
+  font-size: 10px;
+  letter-spacing: .06em;
+}
+
+.level-note {
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.level-card-copy b {
+  text-shadow: 0 2px 5px rgba(0, 0, 0, .8);
+}
+
+/* ---------- 弹窗与结果卡 ---------- */
+
+.dave-dialog,
+.cattail-rescue-dialog,
+.start-content,
+.title-exit-dialog,
+.title-reset-dialog {
+  box-shadow: inset 0 1px rgba(255, 255, 255, .07), 0 22px 70px rgba(0, 0, 0, .52);
+}
+
+.primary-button,
+.secondary-button {
+  transition: transform .12s ease, filter .12s ease, background .12s ease;
+}
+
+.primary-button:active,
+.secondary-button:active {
+  transform: translateY(2px);
+}
+
+.secondary-button:hover {
+  border-color: rgba(246, 202, 67, .45);
+  background: #35452b;
+}
+
+.campaign-bubble {
+  box-shadow: inset 0 1px rgba(255, 255, 255, .6), 0 4px 12px rgba(10, 22, 12, .3);
+  font-size: 14px;
+  letter-spacing: .01em;
+}
+
+/* ---------- 底栏 ---------- */
+
+.shortcut-strip {
+  color: #93a08b;
+  font-size: 10px;
+  letter-spacing: .05em;
+}
+
+/* ---------- 尊重减弱动效 ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .title-command::before,
+  .title-command b,
+  .level-card,
+  .almanac-entry,
+  .icon-button,
+  #battleHud .hud-tools button,
+  .primary-button,
+  .secondary-button {
+    transition: none;
+  }
+
+  .title-command:is(:hover, :focus-visible),
+  .level-card:not(.locked):is(:hover, :focus-visible),
+  #battleHud .hud-tools button:hover:enabled {
+    transform: none;
+  }
+}
