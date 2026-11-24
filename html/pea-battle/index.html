@@ -441,6 +441,11 @@
       <span>滚轮 / <kbd>−</kbd><kbd>+</kbd> 缩放</span>
     </footer>
   </main>
+  <dialog id="stageLoading" aria-labelledby="stageLoadStatus">
+    <strong id="stageLoadStatus" role="status">准备战场</strong>
+    <progress aria-label="战场资源加载进度"></progress>
+    <button type="button">直接进入</button>
+  </dialog>
   <script src="battle-chart.js"></script>
   <script src="game.js"></script>
   <script src="level-select.js"></script>

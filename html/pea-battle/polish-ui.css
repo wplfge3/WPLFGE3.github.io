@@ -452,3 +452,8 @@ body {
     transform: none;
   }
 }
+
+#stageLoading { width: min(290px, 75vw); padding: 22px; border: 1px solid #acbb82; border-radius: 12px; background: #24382d; color: #fff8dc; text-align: center; }
+#stageLoading::backdrop { background: #10231999; }
+#stageLoading progress { display: block; width: 100%; height: 10px; margin: 15px 0; accent-color: #afd965; }
+#stageLoading button { padding: 6px 16px; color: #fff8dc; background: #344d3e; border: 1px solid #94a888; border-radius: 6px; cursor: pointer; }

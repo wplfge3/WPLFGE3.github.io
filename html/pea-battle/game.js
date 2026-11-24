@@ -227,10 +227,17 @@ const assetPaths = {
   yardCart: 'assets/yard-cart.png'
 };
 
+const deferredMaps = new Set(['land','pool','canyon','dance','chaos','war','newspaper','tunnels']);
 const images = {};
 for (const [key, src] of Object.entries(assetPaths)) {
   images[key] = new Image();
-  images[key].src = src;
+  if (!deferredMaps.has(key)) images[key].src = src;
+}
+
+function prepareMapImage(map) {
+  const image = images[map];
+  if (image && !image.src) image.src = assetPaths[map];
+  return image;
 }
 
 const weapons = {
@@ -846,6 +853,42 @@ function playSynthSfx(name) {
   }
 }
 
+// Keep combat samples decoded across rounds so a hit never waits for media startup.
+const battleSounds = new Map();
+const pendingSounds = new Map();
+const timedSounds = new Set();
+const commonCues = ['peaBu','peaBoom','shot','fireShot','fireImpact','iceShot','iceImpact',
+  'potatoShot','potatoImpact','earthThump','nuke','battleStart','platformBreak','flight'];
+const stageCues = {
+  yard: ['huaqiangThrow','bladeTick'],
+  land: ['vendorChallenge','clownBlast'],
+  canyon: ['huaqiangThrow','bladeTick','berryPop'],
+  pool: ['huaqiangThrow','bladeTick','vendorChallenge','clownBlast'],
+  dance: ['ballPass','ballBounce','paperShot','paperImpact','heavyImpact','zomboniImpact','cartImpact','dancerDefeat'],
+  chaos: ['huaqiangThrow','bladeTick','vendorChallenge','clownBlast','ballPass','ballBounce','paperShot',
+    'paperImpact','heavyImpact','zomboniImpact','cartImpact','poisonShot','poisonImpact','starShot','starImpact','frostShot']
+};
+function prepareBattleSounds(cues) {
+  if (!/^https?:$/.test(window.location?.protocol) || !audio.enabled) return [];
+  const ac = getAudioContext();
+  if (!ac?.decodeAudioData) return [];
+  const paths = new Set(cues.flatMap(name => sfxPaths[name] || []));
+  return [...paths].map(path => {
+    timedSounds.add(path);
+    if (battleSounds.has(path)) return Promise.resolve();
+    if (pendingSounds.has(path)) return pendingSounds.get(path);
+    const controller = new AbortController();
+    const deadline = setTimeout(() => controller.abort(), 10000);
+    const task = fetch(path, {signal:controller.signal}).then(response => {
+      if (!response.ok) throw Error(response.status);
+      return response.arrayBuffer();
+    }).then(data => ac.decodeAudioData(data)).then(buffer => battleSounds.set(path, buffer))
+      .finally(() => { clearTimeout(deadline); pendingSounds.delete(path); });
+    pendingSounds.set(path, task);
+    return task;
+  });
+}
+
 function playSfx(name, options = {}) {
   if (!audio.enabled) return;
   const AudioPlayer = window.Audio;
@@ -862,6 +905,21 @@ function playSfx(name, options = {}) {
   if (choices.length > 1 && source === audio.lastVariant[name]) source = choices[(choices.indexOf(source) + 1) % choices.length];
   audio.lastVariant[name] = source;
   if ((name === 'win' || name === 'lose') && audio.bgm) audio.bgm.pause();
+  if (timedSounds.has(source)) {
+    const buffer = battleSounds.get(source), ac = getAudioContext();
+    if (!buffer || ac?.state !== 'running') {
+      if (ac?.state === 'running') playSynthSfx(name);
+      return;
+    }
+    const sample = ac.createBufferSource(), gain = ac.createGain();
+    sample.buffer = buffer;
+    sample.playbackRate.value = options.force ? .96 + Math.random() * .08 : options.rate || 1;
+    gain.gain.value = settings.volume ?? .46;
+    sample.connect(gain).connect(ac.destination);
+    sample.onended = () => { sample.disconnect(); gain.disconnect(); };
+    sample.start();
+    return { pause: () => sample.stop(), addEventListener: (...args) => sample.addEventListener(...args) };
+  }
   const sample = new AudioPlayer(source);
   if (options.rate) {
     sample.preservesPitch = false;
@@ -1156,6 +1214,7 @@ function resetLittleDave(showStart) {
 }
 
 function resetGame(showStart = false) {
+  prepareMapImage(state.map);
   stopCharacterVoice();
   const locationLabel = document.getElementById('gardenLocation');
   if (locationLabel) locationLabel.textContent = ui.mapSelect.selectedOptions?.[0]?.textContent || '晴日后院';
@@ -4996,6 +5055,7 @@ ui.soundButton.addEventListener('click', () => {
   if (!audio.enabled) stopChargeVoice();
   syncBattleSoundButton();
   if (audio.enabled) {
+    Promise.allSettled(prepareBattleSounds([...commonCues, ...(stageCues[state.map] || [])]));
     startBackgroundMusic();
     playSfx('turn');
   } else if (audio.bgm) {
