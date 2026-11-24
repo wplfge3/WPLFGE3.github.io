@@ -756,6 +756,7 @@ const sfxSettings = {
   win: { volume: .58, cooldown: 1000 }, lose: { volume: .56, cooldown: 1000 }
 };
 
+const readyMusic = new Map();
 const bgmPaths = {
   yard: 'assets/audio/bgm-yard.ogg.mp3', pool: 'assets/audio/rose-garden-93c0046f8ec4.m4a.mp3', canyon: 'assets/audio/bgm-canyon.ogg.mp3',
   land: 'assets/audio/bgm-canyon.ogg.mp3', tunnels: 'assets/audio/bgm-canyon.ogg.mp3', dance: 'assets/audio/bgm-dance.ogg.mp3',
@@ -960,7 +961,7 @@ function playBackgroundMusic(path, volume) {
   if (!audio.enabled || !window.Audio) return;
   if (!audio.bgm || audio.bgmPath !== path) {
     if (audio.bgm) audio.bgm.pause();
-    audio.bgm = new window.Audio(path);
+    audio.bgm = new window.Audio(readyMusic.get(path) || path);
     audio.bgmPath = path;
     audio.bgm.loop = true;
   }
@@ -5309,5 +5310,5 @@ window.addEventListener('keyup', event => {
 window.addEventListener('blur', () => { firePointerId = null; state.aimHold = null; cancelCharge(); updateUI(); });
 
 const autoStart = new URLSearchParams(window.location.search).has('play');
-resetGame(!autoStart);
+resetGame(!autoStart || document.getElementById('gardenBoot')?.open === true);
 requestAnimationFrame(loop);

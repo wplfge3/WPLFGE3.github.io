@@ -73,7 +73,7 @@ function syncTitleSoundButton() {
 }
 
 function playTitleMusic() {
-  if (!audio.enabled || !titleMusic) return;
+  if (!audio.enabled || !titleMusic || document.getElementById('gardenBoot')?.open) return;
   if (audio.bgm) audio.bgm.pause();
   titleMusic.muted = false;
   titleMusic.volume = .42;
@@ -271,5 +271,77 @@ if (launchParams.has('play')) {
   titleScreen.hidden = false;
   gameShell.setAttribute('aria-hidden', 'true');
   state.running = false;
-  playTitleMusic();
+  if (!document.getElementById('gardenBoot')?.open) playTitleMusic();
+}
+
+const bootDialog = document.getElementById('gardenBoot');
+if (bootDialog?.open) {
+
+  const meter = document.getElementById('bootMeter');
+  const percent = document.getElementById('bootPercent');
+  const status = document.getElementById('bootStatus');
+  const retry = document.getElementById('bootRetry');
+  const jobs = [];
+  function add(label, run) { jobs.push({label, run}); }
+  for (const {map} of Object.values(stageConfigs)) prepareMapImage(map);
+  const cover = new Image();
+  cover.src = 'assets/title-courtyard.webp';
+  const art = [...Object.values(images), ...Object.values(impactSheets), cover, ...document.images];
+  const unique = new Map(art.filter(img => img.src).map(img => [img.src, img]));
+  for (const img of unique.values()) add('加载花园和角色', async () => {
+    if (img.complete && !img.naturalWidth) img.src = img.src;
+    let timeout;
+    try {
+      await Promise.race([
+        img.decode(),
+        new Promise((_, reject) => { timeout = setTimeout(() => reject(Error('图片加载超时')), 60000); })
+      ]);
+    } finally {
+      clearTimeout(timeout);
+    }
+  });
+  const web = /^https?:$/.test(location.protocol);
+  for (const cue of Object.keys(sfxPaths)) add('准备战斗音效', () => Promise.all(prepareBattleSounds([cue])));
+  const songs = new Set([...Object.values(bgmPaths), titleMusic.dataset.src, danceSummonSong, 'assets/audio/level-select-tnt.m4a.mp3']);
+  for (const song of songs) add('收好音乐唱片', async () => {
+    if (web) {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 60000);
+      try {
+        const response = await fetch(song, {signal:controller.signal});
+        if (!response.ok) throw Error(String(response.status));
+        readyMusic.set(song, URL.createObjectURL(await response.blob()));
+      } finally { clearTimeout(timeout); }
+    }
+    if (song === titleMusic.dataset.src) titleMusic.src = readyMusic.get(song) || song;
+  });
+  let done = 0;
+  meter.max = jobs.length;
+  async function load(batch) {
+    retry.hidden = true;
+    const failed = [];
+    let cursor = 0;
+    async function worker() {
+      while (cursor < batch.length) {
+        const job = batch[cursor++];
+        status.textContent = job.label;
+        try {
+          await job.run();
+          meter.value = ++done;
+          percent.textContent = Math.floor(done / meter.max * 100) + '%';
+        } catch { failed.push(job); }
+      }
+    }
+    await Promise.all(Array.from({length:6}, worker));
+    if (failed.length) {
+      status.textContent = '还有 ' + failed.length + ' 项未就绪';
+      retry.hidden = false;
+      retry.onclick = () => load(failed);
+      return;
+    }
+    bootDialog.close();
+    if (autoStart) resetGame(false);
+    else { titleStartButton.focus(); playTitleMusic(); }
+  }
+  load(jobs);
 }

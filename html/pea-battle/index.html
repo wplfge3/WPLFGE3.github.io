@@ -9,8 +9,18 @@
   <link rel="stylesheet" href="polish-ui.css">
 </head>
 <body>
+  <dialog id="gardenBoot" aria-labelledby="bootHeading">
+    <div class="boot-card">
+      <div class="boot-garden" aria-hidden="true"><span class="boot-sun"></span><img src="assets/hero.gif" alt=""><i></i><i></i><i></i></div>
+      <h2 id="bootHeading">小豌豆准备出发</h2>
+      <div class="boot-reading"><label for="bootMeter" id="bootStatus">正在打开花园</label><span id="bootPercent">0%</span></div>
+      <progress id="bootMeter" value="0" max="100"></progress>
+      <button type="button" id="bootRetry" hidden>重新加载</button>
+    </div>
+  </dialog>
+  <script>{ const splash = document.getElementById('gardenBoot'); splash.oncancel = event => event.preventDefault(); splash.showModal(); }</script>
   <section class="title-screen" id="titleScreen" aria-labelledby="titleGameName">
-    <audio id="titleMusic" src="assets/audio/bgm.ogg.mp3" preload="auto" autoplay loop playsinline></audio>
+    <audio id="titleMusic" data-src="assets/audio/bgm.ogg.mp3" preload="auto" loop playsinline></audio>
     <button class="title-music-button" id="titleSoundButton" type="button" title="关闭音乐" aria-label="关闭音乐">♫</button>
     <div class="title-skyline" aria-hidden="true">
       <img class="title-plant title-peashooter" src="assets/hero.gif" alt="">
@@ -441,11 +451,7 @@
       <span>滚轮 / <kbd>−</kbd><kbd>+</kbd> 缩放</span>
     </footer>
   </main>
-  <dialog id="stageLoading" aria-labelledby="stageLoadStatus">
-    <strong id="stageLoadStatus" role="status">准备战场</strong>
-    <progress aria-label="战场资源加载进度"></progress>
-    <button type="button">直接进入</button>
-  </dialog>
+
   <script src="battle-chart.js"></script>
   <script src="game.js"></script>
   <script src="level-select.js"></script>

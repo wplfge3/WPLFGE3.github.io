@@ -453,7 +453,23 @@ body {
   }
 }
 
-#stageLoading { width: min(290px, 75vw); padding: 22px; border: 1px solid #acbb82; border-radius: 12px; background: #24382d; color: #fff8dc; text-align: center; }
-#stageLoading::backdrop { background: #10231999; }
-#stageLoading progress { display: block; width: 100%; height: 10px; margin: 15px 0; accent-color: #afd965; }
-#stageLoading button { padding: 6px 16px; color: #fff8dc; background: #344d3e; border: 1px solid #94a888; border-radius: 6px; cursor: pointer; }
+
+#gardenBoot { position:fixed; inset:0; box-sizing:border-box; width:100%; max-width:none; height:100%; max-height:none; margin:0; padding:12px; border:none; color:#35462d; background:radial-gradient(ellipse at 50% 85%,#e0edb4,transparent 65%),#fbf3d4; font-family:"Microsoft YaHei",system-ui,sans-serif; }
+#gardenBoot[open] { display:grid; place-items:center; }
+#gardenBoot::backdrop { background:#fbf3d4; }
+.boot-card { width:min(310px,86vw); text-align:center; }
+.boot-garden { position:relative; height:clamp(70px,17vh,135px); overflow:hidden; border-bottom:3px solid #98ae66; border-radius:50% / 10%; background:radial-gradient(ellipse at 50% 160%,#b8cf82 0 45%,transparent 46%); }
+.boot-garden img { position:absolute; height:89%; bottom:0; left:34%; object-fit:contain; }
+.boot-sun { position:absolute; top:5%; right:16%; width:26px; height:26px; border-radius:50%; background:#f8ce66; box-shadow:0 0 0 5px #f8ce663d; }
+.boot-garden i { position:absolute; left:57%; top:45%; width:8px; height:8px; border-radius:50%; background:#8bb955; animation:bootPea 1.8s ease-out infinite both; }
+.boot-garden i:nth-last-child(2) { animation-delay:.3s; } .boot-garden i:last-child { animation-delay:.6s; }
+@keyframes bootPea { from {transform:translate(0,3px);opacity:0} 20% {opacity:1} to {transform:translate(48px,-15px);opacity:0} }
+@media (prefers-reduced-motion:reduce) { .boot-garden i {animation:none} }
+.boot-card h2 { margin:14px 0 18px; font-size:clamp(22px,4vw,31px); }
+.boot-reading { display:flex; align-items:center; justify-content:space-between; font-size:14px; font-weight:600; gap:10px; }
+#bootPercent { font-variant-numeric:tabular-nums; }
+#bootMeter { display:block; appearance:none; width:100%; height:15px; margin:8px 0; border:2px solid #73934c; border-radius:20px; overflow:hidden; background:#fffae9; }
+#bootMeter::-webkit-progress-bar { background:#fffae9; }
+#bootMeter::-webkit-progress-value { background:linear-gradient(90deg,#82ae45,#b6d862); border-radius:14px; }
+#bootMeter::-moz-progress-bar { background:#93bb56; }
+#bootRetry { padding:7px 20px; border:1px solid #78924e; border-radius:14px; background:#fbf9df; color:#35462d; cursor:pointer; }

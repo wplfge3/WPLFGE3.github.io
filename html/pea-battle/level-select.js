@@ -126,49 +126,10 @@ window.unlockAllCampaignStages = function unlockAllCampaignStages() {
   renderStageLocks();
 };
 
-let stageLoading = false;
-async function startStage(stage) {
+function startStage(stage) {
   stage = Number(stage);
   const config = stageConfigs[stage];
   if (!config || (stage > unlockedStage && !allStagesUnlocked)) return;
-  if (stageLoading) return;
-  stageLoading = true;
-  const loader = document.getElementById('stageLoading');
-  const progress = loader.querySelector('progress');
-  const status = loader.querySelector('[role="status"]');
-  const skip = loader.querySelector('button');
-  let timer;
-  try {
-    const tasks = prepareBattleSounds([...commonCues, ...(stageCues[config.map] || [])]);
-    prepareMapImage(config.map);
-    for (const key of [config.map, 'pea', 'hero']) {
-      const image = images[key];
-      if (image && !image.complete && image.decode) {
-        image.fetchPriority = 'high';
-        tasks.push(image.decode());
-      }
-    }
-    if (tasks.length) {
-      progress.max = tasks.length; progress.value = 0;
-      const update = () => { status.textContent = `准备战场 · ${progress.value} / ${progress.max}`; };
-      update();
-      const token = String(performance.now());
-      const ready = Promise.allSettled(tasks.map(task => task.finally(() => {
-        if (stageLoading && loader.open && loader.dataset.load === token) { progress.value++; update(); }
-      })));
-      loader.dataset.load = token;
-      const proceed = new Promise(resolve => { skip.onclick = resolve; timer = setTimeout(resolve, 10000); });
-      loader.oncancel = event => { event.preventDefault(); skip.click(); };
-      // A warm replay completes within the microtask queue, before the next paint.
-      loader.showModal();
-      await Promise.race([ready, proceed]);
-    }
-  } finally {
-    clearTimeout(timer);
-    if (loader.open) loader.close();
-    skip.onclick = null;
-    stageLoading = false;
-  }
   currentStage = stage;
   resumeBattleMusic = false;
   closeLevelSelect();
