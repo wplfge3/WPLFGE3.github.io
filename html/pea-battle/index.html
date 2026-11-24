@@ -15,10 +15,12 @@
       <h2 id="bootHeading">小豌豆准备出发</h2>
       <div class="boot-reading"><label for="bootMeter" id="bootStatus">正在打开花园</label><span id="bootPercent">0%</span></div>
       <progress id="bootMeter" value="0" max="100"></progress>
+      <p class="rotate-tip">把手机横过来，战场看得更全</p>
       <button type="button" id="bootRetry" hidden>重新加载</button>
     </div>
   </dialog>
   <script>{ const splash = document.getElementById('gardenBoot'); splash.oncancel = event => event.preventDefault(); splash.showModal(); }</script>
+  <aside class="rotate-tip rotate-banner" aria-label="横屏提示">请横屏游玩</aside>
   <section class="title-screen" id="titleScreen" aria-labelledby="titleGameName">
     <audio id="titleMusic" data-src="assets/audio/bgm.ogg.mp3" preload="auto" loop playsinline></audio>
     <button class="title-music-button" id="titleSoundButton" type="button" title="关闭音乐" aria-label="关闭音乐">♫</button>

@@ -473,3 +473,22 @@ body {
 #bootMeter::-webkit-progress-value { background:linear-gradient(90deg,#82ae45,#b6d862); border-radius:14px; }
 #bootMeter::-moz-progress-bar { background:#93bb56; }
 #bootRetry { padding:7px 20px; border:1px solid #78924e; border-radius:14px; background:#fbf9df; color:#35462d; cursor:pointer; }
+
+.rotate-tip { display: none; }
+@media (pointer: coarse) and (orientation: portrait) {
+  .rotate-tip { display: block; margin: 12px 0; font-size: 14px; }
+  .rotate-banner {
+    position: fixed; z-index: 110; top: max(6px, env(safe-area-inset-top));
+    left: 50%; transform: translateX(-50%); margin: 0; padding: 5px 14px;
+    border-radius: 20px; color: #fff7d4; background: #284332ed;
+    font-weight: 650; pointer-events: none;
+  }
+}
+@media (any-pointer: coarse) {
+  #battleHud, #battleHud *, #gameCanvas, #chartCanvas {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  #battleHud img { -webkit-user-drag: none; }
+}

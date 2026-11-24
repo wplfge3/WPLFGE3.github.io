@@ -28,6 +28,35 @@ const isAndroidApp = launchParams.has('android') || (isToyPage && window.matchMe
 
 document.body.classList.toggle('android-app', isAndroidApp);
 
+const touchBrowser = window.matchMedia?.('(pointer: coarse)').matches && !launchParams.has('android');
+
+async function enterMobileFullscreen() {
+  if (!touchBrowser) return;
+  const root = document.documentElement;
+  try {
+    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+      if (root.requestFullscreen) await root.requestFullscreen({ navigationUI: 'hide' });
+      else if (root.webkitRequestFullscreen) await root.webkitRequestFullscreen();
+    }
+    await window.screen.orientation?.lock?.('landscape');
+  } catch {
+    // Embedded browsers can decline either request. The portrait hint stays available.
+  }
+}
+
+if (touchBrowser && launchParams.has('play')) {
+  gameShell.addEventListener('click', enterMobileFullscreen, { once: true });
+}
+
+if (window.matchMedia?.('(any-pointer: coarse)').matches) {
+  const preventControlMenu = event => {
+    if (event.target.closest?.('#battleHud, #gameCanvas, #chartCanvas')) event.preventDefault();
+  };
+  for (const name of ['contextmenu', 'selectstart', 'dragstart']) {
+    gameShell.addEventListener(name, preventControlMenu, true);
+  }
+}
+
 function syncAndroidViewportHeight() {
   if (!isAndroidApp) return;
   const viewportHeight = window.visualViewport?.height || window.innerHeight;
@@ -134,6 +163,7 @@ function showTitleScreen() {
 }
 
 function enterCampaign() {
+  enterMobileFullscreen();
   playTitleButton();
   pauseTitleMusic();
   titleScreen.hidden = true;
